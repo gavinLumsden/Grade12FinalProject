@@ -26,8 +26,8 @@ public class EnemyVillage extends javax.swing.JFrame {
             wall1, wall2, wall3, wall4, wall5
         };
         JLabel[] grassImages = {
-            grass1, grass2, grass3, grass4, grass5, grass6, grass7, grass8, grass9, grass10,
-            grass11, grass12, grass13, grass14, grass15, grass16, grass17, grass18, grass1, grass20,
+            grass1,  grass2,  grass3,  grass4,  grass5,  grass6,  grass7,  grass8,  grass9,  grass10,
+            grass11, grass12, grass13, grass14, grass15, grass16, grass17, grass18, grass19, grass20,
             grass21, grass22, grass23, grass24, grass25, grass26
         };
         JLabel[] rampageImages = {

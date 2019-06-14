@@ -75,38 +75,36 @@ public abstract class GameCharacter extends GameObject {
     public void animate() {
         if (coordinates.direction == Directions.UP) {
             if (sprite.isRunning(0) == false) {
+                directionToStop = Directions.UP; 
                 sprite.run(0);
             }
             directionToStop = Directions.UP;
         } else if (coordinates.direction == Directions.DOWN) {
             if (sprite.isRunning(1) == false) {
+                directionToStop = Directions.DOWN; 
                 sprite.run(1);
             }
             directionToStop = Directions.DOWN;
         } else if (coordinates.direction == Directions.LEFT) {
             if (sprite.isRunning(2) == false) {
+                directionToStop = Directions.LEFT; 
                 sprite.run(2);
             }
             directionToStop = Directions.LEFT;
         } else if (coordinates.direction == Directions.RIGHT) {
             if (sprite.isRunning(3) == false) {
+                directionToStop = Directions.RIGHT; 
                 sprite.run(3);
             }
             directionToStop = Directions.RIGHT;
         } else if (coordinates.direction == Directions.STOP) {
             if (directionToStop == Directions.UP) {
                 sprite.run(4);
-            }
-        } else if (coordinates.direction == Directions.STOP) {
-            if (directionToStop == Directions.DOWN) {
+            } else if (directionToStop == Directions.DOWN) {
                 sprite.run(5);
-            }
-        } else if (coordinates.direction == Directions.STOP) {
-            if (directionToStop == Directions.LEFT) {
+            } else if (directionToStop == Directions.LEFT) {
                 sprite.run(6);
-            }
-        } else if (coordinates.direction == Directions.STOP) {
-            if (directionToStop == Directions.RIGHT) {
+            } else if (directionToStop == Directions.RIGHT) {
                 sprite.run(7);
             }
         }

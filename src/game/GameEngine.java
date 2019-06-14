@@ -54,7 +54,7 @@ public class GameEngine {
     public boolean isPlayingIntroMusic;
 
     // form width and height for main
-    private final int MAIN_FORM_WIDTH = 1753;
+    private final int MAIN_FORM_WIDTH = 1765;
     private final int MAIN_FORM_HEIGHT = 888;
 
     // form width and height for spawn
@@ -62,16 +62,16 @@ public class GameEngine {
     private final int SPAWN_FORM_HEIGHT = 589;
 
     // form width and height for enemy village 
-    private final int ENEMY_VILLAGE_FORM_WIDTH = 1067;
+    private final int ENEMY_VILLAGE_FORM_WIDTH = 1065;
     private final int ENEMY_VILLAGE_FORM_HEIGHT = 589;
 
     // form width and height for player village 
-    private final int PLAYER_VILLAGE_FORM_WIDTH = 1070;
+    private final int PLAYER_VILLAGE_FORM_WIDTH = 1060;
     private final int PLAYER_VILLAGE_FORM_HEIGHT = 580;
 
     // form width and height for the introduction
-    private final int INTRO_FORM_WIDTH = 418;
-    private final int INTRO_FORM_HEIGHT = 320;
+    private final int INTRO_FORM_WIDTH = 407;
+    private final int INTRO_FORM_HEIGHT = 310;
 
     // what map the player is on
     public String map = "";

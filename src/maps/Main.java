@@ -44,7 +44,9 @@ public class Main extends javax.swing.JFrame {
             grass51, grass52, grass53, grass54, grass55, grass56, grass57, grass58, grass59, grass60,
             grass61, grass62, grass63, grass64, grass65, grass66, grass67, grass68, grass69, grass70,
             grass71, grass72, grass73, grass74, grass75, grass76, grass77, grass78, grass79, grass80,
-            grass81, grass82, grass83, grass84, grass85, grass87,};
+            grass81, grass82, grass83, grass84, grass85,          grass87, 
+                              grass93, grass94, grass95, grass96, grass97, grass98, 
+        };
         JLabel[] rampageImages = {
             lblRampage1, lblRampage2
         };

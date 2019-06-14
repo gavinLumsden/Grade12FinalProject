@@ -81,21 +81,67 @@ public class Hacker extends GameCharacter {
             this.toPlayerVillage = toPlayerVillage;
         }
 
-        LinkedList<String> walkFiles = new LinkedList<>();
-        walkFiles.add("/animations/hackerWalk1.png");
-        walkFiles.add("/animations/hackerIdle.png");
-        walkFiles.add("/animations/hackerWalk2.png");
-        walkFiles.add("/animations/hackerIdle.png");
+        LinkedList<String> walkUpFiles = new LinkedList<>();
+        walkUpFiles.add("/animations/hacker/up/hackerWalk1.png");
+        walkUpFiles.add("/animations/hacker/up/hackerIdle.png");
+        walkUpFiles.add("/animations/hacker/up/hackerWalk2.png");
+        walkUpFiles.add("/animations/hacker/up/hackerIdle.png");
 
-        LinkedList<String> stopFiles = new LinkedList<>();
-        stopFiles.add("/animations/hackerIdle.png");
+        LinkedList<String> walkDownFiles = new LinkedList<>();
+        walkDownFiles.add("/animations/hacker/down/hackerWalk1.png");
+        walkDownFiles.add("/animations/hacker/down/hackerIdle.png");
+        walkDownFiles.add("/animations/hacker/down/hackerWalk2.png");
+        walkDownFiles.add("/animations/hacker/down/hackerIdle.png");
 
-        Animation walkAnimation = new Animation(heroImage, walkFiles, super.WALK_DELAY, true);
-        Animation stopAnimation = new Animation(heroImage, stopFiles, super.IDLE_DELAY, true);
+        LinkedList<String> walkLeftFiles = new LinkedList<>();
+        walkLeftFiles.add("/animations/hacker/left/hackerWalk1.png");
+        walkLeftFiles.add("/animations/hacker/left/hackerIdle.png");
+        walkLeftFiles.add("/animations/hacker/left/hackerWalk2.png");
+        walkLeftFiles.add("/animations/hacker/left/hackerIdle.png");
+
+        LinkedList<String> walkRightFiles = new LinkedList<>();
+        walkRightFiles.add("/animations/hacker/right/hackerWalk1.png");
+        walkRightFiles.add("/animations/hacker/right/hackerIdle.png");
+        walkRightFiles.add("/animations/hacker/right/hackerWalk2.png");
+        walkRightFiles.add("/animations/hacker/right/hackerIdle.png");
+
+        LinkedList<String> stopUpFiles = new LinkedList<>();
+        stopUpFiles.add("/animations/hacker/up/hackerIdle.png");
+        stopUpFiles.add("/animations/hacker/up/hackerIdle.png");
+
+        LinkedList<String> stopDownFiles = new LinkedList<>();
+        stopDownFiles.add("/animations/hacker/down/hackerIdle.png");
+        stopDownFiles.add("/animations/hacker/down/hackerIdle.png");
+
+        LinkedList<String> stopLeftFiles = new LinkedList<>();
+        stopLeftFiles.add("/animations/hacker/left/hackerIdle.png");
+        stopLeftFiles.add("/animations/hacker/left/hackerIdle.png");
+
+        LinkedList<String> stopRightFiles = new LinkedList<>();
+        stopRightFiles.add("/animations/hacker/right/hackerIdle.png");
+        stopRightFiles.add("/animations/hacker/right/hackerIdle.png");
+
+        Animation walkUpAnimation = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
+        Animation walkDownAnimation = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);
+        Animation walkLeftAnimation = new Animation(heroImage, walkLeftFiles, super.WALK_DELAY, true);
+        Animation walkRightAnimation = new Animation(heroImage, walkRightFiles, super.WALK_DELAY, true);
+
+        Animation stopUpAnimation = new Animation(heroImage, stopUpFiles, super.IDLE_DELAY, true);
+        Animation stopDownAnimation = new Animation(heroImage, stopDownFiles, super.IDLE_DELAY, true);
+        Animation stopLeftAnimation = new Animation(heroImage, stopLeftFiles, super.IDLE_DELAY, true);
+        Animation stopRightAnimation = new Animation(heroImage, stopRightFiles, super.IDLE_DELAY, true);
 
         LinkedList<Animation> animations = new LinkedList<>();
-        animations.add(walkAnimation);
-        animations.add(stopAnimation);
+
+        animations.add(walkUpAnimation);
+        animations.add(walkDownAnimation);
+        animations.add(walkLeftAnimation);
+        animations.add(walkRightAnimation);
+
+        animations.add(stopUpAnimation);
+        animations.add(stopDownAnimation);
+        animations.add(stopLeftAnimation);
+        animations.add(stopRightAnimation);
 
         sprite.setAnimations(animations);
 

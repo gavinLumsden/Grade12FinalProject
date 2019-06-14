@@ -115,16 +115,20 @@ public class Bandit extends GameCharacter {
 
         LinkedList<String> stopUpFiles = new LinkedList<>();
         stopUpFiles.add("/animations/bandit/up/banditIdle.png");
+        stopUpFiles.add("/animations/bandit/up/banditIdle.png");
 
         LinkedList<String> stopDownFiles = new LinkedList<>();
+        stopDownFiles.add("/animations/bandit/down/banditIdle.png");
         stopDownFiles.add("/animations/bandit/down/banditIdle.png");
 
         LinkedList<String> stopLeftFiles = new LinkedList<>();
         stopLeftFiles.add("/animations/bandit/left/banditIdle.png");
+        stopLeftFiles.add("/animations/bandit/left/banditIdle.png");
 
         LinkedList<String> stopRightFiles = new LinkedList<>();
         stopRightFiles.add("/animations/bandit/right/banditIdle.png");
-//
+        stopRightFiles.add("/animations/bandit/right/banditIdle.png");
+
         Animation walkUpAnimation = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
         Animation walkDownAnimation = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);
         Animation walkLeftAnimation = new Animation(heroImage, walkLeftFiles, super.WALK_DELAY, true);
