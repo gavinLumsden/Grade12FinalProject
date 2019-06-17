@@ -81,23 +81,71 @@ public class Mage extends GameCharacter {
             this.toPlayerVillage = toPlayerVillage;
         }
 
-        LinkedList<String> walkFiles = new LinkedList<>();
-        walkFiles.add("/animations/mageWalk1.png");
-        walkFiles.add("/animations/mageIdle1.png");
-        walkFiles.add("/animations/mageWalk2.png");
-        walkFiles.add("/animations/mageIdle1.png");
+        LinkedList<String> walkUpFiles = new LinkedList<>();
+        walkUpFiles.add("/animations/mage/up/mageWalk1.png");
+        walkUpFiles.add("/animations/mage/up/mageIdle1.png");
+        walkUpFiles.add("/animations/mage/up/mageWalk2.png");
+        walkUpFiles.add("/animations/mage/up/mageIdle1.png");
 
-        LinkedList<String> stopFiles = new LinkedList<>();
-        stopFiles.add("/animations/mageIdle1.png");
-        stopFiles.add("/animations/mageIdle2.png");
-        stopFiles.add("/animations/mageIdle3.png");
+        LinkedList<String> walkDownFiles = new LinkedList<>();
+        walkDownFiles.add("/animations/mage/down/mageWalk1.png");
+        walkDownFiles.add("/animations/mage/down/mageIdle1.png");
+        walkDownFiles.add("/animations/mage/down/mageWalk2.png");
+        walkDownFiles.add("/animations/mage/down/mageIdle1.png");
 
-        Animation walkAnimation = new Animation(heroImage, walkFiles, super.WALK_DELAY, true);
-        Animation stopAnimation = new Animation(heroImage, stopFiles, super.IDLE_DELAY, true);
+        LinkedList<String> walkLeftFiles = new LinkedList<>();
+        walkLeftFiles.add("/animations/mage/left/mageWalk1.png");
+        walkLeftFiles.add("/animations/mage/left/mageIdle1.png");
+        walkLeftFiles.add("/animations/mage/left/mageWalk2.png");
+        walkLeftFiles.add("/animations/mage/left/mageIdle1.png");
+
+        LinkedList<String> walkRightFiles = new LinkedList<>();
+        walkRightFiles.add("/animations/mage/right/mageWalk1.png");
+        walkRightFiles.add("/animations/mage/right/mageIdle1.png");
+        walkRightFiles.add("/animations/mage/right/mageWalk2.png");
+        walkRightFiles.add("/animations/mage/right/mageIdle1.png");
+
+        LinkedList<String> stopUpFiles = new LinkedList<>();
+        stopUpFiles.add("/animations/mage/up/mageIdle1.png");
+        stopUpFiles.add("/animations/mage/up/mageIdle2.png");
+        stopUpFiles.add("/animations/mage/up/mageIdle3.png");
+
+        LinkedList<String> stopDownFiles = new LinkedList<>();
+        stopDownFiles.add("/animations/mage/down/mageIdle1.png");
+        stopDownFiles.add("/animations/mage/down/mageIdle2.png");
+        stopDownFiles.add("/animations/mage/down/mageIdle3.png");
+
+        LinkedList<String> stopLeftFiles = new LinkedList<>();
+        stopLeftFiles.add("/animations/mage/left/mageIdle1.png");
+        stopLeftFiles.add("/animations/mage/left/mageIdle2.png");
+        stopLeftFiles.add("/animations/mage/left/mageIdle3.png");
+
+        LinkedList<String> stopRightFiles = new LinkedList<>();
+        stopRightFiles.add("/animations/mage/right/mageIdle1.png");
+        stopRightFiles.add("/animations/mage/right/mageIdle2.png");
+        stopRightFiles.add("/animations/mage/right/mageIdle3.png");
+
+        Animation walkUpAnimation = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
+        Animation walkDownAnimation = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);
+        Animation walkLeftAnimation = new Animation(heroImage, walkLeftFiles, super.WALK_DELAY, true);
+        Animation walkRightAnimation = new Animation(heroImage, walkRightFiles, super.WALK_DELAY, true);
+
+        Animation stopUpAnimation = new Animation(heroImage, stopUpFiles, super.IDLE_DELAY, true);
+        Animation stopDownAnimation = new Animation(heroImage, stopDownFiles, super.IDLE_DELAY, true);
+        Animation stopLeftAnimation = new Animation(heroImage, stopLeftFiles, super.IDLE_DELAY, true);
+        Animation stopRightAnimation = new Animation(heroImage, stopRightFiles, super.IDLE_DELAY, true);
 
         LinkedList<Animation> animations = new LinkedList<>();
-        animations.add(walkAnimation);
-        animations.add(stopAnimation);
+
+        animations.add(walkUpAnimation);
+        animations.add(walkDownAnimation);
+        animations.add(walkLeftAnimation);
+        animations.add(walkRightAnimation);
+
+        animations.add(stopUpAnimation);
+        animations.add(stopDownAnimation);
+        animations.add(stopLeftAnimation);
+        animations.add(stopRightAnimation);
 
         sprite.setAnimations(animations);
 

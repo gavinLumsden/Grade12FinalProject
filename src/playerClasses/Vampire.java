@@ -81,21 +81,67 @@ public class Vampire extends GameCharacter {
             this.toPlayerVillage = toPlayerVillage;
         }
 
-        LinkedList<String> walkFiles = new LinkedList<>();
-        walkFiles.add("/animations/vampireWalk1.png");
-        walkFiles.add("/animations/vampireIdle.png");
-        walkFiles.add("/animations/vampireWalk2.png");
-        walkFiles.add("/animations/vampireIdle.png");
+        LinkedList<String> walkUpFiles = new LinkedList<>();
+        walkUpFiles.add("/animations/vampire/up/vampireWalk1.png");
+        walkUpFiles.add("/animations/vampire/up/vampireIdle.png");
+        walkUpFiles.add("/animations/vampire/up/vampireWalk2.png");
+        walkUpFiles.add("/animations/vampire/up/vampireIdle.png");
 
-        LinkedList<String> stopFiles = new LinkedList<>();
-        stopFiles.add("/animations/vampireIdle.png");
+        LinkedList<String> walkDownFiles = new LinkedList<>();
+        walkDownFiles.add("/animations/vampire/down/vampireWalk1.png");
+        walkDownFiles.add("/animations/vampire/down/vampireIdle.png");
+        walkDownFiles.add("/animations/vampire/down/vampireWalk2.png");
+        walkDownFiles.add("/animations/vampire/down/vampireIdle.png");
 
-        Animation walkAnimation = new Animation(heroImage, walkFiles, super.WALK_DELAY, true);
-        Animation stopAnimation = new Animation(heroImage, stopFiles, super.IDLE_DELAY, true);
+        LinkedList<String> walkLeftFiles = new LinkedList<>();
+        walkLeftFiles.add("/animations/vampire/left/vampireWalk1.png");
+        walkLeftFiles.add("/animations/vampire/left/vampireIdle.png");
+        walkLeftFiles.add("/animations/vampire/left/vampireWalk2.png");
+        walkLeftFiles.add("/animations/vampire/left/vampireIdle.png");
+
+        LinkedList<String> walkRightFiles = new LinkedList<>();
+        walkRightFiles.add("/animations/vampire/right/vampireWalk1.png");
+        walkRightFiles.add("/animations/vampire/right/vampireIdle.png");
+        walkRightFiles.add("/animations/vampire/right/vampireWalk2.png");
+        walkRightFiles.add("/animations/vampire/right/vampireIdle.png");
+
+        LinkedList<String> stopUpFiles = new LinkedList<>();
+        stopUpFiles.add("/animations/vampire/up/vampireIdle.png");
+        stopUpFiles.add("/animations/vampire/up/vampireIdle.png"); 
+
+        LinkedList<String> stopDownFiles = new LinkedList<>();
+        stopDownFiles.add("/animations/vampire/down/vampireIdle.png");
+        stopDownFiles.add("/animations/vampire/down/vampireIdle.png"); 
+
+        LinkedList<String> stopLeftFiles = new LinkedList<>();
+        stopLeftFiles.add("/animations/vampire/left/vampireIdle.png");
+        stopLeftFiles.add("/animations/vampire/left/vampireIdle.png");
+
+        LinkedList<String> stopRightFiles = new LinkedList<>();
+        stopRightFiles.add("/animations/vampire/right/vampireIdle.png");
+        stopRightFiles.add("/animations/vampire/right/vampireIdle.png");
+
+        Animation walkUpAnimation = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
+        Animation walkDownAnimation = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);
+        Animation walkLeftAnimation = new Animation(heroImage, walkLeftFiles, super.WALK_DELAY, true);
+        Animation walkRightAnimation = new Animation(heroImage, walkRightFiles, super.WALK_DELAY, true);
+
+        Animation stopUpAnimation = new Animation(heroImage, stopUpFiles, super.IDLE_DELAY, true);
+        Animation stopDownAnimation = new Animation(heroImage, stopDownFiles, super.IDLE_DELAY, true);
+        Animation stopLeftAnimation = new Animation(heroImage, stopLeftFiles, super.IDLE_DELAY, true);
+        Animation stopRightAnimation = new Animation(heroImage, stopRightFiles, super.IDLE_DELAY, true);
 
         LinkedList<Animation> animations = new LinkedList<>();
-        animations.add(walkAnimation);
-        animations.add(stopAnimation);
+
+        animations.add(walkUpAnimation);
+        animations.add(walkDownAnimation);
+        animations.add(walkLeftAnimation);
+        animations.add(walkRightAnimation);
+
+        animations.add(stopUpAnimation);
+        animations.add(stopDownAnimation);
+        animations.add(stopLeftAnimation);
+        animations.add(stopRightAnimation);
 
         sprite.setAnimations(animations);
 
