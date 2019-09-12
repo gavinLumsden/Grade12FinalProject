@@ -12,11 +12,16 @@ import game.gametools.GameCharacter;
 import game.GameEngine;
 import game.Globals;
 import game.gametools.Animation;
+import game.BattleUI; 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import maps.Spawn;
 import maps.Main;
 import maps.EnemyVillage;
 import maps.PlayerVillage;
 import javax.swing.JLabel;
+import javax.swing.Timer;
+import objects.House;
 
 /**
  * Bandit.java - Represents a "bandit" object
@@ -40,6 +45,7 @@ public class Bandit extends GameCharacter {
 
     private Wall[] walls;
     private Grass[] grass;
+    private House[] houses;
 
     private NextLevelBlock toSpawn;
     private NextLevelBlock toEnemyVillage;
@@ -51,12 +57,35 @@ public class Bandit extends GameCharacter {
     private boolean hasTravelledToSpawn = false;
     private boolean hasTravelledToEnemyVillage = false;
     private boolean hasTravelledToPlayerVillage = false;
+    
+    public final String NAME = "Bandit"; 
+    
+    public String attack1 = "Boost"; 
+    public String attack2 = "Stab"; 
+    public String attack3 = "Cut"; 
+    public String attack4 = "Evade"; 
+    
+    public int health      = 100;  // how much health you have, can be increased
+    public int punchSpeed  = 1000; // how fast you hit
+    public int dodgeChance = 1;    // your chance of dodging
+    public int damage      = 1;    // how much damage you do
+    
+    public Timer attack1Cooldown;     
+    public Timer attack2Cooldown;     
+    public Timer attack3Cooldown;     
+    public Timer attack4Cooldown; 
+    
+    private int attack1CooldownTime = 3000;     
+    private int attack2CooldownTime = 3000;     
+    private int attack3CooldownTime = 3000;     
+    private int attack4CooldownTime = 3000; 
 
     /**
      * Creates a "bandit"
      *
      * @param heroImage
      * @param walls
+     * @param houses
      * @param cyborgs
      * @param nails
      * @param rampages
@@ -68,7 +97,7 @@ public class Bandit extends GameCharacter {
      */
     public Bandit(
             JLabel heroImage,
-            Wall[] walls,
+            Wall[] walls, House[] houses, 
             Cyborg[] cyborgs, Nail[] nails, Rampage[] rampages,
             NextLevelBlock toMain, NextLevelBlock toSpawn, NextLevelBlock toEnemyVillage, NextLevelBlock toPlayerVillage,
             GameEngine engine) {
@@ -76,10 +105,23 @@ public class Bandit extends GameCharacter {
 
         this.engine = engine;
         this.walls = walls;
+        this.houses = houses; 
 
         this.cyborgs = cyborgs;
         this.nails = nails;
         this.rampages = rampages;
+        
+        super.playerAttack1 = attack1; 
+        super.playerAttack2 = attack2; 
+        super.playerAttack3 = attack3; 
+        super.playerAttack4 = attack4; 
+        
+        super.playerDamage      = damage; 
+        super.playerDodgeChance = dodgeChance; 
+        super.playerHealth      = health; 
+        super.playerPunchSpeed  = punchSpeed; 
+        
+        super.playerName = NAME; 
 
         if (engine.map.equals("spawn") || engine.map.equals("enemy village") || engine.map.equals("player village")) {
             this.toMain = toMain;
@@ -153,6 +195,7 @@ public class Bandit extends GameCharacter {
 
         sprite.setAnimations(animations);
 
+        createTimers(); 
     }
 
     /**
@@ -163,8 +206,9 @@ public class Bandit extends GameCharacter {
         mover.move();
         animate();
         checkWalls();
-        checkEnemies();
         checkNextLevelBlocks();
+        checkHouses(); 
+        checkEnemies();
         redraw();
     }
 
@@ -230,6 +274,16 @@ public class Bandit extends GameCharacter {
             }
         }
     }
+    
+    private void checkHouses() {
+        for (House house : houses) {
+            if (house != null) {
+                if (detector.isOverLapping(house)) {
+                    reactor.stickTo(house);
+                }
+            }
+        }
+    }
 
     /**
      * checks to see if the hero is overlapping with an enemy
@@ -241,6 +295,8 @@ public class Bandit extends GameCharacter {
                     Globals.points++;
                     cyborg.sprite.setLocation(10000, 10000);
                     cyborg.update();
+                    engine.pause(); 
+                    BattleUI battle = new BattleUI(engine, this, cyborg); 
                 }
             }
         }
@@ -250,6 +306,8 @@ public class Bandit extends GameCharacter {
                     Globals.points++;
                     nail.sprite.setLocation(10000, 10000);
                     nail.update();
+                    engine.pause(); 
+                    BattleUI battle = new BattleUI(engine, this, nail); 
                 }
             }
         }
@@ -259,9 +317,58 @@ public class Bandit extends GameCharacter {
                     Globals.points++;
                     rampage.sprite.setLocation(10000, 10000);
                     rampage.update();
+                    engine.pause(); 
+                    BattleUI battle = new BattleUI(engine, this, rampage); 
                 }
             }
         }
+    }
+
+    @Override
+    public void attack1() {
+        System.out.println("double dodge chance");
+    }
+    
+    @Override
+    public void attack2() {
+        System.out.println("double damage");
+    }
+    
+    @Override
+    public void attack3() {
+        System.out.println("make enemy bleed");
+    }
+    
+    @Override
+    public void attack4() {
+        System.out.println("increas dodge chance to 10");
+    }
+
+    private void createTimers() {
+        attack1Cooldown = new Timer(attack1CooldownTime, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                attack1Cooldown.stop();
+            }
+        }); 
+        attack2Cooldown = new Timer(attack2CooldownTime, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                attack2Cooldown.stop();
+            }
+        }); 
+        attack3Cooldown = new Timer(attack3CooldownTime, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                attack3Cooldown.stop();
+            }
+        }); 
+        attack4Cooldown = new Timer(attack4CooldownTime, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                attack4Cooldown.stop();
+            }
+        }); 
     }
 
 }

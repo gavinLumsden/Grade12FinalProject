@@ -34,7 +34,7 @@ public class GameImage {
      * @param label the label used to display the image
      */
     public GameImage(JLabel label) {
-        this(label, "", Color.white);               // set debug mode
+        this(label, "");               // set debug mode
     }
 
     /**

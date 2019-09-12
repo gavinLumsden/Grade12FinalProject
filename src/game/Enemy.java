@@ -5,6 +5,18 @@ import javax.swing.JLabel;
 
 public abstract class Enemy extends GameCharacter {
 
+    public String name; 
+    
+    public String attack1;
+    public String attack2;
+    public String attack3;
+    public String attack4;
+    
+    public int health; 
+    public int punchSpeed;
+    public int dodgeChance; 
+    public int damage; 
+    
     /**
      * Constructor for the class
      *

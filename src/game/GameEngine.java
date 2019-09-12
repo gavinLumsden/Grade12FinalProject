@@ -13,6 +13,7 @@ import enemyClasses.Rampage;
 import game.gametools.MediaPlayer;
 import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
+import objects.House;
 
 /**
  * GameEngine.java - Represents an "engine" that controls many things to do with forms,
@@ -40,6 +41,7 @@ public class GameEngine {
     // objects
     private Wall[] walls;
     private Grass[] grass;
+    private House[] houses; 
     private NextLevelBlock toSpawn;
     private NextLevelBlock toEnemyVillage;
     private NextLevelBlock toPlayerVillage;
@@ -75,6 +77,8 @@ public class GameEngine {
 
     // what map the player is on
     public String map = "";
+    
+    private boolean movable; 
 
     /**
      * creates a game engine
@@ -100,7 +104,7 @@ public class GameEngine {
      * @param evt
      */
     public void keyPress(KeyEvent evt) {
-        hero.keyPress(evt);
+        if (movable == true) hero.keyPress(evt);
     }
 
     /**
@@ -109,7 +113,7 @@ public class GameEngine {
      * @param evt
      */
     public void keyRelease(KeyEvent evt) {
-        hero.keyRelease(evt);
+        if (movable == true) hero.keyRelease(evt);
     }
 
     /**
@@ -132,6 +136,7 @@ public class GameEngine {
             mediaPlayer.playWAV("/sounds/walkingSoundtrack.wav");
             isPlayingWalkingMusic = true;
         }
+        movable = true; 
     }
 
     /**
@@ -158,6 +163,7 @@ public class GameEngine {
             mediaPlayer.playWAV("/sounds/walkingSoundtrack.wav");
             isPlayingWalkingMusic = true;
         }
+        movable = true; 
     }
 
     /**
@@ -176,8 +182,8 @@ public class GameEngine {
         enemyVillage.setVisible(true);
         mediaPlayer.stop();
         isPlayingWalkingMusic = false;
-        mediaPlayer.playWAV("/sounds/fightSoundtrack.wav");
         isPlayingFightingMusic = true;
+        movable = true; 
     }
 
     /**
@@ -194,6 +200,7 @@ public class GameEngine {
         playerVillage.setResizable(false);
         playerVillage.setLocationRelativeTo(null);
         playerVillage.setVisible(true);
+        movable = true; 
     }
 
     /**
@@ -216,10 +223,12 @@ public class GameEngine {
      * @param grassImages
      */
     public void createGrass(JLabel[] grassImages) {
-        grass = new Grass[grassImages.length];
-        for (int i = 0; i < grass.length; i++) {
-            grass[i] = new Grass(grassImages[i]);
-        }
+        if (grassImages[0] != null) {
+            grass = new Grass[grassImages.length];
+            for (int i = 0; i < grass.length; i++) {
+                grass[i] = new Grass(grassImages[i]);
+            }
+        } else System.out.println("error creating grass");
     }
 
     /**
@@ -228,10 +237,21 @@ public class GameEngine {
      * @param wallImages
      */
     public void createWalls(JLabel[] wallImages) {
-        walls = new Wall[wallImages.length];
-        for (int i = 0; i < walls.length; i++) {
-            walls[i] = new Wall(wallImages[i]);
-        }
+        if (wallImages[0] != null) {
+            walls = new Wall[wallImages.length];
+            for (int i = 0; i < walls.length; i++) {
+                walls[i] = new Wall(wallImages[i]);
+            }
+        } else System.out.println("error creating walls");
+    }
+
+    public void createHouse(JLabel[] houseImages) {
+        if (houseImages[0] != null) {
+            houses = new House[houseImages.length];
+            for (int i = 0; i < houses.length; i++) {
+                houses[i] = new House(houseImages[i]);
+            }
+        } else System.out.println("error creating house");
     }
 
     /**
@@ -240,7 +260,7 @@ public class GameEngine {
      * @param heroImage
      */
     public void createHero(JLabel heroImage) {
-        hero = new Hero(heroImage, walls, cyborgs, nails, rampages, toMain, toSpawn, toEnemyVillage, toPlayerVillage, this);
+        hero = new Hero(heroImage, walls, houses, cyborgs, nails, rampages, toMain, toSpawn, toEnemyVillage, toPlayerVillage, this);
         hero.update();
     }
 
@@ -279,6 +299,10 @@ public class GameEngine {
             enemyVillage.dispose();
         }
     }
+    
+    public void clearBattle(BattleUI battle) {
+        battle.dispose(); 
+    }
 
     /**
      * creates the enemies on the form
@@ -308,4 +332,21 @@ public class GameEngine {
         }
     }
 
+    /**
+     * Pauses the game 
+     */
+    public void pause() {
+        //stop the animaitons and moving
+        movable = false; 
+        hero.heroClass.sprite.stop();
+        hero.heroClass.mover.stop();
+    }
+    
+    /**
+     * Plays the game 
+     */
+    public void play() {
+        movable = true; 
+    }
+    
 }

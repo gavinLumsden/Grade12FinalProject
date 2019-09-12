@@ -4,6 +4,7 @@ import collections.LinkedList;
 import enemyClasses.Cyborg;
 import enemyClasses.Nail;
 import enemyClasses.Rampage;
+import game.BattleUI;
 import objects.Grass;
 import objects.Wall;
 import objects.NextLevelBlock;
@@ -12,11 +13,15 @@ import game.gametools.GameCharacter;
 import game.GameEngine;
 import game.Globals;
 import game.gametools.Animation;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import maps.Spawn;
 import maps.Main;
 import maps.EnemyVillage;
 import maps.PlayerVillage;
 import javax.swing.JLabel;
+import javax.swing.Timer;
+import objects.House;
 
 public class Mage extends GameCharacter {
 
@@ -33,6 +38,7 @@ public class Mage extends GameCharacter {
 
     private Wall[] walls;
     private Grass[] grass;
+    private House[] houses;
 
     private NextLevelBlock toSpawn;
     private NextLevelBlock toEnemyVillage;
@@ -43,6 +49,28 @@ public class Mage extends GameCharacter {
     private boolean hasTravelledToSpawn = false;
     private boolean hasTravelledToEnemyVillage = false;
     private boolean hasTravelledToPlayerVillage = false;
+    
+    public final String NAME = "Mage"; 
+    
+    public String attack1 = "mage attack 1"; 
+    public String attack2 = "mage attack 2"; 
+    public String attack3 = "mage attack 3"; 
+    public String attack4 = "mage attack 4"; 
+    
+    public int health      = 100;  // how much health you have, can be increased
+    public int punchSpeed  = 1000; // how fast you hit
+    public int dodgeChance = 1;    // your chance of dodging
+    public int damage      = 1;    // how much damage you do
+    
+    private Timer attack1Cooldown;     
+    private Timer attack2Cooldown;     
+    private Timer attack3Cooldown;     
+    private Timer attack4Cooldown; 
+    
+    private int attack1CooldownTime;     
+    private int attack2CooldownTime;     
+    private int attack3CooldownTime;     
+    private int attack4CooldownTime; 
 
     /**
      * Creates a "mage"
@@ -60,7 +88,7 @@ public class Mage extends GameCharacter {
      */
     public Mage(
             JLabel heroImage,
-            Wall[] walls,
+            Wall[] walls, House[] houses, 
             Cyborg[] cyborgs, Nail[] nails, Rampage[] rampages,
             NextLevelBlock toMain, NextLevelBlock toSpawn, NextLevelBlock toEnemyVillage, NextLevelBlock toPlayerVillage,
             GameEngine engine) {
@@ -68,10 +96,23 @@ public class Mage extends GameCharacter {
 
         this.engine = engine;
         this.walls = walls;
+        this.houses = houses; 
 
         this.cyborgs = cyborgs;
         this.nails = nails;
         this.rampages = rampages;
+        
+        super.playerAttack1 = attack1; 
+        super.playerAttack2 = attack2; 
+        super.playerAttack3 = attack3; 
+        super.playerAttack4 = attack4; 
+        
+        super.playerDamage      = damage; 
+        super.playerDodgeChance = dodgeChance; 
+        super.playerHealth      = health; 
+        super.playerPunchSpeed  = punchSpeed; 
+        
+        super.playerName = NAME; 
 
         if (engine.map.equals("spawn") || engine.map.equals("enemy village") || engine.map.equals("player village")) {
             this.toMain = toMain;
@@ -159,8 +200,9 @@ public class Mage extends GameCharacter {
         mover.move();
         animate();
         checkWalls();
-        checkEnemies();
         checkNextLevelBlocks();
+        checkHouses(); 
+        checkEnemies();
         redraw();
     }
 
@@ -226,6 +268,16 @@ public class Mage extends GameCharacter {
             }
         }
     }
+    
+    private void checkHouses() {
+        for (House house : houses) {
+            if (house != null) {
+                if (detector.isOverLapping(house)) {
+                    reactor.stickTo(house);
+                }
+            }
+        }
+    }
 
     /**
      * checks to see if the hero is overlapping with an enemy
@@ -237,6 +289,8 @@ public class Mage extends GameCharacter {
                     Globals.points++;
                     cyborg.sprite.setLocation(10000, 10000);
                     cyborg.update();
+                    engine.pause(); 
+                    BattleUI battle = new BattleUI(engine, this, cyborg); 
                 }
             }
         }
@@ -246,6 +300,8 @@ public class Mage extends GameCharacter {
                     Globals.points++;
                     nail.sprite.setLocation(10000, 10000);
                     nail.update();
+                    engine.pause(); 
+                    BattleUI battle = new BattleUI(engine, this, nail); 
                 }
             }
         }
@@ -255,9 +311,58 @@ public class Mage extends GameCharacter {
                     Globals.points++;
                     rampage.sprite.setLocation(10000, 10000);
                     rampage.update();
+                    engine.pause(); 
+                    BattleUI battle = new BattleUI(engine, this, rampage); 
                 }
             }
         }
+    }
+
+    @Override
+    public void attack1() {
+        System.out.println("give mage attacks (1)");
+    }
+    
+    @Override
+    public void attack2() {
+        System.out.println("give mage attacks (2)");
+    }
+    
+    @Override
+    public void attack3() {
+        System.out.println("give mage attacks (3)");
+    }
+    
+    @Override
+    public void attack4() {
+        System.out.println("give mage attacks (4)");
+    }
+
+    private void createTimers() {
+        attack1Cooldown = new Timer(attack1CooldownTime, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                attack1Cooldown.stop();
+            }
+        }); 
+        attack2Cooldown = new Timer(attack2CooldownTime, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                attack2Cooldown.stop();
+            }
+        }); 
+        attack3Cooldown = new Timer(attack3CooldownTime, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                attack3Cooldown.stop();
+            }
+        }); 
+        attack4Cooldown = new Timer(attack4CooldownTime, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                attack4Cooldown.stop();
+            }
+        }); 
     }
 
 }

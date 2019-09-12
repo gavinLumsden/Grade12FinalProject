@@ -2,7 +2,6 @@ package game;
 
 import collections.LinkedList;
 import game.gametools.Animation;
-import game.gametools.MediaPlayer;
 import maps.Spawn;
 import java.awt.Color;
 import javax.swing.BorderFactory;
@@ -49,12 +48,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         banditAnimations.add("/animations/bandit/right/banditWalk2.png");
         banditAnimations.add("/animations/bandit/right/banditIdle.png");
 
-        LinkedList<String> engineerAnimations = new LinkedList<>();
-        engineerAnimations.add("/animations/engineer/right/engineerWalk1.png");
-        engineerAnimations.add("/animations/engineer/right/engineerIdle.png");
-        engineerAnimations.add("/animations/engineer/right/engineerWalk2.png");
-        engineerAnimations.add("/animations/engineer/right/engineerIdle.png");
-
         LinkedList<String> gamblerAnimations = new LinkedList<>();
         gamblerAnimations.add("/animations/gambler/right/gamblerWalk1.png");
         gamblerAnimations.add("/animations/gambler/right/gamblerIdle.png");
@@ -66,12 +59,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         hackerAnimations.add("/animations/hacker/right/hackerIdle.png");
         hackerAnimations.add("/animations/hacker/right/hackerWalk2.png");
         hackerAnimations.add("/animations/hacker/right/hackerIdle.png");
-
-        LinkedList<String> hammerAnimations = new LinkedList<>();
-        hammerAnimations.add("/animations/hammer/right/hammerWalk1.png");
-        hammerAnimations.add("/animations/hammer/right/hammerIdle.png");
-        hammerAnimations.add("/animations/hammer/right/hammerWalk2.png");
-        hammerAnimations.add("/animations/hammer/right/hammerIdle.png");
 
         LinkedList<String> juggernautAnimations = new LinkedList<>();
         juggernautAnimations.add("/animations/juggernaut/right/juggernautWalk1.png");
@@ -85,18 +72,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         mageAnimations.add("/animations/mage/right/mageWalk2.png");
         mageAnimations.add("/animations/mage/right/mageIdle1.png");
 
-        LinkedList<String> mimicAnimations = new LinkedList<>();
-        mimicAnimations.add("/animations/mimic/right/mimicWalk1.png");
-        mimicAnimations.add("/animations/mimic/right/mimicIdle.png");
-        mimicAnimations.add("/animations/mimic/right/mimicWalk2.png");
-        mimicAnimations.add("/animations/mimic/right/mimicIdle.png");
-
-        LinkedList<String> tricksterAnimations = new LinkedList<>();
-        tricksterAnimations.add("/animations/trickster/right/tricksterWalk1.png");
-        tricksterAnimations.add("/animations/trickster/right/tricksterIdle.png");
-        tricksterAnimations.add("/animations/trickster/right/tricksterWalk2.png");
-        tricksterAnimations.add("/animations/trickster/right/tricksterIdle.png");
-
         LinkedList<String> vampireAnimations = new LinkedList<>();
         vampireAnimations.add("/animations/vampire/right/vampireWalk1.png");
         vampireAnimations.add("/animations/vampire/right/vampireIdle.png");
@@ -104,23 +79,19 @@ public class CharacterSelect extends javax.swing.JFrame {
         vampireAnimations.add("/animations/vampire/right/vampireIdle.png");
 
         imageFiles.add(banditAnimations);
-        imageFiles.add(engineerAnimations);
         imageFiles.add(gamblerAnimations);
         imageFiles.add(hackerAnimations);
-        imageFiles.add(hammerAnimations);
         imageFiles.add(juggernautAnimations);
         imageFiles.add(mageAnimations);
-        imageFiles.add(mimicAnimations);
-        imageFiles.add(tricksterAnimations);
         imageFiles.add(vampireAnimations);
 
         JLabel[] labels = {
-            lblBandit, lblEngineer, lblGambler, lblHacker, lblHammer,
-            lblJuggernaut, lblMage, lblMimic, lblTrickster, lblVampire
+            lblBandit, lblGambler, lblHacker,
+            lblJuggernaut, lblMage, lblVampire
         };
         this.labels = labels;
 
-        animations = new Animation[10];
+        animations = new Animation[6];
         for (int i = 0; i < animations.length; i++) {
             animations[i] = new Animation(labels[i], imageFiles.get(i), 800, true);
         }
@@ -141,18 +112,11 @@ public class CharacterSelect extends javax.swing.JFrame {
         lblGambler = new javax.swing.JLabel();
         lblMage = new javax.swing.JLabel();
         lblJuggernaut = new javax.swing.JLabel();
-        lblEngineer = new javax.swing.JLabel();
         lblVampire = new javax.swing.JLabel();
         lblBandit = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        lblTrickster = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        lblHammer = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         btnSelect = new javax.swing.JButton();
         btnAbilities = new javax.swing.JButton();
         lblHacker = new javax.swing.JLabel();
-        lblMimic = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -167,7 +131,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(4, 2, 550, 58);
 
-        lblGambler.setBackground(new java.awt.Color(255, 255, 255));
+        lblGambler.setBackground(new java.awt.Color(0, 255, 50));
         lblGambler.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblGambler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/gambler/right/gamblerIdle.png"))); // NOI18N
         lblGambler.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -184,9 +148,9 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblGambler);
-        lblGambler.setBounds(450, 180, 100, 100);
+        lblGambler.setBounds(340, 180, 100, 100);
 
-        lblMage.setBackground(new java.awt.Color(255, 255, 255));
+        lblMage.setBackground(new java.awt.Color(0, 255, 50));
         lblMage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/mage/right/mageIdle1.png"))); // NOI18N
         lblMage.setOpaque(true);
@@ -202,9 +166,9 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblMage);
-        lblMage.setBounds(120, 180, 100, 100);
+        lblMage.setBounds(230, 180, 100, 100);
 
-        lblJuggernaut.setBackground(new java.awt.Color(255, 255, 255));
+        lblJuggernaut.setBackground(new java.awt.Color(0, 255, 50));
         lblJuggernaut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJuggernaut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/juggernaut/right/juggernautIdle.png"))); // NOI18N
         lblJuggernaut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -221,28 +185,9 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblJuggernaut);
-        lblJuggernaut.setBounds(120, 70, 100, 100);
+        lblJuggernaut.setBounds(230, 70, 100, 100);
 
-        lblEngineer.setBackground(new java.awt.Color(255, 255, 255));
-        lblEngineer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEngineer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/engineer/right/engineerIdle.png"))); // NOI18N
-        lblEngineer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lblEngineer.setOpaque(true);
-        lblEngineer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblEngineerMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblEngineerMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblEngineerMouseExited(evt);
-            }
-        });
-        getContentPane().add(lblEngineer);
-        lblEngineer.setBounds(230, 70, 100, 100);
-
-        lblVampire.setBackground(new java.awt.Color(255, 255, 255));
+        lblVampire.setBackground(new java.awt.Color(0, 255, 50));
         lblVampire.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVampire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/vampire/right/vampireIdle.png"))); // NOI18N
         lblVampire.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -259,9 +204,9 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblVampire);
-        lblVampire.setBounds(10, 70, 100, 100);
+        lblVampire.setBounds(120, 70, 100, 100);
 
-        lblBandit.setBackground(new java.awt.Color(255, 255, 255));
+        lblBandit.setBackground(new java.awt.Color(0, 255, 50));
         lblBandit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBandit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/bandit/right/banditIdle.png"))); // NOI18N
         lblBandit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -278,55 +223,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblBandit);
-        lblBandit.setBounds(10, 180, 100, 100);
-
-        jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(120, 180, 100, 100);
-
-        lblTrickster.setBackground(new java.awt.Color(255, 255, 255));
-        lblTrickster.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTrickster.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/trickster/right/tricksterIdle.png"))); // NOI18N
-        lblTrickster.setOpaque(true);
-        lblTrickster.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblTricksterMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblTricksterMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblTricksterMouseExited(evt);
-            }
-        });
-        getContentPane().add(lblTrickster);
-        lblTrickster.setBounds(230, 180, 100, 100);
-
-        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(230, 180, 100, 100);
-
-        lblHammer.setBackground(new java.awt.Color(255, 255, 255));
-        lblHammer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHammer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/hammer/right/hammerIdle.png"))); // NOI18N
-        lblHammer.setOpaque(true);
-        lblHammer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblHammerMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblHammerMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblHammerMouseExited(evt);
-            }
-        });
-        getContentPane().add(lblHammer);
-        lblHammer.setBounds(340, 180, 100, 100);
-
-        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(340, 180, 100, 100);
+        lblBandit.setBounds(120, 180, 100, 100);
 
         btnSelect.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnSelect.setText("Select");
@@ -348,7 +245,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         getContentPane().add(btnAbilities);
         btnAbilities.setBounds(280, 290, 270, 100);
 
-        lblHacker.setBackground(new java.awt.Color(255, 255, 255));
+        lblHacker.setBackground(new java.awt.Color(255, 255, 50));
         lblHacker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHacker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/hacker/right/hackerIdle.png"))); // NOI18N
         lblHacker.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -366,25 +263,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         });
         getContentPane().add(lblHacker);
         lblHacker.setBounds(340, 70, 100, 100);
-
-        lblMimic.setBackground(new java.awt.Color(255, 255, 255));
-        lblMimic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMimic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/mimic/right/mimicIdle.png"))); // NOI18N
-        lblMimic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lblMimic.setOpaque(true);
-        lblMimic.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMimicMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblMimicMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblMimicMouseExited(evt);
-            }
-        });
-        getContentPane().add(lblMimic);
-        lblMimic.setBounds(450, 70, 100, 100);
 
         background.setBackground(new java.awt.Color(102, 0, 102));
         background.setOpaque(true);
@@ -438,21 +316,6 @@ public class CharacterSelect extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void lblEngineerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEngineerMouseClicked
-        if (isClicked == false) {
-            click("engineer");
-            isClicked = true;
-        } else {
-            unClick();
-            isClicked = false;
-        }
-    }//GEN-LAST:event_lblEngineerMouseClicked
-
-    /**
-     * when the player clicks on the label
-     *
-     * @param evt
-     */
     private void lblGamblerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGamblerMouseClicked
         if (isClicked == false) {
             click("gambler");
@@ -498,36 +361,6 @@ public class CharacterSelect extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void lblTricksterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTricksterMouseClicked
-        if (isClicked == false) {
-            click("trickster");
-            isClicked = true;
-        } else {
-            unClick();
-            isClicked = false;
-        }
-    }//GEN-LAST:event_lblTricksterMouseClicked
-
-    /**
-     * when the player clicks on the label
-     *
-     * @param evt
-     */
-    private void lblHammerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHammerMouseClicked
-        if (isClicked == false) {
-            click("hammer");
-            isClicked = true;
-        } else {
-            unClick();
-            isClicked = false;
-        }
-    }//GEN-LAST:event_lblHammerMouseClicked
-
-    /**
-     * when the player clicks on the label
-     *
-     * @param evt
-     */
     private void lblHackerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHackerMouseClicked
         if (isClicked == false) {
             click("hacker");
@@ -537,21 +370,6 @@ public class CharacterSelect extends javax.swing.JFrame {
             isClicked = false;
         }
     }//GEN-LAST:event_lblHackerMouseClicked
-
-    /**
-     * when the player clicks on the label
-     *
-     * @param evt
-     */
-    private void lblMimicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMimicMouseClicked
-        if (isClicked == false) {
-            click("mimic");
-            isClicked = true;
-        } else {
-            unClick();
-            isClicked = false;
-        }
-    }//GEN-LAST:event_lblMimicMouseClicked
 
     /**
      * when the player hovers over the label
@@ -576,27 +394,9 @@ public class CharacterSelect extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void lblEngineerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEngineerMouseEntered
-        hover("engineer in");
-    }//GEN-LAST:event_lblEngineerMouseEntered
-
-    /**
-     * when the player hovers over the label
-     *
-     * @param evt
-     */
     private void lblHackerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHackerMouseEntered
         hover("hacker in");
     }//GEN-LAST:event_lblHackerMouseEntered
-
-    /**
-     * when the player hovers over the label
-     *
-     * @param evt
-     */
-    private void lblMimicMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMimicMouseEntered
-        hover("mimic in");
-    }//GEN-LAST:event_lblMimicMouseEntered
 
     /**
      * when the player hovers over the label
@@ -615,24 +415,6 @@ public class CharacterSelect extends javax.swing.JFrame {
     private void lblMageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMageMouseEntered
         hover("mage in");
     }//GEN-LAST:event_lblMageMouseEntered
-
-    /**
-     * when the player hovers over the label
-     *
-     * @param evt
-     */
-    private void lblTricksterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTricksterMouseEntered
-        hover("trickster in");
-    }//GEN-LAST:event_lblTricksterMouseEntered
-
-    /**
-     * when the player hovers over the label
-     *
-     * @param evt
-     */
-    private void lblHammerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHammerMouseEntered
-        hover("hammer in");
-    }//GEN-LAST:event_lblHammerMouseEntered
 
     /**
      * when the player hovers over the label
@@ -676,24 +458,6 @@ public class CharacterSelect extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void lblTricksterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTricksterMouseExited
-        hover("trickster out");
-    }//GEN-LAST:event_lblTricksterMouseExited
-
-    /**
-     * when the player leaves the label
-     *
-     * @param evt
-     */
-    private void lblHammerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHammerMouseExited
-        hover("hammer out");
-    }//GEN-LAST:event_lblHammerMouseExited
-
-    /**
-     * when the player leaves the label
-     *
-     * @param evt
-     */
     private void lblGamblerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGamblerMouseExited
         hover("gambler out");
     }//GEN-LAST:event_lblGamblerMouseExited
@@ -721,27 +485,9 @@ public class CharacterSelect extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void lblEngineerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEngineerMouseExited
-        hover("engineer out");
-    }//GEN-LAST:event_lblEngineerMouseExited
-
-    /**
-     * when the player leaves the label
-     *
-     * @param evt
-     */
     private void lblHackerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHackerMouseExited
         hover("hacker out");
     }//GEN-LAST:event_lblHackerMouseExited
-
-    /**
-     * when the player leaves the label
-     *
-     * @param evt
-     */
-    private void lblMimicMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMimicMouseExited
-        hover("mimic out");
-    }//GEN-LAST:event_lblMimicMouseExited
 
     /**
      * setups the form
@@ -768,94 +514,54 @@ public class CharacterSelect extends javax.swing.JFrame {
                 animations[0].stop();
                 lblBandit.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             }
-        } else if (hoveredLabel.equals("engineer in")) {
-            if (isClicked == false) {
-                animations[1].run();
-                lblEngineer.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            }
-        } else if (hoveredLabel.equals("engineer out")) {
-            if (isClicked == false) {
-                animations[1].stop();
-                lblEngineer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            }
         } else if (hoveredLabel.equals("gambler in")) {
             if (isClicked == false) {
-                animations[2].run();
+                animations[1].run();
                 lblGambler.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
             }
         } else if (hoveredLabel.equals("gambler out")) {
             if (isClicked == false) {
-                animations[2].stop();
+                animations[1].stop();
                 lblGambler.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             }
         } else if (hoveredLabel.equals("hacker in")) {
             if (isClicked == false) {
-                animations[3].run();
+                animations[2].run();
                 lblHacker.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
             }
         } else if (hoveredLabel.equals("hacker out")) {
             if (isClicked == false) {
-                animations[3].stop();
+                animations[2].stop();
                 lblHacker.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            }
-        } else if (hoveredLabel.equals("hammer in")) {
-            if (isClicked == false) {
-                animations[4].run();
-                lblHammer.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            }
-        } else if (hoveredLabel.equals("hammer out")) {
-            if (isClicked == false) {
-                animations[4].stop();
-                lblHammer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             }
         } else if (hoveredLabel.equals("juggernaut in")) {
             if (isClicked == false) {
-                animations[5].run();
+                animations[3].run();
                 lblJuggernaut.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
             }
         } else if (hoveredLabel.equals("juggernaut out")) {
             if (isClicked == false) {
-                animations[5].stop();
+                animations[3].stop();
                 lblJuggernaut.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             }
         } else if (hoveredLabel.equals("mage in")) {
             if (isClicked == false) {
-                animations[6].run();
+                animations[4].run();
                 lblMage.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
             }
         } else if (hoveredLabel.equals("mage out")) {
             if (isClicked == false) {
-                animations[6].stop();
+                animations[4].stop();
                 lblMage.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            }
-        } else if (hoveredLabel.equals("mimic in")) {
-            if (isClicked == false) {
-                animations[7].run();
-                lblMimic.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            }
-        } else if (hoveredLabel.equals("mimic out")) {
-            if (isClicked == false) {
-                animations[7].stop();
-                lblMimic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            }
-        } else if (hoveredLabel.equals("trickster in")) {
-            if (isClicked == false) {
-                animations[8].run();
-                lblTrickster.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            }
-        } else if (hoveredLabel.equals("trickster out")) {
-            if (isClicked == false) {
-                animations[8].stop();
-                lblTrickster.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             }
         } else if (hoveredLabel.equals("vampire in")) {
             if (isClicked == false) {
-                animations[9].run();
+                animations[5].run();
                 lblVampire.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
             }
         } else if (hoveredLabel.equals("vampire out")) {
             if (isClicked == false) {
-                animations[9].stop();
+                animations[5].stop();
                 lblVampire.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             }
         }
@@ -874,75 +580,43 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
             btnSelect.setEnabled(true);
             btnAbilities.setEnabled(true);
-        } else if (clickedLabel.equals("engineer")) {
-            selected = "engineer";
-            lblEngineer.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            if (animations[1].isRunning() == false) {
-                animations[1].run();
-            }
-            btnSelect.setEnabled(true);
-            btnAbilities.setEnabled(true);
         } else if (clickedLabel.equals("gambler")) {
             selected = "gambler";
             lblGambler.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            if (animations[2].isRunning() == false) {
-                animations[2].run();
+            if (animations[1].isRunning() == false) {
+                animations[1].run();
             }
             btnSelect.setEnabled(true);
             btnAbilities.setEnabled(true);
         } else if (clickedLabel.equals("hacker")) {
             selected = "hacker";
             lblHacker.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            if (animations[3].isRunning() == false) {
-                animations[3].run();
-            }
-            btnSelect.setEnabled(true);
-            btnAbilities.setEnabled(true);
-        } else if (clickedLabel.equals("hammer")) {
-            selected = "hammer";
-            lblHammer.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            if (animations[4].isRunning() == false) {
-                animations[4].run();
+            if (animations[2].isRunning() == false) {
+                animations[2].run();
             }
             btnSelect.setEnabled(true);
             btnAbilities.setEnabled(true);
         } else if (clickedLabel.equals("juggernaut")) {
             selected = "juggernaut";
             lblJuggernaut.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            if (animations[5].isRunning() == false) {
-                animations[5].run();
+            if (animations[3].isRunning() == false) {
+                animations[3].run();
             }
             btnSelect.setEnabled(true);
             btnAbilities.setEnabled(true);
         } else if (clickedLabel.equals("mage")) {
             selected = "mage";
             lblMage.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            if (animations[6].isRunning() == false) {
-                animations[6].run();
-            }
-            btnSelect.setEnabled(true);
-            btnAbilities.setEnabled(true);
-        } else if (clickedLabel.equals("mimic")) {
-            selected = "mimic";
-            lblMimic.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            if (animations[7].isRunning() == false) {
-                animations[7].run();
-            }
-            btnSelect.setEnabled(true);
-            btnAbilities.setEnabled(true);
-        } else if (clickedLabel.equals("trickster")) {
-            selected = "trickster";
-            lblTrickster.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            if (animations[8].isRunning() == false) {
-                animations[8].run();
+            if (animations[4].isRunning() == false) {
+                animations[4].run();
             }
             btnSelect.setEnabled(true);
             btnAbilities.setEnabled(true);
         } else if (clickedLabel.equals("vampire")) {
             selected = "vampire";
             lblVampire.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
-            if (animations[9].isRunning() == false) {
-                animations[9].run();
+            if (animations[5].isRunning() == false) {
+                animations[5].run();
             }
             btnSelect.setEnabled(true);
             btnAbilities.setEnabled(true);
@@ -969,18 +643,11 @@ public class CharacterSelect extends javax.swing.JFrame {
     private javax.swing.JButton btnAbilities;
     private javax.swing.JButton btnSelect;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblBandit;
-    private javax.swing.JLabel lblEngineer;
     private javax.swing.JLabel lblGambler;
     private javax.swing.JLabel lblHacker;
-    private javax.swing.JLabel lblHammer;
     private javax.swing.JLabel lblJuggernaut;
     private javax.swing.JLabel lblMage;
-    private javax.swing.JLabel lblMimic;
-    private javax.swing.JLabel lblTrickster;
     private javax.swing.JLabel lblVampire;
     // End of variables declaration//GEN-END:variables
 

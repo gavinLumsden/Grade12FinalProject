@@ -27,6 +27,28 @@ public abstract class GameCharacter extends GameObject {
     public final int IDLE_DELAY = 100;
 
     private int directionToStop;
+    
+    public String playerName; 
+    
+    public String playerAttack1; 
+    public String playerAttack2; 
+    public String playerAttack3; 
+    public String playerAttack4; 
+    
+    public int playerHealth;      // how much health you have, can be increased
+    public int playerPunchSpeed;  // how fast you hit
+    public int playerDodgeChance; // your chance of dodging
+    public int playerDamage;      // how much damage you do  
+    
+    public Timer attack1Cooldown;     
+    public Timer attack2Cooldown;     
+    public Timer attack3Cooldown;     
+    public Timer attack4Cooldown; 
+    
+    private int attack1CooldownTime; 
+    private int attack2CooldownTime;  
+    private int attack3CooldownTime;
+    private int attack4CooldownTime;
 
     /**
      * Constructor for the class, sets class property data
@@ -110,4 +132,12 @@ public abstract class GameCharacter extends GameObject {
         }
     }
 
+    public abstract void attack1();
+    
+    public abstract void attack2();
+    
+    public abstract void attack3();
+    
+    public abstract void attack4();
+    
 }

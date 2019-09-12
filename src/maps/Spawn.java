@@ -15,8 +15,8 @@ public class Spawn extends javax.swing.JFrame {
     private GameEngine engine;
 
     // locations where the hero can "spawn" into
-    private final int SPAWN_LOCATION_X = 830;
-    private final int SPAWN_LOCATION_Y = 130;
+    private final int SPAWN_LOCATION_X = 890;
+    private final int SPAWN_LOCATION_Y = 240;
 
     private final int MAIN_SPAWN_LOCATION_X = 380;
     private final int MAIN_SPAWN_LOCATION_Y = 30;
@@ -33,12 +33,15 @@ public class Spawn extends javax.swing.JFrame {
             wall1, wall2, wall3, wall4, wall5
         };
         JLabel[] grassImages = {
-            grass1, grass2, grass3, grass4, grass5, grass6, grass7, grass8, grass9, grass10,
+            grass1,  grass2,  grass3,  grass4,  grass5,  grass6,  grass7,  grass8,  grass9,  grass10,
             grass11, grass12, grass13, grass14, grass15, grass16, grass17, grass18, grass19, grass20,
             grass21, grass22, grass23, grass24, grass25, grass26, grass27, grass28, grass29, grass30,
-            grass31, grass32, grass33, grass34, grass35, grass36,};
+            grass31, grass32, grass33, grass34, grass35};
         JLabel[] cyborgImages = {
             lblCyborg1
+        };
+        JLabel[] houseImages = {
+            house
         };
         if (level.equals("main")) {
             lblHero.setLocation(MAIN_SPAWN_LOCATION_X, MAIN_SPAWN_LOCATION_Y);
@@ -49,6 +52,7 @@ public class Spawn extends javax.swing.JFrame {
         this.engine = engine;
         engine.assign(wallImages, grassImages);
         engine.createSpawn(this, lblToMain);
+        engine.createHouse(houseImages);
         engine.createEnemies(cyborgImages, null, null);
         engine.createHero(lblHero);
     }
@@ -68,8 +72,6 @@ public class Spawn extends javax.swing.JFrame {
         lblCyborg1 = new javax.swing.JLabel();
         grass2 = new javax.swing.JLabel();
         grass3 = new javax.swing.JLabel();
-        grass4 = new javax.swing.JLabel();
-        grass5 = new javax.swing.JLabel();
         grass6 = new javax.swing.JLabel();
         grass7 = new javax.swing.JLabel();
         grass8 = new javax.swing.JLabel();
@@ -99,11 +101,13 @@ public class Spawn extends javax.swing.JFrame {
         grass32 = new javax.swing.JLabel();
         grass33 = new javax.swing.JLabel();
         grass34 = new javax.swing.JLabel();
+        house = new javax.swing.JLabel();
+        grass4 = new javax.swing.JLabel();
+        grass5 = new javax.swing.JLabel();
         grass35 = new javax.swing.JLabel();
-        grass36 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(102, 51, 0));
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -119,7 +123,7 @@ public class Spawn extends javax.swing.JFrame {
         lblHero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/bandit/right/banditIdle.png"))); // NOI18N
         lblHero.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblHero);
-        lblHero.setBounds(830, 130, 100, 100);
+        lblHero.setBounds(890, 240, 100, 100);
 
         wall1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         wall1.setText("Wall");
@@ -172,17 +176,7 @@ public class Spawn extends javax.swing.JFrame {
         grass3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         grass3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(grass3);
-        grass3.setBounds(930, 30, 100, 100);
-
-        grass4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(grass4);
-        grass4.setBounds(730, 30, 100, 100);
-
-        grass5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(grass5);
-        grass5.setBounds(830, 30, 100, 100);
+        grass3.setBounds(730, 30, 100, 100);
 
         grass6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         grass6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -329,20 +323,29 @@ public class Spawn extends javax.swing.JFrame {
         getContentPane().add(grass34);
         grass34.setBounds(230, 130, 100, 100);
 
+        house.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/house.png"))); // NOI18N
+        getContentPane().add(house);
+        house.setBounds(830, 30, 200, 200);
+
+        grass4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        grass4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(grass4);
+        grass4.setBounds(530, 130, 100, 100);
+
+        grass5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        grass5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(grass5);
+        grass5.setBounds(630, 130, 100, 100);
+
         grass35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         grass35.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(grass35);
-        grass35.setBounds(930, 230, 100, 100);
-
-        grass36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass36.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(grass36);
-        grass36.setBounds(930, 130, 100, 100);
+        grass35.setBounds(730, 130, 100, 100);
 
         background.setBackground(new java.awt.Color(102, 51, 0));
         background.setOpaque(true);
         getContentPane().add(background);
-        background.setBounds(0, 0, 1060, 560);
+        background.setBounds(10, -10, 1060, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -396,13 +399,13 @@ public class Spawn extends javax.swing.JFrame {
     private javax.swing.JLabel grass33;
     private javax.swing.JLabel grass34;
     private javax.swing.JLabel grass35;
-    private javax.swing.JLabel grass36;
     private javax.swing.JLabel grass4;
     private javax.swing.JLabel grass5;
     private javax.swing.JLabel grass6;
     private javax.swing.JLabel grass7;
     private javax.swing.JLabel grass8;
     private javax.swing.JLabel grass9;
+    private javax.swing.JLabel house;
     private javax.swing.JLabel lblCyborg1;
     private javax.swing.JLabel lblHero;
     private javax.swing.JLabel lblToMain;

@@ -4,11 +4,35 @@ import game.Enemy;
 import game.gametools.Directions;
 import javax.swing.JLabel;
 
-public class Rampage extends Enemy
-{
+public class Rampage extends Enemy {
+
+    public final String NAME = "Rampage";
+
+    public String attack1 = "rampage attack 1";
+    public String attack2 = "rampage attack 2";
+    public String attack3 = "rampage attack 3";
+    public String attack4 = "rampage attack 4";
+
+    public int health      = 100;  // how much health you have, can be increased
+    public int punchSpeed  = 1000; // how fast you hit
+    public int dodgeChance = 1;    // your chance of dodging
+    public int damage      = 1;    // how much damage you do
 
     public Rampage(JLabel image, int amount, int direction, int numberOfDirections, int delay) {
         super(image, 0, Directions.STOP, 0, 0);
+
+        super.attack1 = attack1;
+        super.attack2 = attack2;
+        super.attack3 = attack3;
+        super.attack4 = attack4;
+
+        super.damage      = damage;
+        super.dodgeChance = dodgeChance;
+        super.health      = health;
+        super.punchSpeed  = punchSpeed;
+
+        super.name = NAME;
+
         sprite.setImage("/animations/rampage/right/rampageIdle.png");
         sprite.debug("");
         sprite.removeBorder();
@@ -16,7 +40,27 @@ public class Rampage extends Enemy
 
     @Override
     public void action() {
-        
+
     }
-    
+
+    @Override
+    public void attack1() {
+
+    }
+
+    @Override
+    public void attack2() {
+
+    }
+
+    @Override
+    public void attack3() {
+
+    }
+
+    @Override
+    public void attack4() {
+
+    }
+
 }
