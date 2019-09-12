@@ -25,71 +25,83 @@ public class Introduction extends javax.swing.JFrame {
     private void initComponents() {
 
         lblGameTitle = new javax.swing.JLabel();
-        btnQuit = new javax.swing.JButton();
-        btnNewGame = new javax.swing.JButton();
-        btnLoadGame = new javax.swing.JButton();
+        btnQuit = new javax.swing.JLabel();
+        btnNewGame = new javax.swing.JLabel();
+        btnLoadGame = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        lblGameTitle.setBackground(new java.awt.Color(153, 255, 153));
         lblGameTitle.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblGameTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblGameTitle.setText("Title of Game");
         lblGameTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblGameTitle.setOpaque(true);
         getContentPane().add(lblGameTitle);
         lblGameTitle.setBounds(0, 0, 400, 70);
 
+        btnQuit.setBackground(new java.awt.Color(255, 153, 153));
         btnQuit.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        btnQuit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnQuit.setText("Quit");
-        btnQuit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuitActionPerformed(evt);
+        btnQuit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnQuit.setOpaque(true);
+        btnQuit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnQuitMouseClicked(evt);
             }
         });
         getContentPane().add(btnQuit);
         btnQuit.setBounds(0, 210, 400, 70);
 
+        btnNewGame.setBackground(new java.awt.Color(153, 255, 255));
         btnNewGame.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        btnNewGame.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnNewGame.setText("New game");
-        btnNewGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewGameActionPerformed(evt);
+        btnNewGame.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnNewGame.setOpaque(true);
+        btnNewGame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNewGameMouseClicked(evt);
             }
         });
         getContentPane().add(btnNewGame);
         btnNewGame.setBounds(0, 70, 400, 70);
 
+        btnLoadGame.setBackground(new java.awt.Color(255, 255, 153));
         btnLoadGame.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        btnLoadGame.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnLoadGame.setText("Load game");
+        btnLoadGame.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnLoadGame.setOpaque(true);
+        btnLoadGame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLoadGameMouseClicked(evt);
+            }
+        });
         getContentPane().add(btnLoadGame);
         btnLoadGame.setBounds(0, 140, 400, 70);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * when the player clicks the quit button
-     *
-     * @param evt
-     */
-    private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnQuitActionPerformed
+    private void btnNewGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewGameMouseClicked
+        CharacterSelect characterSelect = new CharacterSelect(engine); 
+    }//GEN-LAST:event_btnNewGameMouseClicked
 
-    /**
-     * when the player clicks the new game button
-     *
-     * @param evt
-     */
-    private void btnNewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewGameActionPerformed
-        this.dispose();
-        CharacterSelect select = new CharacterSelect(engine);
-    }//GEN-LAST:event_btnNewGameActionPerformed
+    private void btnLoadGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadGameMouseClicked
+        
+    }//GEN-LAST:event_btnLoadGameMouseClicked
+
+    private void btnQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuitMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_btnQuitMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLoadGame;
-    private javax.swing.JButton btnNewGame;
-    private javax.swing.JButton btnQuit;
+    private javax.swing.JLabel btnLoadGame;
+    private javax.swing.JLabel btnNewGame;
+    private javax.swing.JLabel btnQuit;
     private javax.swing.JLabel lblGameTitle;
     // End of variables declaration//GEN-END:variables
 

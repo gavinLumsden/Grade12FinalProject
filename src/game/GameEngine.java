@@ -72,8 +72,8 @@ public class GameEngine {
     private final int PLAYER_VILLAGE_FORM_HEIGHT = 580;
 
     // form width and height for the introduction
-    private final int INTRO_FORM_WIDTH = 407;
-    private final int INTRO_FORM_HEIGHT = 310;
+    private final int INTRO_FORM_WIDTH = 416;
+    private final int INTRO_FORM_HEIGHT = 319;
 
     // what map the player is on
     public String map = "";

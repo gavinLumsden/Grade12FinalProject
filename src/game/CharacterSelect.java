@@ -16,8 +16,8 @@ import javax.swing.JLabel;
 public class CharacterSelect extends javax.swing.JFrame {
 
     // height and witdth of the form
-    private final int FORM_WIDTH = 565;
-    private final int FORM_HEIGHT = 425;
+    private final int FORM_WIDTH = 575;
+    private final int FORM_HEIGHT = 430;
 
     // properties
     private GameEngine engine;
@@ -108,14 +108,14 @@ public class CharacterSelect extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        btnAbilities = new javax.swing.JLabel();
+        btnSelect = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         lblGambler = new javax.swing.JLabel();
         lblMage = new javax.swing.JLabel();
         lblJuggernaut = new javax.swing.JLabel();
         lblVampire = new javax.swing.JLabel();
         lblBandit = new javax.swing.JLabel();
-        btnSelect = new javax.swing.JButton();
-        btnAbilities = new javax.swing.JButton();
         lblHacker = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
@@ -123,15 +123,44 @@ public class CharacterSelect extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Choose your Character!");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(4, 2, 550, 58);
+        btnAbilities.setBackground(new java.awt.Color(153, 255, 153));
+        btnAbilities.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        btnAbilities.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAbilities.setText("Abilities");
+        btnAbilities.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnAbilities.setOpaque(true);
+        btnAbilities.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAbilitiesMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnAbilities);
+        btnAbilities.setBounds(280, 290, 270, 100);
 
-        lblGambler.setBackground(new java.awt.Color(0, 255, 50));
+        btnSelect.setBackground(new java.awt.Color(153, 255, 153));
+        btnSelect.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        btnSelect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSelect.setText("Select");
+        btnSelect.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnSelect.setOpaque(true);
+        btnSelect.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSelectMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnSelect);
+        btnSelect.setBounds(10, 290, 270, 100);
+
+        lblTitle.setBackground(new java.awt.Color(255, 255, 153));
+        lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 102, 102));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Choose your Character!");
+        lblTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblTitle.setOpaque(true);
+        getContentPane().add(lblTitle);
+        lblTitle.setBounds(4, 2, 550, 58);
+
         lblGambler.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblGambler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/gambler/right/gamblerIdle.png"))); // NOI18N
         lblGambler.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -150,9 +179,9 @@ public class CharacterSelect extends javax.swing.JFrame {
         getContentPane().add(lblGambler);
         lblGambler.setBounds(340, 180, 100, 100);
 
-        lblMage.setBackground(new java.awt.Color(0, 255, 50));
         lblMage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/mage/right/mageIdle1.png"))); // NOI18N
+        lblMage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblMage.setOpaque(true);
         lblMage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -168,7 +197,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         getContentPane().add(lblMage);
         lblMage.setBounds(230, 180, 100, 100);
 
-        lblJuggernaut.setBackground(new java.awt.Color(0, 255, 50));
         lblJuggernaut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJuggernaut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/juggernaut/right/juggernautIdle.png"))); // NOI18N
         lblJuggernaut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -187,7 +215,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         getContentPane().add(lblJuggernaut);
         lblJuggernaut.setBounds(230, 70, 100, 100);
 
-        lblVampire.setBackground(new java.awt.Color(0, 255, 50));
         lblVampire.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVampire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/vampire/right/vampireIdle.png"))); // NOI18N
         lblVampire.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -206,7 +233,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         getContentPane().add(lblVampire);
         lblVampire.setBounds(120, 70, 100, 100);
 
-        lblBandit.setBackground(new java.awt.Color(0, 255, 50));
         lblBandit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBandit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/bandit/right/banditIdle.png"))); // NOI18N
         lblBandit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -225,27 +251,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         getContentPane().add(lblBandit);
         lblBandit.setBounds(120, 180, 100, 100);
 
-        btnSelect.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        btnSelect.setText("Select");
-        btnSelect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSelect);
-        btnSelect.setBounds(10, 290, 270, 100);
-
-        btnAbilities.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        btnAbilities.setText("Abilities");
-        btnAbilities.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAbilitiesActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnAbilities);
-        btnAbilities.setBounds(280, 290, 270, 100);
-
-        lblHacker.setBackground(new java.awt.Color(255, 255, 50));
         lblHacker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHacker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/hacker/right/hackerIdle.png"))); // NOI18N
         lblHacker.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -264,22 +269,13 @@ public class CharacterSelect extends javax.swing.JFrame {
         getContentPane().add(lblHacker);
         lblHacker.setBounds(340, 70, 100, 100);
 
-        background.setBackground(new java.awt.Color(102, 0, 102));
+        background.setBackground(new java.awt.Color(204, 255, 255));
         background.setOpaque(true);
         getContentPane().add(background);
         background.setBounds(0, 0, 560, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * when the player selects the abilities button
-     *
-     * @param evt
-     */
-    private void btnAbilitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbilitiesActionPerformed
-        Abilities abilities = new Abilities(selected);
-    }//GEN-LAST:event_btnAbilitiesActionPerformed
 
     /**
      * when the player clicks on the label
@@ -426,16 +422,6 @@ public class CharacterSelect extends javax.swing.JFrame {
     }//GEN-LAST:event_lblGamblerMouseEntered
 
     /**
-     * when the player presses the select button
-     *
-     * @param evt
-     */
-    private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
-        Spawn spawn = new Spawn("", engine);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnSelectActionPerformed
-
-    /**
      * when the player leaves the label
      *
      * @param evt
@@ -489,6 +475,15 @@ public class CharacterSelect extends javax.swing.JFrame {
         hover("hacker out");
     }//GEN-LAST:event_lblHackerMouseExited
 
+    private void btnSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelectMouseClicked
+        Spawn spawn = new Spawn("", engine);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSelectMouseClicked
+
+    private void btnAbilitiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbilitiesMouseClicked
+        Abilities abilities = new Abilities(selected);
+    }//GEN-LAST:event_btnAbilitiesMouseClicked
+
     /**
      * setups the form
      */
@@ -507,7 +502,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         if (hoveredLabel.equals("bandit in")) {
             if (isClicked == false) {
                 animations[0].run();
-                lblBandit.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
+                lblBandit.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
             }
         } else if (hoveredLabel.equals("bandit out")) {
             if (isClicked == false) {
@@ -517,7 +512,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         } else if (hoveredLabel.equals("gambler in")) {
             if (isClicked == false) {
                 animations[1].run();
-                lblGambler.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
+                lblGambler.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
             }
         } else if (hoveredLabel.equals("gambler out")) {
             if (isClicked == false) {
@@ -527,7 +522,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         } else if (hoveredLabel.equals("hacker in")) {
             if (isClicked == false) {
                 animations[2].run();
-                lblHacker.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
+                lblHacker.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
             }
         } else if (hoveredLabel.equals("hacker out")) {
             if (isClicked == false) {
@@ -537,7 +532,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         } else if (hoveredLabel.equals("juggernaut in")) {
             if (isClicked == false) {
                 animations[3].run();
-                lblJuggernaut.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
+                lblJuggernaut.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
             }
         } else if (hoveredLabel.equals("juggernaut out")) {
             if (isClicked == false) {
@@ -547,7 +542,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         } else if (hoveredLabel.equals("mage in")) {
             if (isClicked == false) {
                 animations[4].run();
-                lblMage.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
+                lblMage.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
             }
         } else if (hoveredLabel.equals("mage out")) {
             if (isClicked == false) {
@@ -557,7 +552,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         } else if (hoveredLabel.equals("vampire in")) {
             if (isClicked == false) {
                 animations[5].run();
-                lblVampire.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
+                lblVampire.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
             }
         } else if (hoveredLabel.equals("vampire out")) {
             if (isClicked == false) {
@@ -574,7 +569,7 @@ public class CharacterSelect extends javax.swing.JFrame {
     private void click(String clickedLabel) {
         if (clickedLabel.equals("bandit")) {
             selected = "bandit";
-            lblBandit.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
+            lblBandit.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
             if (animations[0].isRunning() == false) {
                 animations[0].run();
             }
@@ -582,7 +577,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             btnAbilities.setEnabled(true);
         } else if (clickedLabel.equals("gambler")) {
             selected = "gambler";
-            lblGambler.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
+            lblGambler.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
             if (animations[1].isRunning() == false) {
                 animations[1].run();
             }
@@ -590,7 +585,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             btnAbilities.setEnabled(true);
         } else if (clickedLabel.equals("hacker")) {
             selected = "hacker";
-            lblHacker.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
+            lblHacker.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
             if (animations[2].isRunning() == false) {
                 animations[2].run();
             }
@@ -598,7 +593,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             btnAbilities.setEnabled(true);
         } else if (clickedLabel.equals("juggernaut")) {
             selected = "juggernaut";
-            lblJuggernaut.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
+            lblJuggernaut.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
             if (animations[3].isRunning() == false) {
                 animations[3].run();
             }
@@ -606,7 +601,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             btnAbilities.setEnabled(true);
         } else if (clickedLabel.equals("mage")) {
             selected = "mage";
-            lblMage.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
+            lblMage.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
             if (animations[4].isRunning() == false) {
                 animations[4].run();
             }
@@ -614,7 +609,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             btnAbilities.setEnabled(true);
         } else if (clickedLabel.equals("vampire")) {
             selected = "vampire";
-            lblVampire.setBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.yellow));
+            lblVampire.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
             if (animations[5].isRunning() == false) {
                 animations[5].run();
             }
@@ -640,14 +635,14 @@ public class CharacterSelect extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private javax.swing.JButton btnAbilities;
-    private javax.swing.JButton btnSelect;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel btnAbilities;
+    private javax.swing.JLabel btnSelect;
     private javax.swing.JLabel lblBandit;
     private javax.swing.JLabel lblGambler;
     private javax.swing.JLabel lblHacker;
     private javax.swing.JLabel lblJuggernaut;
     private javax.swing.JLabel lblMage;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblVampire;
     // End of variables declaration//GEN-END:variables
 

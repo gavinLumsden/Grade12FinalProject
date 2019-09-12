@@ -286,7 +286,6 @@ public class Mage extends GameCharacter {
         if (cyborgs != null) {
             for (Cyborg cyborg : cyborgs) {
                 if (detector.isOverLapping(cyborg)) {
-                    Globals.points++;
                     cyborg.sprite.setLocation(10000, 10000);
                     cyborg.update();
                     engine.pause(); 
@@ -297,7 +296,6 @@ public class Mage extends GameCharacter {
         if (nails != null) {
             for (Nail nail : nails) {
                 if (detector.isOverLapping(nail)) {
-                    Globals.points++;
                     nail.sprite.setLocation(10000, 10000);
                     nail.update();
                     engine.pause(); 
@@ -308,7 +306,6 @@ public class Mage extends GameCharacter {
         if (rampages != null) {
             for (Rampage rampage : rampages) {
                 if (detector.isOverLapping(rampage)) {
-                    Globals.points++;
                     rampage.sprite.setLocation(10000, 10000);
                     rampage.update();
                     engine.pause(); 

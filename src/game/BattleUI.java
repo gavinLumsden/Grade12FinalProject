@@ -76,7 +76,6 @@ public class BattleUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblStats = new javax.swing.JLabel();
         btnRun = new javax.swing.JButton();
         enemyHealthBar = new javax.swing.JProgressBar();
         bossOnlyUltimate = new javax.swing.JProgressBar();
@@ -100,10 +99,6 @@ public class BattleUI extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(null);
-
-        lblStats.setText("stats");
-        getContentPane().add(lblStats);
-        lblStats.setBounds(0, 150, 180, 210);
 
         btnRun.setText("Run");
         btnRun.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -225,20 +220,20 @@ public class BattleUI extends javax.swing.JFrame {
         notPokemonPicture2.setBounds(0, 150, 500, 210);
 
         lblPlayerNameAndStats.setBackground(new java.awt.Color(204, 255, 204));
-        lblPlayerNameAndStats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPlayerNameAndStats.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblPlayerNameAndStats.setText("pidgey level 11");
         lblPlayerNameAndStats.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         lblPlayerNameAndStats.setOpaque(true);
         getContentPane().add(lblPlayerNameAndStats);
-        lblPlayerNameAndStats.setBounds(500, 210, 500, 150);
+        lblPlayerNameAndStats.setBounds(500, 210, 240, 150);
 
         lblEnemyNameAndStats.setBackground(new java.awt.Color(204, 255, 204));
-        lblEnemyNameAndStats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEnemyNameAndStats.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEnemyNameAndStats.setText("pidgey level 11");
         lblEnemyNameAndStats.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         lblEnemyNameAndStats.setOpaque(true);
         getContentPane().add(lblEnemyNameAndStats);
-        lblEnemyNameAndStats.setBounds(0, 0, 500, 150);
+        lblEnemyNameAndStats.setBounds(260, 0, 240, 150);
 
         background.setBackground(new java.awt.Color(204, 255, 255));
         background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -288,6 +283,7 @@ public class BattleUI extends javax.swing.JFrame {
             engine.mediaPlayer.stop();
             engine.mediaPlayer.playWAV("/sounds/introSoundtrack.wav");
         }
+        end(); 
         engine.clearBattle(this); 
         engine.play();
     }//GEN-LAST:event_btnRunMouseClicked
@@ -308,7 +304,6 @@ public class BattleUI extends javax.swing.JFrame {
     private javax.swing.JProgressBar enemyHealthBar;
     private javax.swing.JLabel lblEnemyNameAndStats;
     private javax.swing.JLabel lblPlayerNameAndStats;
-    private javax.swing.JLabel lblStats;
     private javax.swing.JLabel notPokemonPicture1;
     private javax.swing.JLabel notPokemonPicture2;
     private javax.swing.JProgressBar playerHealthBar;
@@ -432,7 +427,6 @@ public class BattleUI extends javax.swing.JFrame {
         playerBaseHealth      = heroClass.playerHealth;
         playerBasePunchSpeed  = heroClass.playerPunchSpeed;
         playerBaseName        = heroClass.playerName; 
-        lblPlayerNameAndStats.setText(playerName);
     }
 
     private void setupPunching() {
@@ -471,9 +465,7 @@ public class BattleUI extends javax.swing.JFrame {
         update = new Timer(1, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                playerHealthBar.setValue(playerHealth);
-                enemyHealthBar.setValue(enemyHealth);
-                lblStats.setText(
+                lblPlayerNameAndStats.setText(
                         "<html><head></head><body>"          +                        
                         "Name: "         + playerName        + 
                         "<br>"           +
@@ -485,6 +477,20 @@ public class BattleUI extends javax.swing.JFrame {
                         "<br>"           +
                         "Punch Speed: "  + playerPunchSpeed  +
                         "</body></html>");
+                lblEnemyNameAndStats.setText(
+                        "<html><head></head><body>"          +                        
+                        "Name: "         + enemyName        + 
+                        "<br>"           +
+                        "Damage: "       + enemyDamage      + 
+                        "<br>"           +
+                        "Dodge Chance: " + enemyDodgeChance + 
+                        "<br>"           +
+                        "Health: "       + enemyHealth      + 
+                        "<br>"           +
+                        "Punch Speed: "  + enemyPunchSpeed  +
+                        "</body></html>");
+                playerHealthBar.setValue(playerHealth);
+                enemyHealthBar.setValue(enemyHealth);
             }
         }); 
         update.start();
@@ -496,6 +502,13 @@ public class BattleUI extends javax.swing.JFrame {
         heroClass.playerHealth      = playerBaseHealth;
         heroClass.playerPunchSpeed  = playerBasePunchSpeed;
         heroClass.playerName        = playerBaseName; 
+    }
+ 
+    private void end() {
+        playerPunching.stop();
+        enemyPunching.stop();
+        update.stop(); 
+        resetStats(); 
     }
     
 }

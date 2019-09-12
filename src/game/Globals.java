@@ -8,7 +8,6 @@ package game;
  */
 public class Globals {
 
-    // the amount of points the player has
-    public static int points;
-
+    
+    
 }
