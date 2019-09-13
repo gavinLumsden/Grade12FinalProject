@@ -3,6 +3,7 @@ package game;
 import game.gametools.GameCharacter; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -274,18 +275,7 @@ public class BattleUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAttackOrItem4MouseClicked
 
     private void btnRunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRunMouseClicked
-        int random = random(1,2); 
-        if (random == 1) {
-            engine.mediaPlayer.stop();
-            engine.mediaPlayer.playWAV("/sounds/walkingSoundtrack.wav");
-        } 
-        else if (random == 2) {
-            engine.mediaPlayer.stop();
-            engine.mediaPlayer.playWAV("/sounds/introSoundtrack.wav");
-        }
         end(); 
-        engine.clearBattle(this); 
-        engine.play();
     }//GEN-LAST:event_btnRunMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -465,32 +455,38 @@ public class BattleUI extends javax.swing.JFrame {
         update = new Timer(1, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                lblPlayerNameAndStats.setText(
-                        "<html><head></head><body>"          +                        
-                        "Name: "         + playerName        + 
-                        "<br>"           +
-                        "Damage: "       + playerDamage      + 
-                        "<br>"           +
-                        "Dodge Chance: " + playerDodgeChance + 
-                        "<br>"           +
-                        "Health: "       + playerHealth      + 
-                        "<br>"           +
-                        "Punch Speed: "  + playerPunchSpeed  +
-                        "</body></html>");
-                lblEnemyNameAndStats.setText(
-                        "<html><head></head><body>"          +                        
-                        "Name: "         + enemyName        + 
-                        "<br>"           +
-                        "Damage: "       + enemyDamage      + 
-                        "<br>"           +
-                        "Dodge Chance: " + enemyDodgeChance + 
-                        "<br>"           +
-                        "Health: "       + enemyHealth      + 
-                        "<br>"           +
-                        "Punch Speed: "  + enemyPunchSpeed  +
-                        "</body></html>");
-                playerHealthBar.setValue(playerHealth);
-                enemyHealthBar.setValue(enemyHealth);
+                if (playerHealth <= 0) {
+                    enemyWin();
+                } else if (enemyHealth <= 0) {
+                    playerWin();
+                } else {
+                    lblPlayerNameAndStats.setText(
+                            "<html><head></head><body>"          +                        
+                            "Name: "         + playerName        + 
+                            "<br>"           +
+                            "Damage: "       + playerDamage      + 
+                            "<br>"           +
+                            "Dodge Chance: " + playerDodgeChance + 
+                            "<br>"           +
+                            "Health: "       + playerHealth      + 
+                            "<br>"           +
+                            "Punch Speed: "  + playerPunchSpeed  +
+                            "</body></html>");
+                    lblEnemyNameAndStats.setText(
+                            "<html><head></head><body>"          +                        
+                            "Name: "         + enemyName        + 
+                            "<br>"           +
+                            "Damage: "       + enemyDamage      + 
+                            "<br>"           +
+                            "Dodge Chance: " + enemyDodgeChance + 
+                            "<br>"           +
+                            "Health: "       + enemyHealth      + 
+                            "<br>"           +
+                            "Punch Speed: "  + enemyPunchSpeed  +
+                            "</body></html>");
+                    playerHealthBar.setValue(playerHealth);
+                    enemyHealthBar.setValue(enemyHealth);
+                }
             }
         }); 
         update.start();
@@ -509,6 +505,37 @@ public class BattleUI extends javax.swing.JFrame {
         enemyPunching.stop();
         update.stop(); 
         resetStats(); 
+        engine.clearBattle(this); 
+        engine.play();
+        int random = random(1,2); 
+        if (random == 1) {
+            engine.mediaPlayer.stop();
+            engine.mediaPlayer.playWAV("/sounds/walkingSoundtrack.wav");
+        } 
+        else if (random == 2) {
+            engine.mediaPlayer.stop();
+            engine.mediaPlayer.playWAV("/sounds/introSoundtrack.wav");
+        }
     }
+    
+    private void enemyWin() {
+        System.out.println("trash");
+        end(); 
+    }
+    
+    private void playerWin() {
+        giveExp();
+        giveGold(); 
+        // check to see if the player can level up
+        end(); 
+    }
+    
+    private void giveExp() {
+        System.out.println("heres some exp");
+    }
+    
+    private void giveGold() {
+        System.out.println("heres some gold");
+    } 
     
 }

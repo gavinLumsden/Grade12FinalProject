@@ -88,6 +88,7 @@ public class Introduction extends javax.swing.JFrame {
 
     private void btnNewGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewGameMouseClicked
         CharacterSelect characterSelect = new CharacterSelect(engine); 
+        this.dispose(); 
     }//GEN-LAST:event_btnNewGameMouseClicked
 
     private void btnLoadGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadGameMouseClicked
