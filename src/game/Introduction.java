@@ -92,7 +92,7 @@ public class Introduction extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewGameMouseClicked
 
     private void btnLoadGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadGameMouseClicked
-        
+        System.out.println("no");
     }//GEN-LAST:event_btnLoadGameMouseClicked
 
     private void btnQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuitMouseClicked
