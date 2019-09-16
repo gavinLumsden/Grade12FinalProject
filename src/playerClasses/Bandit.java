@@ -42,7 +42,8 @@ public class Bandit extends GameCharacter {
     private Rampage[] rampages;
 
     private GameEngine engine;
-
+    private BattleUI battleUI; 
+    
     private Wall[] walls;
     private Grass[] grass;
     private House[] houses;
@@ -295,7 +296,8 @@ public class Bandit extends GameCharacter {
                     cyborg.sprite.setLocation(10000, 10000);
                     cyborg.update();
                     engine.pause(); 
-                    BattleUI battle = new BattleUI(engine, this, cyborg); 
+                    BattleUI battleUI = new BattleUI(engine, this, cyborg); 
+                    this.battleUI = battleUI; 
                 }
             }
         }
@@ -305,7 +307,8 @@ public class Bandit extends GameCharacter {
                     nail.sprite.setLocation(10000, 10000);
                     nail.update();
                     engine.pause(); 
-                    BattleUI battle = new BattleUI(engine, this, nail); 
+                    BattleUI battleUI = new BattleUI(engine, this, nail); 
+                    this.battleUI = battleUI; 
                 }
             }
         }
@@ -315,7 +318,8 @@ public class Bandit extends GameCharacter {
                     rampage.sprite.setLocation(10000, 10000);
                     rampage.update();
                     engine.pause(); 
-                    BattleUI battle = new BattleUI(engine, this, rampage); 
+                    BattleUI battleUI = new BattleUI(engine, this, rampage); 
+                    this.battleUI = battleUI; 
                 }
             }
         }
@@ -323,22 +327,22 @@ public class Bandit extends GameCharacter {
 
     @Override
     public void attack1() {
-        System.out.println("double dodge chance");
+        battleUI.playerDodgeChance *= 2; 
     }
     
     @Override
     public void attack2() {
-        System.out.println("double damage");
+        battleUI.playerDamage *= 2; 
     }
     
     @Override
     public void attack3() {
-        System.out.println("make enemy bleed");
+        battleUI.enemyEffects("bleed"); 
     }
     
     @Override
     public void attack4() {
-        System.out.println("increas dodge chance to 10");
+        battleUI.playerDodgeChance = 10; 
     }
 
     private void createTimers() {

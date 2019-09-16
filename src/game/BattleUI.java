@@ -21,29 +21,17 @@ public class BattleUI extends javax.swing.JFrame {
     private Enemy enemy;
     private GameEngine engine; 
     
-    private int    playerHealth; 
-    private int    playerPunchSpeed;
-    private int    playerDodgeChance; 
-    private int    playerDamage; 
+    public int    playerHealth; 
+    public int    playerPunchSpeed;
+    public int    playerDodgeChance; 
+    public int    playerDamage; 
     private String playerName; 
     
-    private int    playerBaseHealth; 
-    private int    playerBasePunchSpeed;
-    private int    playerBaseDodgeChance; 
-    private int    playerBaseDamage; 
-    private String playerBaseName; 
-    
-    private int    enemyHealth; 
-    private int    enemyPunchSpeed;
-    private int    enemyDodgeChance; 
-    private int    enemyDamage; 
+    public int    enemyHealth; 
+    public int    enemyPunchSpeed;
+    public int    enemyDodgeChance; 
+    public int    enemyDamage; 
     private String enemyName; 
-    
-    private int    enemyBaseHealth; 
-    private int    enemyBasePunchSpeed;
-    private int    enemyBaseDodgeChance; 
-    private int    enemyBaseDamage; 
-    private String enemyBaseName; 
     
     private String playerAttack1;
     private String playerAttack2;
@@ -221,7 +209,7 @@ public class BattleUI extends javax.swing.JFrame {
         notPokemonPicture2.setBounds(0, 150, 500, 210);
 
         lblPlayerNameAndStats.setBackground(new java.awt.Color(204, 255, 204));
-        lblPlayerNameAndStats.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblPlayerNameAndStats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPlayerNameAndStats.setText("pidgey level 11");
         lblPlayerNameAndStats.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         lblPlayerNameAndStats.setOpaque(true);
@@ -229,7 +217,7 @@ public class BattleUI extends javax.swing.JFrame {
         lblPlayerNameAndStats.setBounds(500, 210, 240, 150);
 
         lblEnemyNameAndStats.setBackground(new java.awt.Color(204, 255, 204));
-        lblEnemyNameAndStats.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEnemyNameAndStats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEnemyNameAndStats.setText("pidgey level 11");
         lblEnemyNameAndStats.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         lblEnemyNameAndStats.setOpaque(true);
@@ -397,11 +385,6 @@ public class BattleUI extends javax.swing.JFrame {
         enemyHealth          = enemy.health;
         enemyPunchSpeed      = enemy.punchSpeed;
         enemyName            = enemy.name; 
-        enemyBaseDamage      = enemy.damage;
-        enemyBaseDodgeChance = enemy.dodgeChance;
-        enemyBaseHealth      = enemy.health;
-        enemyBasePunchSpeed  = enemy.punchSpeed;
-        enemyBaseName        = enemy.name; 
         lblEnemyNameAndStats.setText(enemyName);
         System.out.println("You've encountered " + enemyName + "!");
     }
@@ -412,11 +395,6 @@ public class BattleUI extends javax.swing.JFrame {
         playerHealth          = heroClass.playerHealth;
         playerPunchSpeed      = heroClass.playerPunchSpeed;
         playerName            = heroClass.playerName; 
-        playerBaseDamage      = heroClass.playerDamage;
-        playerBaseDodgeChance = heroClass.playerDodgeChance;
-        playerBaseHealth      = heroClass.playerHealth;
-        playerBasePunchSpeed  = heroClass.playerPunchSpeed;
-        playerBaseName        = heroClass.playerName; 
     }
 
     private void setupPunching() {
@@ -491,20 +469,11 @@ public class BattleUI extends javax.swing.JFrame {
         }); 
         update.start();
     }
-    
-    private void resetStats() {
-        heroClass.playerDamage      = playerBaseDamage;
-        heroClass.playerDodgeChance = playerBaseDodgeChance;
-        heroClass.playerHealth      = playerBaseHealth;
-        heroClass.playerPunchSpeed  = playerBasePunchSpeed;
-        heroClass.playerName        = playerBaseName; 
-    }
  
     private void end() {
         playerPunching.stop();
         enemyPunching.stop();
-        update.stop(); 
-        resetStats(); 
+        update.stop();
         engine.clearBattle(this); 
         engine.play();
         int random = random(1,2); 
@@ -537,5 +506,10 @@ public class BattleUI extends javax.swing.JFrame {
     private void giveGold() {
         System.out.println("heres some gold");
     } 
+    
+    public void enemyEffects(String effect) {
+        if      (effect.equals("bleed")) System.out.println("make enemy bleed");
+        else if (effect.equals("stun"))  System.out.println("make enemy bleed");
+    }
     
 }
