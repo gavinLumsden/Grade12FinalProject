@@ -68,8 +68,8 @@ public class GameEngine {
     private final int ENEMY_VILLAGE_FORM_HEIGHT = 589;
 
     // form width and height for player village 
-    private final int PLAYER_VILLAGE_FORM_WIDTH = 1060;
-    private final int PLAYER_VILLAGE_FORM_HEIGHT = 580;
+    private final int PLAYER_VILLAGE_FORM_WIDTH = 1300;
+    private final int PLAYER_VILLAGE_FORM_HEIGHT = 900;
 
     // form width and height for the introduction
     private final int INTRO_FORM_WIDTH = 416;

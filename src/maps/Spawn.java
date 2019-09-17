@@ -68,8 +68,8 @@ public class Spawn extends javax.swing.JFrame {
         wall4 = new javax.swing.JLabel();
         wall5 = new javax.swing.JLabel();
         lblToMain = new javax.swing.JLabel();
-        grass1 = new javax.swing.JLabel();
         lblCyborg1 = new javax.swing.JLabel();
+        grass1 = new javax.swing.JLabel();
         grass2 = new javax.swing.JLabel();
         grass3 = new javax.swing.JLabel();
         grass6 = new javax.swing.JLabel();
@@ -157,16 +157,16 @@ public class Spawn extends javax.swing.JFrame {
         getContentPane().add(lblToMain);
         lblToMain.setBounds(330, 0, 200, 10);
 
-        grass1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(grass1);
-        grass1.setBounds(630, 30, 100, 100);
-
         lblCyborg1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCyborg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/cyborg/right/cyborgIdle.png"))); // NOI18N
         lblCyborg1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblCyborg1);
         lblCyborg1.setBounds(380, 30, 100, 100);
+
+        grass1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        grass1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(grass1);
+        grass1.setBounds(630, 30, 100, 100);
 
         grass2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         grass2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
