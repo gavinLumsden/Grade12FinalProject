@@ -224,7 +224,11 @@ public class GameEngine {
      * @param grassImages
      */
     public void createGrass(LinkedList<JLabel> grassImages) {
-        System.out.println("remember how linked lists work");
+        grass = new LinkedList<Grass>(); 
+        for (int i = 0; i < grassImages.size(); i++) {
+            Grass newGrass = new Grass(grassImages.get(i)); 
+            grass.add(newGrass); 
+        }
     }
 
     /**
@@ -233,11 +237,19 @@ public class GameEngine {
      * @param wallImages
      */
     public void createWalls(LinkedList<JLabel> wallImages) {
-        System.out.println("remember how linked lists work");
+        walls = new LinkedList<Wall>(); 
+        for (int i = 0; i < wallImages.size(); i++) {
+            Wall newWall = new Wall(wallImages.get(i)); 
+            walls.add(newWall); 
+        }
     }
 
     public void createHouse(LinkedList<JLabel> houseImages) {
-        System.out.println("remember how linked lists work");
+        houses = new LinkedList<House>(); 
+        for (int i = 0; i < houseImages.size(); i++) {
+            House newHouse = new House(houseImages.get(i)); 
+            houses.add(newHouse); 
+        }
     }
 
     /**

@@ -37,9 +37,9 @@ public class Bandit extends GameCharacter {
     private EnemyVillage enemyVillage;
     private PlayerVillage playerVillage;
 
-    private Cyborg[] cyborgs;
-    private Nail[] nails;
-    private Rampage[] rampages;
+    private LinkedList<Cyborg>  cyborgs;
+    private LinkedList<Nail>    nails;
+    private LinkedList<Rampage> rampages; 
 
     private GameEngine engine;
     private BattleUI battleUI; 
@@ -99,7 +99,7 @@ public class Bandit extends GameCharacter {
     public Bandit(
             JLabel heroImage,
             Wall[] walls, House[] houses, 
-            Cyborg[] cyborgs, Nail[] nails, Rampage[] rampages,
+            LinkedList<Cyborg>  cyborgs, LinkedList<Nail>  nails, LinkedList<Rampage>  rampages,
             NextLevelBlock toMain, NextLevelBlock toSpawn, NextLevelBlock toEnemyVillage, NextLevelBlock toPlayerVillage,
             GameEngine engine) {
         super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
