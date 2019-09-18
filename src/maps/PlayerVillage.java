@@ -1,5 +1,6 @@
 package maps;
 
+import collections.LinkedList;
 import game.GameEngine;
 import game.Hero;
 import game.gametools.Mover;
@@ -23,17 +24,29 @@ public class PlayerVillage extends javax.swing.JFrame {
      */
     public PlayerVillage(GameEngine engine) {
         initComponents();
-        JLabel[] wallImages = {
-            wall1, wall2, wall3, wall4
-        };
-        JLabel[] grassImages = {
-            
-        };
-        JLabel[] houseImages = {
-            house1, house2, house3, house4, house5, house6, 
-        };
+        
+        LinkedList<JLabel> wallImages = new LinkedList<>();
+        wallImages.add(wall1); 
+        wallImages.add(wall2); 
+        wallImages.add(wall3); 
+        wallImages.add(wall4);
+        
+        LinkedList<JLabel> houseImages = new LinkedList<>();
+        houseImages.add(house1); 
+        houseImages.add(house2); 
+        houseImages.add(house3); 
+        houseImages.add(house4); 
+        houseImages.add(house5); 
+        houseImages.add(house6); 
+        houseImages.add(house7); 
+        houseImages.add(house8); 
+        houseImages.add(house9); 
+        houseImages.add(house10); 
+        houseImages.add(house11); 
+        
 //        engine = new GameEngine(wallImages, grassImages);
         this.engine = engine;
+        engine.createWalls(wallImages); 
         engine.createPlayerVillage(this, lblToMain);
         engine.createHouse(houseImages);
         engine.createHero(lblHero);

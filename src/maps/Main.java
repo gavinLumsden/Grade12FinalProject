@@ -1,5 +1,6 @@
 package maps;
 
+import collections.LinkedList;
 import game.GameEngine;
 import javax.swing.JLabel;
 
@@ -32,30 +33,126 @@ public class Main extends javax.swing.JFrame {
      */
     public Main(String level, GameEngine engine) {
         initComponents();
-        JLabel[] wallImages = {
-            wall1, wall2, wall3, wall4, wall5, wall6, wall7
-        };
-        JLabel[] grassImages = {
-            grass1, grass2, grass3, grass4, grass5, grass6, grass7, grass8, grass9, grass10,
-            grass11, grass12, grass13, grass14, grass15, grass16, grass17, grass18, grass19, grass20,
-            grass21, grass22, grass23, grass24, grass25, grass26, grass27, grass28, grass29, grass30,
-            grass31, grass32, grass33, grass34, grass35, grass36, grass37, grass38, grass39, grass40,
-            grass41, grass42, grass43, grass44, grass45, grass46, grass47, grass48, grass49, grass50,
-            grass51, grass52, grass53, grass54, grass55, grass56, grass57, grass58, grass59, grass60,
-            grass61, grass62, grass63, grass64, grass65, grass66, grass67, grass68, grass69, grass70,
-            grass71, grass72, grass73, grass74, grass75, grass76, grass77, grass78, grass79, grass80,
-            grass81, grass82, grass83, grass84, grass85,          grass87, 
-                              grass93, grass94, grass95, grass96, grass97, grass98, 
-        };
-        JLabel[] rampageImages = {
-            lblRampage1, lblRampage2
-        };
-        JLabel[] nailImages = {
-            lblNail1
-        };
-        JLabel[] cyborgImages = {
-            lblCyborg1
-        };
+       
+        LinkedList<JLabel> wallImages = new LinkedList<>();
+        wallImages.add(wall1); 
+        wallImages.add(wall2); 
+        wallImages.add(wall3); 
+        wallImages.add(wall4);
+        
+        LinkedList<JLabel> grassImages = new LinkedList<>();
+        grassImages.add(grass1); 
+        grassImages.add(grass2); 
+        grassImages.add(grass3); 
+        grassImages.add(grass4);
+        grassImages.add(grass5);
+        grassImages.add(grass6); 
+        grassImages.add(grass7); 
+        grassImages.add(grass8); 
+        grassImages.add(grass9);
+        grassImages.add(grass10);
+        grassImages.add(grass11); 
+        grassImages.add(grass12); 
+        grassImages.add(grass13); 
+        grassImages.add(grass14);
+        grassImages.add(grass15);
+        grassImages.add(grass16); 
+        grassImages.add(grass17); 
+        grassImages.add(grass18); 
+        grassImages.add(grass19);
+        grassImages.add(grass20);
+        grassImages.add(grass21); 
+        grassImages.add(grass22); 
+        grassImages.add(grass23); 
+        grassImages.add(grass24);
+        grassImages.add(grass25);
+        grassImages.add(grass26); 
+        grassImages.add(grass27); 
+        grassImages.add(grass28); 
+        grassImages.add(grass29);
+        grassImages.add(grass30);
+        grassImages.add(grass31); 
+        grassImages.add(grass32); 
+        grassImages.add(grass33); 
+        grassImages.add(grass34);
+        grassImages.add(grass35);
+        grassImages.add(grass36);
+        grassImages.add(grass37); 
+        grassImages.add(grass38); 
+        grassImages.add(grass39); 
+        grassImages.add(grass40);
+        grassImages.add(grass41); 
+        grassImages.add(grass42); 
+        grassImages.add(grass43); 
+        grassImages.add(grass44);
+        grassImages.add(grass45);
+        grassImages.add(grass46);
+        grassImages.add(grass47); 
+        grassImages.add(grass48); 
+        grassImages.add(grass49); 
+        grassImages.add(grass50);
+        grassImages.add(grass51); 
+        grassImages.add(grass52); 
+        grassImages.add(grass53); 
+        grassImages.add(grass54);
+        grassImages.add(grass55);
+        grassImages.add(grass56);
+        grassImages.add(grass57); 
+        grassImages.add(grass58); 
+        grassImages.add(grass59); 
+        grassImages.add(grass60);
+        grassImages.add(grass61); 
+        grassImages.add(grass62); 
+        grassImages.add(grass63); 
+        grassImages.add(grass64);
+        grassImages.add(grass65);
+        grassImages.add(grass66);
+        grassImages.add(grass67); 
+        grassImages.add(grass68); 
+        grassImages.add(grass69); 
+        grassImages.add(grass70);
+        grassImages.add(grass71); 
+        grassImages.add(grass72); 
+        grassImages.add(grass73); 
+        grassImages.add(grass74);
+        grassImages.add(grass75);
+        grassImages.add(grass76);
+        grassImages.add(grass77); 
+        grassImages.add(grass78); 
+        grassImages.add(grass79); 
+        grassImages.add(grass80);
+        grassImages.add(grass81); 
+        grassImages.add(grass82); 
+        grassImages.add(grass83); 
+        grassImages.add(grass84);
+        grassImages.add(grass85);
+//        grassImages.add(grass86);
+        grassImages.add(grass87);
+//        grassImages.add(grass88);
+//        grassImages.add(grass89);
+//        grassImages.add(grass90);
+//        grassImages.add(grass91); 
+//        grassImages.add(grass92); 
+        grassImages.add(grass93); 
+        grassImages.add(grass94);
+        grassImages.add(grass95);
+        grassImages.add(grass96);
+        grassImages.add(grass97);
+        grassImages.add(grass98);
+//        grassImages.add(grass99);
+//        grassImages.add(grass100); 
+        
+        LinkedList<JLabel> rampageImages = new LinkedList<>();
+        rampageImages.add(lblRampage1); 
+        rampageImages.add(lblRampage2); 
+        
+        
+        LinkedList<JLabel> nailImages = new LinkedList<>();
+        nailImages.add(lblNail1); 
+        
+        LinkedList<JLabel> cyborgImages = new LinkedList<>();
+        cyborgImages.add(lblCyborg1); 
+        
         if (level.equals("spawn")) {
             lblHero.setLocation(SPAWN_LOCATION_X, SPAWN_LOCATION_Y);
         } else if (level.equals("player village")) {
@@ -63,9 +160,10 @@ public class Main extends javax.swing.JFrame {
         } else if (level.equals("enemy village")) {
             lblHero.setLocation(ENEMY_VILLAGE_LOCATION_X, ENEMY_VILLAGE_LOCATION_Y);
         }
+        
         this.engine = engine;
+        
         engine.assign(wallImages, grassImages);
-//        engine = new GameEngine(wallImages, grassImages); 
         engine.createMain(this, lblToSpawn, lblToEnemyVillage, lblToPlayerVillage);
         engine.createEnemies(rampageImages, nailImages, cyborgImages);
         engine.createHero(lblHero);

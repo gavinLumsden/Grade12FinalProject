@@ -1,5 +1,6 @@
 package maps;
 
+import collections.LinkedList;
 import game.GameEngine;
 import javax.swing.JLabel;
 
@@ -22,23 +23,53 @@ public class EnemyVillage extends javax.swing.JFrame {
      */
     public EnemyVillage(GameEngine engine) {
         initComponents();
-        JLabel[] wallImages = {
-            wall1, wall2, wall3, wall4, wall5
-        };
-        JLabel[] grassImages = {
-            grass1,  grass2,  grass3,  grass4,  grass5,  grass6,  grass7,  grass8,  grass9,  grass10,
-            grass11, grass12, grass13, grass14, grass15, grass16, grass17, grass18, grass19, grass20,
-            grass21, grass22, grass23, grass24, grass25, grass26
-        };
-        JLabel[] rampageImages = {
-            lblRampage1
-        };
-        JLabel[] nailImages = {
-            lblNail1, lblNail2
-        };
-        JLabel[] cyborgImages = {
-            lblCyborg1, lblCyborg2
-        };
+        
+        LinkedList<JLabel> wallImages = new LinkedList<>();
+        wallImages.add(wall1); 
+        wallImages.add(wall2); 
+        wallImages.add(wall3); 
+        wallImages.add(wall4);
+        
+        LinkedList<JLabel> grassImages = new LinkedList<>();
+        grassImages.add(grass1); 
+        grassImages.add(grass2); 
+        grassImages.add(grass3); 
+        grassImages.add(grass4);
+        grassImages.add(grass5);
+        grassImages.add(grass6); 
+        grassImages.add(grass7); 
+        grassImages.add(grass8); 
+        grassImages.add(grass9);
+        grassImages.add(grass10);
+        grassImages.add(grass11); 
+        grassImages.add(grass12); 
+        grassImages.add(grass13); 
+        grassImages.add(grass14);
+        grassImages.add(grass15);
+        grassImages.add(grass16); 
+        grassImages.add(grass17); 
+        grassImages.add(grass18); 
+        grassImages.add(grass19);
+        grassImages.add(grass20);
+        grassImages.add(grass21); 
+        grassImages.add(grass22); 
+        grassImages.add(grass23); 
+        grassImages.add(grass24);
+        grassImages.add(grass25);
+        grassImages.add(grass26); 
+        
+        LinkedList<JLabel> rampageImages = new LinkedList<>();
+        rampageImages.add(lblRampage1); 
+        
+        
+        LinkedList<JLabel> nailImages = new LinkedList<>();
+        nailImages.add(lblNail1); 
+        nailImages.add(lblNail2); 
+        
+        LinkedList<JLabel> cyborgImages = new LinkedList<>();
+        cyborgImages.add(lblCyborg1); 
+        cyborgImages.add(lblCyborg2); 
+        
 //        engine = new GameEngine(wallImages, grassImages); 
         this.engine = engine;
         engine.assign(wallImages, grassImages);

@@ -1,5 +1,6 @@
 package game;
 
+import collections.LinkedList;
 import objects.NextLevelBlock;
 import objects.Grass;
 import objects.Wall;
@@ -25,9 +26,9 @@ import objects.House;
 public class GameEngine {
 
     // enemies
-    private Cyborg[] cyborgs;
-    private Nail[] nails;
-    private Rampage[] rampages;
+    private LinkedList<Cyborg>  cyborgs;
+    private LinkedList<Nail>    nails;
+    private LinkedList<Rampage> rampages; 
 
     // maps
     private Main main;
@@ -39,9 +40,9 @@ public class GameEngine {
     public Hero hero;
 
     // objects
-    private Wall[] walls;
-    private Grass[] grass;
-    private House[] houses; 
+    private LinkedList<Wall>  walls;
+    private LinkedList<Grass> grass;
+    private LinkedList<House> houses; 
     private NextLevelBlock toSpawn;
     private NextLevelBlock toEnemyVillage;
     private NextLevelBlock toPlayerVillage;
@@ -93,7 +94,7 @@ public class GameEngine {
      * @param wallImages
      * @param grassImages
      */
-    public void assign(JLabel[] wallImages, JLabel[] grassImages) {
+    public void assign(LinkedList<JLabel> wallImages, LinkedList<JLabel> grassImages) {
         createWalls(wallImages);
         createGrass(grassImages);
     }
@@ -222,13 +223,8 @@ public class GameEngine {
      *
      * @param grassImages
      */
-    public void createGrass(JLabel[] grassImages) {
-        if (grassImages[0] != null) {
-            grass = new Grass[grassImages.length];
-            for (int i = 0; i < grass.length; i++) {
-                grass[i] = new Grass(grassImages[i]);
-            }
-        } else System.out.println("error creating grass");
+    public void createGrass(LinkedList<JLabel> grassImages) {
+        System.out.println("remember how linked lists work");
     }
 
     /**
@@ -236,22 +232,12 @@ public class GameEngine {
      *
      * @param wallImages
      */
-    public void createWalls(JLabel[] wallImages) {
-        if (wallImages[0] != null) {
-            walls = new Wall[wallImages.length];
-            for (int i = 0; i < walls.length; i++) {
-                walls[i] = new Wall(wallImages[i]);
-            }
-        } else System.out.println("error creating walls");
+    public void createWalls(LinkedList<JLabel> wallImages) {
+        System.out.println("remember how linked lists work");
     }
 
-    public void createHouse(JLabel[] houseImages) {
-        if (houseImages[0] != null) {
-            houses = new House[houseImages.length];
-            for (int i = 0; i < houses.length; i++) {
-                houses[i] = new House(houseImages[i]);
-            }
-        } else System.out.println("error creating house");
+    public void createHouse(LinkedList<JLabel> houseImages) {
+        System.out.println("remember how linked lists work");
     }
 
     /**
@@ -260,8 +246,7 @@ public class GameEngine {
      * @param heroImage
      */
     public void createHero(JLabel heroImage) {
-        hero = new Hero(heroImage, walls, houses, cyborgs, nails, rampages, toMain, toSpawn, toEnemyVillage, toPlayerVillage, this);
-        hero.update();
+        // create hero and update
     }
 
     /**
@@ -311,25 +296,8 @@ public class GameEngine {
      * @param nailImages
      * @param cyborgImages
      */
-    public void createEnemies(JLabel[] rampageImages, JLabel[] nailImages, JLabel[] cyborgImages) {
-        if (rampageImages != null) {
-            rampages = new Rampage[rampageImages.length];
-            for (int i = 0; i < rampages.length; i++) {
-                rampages[i] = new Rampage(rampageImages[i], 0, 0, 0, 0);
-            }
-        }
-        if (nailImages != null) {
-            nails = new Nail[nailImages.length];
-            for (int i = 0; i < nails.length; i++) {
-                nails[i] = new Nail(nailImages[i], 0, 0, 0, 0);
-            }
-        }
-        if (cyborgImages != null) {
-            cyborgs = new Cyborg[cyborgImages.length];
-            for (int i = 0; i < cyborgs.length; i++) {
-                cyborgs[i] = new Cyborg(cyborgImages[i], 0, 0, 0, 0);
-            }
-        }
+    public void createEnemies(LinkedList<JLabel> rampageImages, LinkedList<JLabel> nailImages, LinkedList<JLabel> cyborgImages) {
+        System.out.println("remember how linked lists work");
     }
 
     /**
