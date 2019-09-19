@@ -44,9 +44,9 @@ public class Bandit extends GameCharacter {
     private GameEngine engine;
     private BattleUI battleUI; 
     
-    private Wall[] walls;
-    private Grass[] grass;
-    private House[] houses;
+    private LinkedList<Wall>  walls;
+    private LinkedList<Grass> grass;
+    private LinkedList<House> houses; 
 
     private NextLevelBlock toSpawn;
     private NextLevelBlock toEnemyVillage;
@@ -98,8 +98,8 @@ public class Bandit extends GameCharacter {
      */
     public Bandit(
             JLabel heroImage,
-            Wall[] walls, House[] houses, 
-            LinkedList<Cyborg>  cyborgs, LinkedList<Nail>  nails, LinkedList<Rampage>  rampages,
+            LinkedList<Wall> walls, LinkedList<House> houses, 
+            LinkedList<Cyborg> cyborgs, LinkedList<Nail> nails, LinkedList<Rampage> rampages, 
             NextLevelBlock toMain, NextLevelBlock toSpawn, NextLevelBlock toEnemyVillage, NextLevelBlock toPlayerVillage,
             GameEngine engine) {
         super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
@@ -217,10 +217,10 @@ public class Bandit extends GameCharacter {
      * checks to see if the hero is overlapping with a wall
      */
     private void checkWalls() {
-        for (Wall wall : walls) {
-            if (wall != null) {
-                if (detector.isOverLapping(wall)) {
-                    reactor.stickTo(wall);
+        for (int i = 0; i < walls.size(); i++) {
+            if (walls.get(i) != null) {
+                if (detector.isOverLapping(walls.get(i))) {
+                    reactor.stickTo(walls.get(i));
                 }
             }
         }
@@ -277,10 +277,10 @@ public class Bandit extends GameCharacter {
     }
     
     private void checkHouses() {
-        for (House house : houses) {
-            if (house != null) {
-                if (detector.isOverLapping(house)) {
-                    reactor.stickTo(house);
+        for (int i = 0; i < houses.size(); i++) {
+            if (houses.get(i) != null) {
+                if (detector.isOverLapping(houses.get(i))) {
+                    reactor.stickTo(houses.get(i));
                 }
             }
         }
@@ -291,34 +291,34 @@ public class Bandit extends GameCharacter {
      */
     private void checkEnemies() {
         if (cyborgs != null) {
-            for (Cyborg cyborg : cyborgs) {
-                if (detector.isOverLapping(cyborg)) {
-                    cyborg.sprite.setLocation(10000, 10000);
-                    cyborg.update();
+            for (int i = 0; i < cyborgs.size(); i++) {
+                if (detector.isOverLapping(cyborgs.get(i))) {
+                    cyborgs.get(i).sprite.setLocation(10000, 10000);
+                    cyborgs.get(i).update();
                     engine.pause(); 
-                    BattleUI battleUI = new BattleUI(engine, this, cyborg); 
+                    BattleUI battleUI = new BattleUI(engine, this, cyborgs.get(i)); 
                     this.battleUI = battleUI; 
                 }
             }
         }
         if (nails != null) {
-            for (Nail nail : nails) {
-                if (detector.isOverLapping(nail)) {
-                    nail.sprite.setLocation(10000, 10000);
-                    nail.update();
+            for (int i = 0; i < nails.size(); i++) {
+                if (detector.isOverLapping(nails.get(i))) {
+                    nails.get(i).sprite.setLocation(10000, 10000);
+                    nails.get(i).update();
                     engine.pause(); 
-                    BattleUI battleUI = new BattleUI(engine, this, nail); 
+                    BattleUI battleUI = new BattleUI(engine, this, nails.get(i)); 
                     this.battleUI = battleUI; 
                 }
             }
         }
         if (rampages != null) {
-            for (Rampage rampage : rampages) {
-                if (detector.isOverLapping(rampage)) {
-                    rampage.sprite.setLocation(10000, 10000);
-                    rampage.update();
+            for (int i = 0; i < rampages.size(); i++) {
+                if (detector.isOverLapping(rampages.get(i))) {
+                    rampages.get(i).sprite.setLocation(10000, 10000);
+                    rampages.get(i).update();
                     engine.pause(); 
-                    BattleUI battleUI = new BattleUI(engine, this, rampage); 
+                    BattleUI battleUI = new BattleUI(engine, this, rampages.get(i)); 
                     this.battleUI = battleUI; 
                 }
             }

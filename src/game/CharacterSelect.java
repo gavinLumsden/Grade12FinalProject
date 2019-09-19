@@ -6,6 +6,7 @@ import maps.Spawn;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  * CharacterSelect.java - A form where the player selects their character
@@ -476,12 +477,20 @@ public class CharacterSelect extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHackerMouseExited
 
     private void btnSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelectMouseClicked
-        Spawn spawn = new Spawn("", engine);
-        this.setVisible(false);
+        if (selected.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please select a character!");
+        } else {
+            Spawn spawn = new Spawn("", engine);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btnSelectMouseClicked
 
     private void btnAbilitiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbilitiesMouseClicked
-        Abilities abilities = new Abilities(selected);
+        if (selected.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please select a character!");
+        } else {
+            Abilities abilities = new Abilities(selected); 
+        }
     }//GEN-LAST:event_btnAbilitiesMouseClicked
 
     /**

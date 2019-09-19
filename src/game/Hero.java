@@ -1,5 +1,6 @@
 package game;
 
+import collections.LinkedList;
 import objects.NextLevelBlock;
 import objects.Wall;
 import enemyClasses.Cyborg;
@@ -44,8 +45,8 @@ public class Hero {
      */
     public Hero(
             JLabel heroImage,
-            Wall[] walls, House[] houses, 
-            Cyborg[] cyborgs, Nail[] nails, Rampage[] rampages,
+            LinkedList<Wall> walls, LinkedList<House> houses, 
+            LinkedList<Cyborg> cyborgs, LinkedList<Nail> nails, LinkedList<Rampage> rampages, 
             NextLevelBlock toMain, NextLevelBlock toSpawn, NextLevelBlock toEnemyVillage, NextLevelBlock toPlayerVillage,
             GameEngine engine) {
         if (CharacterSelect.selected.equals("bandit")) {

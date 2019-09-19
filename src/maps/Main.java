@@ -39,6 +39,9 @@ public class Main extends javax.swing.JFrame {
         wallImages.add(wall2); 
         wallImages.add(wall3); 
         wallImages.add(wall4);
+        wallImages.add(wall5);
+        wallImages.add(wall6);
+        wallImages.add(wall7);
         
         LinkedList<JLabel> grassImages = new LinkedList<>();
         grassImages.add(grass1); 

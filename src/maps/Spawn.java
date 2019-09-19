@@ -36,6 +36,7 @@ public class Spawn extends javax.swing.JFrame {
         wallImages.add(wall2); 
         wallImages.add(wall3); 
         wallImages.add(wall4);
+        wallImages.add(wall5);
         
         LinkedList<JLabel> grassImages = new LinkedList<>();
         grassImages.add(grass1); 

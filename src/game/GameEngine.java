@@ -11,6 +11,7 @@ import maps.Main;
 import enemyClasses.Cyborg;
 import enemyClasses.Nail;
 import enemyClasses.Rampage;
+import game.gametools.Directions;
 import game.gametools.MediaPlayer;
 import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
@@ -258,7 +259,8 @@ public class GameEngine {
      * @param heroImage
      */
     public void createHero(JLabel heroImage) {
-        // create hero and update
+        hero = new Hero(heroImage, walls, houses, cyborgs, nails, rampages, toMain, toSpawn, toEnemyVillage, toPlayerVillage, this); 
+        hero.update();
     }
 
     /**
@@ -309,7 +311,27 @@ public class GameEngine {
      * @param cyborgImages
      */
     public void createEnemies(LinkedList<JLabel> rampageImages, LinkedList<JLabel> nailImages, LinkedList<JLabel> cyborgImages) {
-        System.out.println("remember how linked lists work");
+        if (cyborgImages != null) {
+            cyborgs = new LinkedList<Cyborg>(); 
+            for (int i = 0; i < cyborgImages.size(); i++) {
+                Cyborg newCyborg = new Cyborg(cyborgImages.get(i), 25, Directions.STOP, 4, 100); 
+                cyborgs.add(newCyborg); 
+            }
+        }
+        if (nailImages != null) {
+            nails = new LinkedList<Nail>(); 
+            for (int i = 0; i < nailImages.size(); i++) {
+                Nail newNail = new Nail(nailImages.get(i), 25, Directions.STOP, 4, 100); 
+                nails.add(newNail); 
+            }
+        }
+        if (rampageImages != null) {
+            rampages = new LinkedList<Rampage>(); 
+            for (int i = 0; i < rampageImages.size(); i++) {
+                Rampage newRampage = new Rampage(rampageImages.get(i), 25, Directions.STOP, 4, 100); 
+                rampages.add(newRampage); 
+            }
+        }
     }
 
     /**
