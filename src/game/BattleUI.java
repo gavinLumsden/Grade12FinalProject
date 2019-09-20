@@ -489,24 +489,28 @@ public class BattleUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 heroClass.resetAttack1();
+                attack1Duration.stop();
             }
         }); 
         attack2Duration = new Timer(heroClass.attack2Duration, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 heroClass.resetAttack2();
+                attack2Duration.stop();
             }
         }); 
         attack3Duration = new Timer(heroClass.attack3Duration, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 heroClass.resetAttack3();
+                attack3Duration.stop();
             }
         }); 
         attack4Duration = new Timer(heroClass.attack4Duration, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 heroClass.resetAttack4();
+                attack4Duration.stop();
             }
         }); 
         
@@ -652,8 +656,9 @@ public class BattleUI extends javax.swing.JFrame {
     } 
     
     public void enemyEffects(String effect) {
-        if      (effect.equals("bleed")) System.out.println("make enemy bleed");
-        else if (effect.equals("stun"))  System.out.println("make enemy bleed");
+        if      (effect.equals("bleed"))      System.out.println("make enemy bleed");
+        else if (effect.equals("stop bleed")) System.out.println("no bleed");
+        else if (effect.equals("stun"))       System.out.println("make enemy bleed");
     }
     
 }
