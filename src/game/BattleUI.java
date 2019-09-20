@@ -1,6 +1,7 @@
 package game;
 
 import game.gametools.GameCharacter; 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -384,21 +385,25 @@ public class BattleUI extends javax.swing.JFrame {
     
     private void useAttack(int attackToUse) {
         if (attackToUse == 1) {
+            btnAttackOrItem1.setBackground(Color.red);
             attack1Usable = false; 
             heroClass.attack1();
             attack1Duration.start();
             attack1Cooldown.start();
         } else if (attackToUse == 2) {
+            btnAttackOrItem2.setBackground(Color.red);
             attack2Usable = false; 
             heroClass.attack2();
             attack2Duration.start();
             attack2Cooldown.start();
         } else if (attackToUse == 3) {
+            btnAttackOrItem3.setBackground(Color.red);
             attack3Usable = false; 
             heroClass.attack3();
             attack3Duration.start();
             attack3Cooldown.start();
         } else if (attackToUse == 4) {
+            btnAttackOrItem4.setBackground(Color.red);
             attack4Usable = false; 
             heroClass.attack4();
             attack4Duration.start();
@@ -442,9 +447,15 @@ public class BattleUI extends javax.swing.JFrame {
         btnAttackOrItem3.setText(playerAttack3);
         btnAttackOrItem4.setText(playerAttack4);
         
+        btnAttackOrItem1.setBackground(Color.green);
+        btnAttackOrItem2.setBackground(Color.green);
+        btnAttackOrItem3.setBackground(Color.green);
+        btnAttackOrItem4.setBackground(Color.green);
+        
         attack1Cooldown = new Timer(heroClass.attack1Cooldown, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                btnAttackOrItem1.setBackground(Color.green);
                 attack1Usable = true; 
                 attack1Cooldown.stop();
             }
@@ -452,6 +463,7 @@ public class BattleUI extends javax.swing.JFrame {
         attack2Cooldown = new Timer(heroClass.attack2Cooldown, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                btnAttackOrItem2.setBackground(Color.green);
                 attack2Usable = true; 
                 attack2Cooldown.stop();
             }
@@ -459,6 +471,7 @@ public class BattleUI extends javax.swing.JFrame {
         attack3Cooldown = new Timer(heroClass.attack3Cooldown, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                btnAttackOrItem3.setBackground(Color.green);
                 attack3Usable = true; 
                 attack3Cooldown.stop();
             }
@@ -466,6 +479,7 @@ public class BattleUI extends javax.swing.JFrame {
         attack4Cooldown = new Timer(heroClass.attack4Cooldown, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                btnAttackOrItem4.setBackground(Color.green);
                 attack4Usable = true; 
                 attack4Cooldown.stop();
             }
