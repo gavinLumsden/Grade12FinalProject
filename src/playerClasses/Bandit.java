@@ -10,17 +10,13 @@ import objects.NextLevelBlock;
 import game.gametools.Directions;
 import game.gametools.GameCharacter;
 import game.GameEngine;
-import game.Globals;
 import game.gametools.Animation;
 import game.BattleUI; 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import maps.Spawn;
 import maps.Main;
 import maps.EnemyVillage;
 import maps.PlayerVillage;
 import javax.swing.JLabel;
-import javax.swing.Timer;
 import objects.House;
 
 /**
