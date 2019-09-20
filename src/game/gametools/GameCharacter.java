@@ -40,15 +40,10 @@ public abstract class GameCharacter extends GameObject {
     public int playerDodgeChance; // your chance of dodging
     public int playerDamage;      // how much damage you do  
     
-    public Timer attack1Cooldown;     
-    public Timer attack2Cooldown;     
-    public Timer attack3Cooldown;     
-    public Timer attack4Cooldown; 
-    
-    private int attack1CooldownTime; 
-    private int attack2CooldownTime;  
-    private int attack3CooldownTime;
-    private int attack4CooldownTime;
+    public int attack1Cooldown; 
+    public int attack2Cooldown;  
+    public int attack3Cooldown;
+    public int attack4Cooldown;
 
     /**
      * Constructor for the class, sets class property data
@@ -139,5 +134,13 @@ public abstract class GameCharacter extends GameObject {
     public abstract void attack3();
     
     public abstract void attack4();
+    
+    public abstract void resetAttack1(); 
+    
+    public abstract void resetAttack2(); 
+    
+    public abstract void resetAttack3(); 
+    
+    public abstract void resetAttack4(); 
     
 }

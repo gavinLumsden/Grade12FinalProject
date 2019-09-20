@@ -20,16 +20,28 @@ public class BattleUI extends javax.swing.JFrame {
     private Enemy enemy;
     private GameEngine engine; 
     
-    public int    playerHealth; 
-    public int    playerPunchSpeed;
-    public int    playerDodgeChance; 
-    public int    playerDamage; 
+    public int     playerHealth; 
+    public int     playerPunchSpeed;
+    public int     playerDodgeChance; 
+    public int     playerDamage;
+    
+    public int     playerBaseHealth; 
+    public int     playerBasePunchSpeed;
+    public int     playerBaseDodgeChance; 
+    public int     playerBaseDamage; 
+    
     private String playerName; 
     
-    public int    enemyHealth; 
-    public int    enemyPunchSpeed;
-    public int    enemyDodgeChance; 
-    public int    enemyDamage; 
+    public int     enemyHealth; 
+    public int     enemyPunchSpeed;
+    public int     enemyDodgeChance; 
+    public int     enemyDamage; 
+    
+    public int     enemyBaseHealth; 
+    public int     enemyBasePunchSpeed;
+    public int     enemyBaseDodgeChance; 
+    public int     enemyBaseDamage; 
+    
     private String enemyName; 
     
     private String playerAttack1;
@@ -45,6 +57,16 @@ public class BattleUI extends javax.swing.JFrame {
     private Timer playerPunching; 
     private Timer enemyPunching; 
     private Timer update; 
+    
+    private Timer attack1Cooldown; 
+    private Timer attack2Cooldown; 
+    private Timer attack3Cooldown; 
+    private Timer attack4Cooldown; 
+    
+    private boolean attack1Usable; 
+    private boolean attack2Usable; 
+    private boolean attack3Usable; 
+    private boolean attack4Usable; 
         
     public BattleUI(GameEngine engine, GameCharacter heroClass, Enemy enemy) {
         initComponents();
@@ -243,22 +265,54 @@ public class BattleUI extends javax.swing.JFrame {
 
     private void btnAttackOrItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem1MouseClicked
         if      (onItem   == true) useItem(1); 
-        else if (onAttack == true) useAttack(1); 
+        else if (onAttack == true) {
+            if (attack1Usable == true) {
+                attack1Cooldown.start();
+                attack1Usable = false; 
+                useAttack(1);
+            } else {
+                System.out.println("no 1 can help u");
+            }
+        } 
     }//GEN-LAST:event_btnAttackOrItem1MouseClicked
 
     private void btnAttackOrItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem2MouseClicked
         if      (onItem   == true) useItem(2); 
-        else if (onAttack == true) useAttack(2); 
+        else if (onAttack == true) {
+            if (attack2Usable == true) {
+                attack2Usable = false; 
+                attack2Cooldown.start();
+                useAttack(2);
+            } else {
+                System.out.println("no 2 for u");
+            }
+        }
     }//GEN-LAST:event_btnAttackOrItem2MouseClicked
 
     private void btnAttackOrItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem3MouseClicked
         if      (onItem   == true) useItem(3); 
-        else if (onAttack == true) useAttack(3); 
+        else if (onAttack == true) {
+            if (attack3Usable == true) {
+                attack3Usable = false; 
+                attack3Cooldown.start();
+                useAttack(3);
+            } else {
+                System.out.println("no three ammo");
+            }
+        }
     }//GEN-LAST:event_btnAttackOrItem3MouseClicked
 
     private void btnAttackOrItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem4MouseClicked
         if      (onItem   == true) useItem(4); 
-        else if (onAttack == true) useAttack(4); 
+        else if (onAttack == true) {
+            if (attack4Usable == true) {
+                attack4Usable = false; 
+                attack4Cooldown.start();
+                useAttack(4);
+            } else {
+                System.out.println("no 4 4 u");
+            }
+        }
     }//GEN-LAST:event_btnAttackOrItem4MouseClicked
 
     private void btnRunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRunMouseClicked
@@ -376,6 +430,42 @@ public class BattleUI extends javax.swing.JFrame {
         btnAttackOrItem2.setText(playerAttack2);
         btnAttackOrItem3.setText(playerAttack3);
         btnAttackOrItem4.setText(playerAttack4);
+        attack1Cooldown = new Timer(heroClass.attack1Cooldown, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                attack1Usable = true; 
+                attack1Cooldown.stop();
+                heroClass.resetAttack1();
+            }
+        }); 
+        attack2Cooldown = new Timer(heroClass.attack2Cooldown, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                attack2Usable = true; 
+                attack2Cooldown.stop();
+                heroClass.resetAttack2();
+            }
+        });
+        attack3Cooldown = new Timer(heroClass.attack3Cooldown, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                attack3Usable = true; 
+                attack3Cooldown.stop();
+                heroClass.resetAttack3();
+            }
+        });
+        attack4Cooldown = new Timer(heroClass.attack4Cooldown, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                attack4Usable = true; 
+                attack4Cooldown.stop();
+                heroClass.resetAttack4();
+            }
+        });
+        attack1Usable = true; 
+        attack2Usable = true; 
+        attack3Usable = true; 
+        attack4Usable = true; 
     }
 
     private void setupEnemy() {
@@ -383,7 +473,10 @@ public class BattleUI extends javax.swing.JFrame {
         enemyDodgeChance     = enemy.dodgeChance;
         enemyHealth          = enemy.health;
         enemyPunchSpeed      = enemy.punchSpeed;
-        enemyName            = enemy.name; 
+        enemyBaseDamage      = enemy.damage;
+        enemyBaseDodgeChance = enemy.dodgeChance;
+        enemyBaseHealth      = enemy.health;
+        enemyBasePunchSpeed  = enemy.punchSpeed;
         lblEnemyNameAndStats.setText(enemyName);
         System.out.println("You've encountered " + enemyName + "!");
     }
@@ -394,6 +487,10 @@ public class BattleUI extends javax.swing.JFrame {
         playerHealth          = heroClass.playerHealth;
         playerPunchSpeed      = heroClass.playerPunchSpeed;
         playerName            = heroClass.playerName; 
+        playerBaseDamage      = heroClass.playerDamage;
+        playerBaseDodgeChance = heroClass.playerDodgeChance;
+        playerBaseHealth      = heroClass.playerHealth;
+        playerBasePunchSpeed  = heroClass.playerPunchSpeed;
     }
 
     private void setupPunching() {

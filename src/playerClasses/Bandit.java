@@ -71,15 +71,10 @@ public class Bandit extends GameCharacter {
     public int dodgeChance = 1;    // your chance of dodging
     public int damage      = 1;    // how much damage you do
     
-    public Timer attack1Cooldown;     
-    public Timer attack2Cooldown;     
-    public Timer attack3Cooldown;     
-    public Timer attack4Cooldown; 
-    
-    private int attack1CooldownTime = 3000;     
-    private int attack2CooldownTime = 3000;     
-    private int attack3CooldownTime = 3000;     
-    private int attack4CooldownTime = 3000; 
+    public int attack1Cooldown = 3000;     
+    public int attack2Cooldown = 3000;     
+    public int attack3Cooldown = 3000;     
+    public int attack4Cooldown = 10000; 
 
     /**
      * Creates a "bandit"
@@ -121,6 +116,11 @@ public class Bandit extends GameCharacter {
         super.playerDodgeChance = dodgeChance; 
         super.playerHealth      = health; 
         super.playerPunchSpeed  = punchSpeed; 
+        
+        super.attack1Cooldown = attack1Cooldown; 
+        super.attack2Cooldown = attack2Cooldown; 
+        super.attack3Cooldown = attack3Cooldown; 
+        super.attack4Cooldown = attack4Cooldown; 
         
         super.playerName = NAME; 
 
@@ -195,8 +195,6 @@ public class Bandit extends GameCharacter {
         animations.add(stopRightAnimation);
 
         sprite.setAnimations(animations);
-
-        createTimers(); 
     }
 
     /**
@@ -344,32 +342,25 @@ public class Bandit extends GameCharacter {
     public void attack4() {
         battleUI.playerDodgeChance = 10; 
     }
-
-    private void createTimers() {
-        attack1Cooldown = new Timer(attack1CooldownTime, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                attack1Cooldown.stop();
-            }
-        }); 
-        attack2Cooldown = new Timer(attack2CooldownTime, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                attack2Cooldown.stop();
-            }
-        }); 
-        attack3Cooldown = new Timer(attack3CooldownTime, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                attack3Cooldown.stop();
-            }
-        }); 
-        attack4Cooldown = new Timer(attack4CooldownTime, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                attack4Cooldown.stop();
-            }
-        }); 
+    
+    @Override
+    public void resetAttack1() {
+        battleUI.playerDodgeChance = battleUI.playerBaseDodgeChance; 
     }
-
+    
+    @Override
+    public void resetAttack2() {
+        battleUI.playerDamage = battleUI.playerBaseDamage;
+    }
+    
+    @Override
+    public void resetAttack3() {
+        battleUI.enemyEffects("stop bleed");
+    }
+    
+    @Override
+    public void resetAttack4() {
+        battleUI.playerDodgeChance = battleUI.playerBaseDodgeChance; 
+    }
+    
 }
