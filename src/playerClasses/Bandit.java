@@ -75,6 +75,11 @@ public class Bandit extends GameCharacter {
     public int attack2Cooldown = 3000;     
     public int attack3Cooldown = 3000;     
     public int attack4Cooldown = 10000; 
+    
+    public int attack1Duration = punchSpeed;     
+    public int attack2Duration = punchSpeed;     
+    public int attack3Duration = punchSpeed;     
+    public int attack4Duration = (punchSpeed * 3); 
 
     /**
      * Creates a "bandit"
@@ -121,6 +126,11 @@ public class Bandit extends GameCharacter {
         super.attack2Cooldown = attack2Cooldown; 
         super.attack3Cooldown = attack3Cooldown; 
         super.attack4Cooldown = attack4Cooldown; 
+        
+        super.attack1Duration = attack1Duration; 
+        super.attack2Duration = attack2Duration; 
+        super.attack3Duration = attack3Duration; 
+        super.attack4Duration = attack4Duration; 
         
         super.playerName = NAME; 
 

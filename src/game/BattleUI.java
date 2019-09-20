@@ -63,6 +63,11 @@ public class BattleUI extends javax.swing.JFrame {
     private Timer attack3Cooldown; 
     private Timer attack4Cooldown; 
     
+    private Timer attack1Duration; 
+    private Timer attack2Duration; 
+    private Timer attack3Duration; 
+    private Timer attack4Duration; 
+    
     private boolean attack1Usable; 
     private boolean attack2Usable; 
     private boolean attack3Usable; 
@@ -267,8 +272,6 @@ public class BattleUI extends javax.swing.JFrame {
         if      (onItem   == true) useItem(1); 
         else if (onAttack == true) {
             if (attack1Usable == true) {
-                attack1Cooldown.start();
-                attack1Usable = false; 
                 useAttack(1);
             } else {
                 System.out.println("no 1 can help u");
@@ -280,8 +283,6 @@ public class BattleUI extends javax.swing.JFrame {
         if      (onItem   == true) useItem(2); 
         else if (onAttack == true) {
             if (attack2Usable == true) {
-                attack2Usable = false; 
-                attack2Cooldown.start();
                 useAttack(2);
             } else {
                 System.out.println("no 2 for u");
@@ -293,8 +294,6 @@ public class BattleUI extends javax.swing.JFrame {
         if      (onItem   == true) useItem(3); 
         else if (onAttack == true) {
             if (attack3Usable == true) {
-                attack3Usable = false; 
-                attack3Cooldown.start();
                 useAttack(3);
             } else {
                 System.out.println("no three ammo");
@@ -306,8 +305,6 @@ public class BattleUI extends javax.swing.JFrame {
         if      (onItem   == true) useItem(4); 
         else if (onAttack == true) {
             if (attack4Usable == true) {
-                attack4Usable = false; 
-                attack4Cooldown.start();
                 useAttack(4);
             } else {
                 System.out.println("no 4 4 u");
@@ -387,13 +384,25 @@ public class BattleUI extends javax.swing.JFrame {
     
     private void useAttack(int attackToUse) {
         if (attackToUse == 1) {
+            attack1Usable = false; 
             heroClass.attack1();
+            attack1Duration.start();
+            attack1Cooldown.start();
         } else if (attackToUse == 2) {
+            attack2Usable = false; 
             heroClass.attack2();
+            attack2Duration.start();
+            attack2Cooldown.start();
         } else if (attackToUse == 3) {
+            attack3Usable = false; 
             heroClass.attack3();
+            attack3Duration.start();
+            attack3Cooldown.start();
         } else if (attackToUse == 4) {
+            attack4Usable = false; 
             heroClass.attack4();
+            attack4Duration.start();
+            attack4Cooldown.start();
         } else {
             System.out.println("error using attack");
         }
@@ -425,17 +434,19 @@ public class BattleUI extends javax.swing.JFrame {
         playerAttack2 = heroClass.playerAttack2; 
         playerAttack3 = heroClass.playerAttack3; 
         playerAttack4 = heroClass.playerAttack4; 
+        
         onAttack = true; 
+        
         btnAttackOrItem1.setText(playerAttack1);
         btnAttackOrItem2.setText(playerAttack2);
         btnAttackOrItem3.setText(playerAttack3);
         btnAttackOrItem4.setText(playerAttack4);
+        
         attack1Cooldown = new Timer(heroClass.attack1Cooldown, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 attack1Usable = true; 
                 attack1Cooldown.stop();
-                heroClass.resetAttack1();
             }
         }); 
         attack2Cooldown = new Timer(heroClass.attack2Cooldown, new ActionListener() {
@@ -443,7 +454,6 @@ public class BattleUI extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent arg0) {
                 attack2Usable = true; 
                 attack2Cooldown.stop();
-                heroClass.resetAttack2();
             }
         });
         attack3Cooldown = new Timer(heroClass.attack3Cooldown, new ActionListener() {
@@ -451,7 +461,6 @@ public class BattleUI extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent arg0) {
                 attack3Usable = true; 
                 attack3Cooldown.stop();
-                heroClass.resetAttack3();
             }
         });
         attack4Cooldown = new Timer(heroClass.attack4Cooldown, new ActionListener() {
@@ -459,9 +468,34 @@ public class BattleUI extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent arg0) {
                 attack4Usable = true; 
                 attack4Cooldown.stop();
-                heroClass.resetAttack4();
             }
         });
+        
+        attack1Duration = new Timer(heroClass.attack1Duration, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                heroClass.resetAttack1();
+            }
+        }); 
+        attack2Duration = new Timer(heroClass.attack2Duration, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                heroClass.resetAttack2();
+            }
+        }); 
+        attack3Duration = new Timer(heroClass.attack3Duration, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                heroClass.resetAttack3();
+            }
+        }); 
+        attack4Duration = new Timer(heroClass.attack4Duration, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                heroClass.resetAttack4();
+            }
+        }); 
+        
         attack1Usable = true; 
         attack2Usable = true; 
         attack3Usable = true; 

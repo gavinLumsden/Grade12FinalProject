@@ -44,6 +44,11 @@ public abstract class GameCharacter extends GameObject {
     public int attack2Cooldown;  
     public int attack3Cooldown;
     public int attack4Cooldown;
+    
+    public int attack1Duration; 
+    public int attack2Duration;  
+    public int attack3Duration;
+    public int attack4Duration;
 
     /**
      * Constructor for the class, sets class property data
