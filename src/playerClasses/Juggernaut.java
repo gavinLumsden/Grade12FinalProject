@@ -317,22 +317,25 @@ public class Juggernaut extends GameCharacter {
 
     @Override
     public void attack1() {
-        System.out.println("raise defence");
+        System.out.println("mak ability 1 for juggernaut");
     }
     
     @Override
     public void attack2() {
         System.out.println("lower enemy damage");
+        battleUI.enemyEffects("lower attack"); 
     }
     
     @Override
     public void attack3() {
-        System.out.println("undodgeable x2 damage hit");
+        battleUI.playerDamage *= 2; 
+        battleUI.enemyDodgeChance = 0; 
     }
     
     @Override
     public void attack4() {
         System.out.println("stun the enemy");
+        battleUI.enemyEffects("stun"); 
     }
 
     private void createTimers() {
@@ -364,22 +367,23 @@ public class Juggernaut extends GameCharacter {
 
     @Override
     public void resetAttack1() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void resetAttack2() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void resetAttack3() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        battleUI.playerDamage = battleUI.playerBaseDamage; 
+        battleUI.enemyDodgeChance = battleUI.enemyBaseDodgeChance; 
     }
 
     @Override
     public void resetAttack4() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
 }

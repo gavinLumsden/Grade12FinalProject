@@ -317,22 +317,25 @@ public class Vampire extends GameCharacter {
 
     @Override
     public void attack1() {
-        System.out.println("life steal (10%)");
+        battleUI.playerEffects("life steal", 10); 
     }
     
     @Override
     public void attack2() {
         System.out.println("make enemy bleed");
+        battleUI.enemyEffects("bleed", (punchSpeed * 3));
     }
     
     @Override
     public void attack3() {
         System.out.println("stun enemy");
+        battleUI.enemyEffects("stun", (punchSpeed * 2));
     }
     
     @Override
     public void attack4() {
-        System.out.println("raise defence for three attacks and stop punching, after the third attack do x3 damage");
+        battleUI.playerEffects("disable punch", (punchSpeed * 3));
+        System.out.println("wait 3 punchs then 3x damage");
     }
 
     private void createTimers() {
@@ -364,22 +367,22 @@ public class Vampire extends GameCharacter {
 
     @Override
     public void resetAttack1() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     @Override
     public void resetAttack2() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     @Override
     public void resetAttack3() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     @Override
     public void resetAttack4() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
 }

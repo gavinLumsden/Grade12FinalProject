@@ -655,10 +655,26 @@ public class BattleUI extends javax.swing.JFrame {
         System.out.println("heres some gold");
     } 
     
-    public void enemyEffects(String effect) {
-        if      (effect.equals("bleed"))      System.out.println("make enemy bleed");
-        else if (effect.equals("stop bleed")) System.out.println("no bleed");
-        else if (effect.equals("stun"))       System.out.println("make enemy bleed");
+    public void enemyEffects(String effect, int amount) {
+        if      (effect.equals("bleed"))             System.out.println("make enemy bleed");
+        else if (effect.equals("stop bleed"))        System.out.println("no bleed");
+        else if (effect.equals("stun"))              System.out.println("stun enemy");
+        else if (effect.equals("stop stun"))         System.out.println("no stun");
+        else if (effect.equals("disable punch"))     System.out.println("disable enemy punch");
+        else if (effect.equals("enable punch"))      System.out.println("enable stun");
+        else if (effect.equals("disable abilities")) System.out.println("disable enemy abilities");
+        else if (effect.equals("enable abilities"))  System.out.println("enable abilities");
+    }
+    
+    public void playerEffects(String effect, int amount) {
+        if      (effect.equals("bleed"))             System.out.println("make player bleed");
+        else if (effect.equals("stop bleed"))        System.out.println("no bleed");
+        else if (effect.equals("stun"))              System.out.println("stun player");
+        else if (effect.equals("stop stun"))         System.out.println("no stun");
+        else if (effect.equals("disable punch"))     System.out.println("disable player punch");
+        else if (effect.equals("enable punch"))      System.out.println("enable punch");
+        else if (effect.equals("disable abilities")) System.out.println("disable player abilities");
+        else if (effect.equals("enable abilities"))  System.out.println("enable abilities");
     }
     
 }
