@@ -287,9 +287,7 @@ public class BattleUI extends javax.swing.JFrame {
         else if (onAttack == true) {
             if (attack1Usable == true) {
                 useAttack(1);
-            } else {
-                System.out.println("no 1 can help u");
-            }
+            } 
         }
     }//GEN-LAST:event_btnAttackOrItem1MouseClicked
 
@@ -299,9 +297,7 @@ public class BattleUI extends javax.swing.JFrame {
         else if (onAttack == true) {
             if (attack2Usable == true) {
                 useAttack(2);
-            } else {
-                System.out.println("no 2 for u");
-            }
+            } 
         }
     }//GEN-LAST:event_btnAttackOrItem2MouseClicked
 
@@ -311,9 +307,7 @@ public class BattleUI extends javax.swing.JFrame {
         else if (onAttack == true) {
             if (attack3Usable == true) {
                 useAttack(3);
-            } else {
-                System.out.println("no three ammo");
-            }
+            } 
         }
     }//GEN-LAST:event_btnAttackOrItem3MouseClicked
 
@@ -323,9 +317,7 @@ public class BattleUI extends javax.swing.JFrame {
         else if (onAttack == true) {
             if (attack4Usable == true) {
                 useAttack(4);
-            } else {
-                System.out.println("no 4 4 u");
-            }
+            } 
         }
     }//GEN-LAST:event_btnAttackOrItem4MouseClicked
 

@@ -111,11 +111,21 @@ public class Mage extends GameCharacter {
         super.playerHealth      = health; 
         super.playerPunchSpeed  = punchSpeed; 
         
+        super.attack1Cooldown = attack1Cooldown; 
+        super.attack2Cooldown = attack2Cooldown; 
+        super.attack3Cooldown = attack3Cooldown; 
+        super.attack4Cooldown = attack4Cooldown; 
+        
+        super.attack1Duration = attack1Duration; 
+        super.attack2Duration = attack2Duration; 
+        super.attack3Duration = attack3Duration; 
+        super.attack4Duration = attack4Duration; 
+        
         super.playerName = NAME; 
 
         if (engine.map.equals("spawn") || engine.map.equals("enemy village") || engine.map.equals("player village")) {
             this.toMain = toMain;
-        } else if (engine.map.equals("ui")) {
+        } else if (engine.map.equals("main")) {
             this.toSpawn = toSpawn;
             this.toEnemyVillage = toEnemyVillage;
             this.toPlayerVillage = toPlayerVillage;
