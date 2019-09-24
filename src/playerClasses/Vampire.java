@@ -11,20 +11,17 @@ import objects.NextLevelBlock;
 import game.gametools.Directions;
 import game.gametools.GameCharacter;
 import game.GameEngine;
-import game.Globals;
 import game.gametools.Animation;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import maps.Spawn;
 import maps.Main;
 import maps.EnemyVillage;
 import maps.PlayerVillage;
 import javax.swing.JLabel;
-import javax.swing.Timer;
 import objects.House;
 
 public class Vampire extends GameCharacter {
 
+    // properties
     private Spawn spawn;
     private Main main;
     private EnemyVillage enemyVillage;
@@ -46,6 +43,7 @@ public class Vampire extends GameCharacter {
     private NextLevelBlock toPlayerVillage;
     private NextLevelBlock toMain;
 
+    // used to determine if the hero has traveled to a certain map
     private boolean hasTravelledToMain = false;
     private boolean hasTravelledToSpawn = false;
     private boolean hasTravelledToEnemyVillage = false;
@@ -57,21 +55,21 @@ public class Vampire extends GameCharacter {
     public String attack2 = "Bite"; 
     public String attack3 = "Bats"; 
     public String attack4 = "Coffin"; 
-
+    
     public int health      = 100;  // how much health you have, can be increased
     public int punchSpeed  = 1000; // how fast you hit
     public int dodgeChance = 1;    // your chance of dodging
     public int damage      = 1;    // how much damage you do
     
-    private Timer attack1Cooldown;     
-    private Timer attack2Cooldown;     
-    private Timer attack3Cooldown;     
-    private Timer attack4Cooldown; 
+    public int attack1Cooldown = 3000;     
+    public int attack2Cooldown = 3000;     
+    public int attack3Cooldown = 3000;     
+    public int attack4Cooldown = 10000; 
     
-    private int attack1CooldownTime;     
-    private int attack2CooldownTime;     
-    private int attack3CooldownTime;     
-    private int attack4CooldownTime; 
+    public int attack1Duration = punchSpeed; 
+    public int attack2Duration = (punchSpeed * 3);     
+    public int attack3Duration = (punchSpeed * 3);     
+    public int attack4Duration = (punchSpeed * 3); 
     
     /**
      * Creates a "vampire"
@@ -317,52 +315,23 @@ public class Vampire extends GameCharacter {
 
     @Override
     public void attack1() {
-        battleUI.playerEffects("life steal", 10); 
+        battleUI.playerEffects("life steal"); 
     }
     
     @Override
     public void attack2() {
-        System.out.println("make enemy bleed");
-        battleUI.enemyEffects("bleed", (punchSpeed * 3));
+        battleUI.enemyEffects("bleed");
     }
     
     @Override
     public void attack3() {
-        System.out.println("stun enemy");
-        battleUI.enemyEffects("stun", (punchSpeed * 2));
+        battleUI.enemyEffects("stun");
     }
     
     @Override
     public void attack4() {
-        battleUI.playerEffects("disable punch", (punchSpeed * 3));
-        System.out.println("wait 3 punchs then 3x damage");
-    }
-
-    private void createTimers() {
-        attack1Cooldown = new Timer(attack1CooldownTime, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                attack1Cooldown.stop();
-            }
-        }); 
-        attack2Cooldown = new Timer(attack2CooldownTime, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                attack2Cooldown.stop();
-            }
-        }); 
-        attack3Cooldown = new Timer(attack3CooldownTime, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                attack3Cooldown.stop();
-            }
-        }); 
-        attack4Cooldown = new Timer(attack4CooldownTime, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                attack4Cooldown.stop();
-            }
-        }); 
+        battleUI.playerEffects("disable punch"); 
+        // 3x damage after 3rd punch
     }
 
     @Override
@@ -372,17 +341,17 @@ public class Vampire extends GameCharacter {
 
     @Override
     public void resetAttack2() {
-    
+        battleUI.enemyEffects("stop bleed");
     }
 
     @Override
     public void resetAttack3() {
-    
+        battleUI.enemyEffects("stop stun");
     }
 
     @Override
     public void resetAttack4() {
-    
+        battleUI.enemyEffects("enable punch");
     }
 
 }

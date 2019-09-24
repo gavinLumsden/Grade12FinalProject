@@ -11,20 +11,17 @@ import objects.NextLevelBlock;
 import game.gametools.Directions;
 import game.gametools.GameCharacter;
 import game.GameEngine;
-import game.Globals;
 import game.gametools.Animation;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import maps.Spawn;
 import maps.Main;
 import maps.EnemyVillage;
 import maps.PlayerVillage;
 import javax.swing.JLabel;
-import javax.swing.Timer;
 import objects.House;
 
 public class Mage extends GameCharacter {
 
+    // properties
     private Spawn spawn;
     private Main main;
     private EnemyVillage enemyVillage;
@@ -46,6 +43,7 @@ public class Mage extends GameCharacter {
     private NextLevelBlock toPlayerVillage;
     private NextLevelBlock toMain;
 
+    // used to determine if the hero has traveled to a certain map
     private boolean hasTravelledToMain = false;
     private boolean hasTravelledToSpawn = false;
     private boolean hasTravelledToEnemyVillage = false;
@@ -63,15 +61,15 @@ public class Mage extends GameCharacter {
     public int dodgeChance = 1;    // your chance of dodging
     public int damage      = 1;    // how much damage you do
     
-    private Timer attack1Cooldown;     
-    private Timer attack2Cooldown;     
-    private Timer attack3Cooldown;     
-    private Timer attack4Cooldown; 
+    public int attack1Cooldown = 3000;     
+    public int attack2Cooldown = 3000;     
+    public int attack3Cooldown = 3000;     
+    public int attack4Cooldown = 10000; 
     
-    private int attack1CooldownTime;     
-    private int attack2CooldownTime;     
-    private int attack3CooldownTime;     
-    private int attack4CooldownTime; 
+    public int attack1Duration = punchSpeed;     
+    public int attack2Duration = punchSpeed;     
+    public int attack3Duration = punchSpeed;     
+    public int attack4Duration = punchSpeed; 
 
     /**
      * Creates a "mage"
@@ -339,51 +337,24 @@ public class Mage extends GameCharacter {
         System.out.println("give mage attacks (4)");
     }
 
-    private void createTimers() {
-        attack1Cooldown = new Timer(attack1CooldownTime, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                attack1Cooldown.stop();
-            }
-        }); 
-        attack2Cooldown = new Timer(attack2CooldownTime, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                attack2Cooldown.stop();
-            }
-        }); 
-        attack3Cooldown = new Timer(attack3CooldownTime, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                attack3Cooldown.stop();
-            }
-        }); 
-        attack4Cooldown = new Timer(attack4CooldownTime, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                attack4Cooldown.stop();
-            }
-        }); 
-    }
-
     @Override
     public void resetAttack1() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     @Override
     public void resetAttack2() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     @Override
     public void resetAttack3() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     @Override
     public void resetAttack4() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
 }

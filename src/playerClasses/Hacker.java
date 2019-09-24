@@ -11,16 +11,12 @@ import objects.NextLevelBlock;
 import game.gametools.Directions;
 import game.gametools.GameCharacter;
 import game.GameEngine;
-import game.Globals;
 import game.gametools.Animation;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import maps.Spawn;
 import maps.Main;
 import maps.EnemyVillage;
 import maps.PlayerVillage;
 import javax.swing.JLabel;
-import javax.swing.Timer;
 import objects.House;
 
 public class Hacker extends GameCharacter {
@@ -70,9 +66,9 @@ public class Hacker extends GameCharacter {
     public int attack3Cooldown = 3000;     
     public int attack4Cooldown = 10000; 
     
-    public int attack1Duration = punchSpeed;     
+    public int attack1Duration = (punchSpeed * 3); 
     public int attack2Duration = punchSpeed;     
-    public int attack3Duration = punchSpeed;     
+    public int attack3Duration = (punchSpeed * 3); 
     public int attack4Duration = (punchSpeed * 3); 
 
     /**
@@ -319,7 +315,6 @@ public class Hacker extends GameCharacter {
 
     @Override
     public void attack1() {
-        System.out.println("disable enemy punch");
         battleUI.enemyEffects("disable punch");
     }
     
@@ -330,19 +325,17 @@ public class Hacker extends GameCharacter {
     
     @Override
     public void attack3() {
-        System.out.println("disable enemy abilities");
         battleUI.enemyEffects("disable abilities");
     }
     
     @Override
     public void attack4() {
-        System.out.println("reflect enemy punches");
         battleUI.enemyEffects("reflect punch");
     }
     
     @Override
     public void resetAttack1() {
-        System.out.println("idk");
+        battleUI.enemyEffects("enable punch");
     }
     
     @Override
@@ -352,12 +345,12 @@ public class Hacker extends GameCharacter {
     
     @Override
     public void resetAttack3() {
-        System.out.println("idk");
+        battleUI.enemyEffects("enable abilities");
     }
     
     @Override
     public void resetAttack4() {
-        System.out.println("idk");
+        battleUI.enemyEffects("stop reflect");
     }
 
 }
