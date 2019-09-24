@@ -540,6 +540,32 @@ public class BattleUI extends javax.swing.JFrame {
             }
         });
 
+        enemyBleed = new Timer(playerPunchSpeed, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enemyHealth--; 
+            }
+        }); 
+        enemyStun = new Timer(playerPunchSpeed, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enemyPunching.stop();
+            }
+        }); 
+        
+        playerBleed = new Timer(enemyPunchSpeed, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playerHealth--; 
+            }
+        }); 
+        playerStun = new Timer(enemyPunchSpeed, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playerPunching.stop();
+            }
+        }); 
+        
         attack1Usable = true;
         attack2Usable = true;
         attack3Usable = true;
@@ -682,57 +708,35 @@ public class BattleUI extends javax.swing.JFrame {
 
     public void enemyEffects(String effect) {
         if (effect.equals("bleed")) {
-            
-            System.out.println("make enemy bleed");
-            
+            enemyBleed.start();
         } else if (effect.equals("stop bleed")) {
-            
-            System.out.println("no bleed");
-            
+            enemyBleed.stop();
         } else if (effect.equals("stun")) {
-            
-            System.out.println("stun enemy");
-            
+            enemyStun.start();
         } else if (effect.equals("stop stun")) {
-            
-            System.out.println("no stun");
-            
-        } else if (effect.equals("disable punch")) {
-            
-            System.out.println("disable enemy punch");
-            
-        } else if (effect.equals("enable punch")) {
-            
-            System.out.println("enable enemy punch");
-            
+            enemyStun.stop();
+            enemyPunching.start();
         } else if (effect.equals("disable abilities")) {
-            
-            System.out.println("disable enemy abilities");
-            
+            enemyDisableAbilities.start();
         } else if (effect.equals("enable abilities")) {
-            
-            System.out.println("enable enemy abilities");
-            
+            enemyDisableAbilities.stop();
         }
     }
 
     public void playerEffects(String effect) {
         if (effect.equals("bleed")) {
-            System.out.println("make player bleed");
+            playerBleed.start();
         } else if (effect.equals("stop bleed")) {
-            System.out.println("no bleed");
+            playerBleed.stop();
         } else if (effect.equals("stun")) {
-            System.out.println("stun player");
+            playerStun.start();
         } else if (effect.equals("stop stun")) {
-            System.out.println("no stun");
-        } else if (effect.equals("disable punch")) {
-            System.out.println("disable player punch");
-        } else if (effect.equals("enable punch")) {
-            System.out.println("enable punch");
+            playerStun.stop();
+            playerPunching.start();
         } else if (effect.equals("disable abilities")) {
-            System.out.println("disable player abilities");
+            playerDisableAbilities.start();
         } else if (effect.equals("enable abilities")) {
-            System.out.println("enable abilities");
+            playerDisableAbilities.stop();
         }
     }
 
