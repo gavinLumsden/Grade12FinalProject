@@ -62,20 +62,20 @@ public class Bandit extends GameCharacter {
     public String attack3 = "Cut"; 
     public String attack4 = "Evade"; 
     
-    public int health      = 100;  // how much health you have, can be increased
-    public int punchSpeed  = 1000; // how fast you hit
-    public int dodgeChance = 10;   // your chance of dodging
-    public int damage      = 2;    // how much damage you do
+    public int health;      // how much health you have, can be increased
+    public int punchSpeed;  // how fast you hit
+    public int dodgeChance; // your chance of dodging
+    public int damage;      // how much damage you do
     
-    public int attack1Cooldown = 3000;     
-    public int attack2Cooldown = 3000;     
-    public int attack3Cooldown = 5000;     
-    public int attack4Cooldown = 10000; 
+    public int attack1Cooldown;
+    public int attack2Cooldown;    
+    public int attack3Cooldown;   
+    public int attack4Cooldown;
     
-    public int attack1Duration = punchSpeed;     
-    public int attack2Duration = punchSpeed;     
-    public int attack3Duration = punchSpeed;     
-    public int attack4Duration = (punchSpeed * 3); 
+    public int attack1Duration;     
+    public int attack2Duration;     
+    public int attack3Duration;   
+    public int attack4Duration;
 
     /**
      * Creates a "bandit"
@@ -97,7 +97,7 @@ public class Bandit extends GameCharacter {
             LinkedList<Wall> walls, LinkedList<House> houses, 
             LinkedList<Cyborg> cyborgs, LinkedList<Nail> nails, LinkedList<Rampage> rampages, 
             NextLevelBlock toMain, NextLevelBlock toSpawn, NextLevelBlock toEnemyVillage, NextLevelBlock toPlayerVillage,
-            GameEngine engine) {
+            GameEngine engine, boolean hasBeenCreated) {
         super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
         this.engine = engine;
@@ -112,6 +112,28 @@ public class Bandit extends GameCharacter {
         super.playerAttack2 = attack2; 
         super.playerAttack3 = attack3; 
         super.playerAttack4 = attack4; 
+        
+        if (!hasBeenCreated) {
+            // creating for the first time
+            damage      = 2; 
+            dodgeChance = 5; 
+            health      = 100; 
+            punchSpeed  = 1000; 
+        }
+        else {
+            //recreating, read data from persistant storage (file)
+            CharacterData.update(this);
+        }
+        
+        attack1Cooldown = 3000; 
+        attack2Cooldown = 3000; 
+        attack3Cooldown = 5000; 
+        attack4Cooldown = 10000; 
+        
+        attack1Duration = punchSpeed; 
+        attack2Duration = punchSpeed; 
+        attack3Duration = punchSpeed; 
+        attack4Duration = (punchSpeed * 3); 
         
         super.playerDamage      = damage; 
         super.playerDodgeChance = dodgeChance; 
@@ -346,7 +368,7 @@ public class Bandit extends GameCharacter {
     
     @Override
     public void attack4() {
-        battleUI.playerDodgeChance = 10; 
+        battleUI.playerDodgeChance = 100; 
     }
     
     @Override
@@ -367,6 +389,16 @@ public class Bandit extends GameCharacter {
     @Override
     public void resetAttack4() {
         battleUI.playerDodgeChance = battleUI.playerBaseDodgeChance; 
+    }
+
+    @Override
+    public String[] getData() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void save(String[] data) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

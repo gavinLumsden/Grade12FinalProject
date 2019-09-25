@@ -69,18 +69,18 @@ public class BattleUI extends javax.swing.JFrame {
     private Timer attack3Duration;
     private Timer attack4Duration;
 
-    private Timer playerBleed; 
-    private Timer enemyBleed; 
-    
-    private Timer playerStun; 
-    private Timer enemyStun; 
-    
-    private Timer playerDisablePunch; 
-    private Timer enemyDisablePunch; 
-    
-    private Timer playerDisableAbilities; 
-    private Timer enemyDisableAbilities; 
-    
+    private Timer playerBleed;
+    private Timer enemyBleed;
+
+    private Timer playerStun;
+    private Timer enemyStun;
+
+    private Timer playerDisablePunch;
+    private Timer enemyDisablePunch;
+
+    private Timer playerDisableAbilities;
+    private Timer enemyDisableAbilities;
+
     private boolean attack1Usable;
     private boolean attack2Usable;
     private boolean attack3Usable;
@@ -287,7 +287,7 @@ public class BattleUI extends javax.swing.JFrame {
         else if (onAttack == true) {
             if (attack1Usable == true) {
                 useAttack(1);
-            } 
+            }
         }
     }//GEN-LAST:event_btnAttackOrItem1MouseClicked
 
@@ -297,7 +297,7 @@ public class BattleUI extends javax.swing.JFrame {
         else if (onAttack == true) {
             if (attack2Usable == true) {
                 useAttack(2);
-            } 
+            }
         }
     }//GEN-LAST:event_btnAttackOrItem2MouseClicked
 
@@ -307,7 +307,7 @@ public class BattleUI extends javax.swing.JFrame {
         else if (onAttack == true) {
             if (attack3Usable == true) {
                 useAttack(3);
-            } 
+            }
         }
     }//GEN-LAST:event_btnAttackOrItem3MouseClicked
 
@@ -317,7 +317,7 @@ public class BattleUI extends javax.swing.JFrame {
         else if (onAttack == true) {
             if (attack4Usable == true) {
                 useAttack(4);
-            } 
+            }
         }
     }//GEN-LAST:event_btnAttackOrItem4MouseClicked
 
@@ -408,24 +408,28 @@ public class BattleUI extends javax.swing.JFrame {
             heroClass.attack1();
             attack1Duration.start();
             attack1Cooldown.start();
+            System.out.println(playerName + " used: " + heroClass.playerAttack1 + "!");
         } else if (attackToUse == 2) {
             btnAttackOrItem2.setBackground(Color.red);
             attack2Usable = false;
             heroClass.attack2();
             attack2Duration.start();
             attack2Cooldown.start();
+            System.out.println(playerName + " used: " + heroClass.playerAttack2 + "!");
         } else if (attackToUse == 3) {
             btnAttackOrItem3.setBackground(Color.red);
             attack3Usable = false;
             heroClass.attack3();
             attack3Duration.start();
             attack3Cooldown.start();
+            System.out.println(playerName + " used: " + heroClass.playerAttack3 + "!");
         } else if (attackToUse == 4) {
             btnAttackOrItem4.setBackground(Color.red);
             attack4Usable = false;
             heroClass.attack4();
             attack4Duration.start();
             attack4Cooldown.start();
+            System.out.println(playerName + " used: " + heroClass.playerAttack4 + "!");
         } else {
             System.out.println("error using attack");
         }
@@ -535,41 +539,41 @@ public class BattleUI extends javax.swing.JFrame {
         enemyBleed = new Timer(playerPunchSpeed, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                enemyHealth--; 
+                enemyHealth--;
             }
-        }); 
+        });
         enemyStun = new Timer(playerPunchSpeed, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 enemyPunching.stop();
             }
-        }); 
+        });
         enemyDisableAbilities = new Timer(playerPunchSpeed, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                
+
             }
-        }); 
-        
+        });
+
         playerBleed = new Timer(enemyPunchSpeed, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                playerHealth--; 
+                playerHealth--;
             }
-        }); 
+        });
         playerStun = new Timer(enemyPunchSpeed, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 playerPunching.stop();
             }
-        }); 
+        });
         playerDisableAbilities = new Timer(enemyPunchSpeed, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                
+
             }
-        }); 
-        
+        });
+
         attack1Usable = true;
         attack2Usable = true;
         attack3Usable = true;
@@ -605,20 +609,30 @@ public class BattleUI extends javax.swing.JFrame {
         playerPunching = new Timer(playerPunchSpeed, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                int hit = random(enemyDodgeChance, 10);
-                if (hit != 100) {
-                    enemyHealth = enemyHealth - playerDamage;
-                } 
+                if (enemyDodgeChance != 0) {
+                    int hit = random(enemyDodgeChance, 100);
+                    if (hit < 90) {
+                        enemyHealth -= playerDamage;
+                    } else {
+                        System.out.println("enemy dodge!");
+                    }
+                } else {
+                    enemyHealth -= playerDamage;
+                }
             }
         });
         enemyPunching = new Timer(enemyPunchSpeed, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 if (playerDodgeChance != 0) {
-                    int hit = random(playerDodgeChance, 10);
-                    if (hit != 100) {
-                        playerHealth = playerHealth - enemyDamage;
-                    } 
+                    int hit = random(playerDodgeChance, 100);
+                    if (hit < 90) {
+                        playerHealth -= enemyDamage;
+                    } else {
+                        System.out.println("player dodge!");
+                    }
+                } else {
+                    playerHealth -= enemyDamage;
                 }
             }
         });
@@ -671,6 +685,7 @@ public class BattleUI extends javax.swing.JFrame {
         playerPunching.stop();
         enemyPunching.stop();
         update.stop();
+        heroClass.playerHealth = playerHealth;
         engine.clearBattle(this);
         engine.play();
         int random = random(1, 2);

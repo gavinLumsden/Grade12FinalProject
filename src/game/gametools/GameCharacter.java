@@ -147,5 +147,9 @@ public abstract class GameCharacter extends GameObject {
     public abstract void resetAttack3(); 
     
     public abstract void resetAttack4(); 
+
+    public abstract String[] getData();
+
+    public abstract void save(String[] data);
     
 }
