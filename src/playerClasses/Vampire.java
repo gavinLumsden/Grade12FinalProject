@@ -58,12 +58,12 @@ public class Vampire extends GameCharacter {
     
     public int health      = 100;  // how much health you have, can be increased
     public int punchSpeed  = 1000; // how fast you hit
-    public int dodgeChance = 1;    // your chance of dodging
-    public int damage      = 1;    // how much damage you do
+    public int dodgeChance = 10;   // your chance of dodging
+    public int damage      = 2;    // how much damage you do
     
     public int attack1Cooldown = 3000;     
     public int attack2Cooldown = 3000;     
-    public int attack3Cooldown = 3000;     
+    public int attack3Cooldown = 5000;     
     public int attack4Cooldown = 10000; 
     
     public int attack1Duration = punchSpeed; 
@@ -340,7 +340,7 @@ public class Vampire extends GameCharacter {
     
     @Override
     public void attack4() {
-        battleUI.playerEffects("disable punch"); 
+        battleUI.playerEffects("stun"); 
         // 3x damage after 3rd punch
     }
 
@@ -361,7 +361,7 @@ public class Vampire extends GameCharacter {
 
     @Override
     public void resetAttack4() {
-        battleUI.enemyEffects("enable punch");
+        battleUI.playerEffects("stop stun");
     }
 
 }

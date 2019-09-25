@@ -544,6 +544,12 @@ public class BattleUI extends javax.swing.JFrame {
                 enemyPunching.stop();
             }
         }); 
+        enemyDisableAbilities = new Timer(playerPunchSpeed, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                
+            }
+        }); 
         
         playerBleed = new Timer(enemyPunchSpeed, new ActionListener() {
             @Override
@@ -555,6 +561,12 @@ public class BattleUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 playerPunching.stop();
+            }
+        }); 
+        playerDisableAbilities = new Timer(enemyPunchSpeed, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                
             }
         }); 
         
@@ -594,12 +606,9 @@ public class BattleUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 int hit = random(enemyDodgeChance, 10);
-                if (hit != 10) {
+                if (hit != 100) {
                     enemyHealth = enemyHealth - playerDamage;
-                    System.out.println("Player hit!");
-                } else {
-                    System.out.println("Enemy dodge!");
-                }
+                } 
             }
         });
         enemyPunching = new Timer(enemyPunchSpeed, new ActionListener() {
@@ -607,14 +616,10 @@ public class BattleUI extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent arg0) {
                 if (playerDodgeChance != 0) {
                     int hit = random(playerDodgeChance, 10);
-                    if (hit != 10) {
+                    if (hit != 100) {
                         playerHealth = playerHealth - enemyDamage;
-                        System.out.println("Enemy hit!");
-                    } else {
-                        System.out.println("Player dodge!");
-                    }
+                    } 
                 }
-                System.out.println("\n");
             }
         });
         playerPunching.start();
