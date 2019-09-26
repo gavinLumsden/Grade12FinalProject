@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package playerClasses;
 
-import collections.LinkedList;
 import game.gametools.FileHandler;
 import game.gametools.GameCharacter;
 
 /**
- *
  * @author g.lumsden
  */
 public class CharacterData {

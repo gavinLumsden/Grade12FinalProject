@@ -62,10 +62,14 @@ public class Bandit extends GameCharacter {
     public String attack3 = "Cut"; 
     public String attack4 = "Evade"; 
     
-    public int health;      // how much health you have, can be increased
-    public int punchSpeed;  // how fast you hit
-    public int dodgeChance; // your chance of dodging
     public int damage;      // how much damage you do
+    public int dodgeChance; // your chance of dodging 
+    public int health;      // how much health you have, can be increased
+    public int punchSpeed;  // how fast you hit  
+    
+    public int level; 
+    public int exp; 
+    public int gold; 
     
     public int attack1Cooldown;
     public int attack2Cooldown;    
@@ -113,13 +117,16 @@ public class Bandit extends GameCharacter {
         super.playerAttack3 = attack3; 
         super.playerAttack4 = attack4; 
         
-        final int[] DEFAULTS = { 2,5,100,1000 };
-        int stats[] = new int[4];
+        final int[] DEFAULTS = { 2,5,100,1000,1,0,0 };
+        int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
         damage      = stats[0];
         dodgeChance = stats[1];
         health      = stats[2];
         punchSpeed  = stats[3]; 
+        level       = stats[4]; 
+        exp         = stats[5]; 
+        gold        = stats[6]; 
         
         attack1Cooldown = 3000; 
         attack2Cooldown = 3000; 
@@ -135,6 +142,10 @@ public class Bandit extends GameCharacter {
         super.playerDodgeChance = dodgeChance; 
         super.playerHealth      = health; 
         super.playerPunchSpeed  = punchSpeed; 
+        
+        super.level = level; 
+        super.exp   = exp; 
+        super.gold  = gold; 
         
         super.attack1Cooldown = attack1Cooldown; 
         super.attack2Cooldown = attack2Cooldown; 

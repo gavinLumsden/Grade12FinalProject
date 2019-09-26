@@ -41,6 +41,15 @@ public abstract class GameCharacter extends GameObject {
     public int playerDodgeChance; // your chance of dodging
     public int playerDamage;      // how much damage you do  
     
+    public final int MAX_DAMAGE       = 20;  
+    public final int MAX_DODGE_CHANCE = 50; 
+    public final int MAX_HEALTH       = 200; 
+    public final int MAX_PUNCH_SPEED  = 500; 
+    
+    public int level; 
+    public int exp; 
+    public int gold; 
+    
     public int attack1Cooldown; 
     public int attack2Cooldown;  
     public int attack3Cooldown;

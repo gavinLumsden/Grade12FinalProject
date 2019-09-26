@@ -702,7 +702,10 @@ public class BattleUI extends javax.swing.JFrame {
             playerDamage,
             playerDodgeChance,
             playerHealth,
-            playerPunchSpeed
+            playerPunchSpeed, 
+            heroClass.level, 
+            heroClass.exp, 
+            heroClass.gold
         };
         stats = CharacterData.saveData(heroClass, stats);
         
@@ -721,11 +724,18 @@ public class BattleUI extends javax.swing.JFrame {
     }
 
     private void giveExp() {
-        System.out.println("heres some exp");
+        heroClass.exp += 50;
+        System.out.println("You got " + 50 + " exp!");
+        if (heroClass.exp >= 100) {
+            LevelUp levelUp = new LevelUp(heroClass); 
+            heroClass.level++; 
+            heroClass.exp -= 100; 
+        }
     }
 
     private void giveGold() {
-        System.out.println("heres some gold");
+        heroClass.gold += 10; 
+        System.out.println("You got " + 10 + " gold!");
     }
 
     public void enemyEffects(String effect) {
