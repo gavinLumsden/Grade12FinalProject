@@ -32,6 +32,22 @@ public class Trickster extends Enemy {
     public Trickster(JLabel image, int amount, int direction, int numberOfDirections, int delay) {
         super(image, 0, Directions.STOP, 0, 0);
 
+        attack1Cooldown = 3000; 
+        attack2Cooldown = 3000; 
+        attack3Cooldown = 5000; 
+        attack4Cooldown = 10000; 
+        
+        attack1Duration = punchSpeed; 
+        attack2Duration = punchSpeed; 
+        attack3Duration = punchSpeed; 
+        attack4Duration = punchSpeed; 
+        
+        damage      = 2; 
+        dodgeChance = 5; 
+        health      = 100; 
+        maxHealth   = 100; 
+        punchSpeed  = 1000; 
+        
         super.attack1 = attack1;
         super.attack2 = attack2;
         super.attack3 = attack3;
