@@ -36,10 +36,11 @@ public abstract class GameCharacter extends GameObject {
     public String playerAttack3; 
     public String playerAttack4; 
     
-    public int playerHealth;      // how much health you have, can be increased
-    public int playerPunchSpeed;  // how fast you hit
-    public int playerDodgeChance; // your chance of dodging
-    public int playerDamage;      // how much damage you do  
+    public int playerHealth;      // how much health you have (can be increased)
+    public int playerMaxHealth;   // the maximum amount of health you can have (can be increased)
+    public int playerPunchSpeed;  // how fast you hit (can be increased)
+    public int playerDodgeChance; // your chance of dodging (can be increased)
+    public int playerDamage;      // how much damage you do (can be increased)
     
     public final int MAX_DAMAGE       = 20;  
     public final int MAX_DODGE_CHANCE = 50; 

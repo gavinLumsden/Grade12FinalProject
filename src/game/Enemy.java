@@ -13,6 +13,7 @@ public abstract class Enemy extends GameCharacter {
     public String attack4;
     
     public int health; 
+    public int maxHealth;
     public int punchSpeed;
     public int dodgeChance; 
     public int damage; 

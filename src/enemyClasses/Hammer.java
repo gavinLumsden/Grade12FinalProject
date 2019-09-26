@@ -13,10 +13,21 @@ public class Hammer extends Enemy {
     public String attack3 = "hammer attack 3";
     public String attack4 = "hammer attack 4";
 
-    public int health      = 100;  // how much health you have, can be increased
-    public int punchSpeed  = 1000; // how fast you hit
-    public int dodgeChance = 1;    // your chance of dodging
-    public int damage      = 1;    // how much damage you do
+    public int damage;      // how much damage you do (can be increased)
+    public int dodgeChance; // your chance of dodging  (can be increased)
+    public int maxHealth;   // the maximum amount of health you can have (can be increased) 
+    public int health;      // how much health you have (can be increased)
+    public int punchSpeed;  // how fast you hit (can be increased)
+    
+    public int attack1Cooldown;
+    public int attack2Cooldown;    
+    public int attack3Cooldown;   
+    public int attack4Cooldown;
+    
+    public int attack1Duration;     
+    public int attack2Duration;     
+    public int attack3Duration;   
+    public int attack4Duration;
 
     public Hammer(JLabel image, int amount, int direction, int numberOfDirections, int delay) {
         super(image, 0, Directions.STOP, 0, 0);

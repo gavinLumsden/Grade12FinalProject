@@ -9,7 +9,7 @@ public class LevelUp extends javax.swing.JFrame {
     
     private final int DAMAGE_UPGRADE_AMOUNT = 1; 
     private final int DODGE_CHANCE_UPGRADE_AMOUNT = 2; 
-    private final int HEALTH_UPGRADE_AMOUNT = 2; 
+    private final int MAX_HEALTH_UPGRADE_AMOUNT = 2; 
     private final int PUNCH_SPEED_UPGRADE_AMOUNT = -50; 
     
     private GameCharacter heroClass; 
@@ -27,13 +27,13 @@ public class LevelUp extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnLvlUpPunchSpeed = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        btnLvlUpDamage = new javax.swing.JLabel();
-        btnLvlUpDodgeChance = new javax.swing.JLabel();
-        btnLvlUpHealth = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        btnPunchSpeed = new javax.swing.JLabel();
+        btnUpgradeDamage = new javax.swing.JLabel();
+        btnUpgradeDodgeChance = new javax.swing.JLabel();
+        btnUpgradeHealth = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -55,18 +55,6 @@ public class LevelUp extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(40, 60, 320, 30);
 
-        btnLvlUpPunchSpeed.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        btnLvlUpPunchSpeed.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnLvlUpPunchSpeed.setText("+");
-        btnLvlUpPunchSpeed.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnLvlUpPunchSpeed.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnLvlUpPunchSpeedKeyPressed(evt);
-            }
-        });
-        getContentPane().add(btnLvlUpPunchSpeed);
-        btnLvlUpPunchSpeed.setBounds(260, 210, 20, 20);
-
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setText("Dodge Chance");
         getContentPane().add(jLabel5);
@@ -77,81 +65,97 @@ public class LevelUp extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(100, 170, 80, 29);
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel7.setText("Damage");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(100, 110, 90, 29);
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel8.setText("Damage");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(100, 110, 90, 29);
 
-        btnLvlUpDamage.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        btnLvlUpDamage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnLvlUpDamage.setText("+");
-        btnLvlUpDamage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnLvlUpDamage.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnLvlUpDamageKeyPressed(evt);
+        btnPunchSpeed.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        btnPunchSpeed.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnPunchSpeed.setText("+");
+        btnPunchSpeed.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnPunchSpeed.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPunchSpeedMouseClicked(evt);
             }
         });
-        getContentPane().add(btnLvlUpDamage);
-        btnLvlUpDamage.setBounds(260, 120, 20, 20);
+        getContentPane().add(btnPunchSpeed);
+        btnPunchSpeed.setBounds(270, 210, 20, 20);
 
-        btnLvlUpDodgeChance.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        btnLvlUpDodgeChance.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnLvlUpDodgeChance.setText("+");
-        btnLvlUpDodgeChance.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnLvlUpDodgeChance.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnLvlUpDodgeChanceKeyPressed(evt);
+        btnUpgradeDamage.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        btnUpgradeDamage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnUpgradeDamage.setText("+");
+        btnUpgradeDamage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnUpgradeDamage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpgradeDamageMouseClicked(evt);
             }
         });
-        getContentPane().add(btnLvlUpDodgeChance);
-        btnLvlUpDodgeChance.setBounds(260, 150, 20, 20);
+        getContentPane().add(btnUpgradeDamage);
+        btnUpgradeDamage.setBounds(270, 120, 20, 20);
 
-        btnLvlUpHealth.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        btnLvlUpHealth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnLvlUpHealth.setText("+");
-        btnLvlUpHealth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnLvlUpHealth.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnLvlUpHealthKeyPressed(evt);
+        btnUpgradeDodgeChance.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        btnUpgradeDodgeChance.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnUpgradeDodgeChance.setText("+");
+        btnUpgradeDodgeChance.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnUpgradeDodgeChance.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpgradeDodgeChanceMouseClicked(evt);
             }
         });
-        getContentPane().add(btnLvlUpHealth);
-        btnLvlUpHealth.setBounds(260, 180, 20, 20);
+        getContentPane().add(btnUpgradeDodgeChance);
+        btnUpgradeDodgeChance.setBounds(270, 150, 20, 20);
+
+        btnUpgradeHealth.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        btnUpgradeHealth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnUpgradeHealth.setText("+");
+        btnUpgradeHealth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnUpgradeHealth.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpgradeHealthMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnUpgradeHealth);
+        btnUpgradeHealth.setBounds(270, 180, 20, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLvlUpDamageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLvlUpDamageKeyPressed
+    private void btnUpgradeDamageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpgradeDamageMouseClicked
         heroClass.playerDamage += DAMAGE_UPGRADE_AMOUNT; 
+        System.out.println("You upgraded your damage! You now do " + heroClass.playerDamage + " damage!");
         this.dispose();
-    }//GEN-LAST:event_btnLvlUpDamageKeyPressed
+    }//GEN-LAST:event_btnUpgradeDamageMouseClicked
 
-    private void btnLvlUpDodgeChanceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLvlUpDodgeChanceKeyPressed
+    private void btnUpgradeDodgeChanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpgradeDodgeChanceMouseClicked
         heroClass.playerDodgeChance += DODGE_CHANCE_UPGRADE_AMOUNT; 
+        System.out.println("You upgraded your dodge chance! Your dodge chance is now " + heroClass.playerDodgeChance + "!");
         this.dispose();
-    }//GEN-LAST:event_btnLvlUpDodgeChanceKeyPressed
+    }//GEN-LAST:event_btnUpgradeDodgeChanceMouseClicked
 
-    private void btnLvlUpHealthKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLvlUpHealthKeyPressed
-        heroClass.playerHealth += HEALTH_UPGRADE_AMOUNT; 
+    private void btnUpgradeHealthMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpgradeHealthMouseClicked
+        heroClass.playerMaxHealth += MAX_HEALTH_UPGRADE_AMOUNT; 
+        System.out.println("You upgraded your max health! Your max health is now " + heroClass.playerMaxHealth + "!");
         this.dispose();
-    }//GEN-LAST:event_btnLvlUpHealthKeyPressed
+    }//GEN-LAST:event_btnUpgradeHealthMouseClicked
 
-    private void btnLvlUpPunchSpeedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLvlUpPunchSpeedKeyPressed
+    private void btnPunchSpeedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPunchSpeedMouseClicked
         heroClass.playerPunchSpeed += PUNCH_SPEED_UPGRADE_AMOUNT; 
+        System.out.println("You upgraded your punch speed! Your punch speed is now " + heroClass.playerPunchSpeed + "!");
         this.dispose();
-    }//GEN-LAST:event_btnLvlUpPunchSpeedKeyPressed
+    }//GEN-LAST:event_btnPunchSpeedMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnLvlUpDamage;
-    private javax.swing.JLabel btnLvlUpDodgeChance;
-    private javax.swing.JLabel btnLvlUpHealth;
-    private javax.swing.JLabel btnLvlUpPunchSpeed;
+    private javax.swing.JLabel btnPunchSpeed;
+    private javax.swing.JLabel btnUpgradeDamage;
+    private javax.swing.JLabel btnUpgradeDodgeChance;
+    private javax.swing.JLabel btnUpgradeHealth;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 
     private void setupForm() {

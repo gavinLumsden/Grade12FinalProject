@@ -32,7 +32,8 @@ public class BattleUI extends javax.swing.JFrame {
     public int playerBaseDodgeChance;
     public int playerBaseDamage;
 
-    private String playerName;
+    public int playerMaxHealth; 
+    private String playerName; 
 
     public int enemyHealth;
     public int enemyPunchSpeed;
@@ -44,6 +45,7 @@ public class BattleUI extends javax.swing.JFrame {
     public int enemyBaseDodgeChance;
     public int enemyBaseDamage;
 
+    public int enemyMaxHealth; 
     private String enemyName;
 
     private String playerAttack1;
@@ -582,28 +584,56 @@ public class BattleUI extends javax.swing.JFrame {
     }
 
     private void setupEnemy() {
-        enemyDamage = enemy.damage;
-        enemyDodgeChance = enemy.dodgeChance;
-        enemyHealth = enemy.health;
-        enemyPunchSpeed = enemy.punchSpeed;
-        enemyBaseDamage = enemy.damage;
+        enemyDamage          = enemy.damage;
+        enemyDodgeChance     = enemy.dodgeChance;
+        enemyHealth          = enemy.health;
+        enemyMaxHealth       = enemy.maxHealth; 
+        enemyPunchSpeed      = enemy.punchSpeed;
+        enemyBaseDamage      = enemy.damage;
         enemyBaseDodgeChance = enemy.dodgeChance;
-        enemyBaseHealth = enemy.health;
-        enemyBasePunchSpeed = enemy.punchSpeed;
+        enemyBaseHealth      = enemy.health;
+        enemyBasePunchSpeed  = enemy.punchSpeed;
         lblEnemyNameAndStats.setText(enemyName);
+        enemyHealthBar.setValue(enemyMaxHealth);
+        lblEnemyNameAndStats.setText(
+                "<html><head></head><body>"
+                + "Name: " + enemyName
+                + "<br>"
+                + "Damage: " + enemyDamage
+                + "<br>"
+                + "Dodge Chance: " + enemyDodgeChance
+                + "<br>"
+                + "Health: " + enemyHealth
+                + "<br>"
+                + "Punch Speed: " + enemyPunchSpeed
+                + "</body></html>");
         System.out.println("You've encountered " + enemyName + "!");
     }
 
     private void setupPlayer() {
-        playerDamage = heroClass.playerDamage;
-        playerDodgeChance = heroClass.playerDodgeChance;
-        playerHealth = heroClass.playerHealth;
-        playerPunchSpeed = heroClass.playerPunchSpeed;
-        playerName = heroClass.playerName;
-        playerBaseDamage = heroClass.playerDamage;
+        playerDamage          = heroClass.playerDamage;
+        playerDodgeChance     = heroClass.playerDodgeChance;
+        playerHealth          = heroClass.playerHealth;
+        playerMaxHealth       = heroClass.playerMaxHealth; 
+        playerPunchSpeed      = heroClass.playerPunchSpeed;
+        playerName            = heroClass.playerName;
+        playerBaseDamage      = heroClass.playerDamage;
         playerBaseDodgeChance = heroClass.playerDodgeChance;
-        playerBaseHealth = heroClass.playerHealth;
-        playerBasePunchSpeed = heroClass.playerPunchSpeed;
+        playerBaseHealth      = heroClass.playerHealth;
+        playerBasePunchSpeed  = heroClass.playerPunchSpeed;
+        playerHealthBar.setValue(playerMaxHealth);
+        lblPlayerNameAndStats.setText(
+                "<html><head></head><body>"
+                + "Name: " + playerName
+                + "<br>"
+                + "Damage: " + playerDamage
+                + "<br>"
+                + "Dodge Chance: " + playerDodgeChance
+                + "<br>"
+                + "Health: " + playerHealth
+                + "<br>"
+                + "Punch Speed: " + playerPunchSpeed
+                + "</body></html>");
     }
 
     private void setupPunching() {
@@ -702,6 +732,7 @@ public class BattleUI extends javax.swing.JFrame {
             playerDamage,
             playerDodgeChance,
             playerHealth,
+            playerMaxHealth, 
             playerPunchSpeed, 
             heroClass.level, 
             heroClass.exp, 
