@@ -90,7 +90,7 @@ public class Gambler extends GameCharacter {
             LinkedList<Wall> walls, LinkedList<House> houses, 
             LinkedList<Cyborg> cyborgs, LinkedList<Nail> nails, LinkedList<Rampage> rampages, 
             NextLevelBlock toMain, NextLevelBlock toSpawn, NextLevelBlock toEnemyVillage, NextLevelBlock toPlayerVillage,
-            GameEngine engine) {
+            GameEngine engine, boolean hasBeenCreated) {
         super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
         this.engine = engine;
@@ -105,6 +105,24 @@ public class Gambler extends GameCharacter {
         super.playerAttack2 = attack2; 
         super.playerAttack3 = attack3; 
         super.playerAttack4 = attack4; 
+        
+        final int[] DEFAULTS = { 2,5,100,1000 };
+        int stats[] = new int[4];
+        stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
+        damage      = stats[0];
+        dodgeChance = stats[1];
+        health      = stats[2];
+        punchSpeed  = stats[3]; 
+        
+        attack1Cooldown = 3000; 
+        attack2Cooldown = 3000; 
+        attack3Cooldown = 5000; 
+        attack4Cooldown = 10000; 
+        
+        attack1Duration = punchSpeed; 
+        attack2Duration = punchSpeed; 
+        attack3Duration = punchSpeed; 
+        attack4Duration = (punchSpeed * 3); 
         
         super.playerDamage      = damage; 
         super.playerDodgeChance = dodgeChance; 

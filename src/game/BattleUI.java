@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import playerClasses.CharacterData;
 
 /**
  * @author g.lumsden
@@ -685,7 +686,7 @@ public class BattleUI extends javax.swing.JFrame {
         playerPunching.stop();
         enemyPunching.stop();
         update.stop();
-        heroClass.playerHealth = playerHealth;
+//        heroClass.playerHealth = playerHealth;
         engine.clearBattle(this);
         engine.play();
         int random = random(1, 2);
@@ -696,6 +697,15 @@ public class BattleUI extends javax.swing.JFrame {
             engine.mediaPlayer.stop();
             engine.mediaPlayer.playWAV("/sounds/introSoundtrack.wav");
         }
+        
+        int stats[] = {
+            playerDamage,
+            playerDodgeChance,
+            playerHealth,
+            playerPunchSpeed
+        };
+        stats = CharacterData.saveData(heroClass, stats);
+        
     }
 
     private void enemyWin() {

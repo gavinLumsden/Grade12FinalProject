@@ -76,7 +76,7 @@ public class Bandit extends GameCharacter {
     public int attack2Duration;     
     public int attack3Duration;   
     public int attack4Duration;
-
+    
     /**
      * Creates a "bandit"
      *
@@ -113,17 +113,13 @@ public class Bandit extends GameCharacter {
         super.playerAttack3 = attack3; 
         super.playerAttack4 = attack4; 
         
-        if (!hasBeenCreated) {
-            // creating for the first time
-            damage      = 2; 
-            dodgeChance = 5; 
-            health      = 100; 
-            punchSpeed  = 1000; 
-        }
-        else {
-            //recreating, read data from persistant storage (file)
-            CharacterData.update(this);
-        }
+        final int[] DEFAULTS = { 2,5,100,1000 };
+        int stats[] = new int[4];
+        stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
+        damage      = stats[0];
+        dodgeChance = stats[1];
+        health      = stats[2];
+        punchSpeed  = stats[3]; 
         
         attack1Cooldown = 3000; 
         attack2Cooldown = 3000; 
@@ -389,16 +385,6 @@ public class Bandit extends GameCharacter {
     @Override
     public void resetAttack4() {
         battleUI.playerDodgeChance = battleUI.playerBaseDodgeChance; 
-    }
-
-    @Override
-    public String[] getData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void save(String[] data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

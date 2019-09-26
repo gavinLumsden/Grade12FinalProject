@@ -81,12 +81,15 @@ public class GameEngine {
     public String map = "";
     
     private boolean movable; 
+    
+    private boolean hasBeenCreated;
 
     /**
      * creates a game engine
      */
     public GameEngine() {
         mediaPlayer = new MediaPlayer();
+        hasBeenCreated = false;
     }
 
     /**
@@ -259,7 +262,8 @@ public class GameEngine {
      * @param heroImage
      */
     public void createHero(JLabel heroImage) {
-        hero = new Hero(heroImage, walls, houses, cyborgs, nails, rampages, toMain, toSpawn, toEnemyVillage, toPlayerVillage, this); 
+        hero = new Hero(heroImage, walls, houses, cyborgs, nails, rampages, toMain, toSpawn, toEnemyVillage, toPlayerVillage, this, hasBeenCreated); 
+        hasBeenCreated = true;
         hero.update();
     }
 
