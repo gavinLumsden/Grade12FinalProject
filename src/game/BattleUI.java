@@ -9,87 +9,97 @@ import javax.swing.Timer;
 import playerClasses.CharacterData;
 
 /**
+ * This is a JFrame that is used for the hero and the enemies to "battle"
+ * 
  * @author g.lumsden
  */
 public class BattleUI extends javax.swing.JFrame {
 
+    // used to determine if the player is currently using attacks or items
     private boolean onItem = false;
     private boolean onAttack = false;
 
-    private final int FORM_WIDTH = 1020;
-    private final int FORM_HEIGHT = 540;
+    private final int FORM_WIDTH = 1020; // width of the form
+    private final int FORM_HEIGHT = 540; // height of the form
 
-    private GameCharacter heroClass;
-    private Enemy enemy;
-    private GameEngine engine;
+    private GameCharacter heroClass; // the hero
+    private Enemy enemy;             // the enemy to fight
+    private GameEngine engine;       // used to run the battling 
 
-    public int playerHealth;
-    public int playerPunchSpeed;
-    public int playerDodgeChance;
-    public int playerDamage;
+    public int playerHealth;      // how much health the player has
+    public int playerPunchSpeed;  // how fast the player punchs
+    public int playerDodgeChance; // how much the player can dodge enemy attacks
+    public int playerDamage;      // how much damage the player does
 
-    public int playerBaseHealth;
-    public int playerBasePunchSpeed;
-    public int playerBaseDodgeChance;
-    public int playerBaseDamage;
+    public int playerBaseHealth;      // the original amount of health the player had                           (at the begining of the game) 
+    public int playerBasePunchSpeed;  // the original speed of how fast the player punchs                       (at the begining of the game)  
+    public int playerBaseDodgeChance; // the original percentage of how much the player can dodge enemy attacks (at the begining of the game) 
+    public int playerBaseDamage;      // the original amount of damage the player had                           (at the begining of the game) 
 
-    public int playerMaxHealth; 
-    private String playerName; 
+    public int playerMaxHealth; // the maximum amount of health the player can have
+    private String playerName;  // the name of the class the player is using 
 
-    public int enemyHealth;
-    public int enemyPunchSpeed;
-    public int enemyDodgeChance;
-    public int enemyDamage;
+    public int enemyHealth;      // how much health the enemy has
+    public int enemyPunchSpeed;  // how fast the enemy punchs
+    public int enemyDodgeChance; // how much the enemy can dodge enemy attacks
+    public int enemyDamage;      // how much damage the enemy does
 
-    public int enemyBaseHealth;
-    public int enemyBasePunchSpeed;
-    public int enemyBaseDodgeChance;
-    public int enemyBaseDamage;
+    public int enemyBaseHealth;      // the original amount of health the enemy had                           (at the begining of the game) 
+    public int enemyBasePunchSpeed;  // the original speed of how fast the enemy punchs                       (at the begining of the game)  
+    public int enemyBaseDodgeChance; // the original percentage of how much the enemy can dodge enemy attacks (at the begining of the game) 
+    public int enemyBaseDamage;      // the original amount of damage the enemy had                           (at the begining of the game) 
 
-    public int enemyMaxHealth; 
-    private String enemyName;
+    public int enemyMaxHealth; // the maximum amount of health the enemy can have
+    private String enemyName;  // the name of the class of the enemy 
 
-    private String playerAttack1;
-    private String playerAttack2;
-    private String playerAttack3;
-    private String playerAttack4;
+    private String playerAttack1; // the players first attack
+    private String playerAttack2; // the players second attack
+    private String playerAttack3; // the players third attack
+    private String playerAttack4; // the players fourth attack
 
-    private String enemyAttack1;
-    private String enemyAttack2;
-    private String enemyAttack3;
-    private String enemyAttack4;
+    private String enemyAttack1; // the enemy first attack
+    private String enemyAttack2; // the enemy second attack
+    private String enemyAttack3; // the enemy third attack
+    private String enemyAttack4; // the enemy fourth attack
 
-    private Timer playerPunching;
-    private Timer enemyPunching;
-    private Timer update;
+    private Timer playerPunching; // the timer used for the player to "punch"
+    private Timer enemyPunching;  // the timer used for the enemy to "punch"
+    private Timer update;         // the timer used to update the stats of the player and enemy
 
+    // the timer used to add a "cooldown" effect to the players abilities
     private Timer attack1Cooldown;
     private Timer attack2Cooldown;
     private Timer attack3Cooldown;
     private Timer attack4Cooldown;
 
+    // the timer used to add a "duration" effect to the players abilities
     private Timer attack1Duration;
     private Timer attack2Duration;
     private Timer attack3Duration;
     private Timer attack4Duration;
 
+    // "effects" that can be used on the enemy and player
     private Timer playerBleed;
-    private Timer enemyBleed;
-
     private Timer playerStun;
-    private Timer enemyStun;
-
     private Timer playerDisablePunch;
-    private Timer enemyDisablePunch;
-
     private Timer playerDisableAbilities;
+    private Timer enemyBleed;
+    private Timer enemyStun;
+    private Timer enemyDisablePunch;
     private Timer enemyDisableAbilities;
 
+    // used while the players attacks are on "cooldown"
     private boolean attack1Usable;
     private boolean attack2Usable;
     private boolean attack3Usable;
     private boolean attack4Usable;
 
+    /**
+     * Constructor for the battle UI
+     * @param engine the Game Engine
+     * @param heroClass the hero
+     * @param enemy the enemy to fight
+     */
     public BattleUI(GameEngine engine, GameCharacter heroClass, Enemy enemy) {
         initComponents();
         this.engine = engine;
@@ -98,7 +108,7 @@ public class BattleUI extends javax.swing.JFrame {
         setupEnemy();
         setupPlayer();
         setupMusic();
-        setupAttacks();
+        setupPlayerAttacks();
         setupPunching();
         update();
         setupForm();
@@ -281,10 +291,20 @@ public class BattleUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSwitchBetweenItemsAndAttacksKeyPressed
 
+    /**
+     * used to switch between the players attacks and items
+     * 
+     * @param evt 
+     */
     private void btnSwitchBetweenItemsAndAttacksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSwitchBetweenItemsAndAttacksMouseClicked
         switchAttackOrItem();
     }//GEN-LAST:event_btnSwitchBetweenItemsAndAttacksMouseClicked
 
+    /**
+     * uses the players first item or attack
+     * 
+     * @param evt 
+     */
     private void btnAttackOrItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem1MouseClicked
         if (onItem == true)
             useItem(1);
@@ -295,6 +315,11 @@ public class BattleUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAttackOrItem1MouseClicked
 
+    /**
+     * uses the players second item or attack
+     * 
+     * @param evt 
+     */
     private void btnAttackOrItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem2MouseClicked
         if (onItem == true)
             useItem(2);
@@ -305,6 +330,11 @@ public class BattleUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAttackOrItem2MouseClicked
 
+    /**
+     * uses the players third item or attack
+     * 
+     * @param evt 
+     */
     private void btnAttackOrItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem3MouseClicked
         if (onItem == true)
             useItem(3);
@@ -315,6 +345,11 @@ public class BattleUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAttackOrItem3MouseClicked
 
+    /**
+     * uses the players fourth item or attack
+     * 
+     * @param evt 
+     */
     private void btnAttackOrItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem4MouseClicked
         if (onItem == true)
             useItem(4);
@@ -325,10 +360,20 @@ public class BattleUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAttackOrItem4MouseClicked
 
+    /**
+     * used to "run away from" (end) a battle
+     * 
+     * @param evt 
+     */
     private void btnRunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRunMouseClicked
         run();
     }//GEN-LAST:event_btnRunMouseClicked
 
+    /**
+     * Makes sure the player either has to battle or run
+     * 
+     * @param evt 
+     */
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
 
     }//GEN-LAST:event_formWindowClosed
@@ -351,6 +396,9 @@ public class BattleUI extends javax.swing.JFrame {
     private javax.swing.JProgressBar playerUltimate;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * switches between the players attacks or items
+     */
     private void switchAttackOrItem() {
         if (onItem == true) {
             switchToAttack();
@@ -361,6 +409,9 @@ public class BattleUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * switches to the players attacks
+     */
     private void switchToAttack() {
         onItem = false;
         onAttack = true;
@@ -371,6 +422,9 @@ public class BattleUI extends javax.swing.JFrame {
         btnAttackOrItem4.setText(playerAttack4);
     }
 
+    /**
+     * switches to the players items
+     */
     private void switchToItem() {
         onItem = true;
         onAttack = false;
@@ -391,6 +445,10 @@ public class BattleUI extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
+    /**
+     * uses an item
+     * @param itemToUse the item to use
+     */
     private void useItem(int itemToUse) {
         if (itemToUse == 1) {
             System.out.println("item 1");
@@ -405,6 +463,10 @@ public class BattleUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * uses an attack
+     * @param attackToUse the attack to use
+     */
     private void useAttack(int attackToUse) {
         if (attackToUse == 1) {
             btnAttackOrItem1.setBackground(Color.red);
@@ -455,12 +517,18 @@ public class BattleUI extends javax.swing.JFrame {
         return answer;
     }
 
+    /**
+     * setups the music for the battle
+     */
     private void setupMusic() {
         engine.mediaPlayer.stop();
         engine.mediaPlayer.playWAV("/sounds/fightSoundtrack.wav");
     }
 
-    private void setupAttacks() {
+    /**
+     * setups the players attacks
+     */
+    private void setupPlayerAttacks() {
         playerAttack1 = heroClass.playerAttack1;
         playerAttack2 = heroClass.playerAttack2;
         playerAttack3 = heroClass.playerAttack3;
@@ -584,6 +652,9 @@ public class BattleUI extends javax.swing.JFrame {
         attack4Usable = true;
     }
 
+    /**
+     * setups the enemy and their stats
+     */
     private void setupEnemy() {
         enemyDamage          = enemy.damage;
         enemyDodgeChance     = enemy.dodgeChance;
@@ -611,6 +682,9 @@ public class BattleUI extends javax.swing.JFrame {
         System.out.println("You've encountered " + enemyName + "!");
     }
 
+    /**
+     * setups the player and their stats
+     */
     private void setupPlayer() {
         playerDamage          = heroClass.playerDamage;
         playerDodgeChance     = heroClass.playerDodgeChance;
@@ -637,6 +711,9 @@ public class BattleUI extends javax.swing.JFrame {
                 + "</body></html>");
     }
 
+    /**
+     * setups the punching for the enemy and the player
+     */
     private void setupPunching() {
         playerPunching = new Timer(playerPunchSpeed, new ActionListener() {
             @Override
@@ -672,6 +749,9 @@ public class BattleUI extends javax.swing.JFrame {
         enemyPunching.start();
     }
 
+    /**
+     * updates the stats constantly
+     */
     private void update() {
         update = new Timer(1, new ActionListener() {
             @Override
@@ -713,13 +793,40 @@ public class BattleUI extends javax.swing.JFrame {
         update.start();
     }
 
+    /**
+     * when the player presses the run button (stops the battle)
+     */
     private void run() {
-        stopTimers(); 
-        resetAbilities(); 
-        engine.clearBattle(this);
-        engine.play();
+        if (btnRun.isEnabled()) {
+            int chance = random(1, 5); 
+            if (chance != 5) {
+                stopTimers(); 
+                resetAbilities(); 
+                engine.clearBattle(this);
+                engine.play();
+                int stats[] = {
+                    playerDamage,
+                    playerDodgeChance,
+                    playerHealth,
+                    playerMaxHealth, 
+                    playerPunchSpeed, 
+                    heroClass.level, 
+                    heroClass.exp, 
+                    heroClass.gold
+                };
+                stats = CharacterData.saveData(heroClass, stats);
+            } else {
+                btnRun.setEnabled(false);
+                System.out.println("Oh no! You couldn't get away!");
+            }
+        } else {
+            System.out.println("You coudln't get away!");
+        }
     }
 
+    /**
+     * when the enemy wins
+     */
     private void enemyWin() {
         stopTimers(); 
         resetAbilities(); 
@@ -729,6 +836,9 @@ public class BattleUI extends javax.swing.JFrame {
         Introduction introduction = new Introduction(); 
     }
 
+    /**
+     * when the player wins
+     */
     private void playerWin() {
         giveExp();
         giveGold();
@@ -759,6 +869,9 @@ public class BattleUI extends javax.swing.JFrame {
         stats = CharacterData.saveData(heroClass, stats);
     }
 
+    /**
+     * gives the player experience
+     */
     private void giveExp() {
         heroClass.exp += 50;
         System.out.println("You got " + 50 + " exp!");
@@ -769,11 +882,18 @@ public class BattleUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * gives the player gold
+     */
     private void giveGold() {
         heroClass.gold += 10; 
         System.out.println("You got " + 10 + " gold!");
     }
 
+    /**
+     * puts "effects" on the enemy
+     * @param effect the effect to put on
+     */
     public void enemyEffects(String effect) {
         if (effect.equals("bleed")) {
             enemyBleed.start();
@@ -791,6 +911,10 @@ public class BattleUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * puts "effects" on the player
+     * @param effect the effect to put on
+     */
     public void playerEffects(String effect) {
         if (effect.equals("bleed")) {
             playerBleed.start();
@@ -808,12 +932,18 @@ public class BattleUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * stops all the running timers
+     */
     private void stopTimers() {
         playerPunching.stop();
         enemyPunching.stop();
         update.stop();
     }
     
+    /**
+     * resets the players abilities
+     */
     private void resetAbilities() {
         heroClass.resetAttack1();
         heroClass.resetAttack2();
