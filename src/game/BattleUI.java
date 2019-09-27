@@ -109,6 +109,7 @@ public class BattleUI extends javax.swing.JFrame {
         setupPlayer();
         setupMusic();
         setupPlayerAttacks();
+        setupEffects(); 
         setupPunching();
         update();
         setupForm();
@@ -529,6 +530,16 @@ public class BattleUI extends javax.swing.JFrame {
      * setups the players attacks
      */
     private void setupPlayerAttacks() {
+        if (heroClass.level >= 1) {
+            heroClass.attack1HasBeenUnlocked = true; 
+        } else if (heroClass.level >= 2) {
+            heroClass.attack2HasBeenUnlocked = true; 
+        } else if (heroClass.level >= 5) {
+            heroClass.attack3HasBeenUnlocked = true; 
+        } else if (heroClass.level >= 10) {
+            heroClass.attack4HasBeenUnlocked = true; 
+        }
+        
         playerAttack1 = heroClass.playerAttack1;
         playerAttack2 = heroClass.playerAttack2;
         playerAttack3 = heroClass.playerAttack3;
@@ -541,10 +552,37 @@ public class BattleUI extends javax.swing.JFrame {
         btnAttackOrItem3.setText(playerAttack3);
         btnAttackOrItem4.setText(playerAttack4);
 
-        btnAttackOrItem1.setBackground(Color.green);
-        btnAttackOrItem2.setBackground(Color.green);
-        btnAttackOrItem3.setBackground(Color.green);
-        btnAttackOrItem4.setBackground(Color.green);
+        if (heroClass.attack1HasBeenUnlocked == true) {
+            btnAttackOrItem1.setBackground(Color.green);
+            attack1Usable = true;
+        } else if (heroClass.attack1HasBeenUnlocked == false) {
+            btnAttackOrItem1.setBackground(Color.red);
+            attack1Usable = false;
+        }
+        
+        if (heroClass.attack2HasBeenUnlocked == true) {
+            btnAttackOrItem2.setBackground(Color.green);
+            attack2Usable = true;
+        } else if (heroClass.attack2HasBeenUnlocked == false) {
+            btnAttackOrItem2.setBackground(Color.red);
+            attack2Usable = false;
+        }
+        
+        if (heroClass.attack3HasBeenUnlocked == true) {
+            btnAttackOrItem3.setBackground(Color.green);
+            attack3Usable = true;
+        } else if (heroClass.attack3HasBeenUnlocked == false) {
+            btnAttackOrItem3.setBackground(Color.red);
+            attack3Usable = false;
+        }
+        
+        if (heroClass.attack4HasBeenUnlocked == true) {
+            btnAttackOrItem4.setBackground(Color.green);
+            attack4Usable = true;
+        } else if (heroClass.attack4HasBeenUnlocked == false) {
+            btnAttackOrItem4.setBackground(Color.red);
+            attack4Usable = false;
+        }
 
         attack1Cooldown = new Timer(heroClass.attack1Cooldown, new ActionListener() {
             @Override
@@ -607,49 +645,6 @@ public class BattleUI extends javax.swing.JFrame {
                 attack4Duration.stop();
             }
         });
-
-        enemyBleed = new Timer(playerPunchSpeed, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                enemyHealth--;
-            }
-        });
-        enemyStun = new Timer(playerPunchSpeed, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                enemyPunching.stop();
-            }
-        });
-        enemyDisableAbilities = new Timer(playerPunchSpeed, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-
-            }
-        });
-
-        playerBleed = new Timer(enemyPunchSpeed, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playerHealth--;
-            }
-        });
-        playerStun = new Timer(enemyPunchSpeed, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playerPunching.stop();
-            }
-        });
-        playerDisableAbilities = new Timer(enemyPunchSpeed, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-
-            }
-        });
-
-        attack1Usable = true;
-        attack2Usable = true;
-        attack3Usable = true;
-        attack4Usable = true;
     }
 
     /**
@@ -949,6 +944,46 @@ public class BattleUI extends javax.swing.JFrame {
         heroClass.resetAttack2();
         heroClass.resetAttack3();
         heroClass.resetAttack4();
+    }
+    
+    private void setupEffects() {
+        enemyBleed = new Timer(playerPunchSpeed, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enemyHealth--;
+            }
+        });
+        enemyStun = new Timer(playerPunchSpeed, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enemyPunching.stop();
+            }
+        });
+        enemyDisableAbilities = new Timer(playerPunchSpeed, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+
+            }
+        });
+
+        playerBleed = new Timer(enemyPunchSpeed, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playerHealth--;
+            }
+        });
+        playerStun = new Timer(enemyPunchSpeed, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playerPunching.stop();
+            }
+        });
+        playerDisableAbilities = new Timer(enemyPunchSpeed, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+
+            }
+        });
     }
     
 }

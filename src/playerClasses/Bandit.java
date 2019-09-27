@@ -118,7 +118,7 @@ public class Bandit extends GameCharacter {
         super.playerAttack3 = attack3; 
         super.playerAttack4 = attack4; 
         
-        final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
+        final int[] DEFAULTS = { 10,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
         damage      = stats[0];
@@ -364,11 +364,17 @@ public class Bandit extends GameCharacter {
     @Override
     public void attack1() {
         battleUI.playerDodgeChance *= 2; 
+        if (battleUI.playerDodgeChance >= MAX_DODGE_CHANCE) {
+            battleUI.playerDodgeChance = MAX_DODGE_CHANCE; 
+        }
     }
     
     @Override
     public void attack2() {
         battleUI.playerDamage *= 2; 
+        if (battleUI.playerDamage >= MAX_DAMAGE) {
+            battleUI.playerDamage = MAX_DAMAGE; 
+        }
     }
     
     @Override
@@ -378,7 +384,7 @@ public class Bandit extends GameCharacter {
     
     @Override
     public void attack4() {
-        battleUI.playerDodgeChance = 100; 
+        battleUI.playerDodgeChance = 100;
     }
     
     @Override

@@ -35,7 +35,7 @@ public class Introduction extends javax.swing.JFrame {
         lblGameTitle.setBackground(new java.awt.Color(153, 255, 153));
         lblGameTitle.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblGameTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblGameTitle.setText("Title of Game");
+        lblGameTitle.setText("Not Pokemon");
         lblGameTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblGameTitle.setOpaque(true);
         getContentPane().add(lblGameTitle);

@@ -60,6 +60,11 @@ public abstract class GameCharacter extends GameObject {
     public int attack2Duration;  
     public int attack3Duration;
     public int attack4Duration;
+    
+    public boolean attack1HasBeenUnlocked = false; 
+    public boolean attack2HasBeenUnlocked = false; 
+    public boolean attack3HasBeenUnlocked = false; 
+    public boolean attack4HasBeenUnlocked = false; 
 
     /**
      * Constructor for the class, sets class property data
