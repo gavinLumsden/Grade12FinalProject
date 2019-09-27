@@ -355,4 +355,12 @@ public class GameEngine {
         movable = true; 
     }
     
+    public void clearAll(BattleUI battleUI) {
+        clearBattle(battleUI);
+        clearEnemyVillage();
+        clearMain();
+        clearPlayerVillage();
+        clearSpawn();
+    }
+    
 }

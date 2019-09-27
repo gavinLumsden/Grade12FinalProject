@@ -4,6 +4,7 @@ import game.gametools.GameCharacter;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import playerClasses.CharacterData;
 
@@ -325,7 +326,7 @@ public class BattleUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAttackOrItem4MouseClicked
 
     private void btnRunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRunMouseClicked
-        end();
+        run();
     }//GEN-LAST:event_btnRunMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -712,11 +713,29 @@ public class BattleUI extends javax.swing.JFrame {
         update.start();
     }
 
-    private void end() {
-        playerPunching.stop();
-        enemyPunching.stop();
-        update.stop();
-//        heroClass.playerHealth = playerHealth;
+    private void run() {
+        stopTimers(); 
+        resetAbilities(); 
+        engine.clearBattle(this);
+        engine.play();
+    }
+
+    private void enemyWin() {
+        stopTimers(); 
+        resetAbilities(); 
+        engine.clearAll(this); 
+        JOptionPane.showMessageDialog(null, "Oh no, you died!");
+        JOptionPane.showMessageDialog(null, "GAME OVER");
+        Introduction introduction = new Introduction(); 
+    }
+
+    private void playerWin() {
+        giveExp();
+        giveGold();
+        stopTimers(); 
+        resetAbilities(); 
+        engine.clearBattle(this);
+        engine.play();
         engine.clearBattle(this);
         engine.play();
         int random = random(1, 2);
@@ -727,7 +746,6 @@ public class BattleUI extends javax.swing.JFrame {
             engine.mediaPlayer.stop();
             engine.mediaPlayer.playWAV("/sounds/introSoundtrack.wav");
         }
-        
         int stats[] = {
             playerDamage,
             playerDodgeChance,
@@ -739,19 +757,6 @@ public class BattleUI extends javax.swing.JFrame {
             heroClass.gold
         };
         stats = CharacterData.saveData(heroClass, stats);
-        
-    }
-
-    private void enemyWin() {
-        System.out.println("trash");
-        end();
-    }
-
-    private void playerWin() {
-        giveExp();
-        giveGold();
-        // check to see if the player can level up
-        end();
     }
 
     private void giveExp() {
@@ -803,4 +808,17 @@ public class BattleUI extends javax.swing.JFrame {
         }
     }
 
+    private void stopTimers() {
+        playerPunching.stop();
+        enemyPunching.stop();
+        update.stop();
+    }
+    
+    private void resetAbilities() {
+        heroClass.resetAttack1();
+        heroClass.resetAttack2();
+        heroClass.resetAttack3();
+        heroClass.resetAttack4();
+    }
+    
 }
