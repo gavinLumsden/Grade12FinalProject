@@ -104,7 +104,6 @@ public abstract class GameCharacter extends GameObject {
     public void keyPress(KeyEvent event) {
         if (isAlive) {
             input.keypress(event);
-            System.out.println(level);
         }
     }
 

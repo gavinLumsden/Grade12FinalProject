@@ -33,7 +33,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/animations/bandit/right/banditIdle.png"/>
+          <Image iconType="3" name="/animations/playerclasses/bandit/up/banditIdle.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -43,7 +43,14 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="90" y="730" width="100" height="100"/>
+          <AbsoluteConstraints x="80" y="730" width="100" height="100"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblToMain">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="30" y="850" width="200" height="10"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -111,29 +118,10 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblToMain">
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="850" width="200" height="10"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="house6">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/animations/house.png"/>
-        </Property>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1030" y="30" width="200" height="200"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="javax.swing.JLabel" name="house1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/animations/house.png"/>
+          <Image iconType="3" name="/animations/objects/house.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -145,7 +133,7 @@
     <Component class="javax.swing.JLabel" name="house2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/animations/house.png"/>
+          <Image iconType="3" name="/animations/objects/house.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -157,7 +145,7 @@
     <Component class="javax.swing.JLabel" name="house3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/animations/house.png"/>
+          <Image iconType="3" name="/animations/objects/house.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -169,7 +157,7 @@
     <Component class="javax.swing.JLabel" name="house4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/animations/house.png"/>
+          <Image iconType="3" name="/animations/objects/house.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -181,7 +169,7 @@
     <Component class="javax.swing.JLabel" name="house5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/animations/house.png"/>
+          <Image iconType="3" name="/animations/objects/house.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -190,10 +178,22 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="javax.swing.JLabel" name="house6">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/animations/objects/house.png"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="1030" y="30" width="200" height="200"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="javax.swing.JLabel" name="house7">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/animations/houseBack.png"/>
+          <Image iconType="3" name="/animations/objects/houseBack.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -205,7 +205,7 @@
     <Component class="javax.swing.JLabel" name="house8">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/animations/houseBack.png"/>
+          <Image iconType="3" name="/animations/objects/houseBack.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -217,7 +217,7 @@
     <Component class="javax.swing.JLabel" name="house9">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/animations/houseBack.png"/>
+          <Image iconType="3" name="/animations/objects/houseBack.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -229,7 +229,7 @@
     <Component class="javax.swing.JLabel" name="house10">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/animations/houseBack.png"/>
+          <Image iconType="3" name="/animations/objects/houseBack.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -241,12 +241,30 @@
     <Component class="javax.swing.JLabel" name="house11">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/animations/houseBack.png"/>
+          <Image iconType="3" name="/animations/objects/houseBack.png"/>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="430" y="630" width="200" height="200"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblHealthTrainer">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/animations/shopkeepers/shopkeeper.png"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="80" y="230" width="100" height="100"/>
         </Constraint>
       </Constraints>
     </Component>

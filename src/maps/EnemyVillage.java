@@ -135,7 +135,7 @@ public class EnemyVillage extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblHero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/bandit/right/banditIdle.png"))); // NOI18N
+        lblHero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/bandit/up/banditIdle.png"))); // NOI18N
         lblHero.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblHero);
         lblHero.setBounds(880, 430, 100, 100);
@@ -173,31 +173,31 @@ public class EnemyVillage extends javax.swing.JFrame {
         lblToMain.setBounds(830, 550, 200, 10);
 
         lblCyborg2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCyborg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/cyborg/right/cyborgIdle.png"))); // NOI18N
+        lblCyborg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/cyborg/right/cyborgIdle.png"))); // NOI18N
         lblCyborg2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblCyborg2);
         lblCyborg2.setBounds(880, 180, 100, 100);
 
         lblCyborg1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCyborg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/cyborg/right/cyborgIdle.png"))); // NOI18N
+        lblCyborg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/cyborg/right/cyborgIdle.png"))); // NOI18N
         lblCyborg1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblCyborg1);
         lblCyborg1.setBounds(630, 180, 100, 100);
 
         lblNail1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNail1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/nail/right/nailIdle.png"))); // NOI18N
+        lblNail1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/nail/right/nailIdle.png"))); // NOI18N
         lblNail1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblNail1);
         lblNail1.setBounds(230, 180, 100, 100);
 
         lblNail2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNail2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/nail/right/nailIdle.png"))); // NOI18N
+        lblNail2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/nail/right/nailIdle.png"))); // NOI18N
         lblNail2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblNail2);
         lblNail2.setBounds(430, 180, 100, 100);
 
         lblRampage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRampage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/rampage/right/rampageIdle.png"))); // NOI18N
+        lblRampage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/rampage/right/rampageIdle.png"))); // NOI18N
         lblRampage1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblRampage1);
         lblRampage1.setBounds(30, 180, 100, 100);

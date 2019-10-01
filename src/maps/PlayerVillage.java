@@ -57,22 +57,23 @@ public class PlayerVillage extends javax.swing.JFrame {
     private void initComponents() {
 
         lblHero = new javax.swing.JLabel();
+        lblToMain = new javax.swing.JLabel();
         wall1 = new javax.swing.JLabel();
         wall2 = new javax.swing.JLabel();
         wall3 = new javax.swing.JLabel();
         wall4 = new javax.swing.JLabel();
-        lblToMain = new javax.swing.JLabel();
-        house6 = new javax.swing.JLabel();
         house1 = new javax.swing.JLabel();
         house2 = new javax.swing.JLabel();
         house3 = new javax.swing.JLabel();
         house4 = new javax.swing.JLabel();
         house5 = new javax.swing.JLabel();
+        house6 = new javax.swing.JLabel();
         house7 = new javax.swing.JLabel();
         house8 = new javax.swing.JLabel();
         house9 = new javax.swing.JLabel();
         house10 = new javax.swing.JLabel();
         house11 = new javax.swing.JLabel();
+        lblHealthTrainer = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -87,10 +88,12 @@ public class PlayerVillage extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblHero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/bandit/right/banditIdle.png"))); // NOI18N
+        lblHero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/bandit/up/banditIdle.png"))); // NOI18N
         lblHero.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblHero);
-        lblHero.setBounds(90, 730, 100, 100);
+        lblHero.setBounds(80, 730, 100, 100);
+        getContentPane().add(lblToMain);
+        lblToMain.setBounds(30, 850, 200, 10);
 
         wall1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         wall1.setText("Wall");
@@ -115,52 +118,56 @@ public class PlayerVillage extends javax.swing.JFrame {
         wall4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(wall4);
         wall4.setBounds(230, 830, 1000, 30);
-        getContentPane().add(lblToMain);
-        lblToMain.setBounds(30, 850, 200, 10);
 
-        house6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/house.png"))); // NOI18N
-        getContentPane().add(house6);
-        house6.setBounds(1030, 30, 200, 200);
-
-        house1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/house.png"))); // NOI18N
+        house1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/house.png"))); // NOI18N
         getContentPane().add(house1);
         house1.setBounds(30, 30, 200, 200);
 
-        house2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/house.png"))); // NOI18N
+        house2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/house.png"))); // NOI18N
         getContentPane().add(house2);
         house2.setBounds(230, 30, 200, 200);
 
-        house3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/house.png"))); // NOI18N
+        house3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/house.png"))); // NOI18N
         getContentPane().add(house3);
         house3.setBounds(430, 30, 200, 200);
 
-        house4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/house.png"))); // NOI18N
+        house4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/house.png"))); // NOI18N
         getContentPane().add(house4);
         house4.setBounds(630, 30, 200, 200);
 
-        house5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/house.png"))); // NOI18N
+        house5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/house.png"))); // NOI18N
         getContentPane().add(house5);
         house5.setBounds(830, 30, 200, 200);
 
-        house7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/houseBack.png"))); // NOI18N
+        house6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/house.png"))); // NOI18N
+        getContentPane().add(house6);
+        house6.setBounds(1030, 30, 200, 200);
+
+        house7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/houseBack.png"))); // NOI18N
         getContentPane().add(house7);
         house7.setBounds(230, 630, 200, 200);
 
-        house8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/houseBack.png"))); // NOI18N
+        house8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/houseBack.png"))); // NOI18N
         getContentPane().add(house8);
         house8.setBounds(630, 630, 200, 200);
 
-        house9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/houseBack.png"))); // NOI18N
+        house9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/houseBack.png"))); // NOI18N
         getContentPane().add(house9);
         house9.setBounds(830, 630, 200, 200);
 
-        house10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/houseBack.png"))); // NOI18N
+        house10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/houseBack.png"))); // NOI18N
         getContentPane().add(house10);
         house10.setBounds(1030, 630, 200, 200);
 
-        house11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/houseBack.png"))); // NOI18N
+        house11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/houseBack.png"))); // NOI18N
         getContentPane().add(house11);
         house11.setBounds(430, 630, 200, 200);
+
+        lblHealthTrainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHealthTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
+        lblHealthTrainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(lblHealthTrainer);
+        lblHealthTrainer.setBounds(80, 230, 100, 100);
 
         background.setBackground(new java.awt.Color(102, 51, 0));
         background.setOpaque(true);
@@ -201,6 +208,7 @@ public class PlayerVillage extends javax.swing.JFrame {
     private javax.swing.JLabel house7;
     private javax.swing.JLabel house8;
     private javax.swing.JLabel house9;
+    private javax.swing.JLabel lblHealthTrainer;
     private javax.swing.JLabel lblHero;
     private javax.swing.JLabel lblToMain;
     private javax.swing.JLabel wall1;

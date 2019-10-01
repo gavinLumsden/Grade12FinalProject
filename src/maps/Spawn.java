@@ -159,7 +159,7 @@ public class Spawn extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblHero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/bandit/right/banditIdle.png"))); // NOI18N
+        lblHero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/bandit/left/banditIdle.png"))); // NOI18N
         lblHero.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblHero);
         lblHero.setBounds(890, 240, 100, 100);
@@ -197,7 +197,7 @@ public class Spawn extends javax.swing.JFrame {
         lblToMain.setBounds(330, 0, 200, 10);
 
         lblCyborg1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCyborg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/cyborg/right/cyborgIdle.png"))); // NOI18N
+        lblCyborg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/cyborg/right/cyborgIdle.png"))); // NOI18N
         lblCyborg1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblCyborg1);
         lblCyborg1.setBounds(380, 30, 100, 100);
@@ -362,7 +362,7 @@ public class Spawn extends javax.swing.JFrame {
         getContentPane().add(grass34);
         grass34.setBounds(230, 130, 100, 100);
 
-        house1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/house.png"))); // NOI18N
+        house1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/house.png"))); // NOI18N
         getContentPane().add(house1);
         house1.setBounds(830, 30, 200, 200);
 
