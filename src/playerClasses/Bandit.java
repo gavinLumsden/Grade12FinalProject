@@ -118,7 +118,7 @@ public class Bandit extends GameCharacter {
         super.playerAttack3 = attack3; 
         super.playerAttack4 = attack4; 
         
-        final int[] DEFAULTS = { 10,5,100,100,1000,1,0,0 };
+        final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
         damage      = stats[0];

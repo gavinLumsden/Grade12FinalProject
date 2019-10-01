@@ -532,14 +532,17 @@ public class BattleUI extends javax.swing.JFrame {
     private void setupPlayerAttacks() {
         if (heroClass.level >= 1) {
             heroClass.attack1HasBeenUnlocked = true; 
-        } else if (heroClass.level >= 2) {
+        } 
+        if (heroClass.level >= 2) {
             heroClass.attack2HasBeenUnlocked = true; 
-        } else if (heroClass.level >= 5) {
+        } 
+        if (heroClass.level >= 5) {
             heroClass.attack3HasBeenUnlocked = true; 
-        } else if (heroClass.level >= 10) {
+        } 
+        if (heroClass.level >= 10) {
             heroClass.attack4HasBeenUnlocked = true; 
         }
-        
+          
         playerAttack1 = heroClass.playerAttack1;
         playerAttack2 = heroClass.playerAttack2;
         playerAttack3 = heroClass.playerAttack3;

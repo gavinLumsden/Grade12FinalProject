@@ -61,10 +61,10 @@ public abstract class GameCharacter extends GameObject {
     public int attack3Duration;
     public int attack4Duration;
     
-    public boolean attack1HasBeenUnlocked = false; 
-    public boolean attack2HasBeenUnlocked = false; 
-    public boolean attack3HasBeenUnlocked = false; 
-    public boolean attack4HasBeenUnlocked = false; 
+    public boolean attack1HasBeenUnlocked;
+    public boolean attack2HasBeenUnlocked;
+    public boolean attack3HasBeenUnlocked;
+    public boolean attack4HasBeenUnlocked;
 
     /**
      * Constructor for the class, sets class property data
@@ -104,6 +104,7 @@ public abstract class GameCharacter extends GameObject {
     public void keyPress(KeyEvent event) {
         if (isAlive) {
             input.keypress(event);
+            System.out.println(level);
         }
     }
 
