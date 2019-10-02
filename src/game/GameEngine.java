@@ -248,6 +248,10 @@ public class GameEngine {
         }
     }
 
+    /**
+     * creates the houses 
+     * @param houseImages the jlabels used to create houses
+     */
     public void createHouse(LinkedList<JLabel> houseImages) {
         houses = new LinkedList<House>(); 
         for (int i = 0; i < houseImages.size(); i++) {
@@ -303,6 +307,10 @@ public class GameEngine {
         }
     }
     
+    /**
+     * clears the battle forms
+     * @param battle the form to clear
+     */
     public void clearBattle(BattleUI battle) {
         battle.dispose(); 
     }
@@ -355,6 +363,10 @@ public class GameEngine {
         movable = true; 
     }
     
+    /**
+     * clears all of the maps
+     * @param battleUI 
+     */
     public void clearAll(BattleUI battleUI) {
         clearBattle(battleUI);
         clearEnemyVillage();
