@@ -1,5 +1,6 @@
 package playerClasses;
 
+import game.CharacterData;
 import collections.LinkedList;
 import enemyClasses.Cyborg;
 import enemyClasses.Nail;
@@ -12,10 +13,10 @@ import game.gametools.GameCharacter;
 import game.GameEngine;
 import game.gametools.Animation;
 import game.BattleUI; 
-import maps.Spawn;
-import maps.Main;
-import maps.EnemyVillage;
-import maps.PlayerVillage;
+import maps.Map1;
+import maps.Map2;
+import maps.Map4;
+import maps.Map3;
 import javax.swing.JLabel;
 import objects.House;
 
@@ -27,33 +28,17 @@ import objects.House;
  */
 public class Bandit extends GameCharacter {
 
-    // properties
-    private Spawn spawn;
-    private Main main;
-    private EnemyVillage enemyVillage;
-    private PlayerVillage playerVillage;
-
     private LinkedList<Cyborg>  cyborgs;
     private LinkedList<Nail>    nails;
     private LinkedList<Rampage> rampages; 
 
     private GameEngine engine;
-    private BattleUI battleUI; 
+    private BattleUI   battleUI; 
     
-    private LinkedList<Wall>  walls;
-    private LinkedList<Grass> grass;
-    private LinkedList<House> houses; 
-
-    private NextLevelBlock toSpawn;
-    private NextLevelBlock toEnemyVillage;
-    private NextLevelBlock toPlayerVillage;
-    private NextLevelBlock toMain;
-
-    // used to determine if the hero has traveled to a certain map
-    private boolean hasTravelledToMain = false;
-    private boolean hasTravelledToSpawn = false;
-    private boolean hasTravelledToEnemyVillage = false;
-    private boolean hasTravelledToPlayerVillage = false;
+    private LinkedList<Wall>           walls;
+    private LinkedList<Grass>          grass;
+    private LinkedList<House>          houses; 
+    private LinkedList<NextLevelBlock> nextLevelBlocks; 
     
     public final String NAME = "Bandit"; 
     
@@ -61,6 +46,9 @@ public class Bandit extends GameCharacter {
     public String attack2 = "Stab"; 
     public String attack3 = "Cut"; 
     public String attack4 = "Evade"; 
+    
+    private String currentMap; 
+    private String previousMap; 
     
     public int damage;      // how much damage you do (can be increased)
     public int dodgeChance; // your chance of dodging  (can be increased)
@@ -91,23 +79,28 @@ public class Bandit extends GameCharacter {
      * @param cyborgs
      * @param nails
      * @param rampages
-     * @param toMain
-     * @param toSpawn
-     * @param toEnemyVillage
-     * @param toPlayerVillage
+     * @param nextLevelBlock
+     * @param hasBeenCreated
      * @param engine
+     * @param currentMap
+     * @param previousMap
      */
     public Bandit(
             JLabel heroImage,
             LinkedList<Wall> walls, LinkedList<House> houses, 
             LinkedList<Cyborg> cyborgs, LinkedList<Nail> nails, LinkedList<Rampage> rampages, 
-            NextLevelBlock toMain, NextLevelBlock toSpawn, NextLevelBlock toEnemyVillage, NextLevelBlock toPlayerVillage,
-            GameEngine engine, boolean hasBeenCreated) {
+            LinkedList<NextLevelBlock> nextLevelBlock, 
+            GameEngine engine, boolean hasBeenCreated,
+            String currentMap, String previousMap) {
         super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
+        this.currentMap  = currentMap; 
+        this.previousMap = previousMap; 
+        
         this.engine = engine;
         this.walls = walls;
         this.houses = houses; 
+        this.nextLevelBlocks = nextLevelBlock; 
 
         this.cyborgs = cyborgs;
         this.nails = nails;
@@ -118,7 +111,7 @@ public class Bandit extends GameCharacter {
         super.playerAttack3 = attack3; 
         super.playerAttack4 = attack4; 
         
-        final int[] DEFAULTS = { 69,5,100,100,1000,1,0,0 };
+        final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
         damage      = stats[0];
@@ -161,14 +154,6 @@ public class Bandit extends GameCharacter {
         super.attack4Duration = attack4Duration; 
         
         super.playerName = NAME; 
-
-        if (engine.map.equals("spawn") || engine.map.equals("enemy village") || engine.map.equals("player village")) {
-            this.toMain = toMain;
-        } else if (engine.map.equals("main")) {
-            this.toSpawn = toSpawn;
-            this.toEnemyVillage = toEnemyVillage;
-            this.toPlayerVillage = toPlayerVillage;
-        }
 
         LinkedList<String> walkUpFiles = new LinkedList<>();
         walkUpFiles.add("/animations/bandit/up/banditWalk1.png");
@@ -266,52 +251,20 @@ public class Bandit extends GameCharacter {
      * checks to see if the hero is overlapping with a next level block
      */
     private void checkNextLevelBlocks() {
-        if (toSpawn != null) {
-            if (hasTravelledToSpawn == false) {
-                if (detector.isOverLapping(toSpawn)) {
-                    spawn = new Spawn("main", engine);
-                    engine.clearMain();
-                    hasTravelledToSpawn = true;
-                }
-            }
-        }
-        if (toEnemyVillage != null) {
-            if (hasTravelledToEnemyVillage == false) {
-                if (detector.isOverLapping(toEnemyVillage)) {
-                    enemyVillage = new EnemyVillage(engine);
-                    engine.clearMain();
-                    hasTravelledToEnemyVillage = true;
-                }
-            }
-        }
-        if (toPlayerVillage != null) {
-            if (hasTravelledToPlayerVillage == false) {
-                if (detector.isOverLapping(toPlayerVillage)) {
-                    playerVillage = new PlayerVillage(engine);
-                    engine.clearMain();
-                    hasTravelledToPlayerVillage = true;
-                }
-            }
-        }
-        if (toMain != null) {
-            if (hasTravelledToMain == false) {
-                if (detector.isOverLapping(toMain)) {
-                    if (engine.map.equals("spawn")) {
-                        main = new Main("spawn", engine);
-                        engine.clearSpawn();
-                    } else if (engine.map.equals("player village")) {
-                        main = new Main("player village", engine);
-                        engine.clearPlayerVillage();
-                    } else if (engine.map.equals("enemy village")) {
-                        main = new Main("enemy village", engine);
-                        engine.clearEnemyVillage();
+        for (int i = 0; i < nextLevelBlocks.size(); i++) {
+            if (nextLevelBlocks.get(i) != null) {
+                if (detector.isOverLapping(nextLevelBlocks.get(i))){
+                    if (nextLevelBlocks.get(i).mapToGoTo.equals("map 1")) {
+                        Map1 map1 = new Map1(currentMap, engine); 
                     }
-                    hasTravelledToMain = true;
                 }
             }
         }
     }
     
+    /**
+     * checks to see if the hero is overlapping with a house
+     */
     private void checkHouses() {
         for (int i = 0; i < houses.size(); i++) {
             if (houses.get(i) != null) {

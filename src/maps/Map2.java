@@ -3,6 +3,7 @@ package maps;
 import collections.LinkedList;
 import game.GameEngine;
 import javax.swing.JLabel;
+import objects.NextLevelBlock;
 
 /**
  * Main.java - A "map" where the hero can move around and "fight" enemies
@@ -10,10 +11,15 @@ import javax.swing.JLabel;
  * @author g.lumsden
  * @since 14-May-2019
  */
-public class Main extends javax.swing.JFrame {
+public class Map2 extends javax.swing.JFrame {
 
     // properties
     private GameEngine engine;
+
+    // form width and height for main
+    private final int MAP_2_FORM_WIDTH = 1765;
+    private final int MAP_2_FORM_HEIGHT = 888;
+
 
     // locations where the hero can "spawn" into
     private final int SPAWN_LOCATION_X = 1180;
@@ -31,7 +37,7 @@ public class Main extends javax.swing.JFrame {
      * @param level
      * @param engine
      */
-    public Main(String level, GameEngine engine) {
+    public Map2(String level, GameEngine engine) {
         initComponents();
        
         LinkedList<JLabel> wallImages = new LinkedList<>();
@@ -156,6 +162,14 @@ public class Main extends javax.swing.JFrame {
         LinkedList<JLabel> cyborgImages = new LinkedList<>();
         cyborgImages.add(lblCyborg1); 
         
+        LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList(); 
+        NextLevelBlock toMap1 = new NextLevelBlock(lblToMap1, "1"); 
+        NextLevelBlock toMap3 = new NextLevelBlock(lblToMap3, "3"); 
+        NextLevelBlock toMap4 = new NextLevelBlock(lblToMap4, "4"); 
+        nextLevelBlocks.add(toMap1); 
+        nextLevelBlocks.add(toMap3); 
+        nextLevelBlocks.add(toMap4); 
+        
         if (level.equals("spawn")) {
             lblHero.setLocation(SPAWN_LOCATION_X, SPAWN_LOCATION_Y);
         } else if (level.equals("player village")) {
@@ -167,9 +181,9 @@ public class Main extends javax.swing.JFrame {
         this.engine = engine;
         
         engine.assign(wallImages, grassImages);
-        engine.createMain(this, lblToSpawn, lblToEnemyVillage, lblToPlayerVillage);
+        engine.createMap(this, MAP_2_FORM_WIDTH, MAP_2_FORM_HEIGHT, "map 2");
         engine.createEnemies(rampageImages, nailImages, cyborgImages);
-        engine.createHero(lblHero);
+        engine.createHero(lblHero, nextLevelBlocks);
     }
 
     @SuppressWarnings("unchecked")
@@ -184,9 +198,9 @@ public class Main extends javax.swing.JFrame {
         wall5 = new javax.swing.JLabel();
         wall6 = new javax.swing.JLabel();
         wall7 = new javax.swing.JLabel();
-        lblToSpawn = new javax.swing.JLabel();
-        lblToPlayerVillage = new javax.swing.JLabel();
-        lblToEnemyVillage = new javax.swing.JLabel();
+        lblToMap1 = new javax.swing.JLabel();
+        lblToMap3 = new javax.swing.JLabel();
+        lblToMap4 = new javax.swing.JLabel();
         lblNail1 = new javax.swing.JLabel();
         lblRampage1 = new javax.swing.JLabel();
         lblRampage2 = new javax.swing.JLabel();
@@ -343,12 +357,12 @@ public class Main extends javax.swing.JFrame {
         wall7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(wall7);
         wall7.setBounds(430, 0, 900, 30);
-        getContentPane().add(lblToSpawn);
-        lblToSpawn.setBounds(1130, 850, 200, 10);
-        getContentPane().add(lblToPlayerVillage);
-        lblToPlayerVillage.setBounds(1330, 0, 200, 10);
-        getContentPane().add(lblToEnemyVillage);
-        lblToEnemyVillage.setBounds(230, 0, 200, 10);
+        getContentPane().add(lblToMap1);
+        lblToMap1.setBounds(1130, 850, 200, 10);
+        getContentPane().add(lblToMap3);
+        lblToMap3.setBounds(1330, 0, 200, 10);
+        getContentPane().add(lblToMap4);
+        lblToMap4.setBounds(230, 0, 200, 10);
 
         lblNail1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNail1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/nail/right/nailIdle.png"))); // NOI18N
@@ -959,9 +973,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblNail1;
     private javax.swing.JLabel lblRampage1;
     private javax.swing.JLabel lblRampage2;
-    private javax.swing.JLabel lblToEnemyVillage;
-    private javax.swing.JLabel lblToPlayerVillage;
-    private javax.swing.JLabel lblToSpawn;
+    private javax.swing.JLabel lblToMap1;
+    private javax.swing.JLabel lblToMap3;
+    private javax.swing.JLabel lblToMap4;
     private javax.swing.JLabel wall1;
     private javax.swing.JLabel wall2;
     private javax.swing.JLabel wall3;

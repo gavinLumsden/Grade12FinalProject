@@ -2,7 +2,7 @@ package game;
 
 import collections.LinkedList;
 import game.gametools.Animation;
-import maps.Spawn;
+import maps.Map1;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -480,7 +480,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         if (selected.equals("")) {
             JOptionPane.showMessageDialog(null, "Please select a character!");
         } else {
-            Spawn spawn = new Spawn("", engine);
+            Map1 spawn = new Map1("", engine);
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnSelectMouseClicked

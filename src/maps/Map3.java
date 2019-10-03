@@ -5,6 +5,7 @@ import game.GameEngine;
 import game.Hero;
 import game.gametools.Mover;
 import javax.swing.JLabel;
+import objects.NextLevelBlock;
 
 /**
  * PlayerVillage.java - A "map" where the hero can move around
@@ -12,17 +13,21 @@ import javax.swing.JLabel;
  * @author g.lumsden
  * @since 14-May-2019
  */
-public class PlayerVillage extends javax.swing.JFrame {
+public class Map3 extends javax.swing.JFrame {
 
     // properties
     private GameEngine engine;
+
+    // form width and height for map 3
+    private final int MAP_3_FORM_WIDTH = 1300;
+    private final int MAP_3_FORM_HEIGHT = 900;
 
     /**
      * Creates the player village form
      *
      * @param engine
      */
-    public PlayerVillage(GameEngine engine) {
+    public Map3(GameEngine engine) {
         initComponents();
         
         LinkedList<JLabel> wallImages = new LinkedList<>();
@@ -44,12 +49,15 @@ public class PlayerVillage extends javax.swing.JFrame {
         houseImages.add(house10); 
         houseImages.add(house11); 
         
-//        engine = new GameEngine(wallImages, grassImages);
+        LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList(); 
+        NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2"); 
+        nextLevelBlocks.add(toMap2); 
+        
         this.engine = engine;
         engine.createWalls(wallImages); 
-        engine.createPlayerVillage(this, lblToMain);
+        engine.createMap(this, MAP_3_FORM_WIDTH, MAP_3_FORM_HEIGHT, "map 3"); 
         engine.createHouse(houseImages);
-        engine.createHero(lblHero);
+        engine.createHero(lblHero, nextLevelBlocks);
     }
 
     @SuppressWarnings("unchecked")
@@ -57,7 +65,7 @@ public class PlayerVillage extends javax.swing.JFrame {
     private void initComponents() {
 
         lblHero = new javax.swing.JLabel();
-        lblToMain = new javax.swing.JLabel();
+        lblToMap2 = new javax.swing.JLabel();
         wall1 = new javax.swing.JLabel();
         wall2 = new javax.swing.JLabel();
         wall3 = new javax.swing.JLabel();
@@ -92,8 +100,8 @@ public class PlayerVillage extends javax.swing.JFrame {
         lblHero.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblHero);
         lblHero.setBounds(80, 730, 100, 100);
-        getContentPane().add(lblToMain);
-        lblToMain.setBounds(30, 850, 200, 10);
+        getContentPane().add(lblToMap2);
+        lblToMap2.setBounds(30, 850, 200, 10);
 
         wall1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         wall1.setText("Wall");
@@ -210,7 +218,7 @@ public class PlayerVillage extends javax.swing.JFrame {
     private javax.swing.JLabel house9;
     private javax.swing.JLabel lblHealthTrainer;
     private javax.swing.JLabel lblHero;
-    private javax.swing.JLabel lblToMain;
+    private javax.swing.JLabel lblToMap2;
     private javax.swing.JLabel wall1;
     private javax.swing.JLabel wall2;
     private javax.swing.JLabel wall3;

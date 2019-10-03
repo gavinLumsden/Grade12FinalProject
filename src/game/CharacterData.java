@@ -1,4 +1,4 @@
-package playerClasses;
+package game;
 
 import game.gametools.FileHandler;
 import game.gametools.GameCharacter;

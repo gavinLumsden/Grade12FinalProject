@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-import playerClasses.CharacterData;
 
 /**
  * This is a JFrame that is used for the hero and the enemies to "battle"
@@ -800,7 +799,7 @@ public class BattleUI extends javax.swing.JFrame {
             if (chance != 5) {
                 stopTimers(); 
                 resetAbilities(); 
-                engine.clearBattle(this);
+//                engine.clearBattle(this);
                 engine.play();
                 int stats[] = {
                     playerDamage,
@@ -828,7 +827,7 @@ public class BattleUI extends javax.swing.JFrame {
     private void enemyWin() {
         stopTimers(); 
         resetAbilities(); 
-        engine.clearAll(this); 
+//        engine.clearAll(this); 
         JOptionPane.showMessageDialog(null, "Oh no, you died!");
         JOptionPane.showMessageDialog(null, "GAME OVER");
         Introduction introduction = new Introduction(); 
@@ -842,9 +841,7 @@ public class BattleUI extends javax.swing.JFrame {
         giveGold();
         stopTimers(); 
         resetAbilities(); 
-        engine.clearBattle(this);
-        engine.play();
-        engine.clearBattle(this);
+//        engine.clearBattle(this);
         engine.play();
         int random = random(1, 2);
         if (random == 1) {

@@ -37,30 +37,31 @@ public class Hero {
      * @param cyborgs
      * @param nails
      * @param rampages
-     * @param toMain
-     * @param toSpawn
-     * @param toEnemyVillage
-     * @param toPlayerVillage
+     * @param nextLevelBlocks
      * @param engine
+     * @param hasBeenCreated
+     * @param currentMap
+     * @param previousMap
      */
     public Hero(
             JLabel heroImage,
             LinkedList<Wall> walls, LinkedList<House> houses, 
             LinkedList<Cyborg> cyborgs, LinkedList<Nail> nails, LinkedList<Rampage> rampages, 
-            NextLevelBlock toMain, NextLevelBlock toSpawn, NextLevelBlock toEnemyVillage, NextLevelBlock toPlayerVillage,
-            GameEngine engine, boolean hasBeenCreated) {
+            LinkedList<NextLevelBlock> nextLevelBlocks, 
+            GameEngine engine, boolean hasBeenCreated,
+            String currentMap, String previousMap) {
         if (CharacterSelect.selected.equals("bandit")) {
-            heroClass = new Bandit(heroImage, walls, houses, cyborgs, nails, rampages, toMain, toSpawn, toEnemyVillage, toPlayerVillage, engine, hasBeenCreated);
+            heroClass = new Bandit(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap);
         }  else if (CharacterSelect.selected.equals("gambler")) {
-            heroClass = new Gambler(heroImage, walls, houses, cyborgs, nails, rampages, toMain, toSpawn, toEnemyVillage, toPlayerVillage, engine, hasBeenCreated);
+            heroClass = new Gambler(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap);
         } else if (CharacterSelect.selected.equals("hacker")) {
-            heroClass = new Hacker(heroImage, walls, houses, cyborgs, nails, rampages, toMain, toSpawn, toEnemyVillage, toPlayerVillage, engine, hasBeenCreated);
+            heroClass = new Hacker(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap);
         }  else if (CharacterSelect.selected.equals("juggernaut")) {
-            heroClass = new Juggernaut(heroImage, walls, houses, cyborgs, nails, rampages, toMain, toSpawn, toEnemyVillage, toPlayerVillage, engine, hasBeenCreated);
+            heroClass = new Juggernaut(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap);
         } else if (CharacterSelect.selected.equals("mage")) {
-            heroClass = new Mage(heroImage, walls, houses, cyborgs, nails, rampages, toMain, toSpawn, toEnemyVillage, toPlayerVillage, engine, hasBeenCreated);
+            heroClass = new Mage(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap);
         }   else if (CharacterSelect.selected.equals("vampire")) {
-            heroClass = new Vampire(heroImage, walls, houses, cyborgs, nails, rampages, toMain, toSpawn, toEnemyVillage, toPlayerVillage, engine, hasBeenCreated);
+            heroClass = new Vampire(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap);
         }
         heroClass.spawn();
         heroClass.sprite.animate(1);

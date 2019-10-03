@@ -13,13 +13,17 @@ import javax.swing.JLabel;
  */
 public class NextLevelBlock extends GameObject {
 
+    public String mapToGoTo; 
+    
     /**
      * Constructor for the class
      *
      * @param image
+     * @param mapToGoTo
      */
-    public NextLevelBlock(JLabel image) {
+    public NextLevelBlock(JLabel image, String mapToGoTo) {
         super(image, 0, Directions.STOP, 0);
+        this.mapToGoTo = mapToGoTo; 
         sprite.debug("", Color.WHITE);
         sprite.removeBorder();
     }
