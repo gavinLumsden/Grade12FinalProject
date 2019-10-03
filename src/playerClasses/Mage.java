@@ -13,6 +13,7 @@ import game.gametools.Directions;
 import game.gametools.GameCharacter;
 import game.GameEngine;
 import game.gametools.Animation;
+import javax.swing.JFrame;
 import maps.Map1;
 import maps.Map2;
 import maps.Map4;
@@ -41,8 +42,11 @@ public class Mage extends GameCharacter {
     public String attack3 = "mage attack 3"; 
     public String attack4 = "mage attack 4"; 
     
-    private String currentMap; 
-    private String previousMap; 
+    private JFrame currentMap; 
+    private JFrame previousMap; 
+        
+    private String currentMapName; 
+    private String previousMapName; 
     
     public int damage;      // how much damage you do (can be increased)
     public int dodgeChance; // your chance of dodging  (can be increased)
@@ -78,6 +82,8 @@ public class Mage extends GameCharacter {
      * @param engine
      * @param currentMap
      * @param previousMap
+     * @param currentMapName
+     * @param previousMapName
      */
     public Mage(
             JLabel heroImage,
@@ -85,11 +91,15 @@ public class Mage extends GameCharacter {
             LinkedList<Cyborg> cyborgs, LinkedList<Nail> nails, LinkedList<Rampage> rampages, 
             LinkedList<NextLevelBlock> nextLevelBlock, 
             GameEngine engine, boolean hasBeenCreated,
-            String currentMap, String previousMap) {
+            JFrame currentMap, JFrame previousMap, 
+            String currentMapName, String previousMapName) {
         super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
         this.currentMap  = currentMap; 
         this.previousMap = previousMap; 
+
+        this.currentMapName  = currentMapName; 
+        this.previousMapName = previousMapName; 
         
         this.engine = engine;
         this.walls = walls;
@@ -254,7 +264,7 @@ public class Mage extends GameCharacter {
             if (nextLevelBlocks.get(i) != null) {
                 if (detector.isOverLapping(nextLevelBlocks.get(i))){
                     if (nextLevelBlocks.get(i).mapToGoTo.equals("map 1")) {
-                        Map1 map1 = new Map1(currentMap, engine); 
+                        Map1 map1 = new Map1(currentMapName, engine); 
                     }
                 }
             }

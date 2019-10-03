@@ -799,7 +799,7 @@ public class BattleUI extends javax.swing.JFrame {
             if (chance != 5) {
                 stopTimers(); 
                 resetAbilities(); 
-//                engine.clearBattle(this);
+                engine.clearMap(this);
                 engine.play();
                 int stats[] = {
                     playerDamage,
@@ -841,7 +841,7 @@ public class BattleUI extends javax.swing.JFrame {
         giveGold();
         stopTimers(); 
         resetAbilities(); 
-//        engine.clearBattle(this);
+        engine.clearMap(this);
         engine.play();
         int random = random(1, 2);
         if (random == 1) {

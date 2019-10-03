@@ -27,7 +27,7 @@ public class GameEngine {
     private LinkedList<Cyborg>  cyborgs;
     private LinkedList<Nail>    nails;
     private LinkedList<Rampage> rampages; 
-
+    
     // hero
     public Hero hero;
 
@@ -43,11 +43,15 @@ public class GameEngine {
     private final int INTRO_FORM_WIDTH = 416;
     private final int INTRO_FORM_HEIGHT = 319;
 
-    // what map the player is on
-    public String currentMap;
-    public String previousMap;
+    // what map (name) the player is on
+    public String currentMapName;
+    public String previousMapName;
     
-    private boolean movable; 
+    // what map the player is on
+    private JFrame currentMap; 
+    private JFrame previousMap; 
+    
+    private boolean moveable; 
     private boolean hasBeenCreated;
 
     /**
@@ -75,7 +79,7 @@ public class GameEngine {
      * @param evt
      */
     public void keyPress(KeyEvent evt) {
-        if (movable == true) hero.keyPress(evt);
+        if (moveable == true) hero.keyPress(evt);
     }
 
     /**
@@ -84,7 +88,7 @@ public class GameEngine {
      * @param evt
      */
     public void keyRelease(KeyEvent evt) {
-        if (movable == true) hero.keyRelease(evt);
+        if (moveable == true) hero.keyRelease(evt);
     }
 
     /**
@@ -151,7 +155,8 @@ public class GameEngine {
                 cyborgs, nails, rampages, 
                 nextLevelBlocks, 
                 this, hasBeenCreated, 
-                currentMap, previousMap); 
+                currentMap, previousMap, 
+                currentMapName, previousMapName); 
         hasBeenCreated = true;
         hero.update();
     }
@@ -192,7 +197,7 @@ public class GameEngine {
      */
     public void pause() {
         //stop the animaitons and moving
-        movable = false; 
+        moveable = false; 
         hero.heroClass.sprite.stop();
         hero.heroClass.mover.stop();
     }
@@ -201,20 +206,41 @@ public class GameEngine {
      * Plays the game 
      */
     public void play() {
-        movable = true; 
+        moveable = true; 
     }
 
+    /**
+     * creates a map
+     * @param map
+     * @param formWidth
+     * @param formHeight
+     * @param mapName 
+     */
     public void createMap(JFrame map, int formWidth, int formHeight, String mapName) {
-        previousMap = currentMap; 
-        currentMap = mapName; 
         map.setSize(formWidth, formHeight);
         map.setResizable(false);
         map.setLocationRelativeTo(null);
         map.setVisible(true);
+        previousMapName = currentMapName; 
+        previousMap     = currentMap; 
+        currentMap      = map; 
+        currentMapName  = mapName; 
+        moveable = true; 
     }
     
+    /**
+     * clears a map
+     * @param map 
+     */
     public void clearMap(JFrame map) {
         map.dispose();
+    }
+    
+    /**
+     * clears the current map
+     */
+    public void clearCurrentMap() {
+        currentMap.dispose();
     }
     
 }

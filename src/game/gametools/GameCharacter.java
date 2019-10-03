@@ -102,9 +102,7 @@ public abstract class GameCharacter extends GameObject {
      * @param event the keyboard event registered
      */
     public void keyPress(KeyEvent event) {
-        if (isAlive) {
-            input.keypress(event);
-        }
+        input.keypress(event);
     }
 
     /**

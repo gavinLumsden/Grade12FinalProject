@@ -13,6 +13,7 @@ import game.gametools.GameCharacter;
 import game.GameEngine;
 import game.gametools.Animation;
 import game.BattleUI; 
+import javax.swing.JFrame;
 import maps.Map1;
 import maps.Map2;
 import maps.Map4;
@@ -47,8 +48,11 @@ public class Bandit extends GameCharacter {
     public String attack3 = "Cut"; 
     public String attack4 = "Evade"; 
     
-    private String currentMap; 
-    private String previousMap; 
+    private JFrame currentMap; 
+    private JFrame previousMap; 
+        
+    private String currentMapName; 
+    private String previousMapName; 
     
     public int damage;      // how much damage you do (can be increased)
     public int dodgeChance; // your chance of dodging  (can be increased)
@@ -84,6 +88,8 @@ public class Bandit extends GameCharacter {
      * @param engine
      * @param currentMap
      * @param previousMap
+     * @param currentMapName
+     * @param prevoiusMapName
      */
     public Bandit(
             JLabel heroImage,
@@ -91,11 +97,15 @@ public class Bandit extends GameCharacter {
             LinkedList<Cyborg> cyborgs, LinkedList<Nail> nails, LinkedList<Rampage> rampages, 
             LinkedList<NextLevelBlock> nextLevelBlock, 
             GameEngine engine, boolean hasBeenCreated,
-            String currentMap, String previousMap) {
+            JFrame currentMap, JFrame previousMap, 
+            String currentMapName, String previousMapName) {
         super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
         this.currentMap  = currentMap; 
         this.previousMap = previousMap; 
+
+        this.currentMapName  = currentMapName; 
+        this.previousMapName = previousMapName; 
         
         this.engine = engine;
         this.walls = walls;
@@ -255,7 +265,16 @@ public class Bandit extends GameCharacter {
             if (nextLevelBlocks.get(i) != null) {
                 if (detector.isOverLapping(nextLevelBlocks.get(i))){
                     if (nextLevelBlocks.get(i).mapToGoTo.equals("map 1")) {
-                        Map1 map1 = new Map1(currentMap, engine); 
+                        Map1 map1 = new Map1(currentMapName, engine); 
+                    }
+                    if (nextLevelBlocks.get(i).mapToGoTo.equals("map 2")) {
+                        Map1 map2 = new Map1(currentMapName, engine); 
+                    }
+                    if (nextLevelBlocks.get(i).mapToGoTo.equals("map 3")) {
+                        Map1 map3 = new Map1(currentMapName, engine); 
+                    }
+                    if (nextLevelBlocks.get(i).mapToGoTo.equals("map 4")) {
+                        Map1 map4 = new Map1(currentMapName, engine); 
                     }
                 }
             }
