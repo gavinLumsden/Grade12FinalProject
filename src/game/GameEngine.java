@@ -48,8 +48,8 @@ public class GameEngine {
     public String previousMapName;
     
     // what map the player is on
-    private JFrame currentMap; 
-    private JFrame previousMap; 
+    public JFrame currentMap; 
+    public JFrame previousMap; 
     
     private boolean moveable; 
     private boolean hasBeenCreated;
@@ -240,7 +240,18 @@ public class GameEngine {
      * clears the current map
      */
     public void clearCurrentMap() {
-        currentMap.dispose();
+        if (currentMap != null) {
+            currentMap.dispose();
+        }
+    }
+    
+    /**
+     * clears the previous map
+     */
+    public void clearPreviousMap() {
+        if (previousMap != null) {
+            previousMap.dispose();
+        }
     }
     
 }

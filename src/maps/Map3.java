@@ -25,9 +25,10 @@ public class Map3 extends javax.swing.JFrame {
     /**
      * Creates the player village form
      *
+     * @param mapName
      * @param engine
      */
-    public Map3(GameEngine engine) {
+    public Map3(String mapName, GameEngine engine) {
         initComponents();
         
         LinkedList<JLabel> wallImages = new LinkedList<>();

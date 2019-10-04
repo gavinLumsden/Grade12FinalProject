@@ -24,9 +24,10 @@ public class Map4 extends javax.swing.JFrame {
     /**
      * Creates an enemy village form
      *
+     * @param mapName
      * @param engine
      */
-    public Map4(GameEngine engine) {
+    public Map4(String mapName, GameEngine engine) {
         initComponents();
         
         LinkedList<JLabel> wallImages = new LinkedList<>();
@@ -80,7 +81,6 @@ public class Map4 extends javax.swing.JFrame {
         NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2"); 
         nextLevelBlocks.add(toMap2); 
         
-//        engine = new GameEngine(wallImages, grassImages); 
         this.engine = engine;
         engine.assign(wallImages, grassImages);
         engine.createMap(this, MAP_4_FORM_WIDTH, MAP_4_FORM_HEIGHT, "map 4");

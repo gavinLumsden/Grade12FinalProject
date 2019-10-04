@@ -15,10 +15,10 @@ import game.gametools.Animation;
 import game.BattleUI; 
 import javax.swing.JFrame;
 import maps.Map1;
-import maps.Map2;
-import maps.Map4;
-import maps.Map3;
 import javax.swing.JLabel;
+import maps.Map2;
+import maps.Map3;
+import maps.Map4;
 import objects.House;
 
 /**
@@ -89,6 +89,7 @@ public class Bandit extends GameCharacter {
      * @param currentMap
      * @param previousMap
      * @param currentMapName
+     * @param previousMapName
      * @param prevoiusMapName
      */
     public Bandit(
@@ -264,17 +265,17 @@ public class Bandit extends GameCharacter {
         for (int i = 0; i < nextLevelBlocks.size(); i++) {
             if (nextLevelBlocks.get(i) != null) {
                 if (detector.isOverLapping(nextLevelBlocks.get(i))){
-                    if (nextLevelBlocks.get(i).mapToGoTo.equals("map 1")) {
+                        engine.clearCurrentMap(); 
+                    if (nextLevelBlocks.get(i).mapToGoTo.equals("1")) {
                         Map1 map1 = new Map1(currentMapName, engine); 
-                    }
-                    if (nextLevelBlocks.get(i).mapToGoTo.equals("map 2")) {
-                        Map1 map2 = new Map1(currentMapName, engine); 
-                    }
-                    if (nextLevelBlocks.get(i).mapToGoTo.equals("map 3")) {
-                        Map1 map3 = new Map1(currentMapName, engine); 
-                    }
-                    if (nextLevelBlocks.get(i).mapToGoTo.equals("map 4")) {
-                        Map1 map4 = new Map1(currentMapName, engine); 
+                    } else if (nextLevelBlocks.get(i).mapToGoTo.equals("2")) {
+                        Map2 map2 = new Map2(currentMapName, engine); 
+                    } else if (nextLevelBlocks.get(i).mapToGoTo.equals("3")) {
+                        Map3 map3 = new Map3(currentMapName, engine); 
+                    } else if (nextLevelBlocks.get(i).mapToGoTo.equals("4")) {
+                        Map4 map4 = new Map4(currentMapName, engine); 
+                    } else {
+                        System.out.println("error creating map");
                     }
                 }
             }

@@ -30,10 +30,10 @@ public class Map1 extends javax.swing.JFrame {
     /**
      * Creates the spawn form
      *
-     * @param level
+     * @param mapName
      * @param engine
      */
-    public Map1(String map, GameEngine engine) {
+    public Map1(String mapName, GameEngine engine) {
         initComponents();
         
         LinkedList<JLabel> wallImages = new LinkedList<>();
@@ -90,7 +90,7 @@ public class Map1 extends javax.swing.JFrame {
         NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2"); 
         nextLevelBlocks.add(toMap2); 
         
-        if (map.equals("map 2")) {
+        if (mapName.equals("map 2")) {
             lblHero.setLocation(MAIN_SPAWN_LOCATION_X, MAIN_SPAWN_LOCATION_Y);
         } else {
             lblHero.setLocation(SPAWN_LOCATION_X, SPAWN_LOCATION_Y);

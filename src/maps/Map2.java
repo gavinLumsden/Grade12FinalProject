@@ -22,22 +22,22 @@ public class Map2 extends javax.swing.JFrame {
 
 
     // locations where the hero can "spawn" into
-    private final int SPAWN_LOCATION_X = 1180;
-    private final int SPAWN_LOCATION_Y = 730;
+    private final int MAP_1_X = 1180;
+    private final int MAP_1_Y = 730;
 
-    private final int PLAYER_VILLAGE_LOCATION_X = 1380;
-    private final int PLAYER_VILLAGE_LOCATION_Y = 30;
+    private final int MAP_3_X = 1380;
+    private final int MAP_3_Y = 30;
 
-    private final int ENEMY_VILLAGE_LOCATION_X = 280;
-    private final int ENEMY_VILLAGE_LOCATION_Y = 30;
+    private final int MAP_4_X = 280;
+    private final int MAP_4_Y = 30;
 
     /**
      * Creates the main form
      *
-     * @param level
+     * @param mapName
      * @param engine
      */
-    public Map2(String level, GameEngine engine) {
+    public Map2(String mapName, GameEngine engine) {
         initComponents();
        
         LinkedList<JLabel> wallImages = new LinkedList<>();
@@ -170,12 +170,12 @@ public class Map2 extends javax.swing.JFrame {
         nextLevelBlocks.add(toMap3); 
         nextLevelBlocks.add(toMap4); 
         
-        if (level.equals("spawn")) {
-            lblHero.setLocation(SPAWN_LOCATION_X, SPAWN_LOCATION_Y);
-        } else if (level.equals("player village")) {
-            lblHero.setLocation(PLAYER_VILLAGE_LOCATION_X, PLAYER_VILLAGE_LOCATION_Y);
-        } else if (level.equals("enemy village")) {
-            lblHero.setLocation(ENEMY_VILLAGE_LOCATION_X, ENEMY_VILLAGE_LOCATION_Y);
+        if (mapName.equals("map 1")) {
+            lblHero.setLocation(MAP_1_X, MAP_1_Y);
+        } else if (mapName.equals("map 3")) {
+            lblHero.setLocation(MAP_3_X, MAP_3_Y);
+        } else if (mapName.equals("map 4")) {
+            lblHero.setLocation(MAP_4_X, MAP_4_Y);
         }
         
         this.engine = engine;
