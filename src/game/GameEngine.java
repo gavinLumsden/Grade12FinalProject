@@ -12,11 +12,17 @@ import game.gametools.MediaPlayer;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import nuetral.shopkeeper.Shopkeeper;
+import nuetral.trainers.DamageTrainer;
+import nuetral.trainers.DodgeTrainer;
+import nuetral.trainers.HealthTrainer;
+import nuetral.trainers.SpeedTrainer;
+import nuetral.trainers.Trainer;
 import objects.House;
 
 /**
- * GameEngine.java - Represents an "engine" that controls many things to do with forms,
- * heros and enemies
+ * GameEngine.java - Represents an "engine" that controls many things to do with
+ * forms, heros and enemies
  *
  * @author g.lumsden
  * @since 12-Jun-2019
@@ -24,21 +30,27 @@ import objects.House;
 public class GameEngine {
 
     // enemies
-    private LinkedList<Cyborg>  cyborgs;
-    private LinkedList<Nail>    nails;
-    private LinkedList<Rampage> rampages; 
-    
+    private LinkedList<Cyborg> cyborgs;
+    private LinkedList<Nail> nails;
+    private LinkedList<Rampage> rampages;
+
+    // shopkeepers 
+    private LinkedList<Shopkeeper> shopkeepers;
+
+    // trainers 
+    private LinkedList<Trainer> trainers;
+
     // hero
     public Hero hero;
 
     // objects
-    private LinkedList<Wall>  walls;
+    private LinkedList<Wall> walls;
     private LinkedList<Grass> grass;
-    private LinkedList<House> houses; 
+    private LinkedList<House> houses;
 
     // used to play music
     public MediaPlayer mediaPlayer;
-    
+
     // form width and height for the introduction
     private final int INTRO_FORM_WIDTH = 416;
     private final int INTRO_FORM_HEIGHT = 319;
@@ -46,12 +58,12 @@ public class GameEngine {
     // what map (name) the player is on
     public String currentMapName;
     public String previousMapName;
-    
+
     // what map the player is on
-    public JFrame currentMap; 
-    public JFrame previousMap; 
-    
-    private boolean moveable; 
+    public JFrame currentMap;
+    public JFrame previousMap;
+
+    private boolean moveable;
     private boolean hasBeenCreated;
 
     /**
@@ -63,23 +75,14 @@ public class GameEngine {
     }
 
     /**
-     * assigns the walls and grass
-     *
-     * @param wallImages
-     * @param grassImages
-     */
-    public void assign(LinkedList<JLabel> wallImages, LinkedList<JLabel> grassImages) {
-        createWalls(wallImages);
-        createGrass(grassImages);
-    }
-
-    /**
      * when the player presses a key
      *
      * @param evt
      */
     public void keyPress(KeyEvent evt) {
-        if (moveable == true) hero.keyPress(evt);
+        if (moveable == true) {
+            hero.keyPress(evt);
+        }
     }
 
     /**
@@ -88,7 +91,122 @@ public class GameEngine {
      * @param evt
      */
     public void keyRelease(KeyEvent evt) {
-        if (moveable == true) hero.keyRelease(evt);
+        if (moveable == true) {
+            hero.keyRelease(evt);
+        }
+    }
+
+    /**
+     * creates a game object
+     *
+     * @param images
+     * @param objectToCreate
+     */
+    public void createGameObject(LinkedList<JLabel> images, String objectToCreate) {
+        if (objectToCreate.equals("grass")) {
+            grass = new LinkedList<>();
+            for (int i = 0; i < images.size(); i++) {
+                Grass newGrass = new Grass(images.get(i));
+                grass.add(newGrass);
+            }
+        }
+        if (objectToCreate.equals("walls")) {
+            walls = new LinkedList<>();
+            for (int i = 0; i < images.size(); i++) {
+                Wall newWall = new Wall(images.get(i));
+                walls.add(newWall);
+            }
+        }
+        if (objectToCreate.equals("houses")) {
+            houses = new LinkedList<>();
+            for (int i = 0; i < images.size(); i++) {
+                House newHouse = new House(images.get(i));
+                houses.add(newHouse);
+            }
+        }
+    }
+
+    /**
+     * creates game character 
+     * 
+     * @param images
+     * @param characterToCreate 
+     */
+    public void createGameCharacter(LinkedList<JLabel> images, String characterToCreate) {
+        if (characterToCreate.equals("shopkeepers")) {
+            shopkeepers = new LinkedList<>();
+            for (int i = 0; i < shopkeepers.size(); i++) {
+                Shopkeeper newShopkeeper = new Shopkeeper(images.get(i));
+                shopkeepers.add(newShopkeeper);
+            }
+        }
+        if (characterToCreate.equals("trainers")) {
+            trainers = new LinkedList<>();
+            DamageTrainer newDamageTrainer = new DamageTrainer(images.get(1));
+            DodgeTrainer newDodgeTrainer = new DodgeTrainer(images.get(2));
+            HealthTrainer newHealthTrainer = new HealthTrainer(images.get(3));
+            SpeedTrainer newSpeedTrainer = new SpeedTrainer(images.get(4));
+            trainers.add(newDamageTrainer);
+            trainers.add(newDodgeTrainer);
+            trainers.add(newHealthTrainer);
+            trainers.add(newSpeedTrainer);
+        }
+        if (characterToCreate.equals("cyborgs")) {
+            cyborgs = new LinkedList<>();
+            for (int i = 0; i < images.size(); i++) {
+                Cyborg newCyborg = new Cyborg(images.get(i), 25, Directions.STOP, 4, 100);
+                cyborgs.add(newCyborg);
+            }
+        }
+        if (characterToCreate.equals("nails")) {
+            nails = new LinkedList<>();
+            for (int i = 0; i < images.size(); i++) {
+                Nail newNail = new Nail(images.get(i), 25, Directions.STOP, 4, 100);
+                nails.add(newNail);
+            }
+        }
+        if (characterToCreate.equals("rampages")) {
+            rampages = new LinkedList<>();
+            for (int i = 0; i < images.size(); i++) {
+                Rampage newRampage = new Rampage(images.get(i), 25, Directions.STOP, 4, 100);
+                rampages.add(newRampage);
+            }
+        }
+    }
+
+    /**
+     * creates the hero on the form
+     *
+     * @param heroImage
+     * @param nextLevelBlocks
+     */
+    public void createHero(JLabel heroImage, LinkedList<NextLevelBlock> nextLevelBlocks) {
+        hero = new Hero(heroImage,
+                walls, houses,
+                cyborgs, nails, rampages,
+                nextLevelBlocks,
+                this, hasBeenCreated,
+                currentMap, previousMap,
+                currentMapName, previousMapName);
+        hasBeenCreated = true;
+        hero.update();
+    }
+
+    /**
+     * Pauses the game
+     */
+    public void pause() {
+        //stop the animaitons and moving
+        moveable = false;
+        hero.heroClass.sprite.stop();
+        hero.heroClass.mover.stop();
+    }
+
+    /**
+     * Plays the game
+     */
+    public void play() {
+        moveable = true;
     }
 
     /**
@@ -105,137 +223,34 @@ public class GameEngine {
     }
 
     /**
-     * creates the grass on the form
-     *
-     * @param grassImages
-     */
-    public void createGrass(LinkedList<JLabel> grassImages) {
-        grass = new LinkedList<>(); 
-        for (int i = 0; i < grassImages.size(); i++) {
-            Grass newGrass = new Grass(grassImages.get(i)); 
-            grass.add(newGrass); 
-        }
-    }
-
-    /**
-     * creates the walls on the form
-     *
-     * @param wallImages
-     */
-    public void createWalls(LinkedList<JLabel> wallImages) {
-        walls = new LinkedList<>(); 
-        for (int i = 0; i < wallImages.size(); i++) {
-            Wall newWall = new Wall(wallImages.get(i)); 
-            walls.add(newWall); 
-        }
-    }
-
-    /**
-     * creates the houses 
-     * 
-     * @param houseImages 
-     */
-    public void createHouse(LinkedList<JLabel> houseImages) {
-        houses = new LinkedList<>(); 
-        for (int i = 0; i < houseImages.size(); i++) {
-            House newHouse = new House(houseImages.get(i)); 
-            houses.add(newHouse); 
-        }
-    }
-
-    /**
-     * creates the hero on the form
-     *
-     * @param heroImage
-     * @param nextLevelBlocks
-     */
-    public void createHero(JLabel heroImage, LinkedList<NextLevelBlock> nextLevelBlocks) {
-        hero = new Hero(heroImage, 
-                walls, houses, 
-                cyborgs, nails, rampages, 
-                nextLevelBlocks, 
-                this, hasBeenCreated, 
-                currentMap, previousMap, 
-                currentMapName, previousMapName); 
-        hasBeenCreated = true;
-        hero.update();
-    }
-
-    /**
-     * creates the enemies on the form
-     *
-     * @param rampageImages
-     * @param nailImages
-     * @param cyborgImages
-     */
-    public void createEnemies(LinkedList<JLabel> rampageImages, LinkedList<JLabel> nailImages, LinkedList<JLabel> cyborgImages)     {
-        if (cyborgImages != null) {
-            cyborgs = new LinkedList<>(); 
-            for (int i = 0; i < cyborgImages.size(); i++) {
-                Cyborg newCyborg = new Cyborg(cyborgImages.get(i), 25, Directions.STOP, 4, 100); 
-                cyborgs.add(newCyborg); 
-            }
-        }
-        if (nailImages != null) {
-            nails = new LinkedList<>(); 
-            for (int i = 0; i < nailImages.size(); i++) {
-                Nail newNail = new Nail(nailImages.get(i), 25, Directions.STOP, 4, 100); 
-                nails.add(newNail); 
-            }
-        }
-        if (rampageImages != null) {
-            rampages = new LinkedList<>(); 
-            for (int i = 0; i < rampageImages.size(); i++) {
-                Rampage newRampage = new Rampage(rampageImages.get(i), 25, Directions.STOP, 4, 100); 
-                rampages.add(newRampage); 
-            }
-        }
-    }
-
-    /**
-     * Pauses the game 
-     */
-    public void pause() {
-        //stop the animaitons and moving
-        moveable = false; 
-        hero.heroClass.sprite.stop();
-        hero.heroClass.mover.stop();
-    }
-    
-    /**
-     * Plays the game 
-     */
-    public void play() {
-        moveable = true; 
-    }
-
-    /**
      * creates a map
+     *
      * @param map
      * @param formWidth
      * @param formHeight
-     * @param mapName 
+     * @param mapName
      */
     public void createMap(JFrame map, int formWidth, int formHeight, String mapName) {
         map.setSize(formWidth, formHeight);
         map.setResizable(false);
         map.setLocationRelativeTo(null);
         map.setVisible(true);
-        previousMapName = currentMapName; 
-        previousMap     = currentMap; 
-        currentMap      = map; 
-        currentMapName  = mapName; 
-        moveable = true; 
+        previousMapName = currentMapName;
+        previousMap = currentMap;
+        currentMap = map;
+        currentMapName = mapName;
+        moveable = true;
     }
-    
+
     /**
      * clears a map
-     * @param map 
+     *
+     * @param map
      */
     public void clearMap(JFrame map) {
         map.dispose();
     }
-    
+
     /**
      * clears the current map
      */
@@ -244,7 +259,7 @@ public class GameEngine {
             currentMap.dispose();
         }
     }
-    
+
     /**
      * clears the previous map
      */
@@ -253,5 +268,5 @@ public class GameEngine {
             previousMap.dispose();
         }
     }
-    
+
 }

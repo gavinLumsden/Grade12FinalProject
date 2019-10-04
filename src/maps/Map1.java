@@ -17,9 +17,9 @@ public class Map1 extends javax.swing.JFrame {
     private GameEngine engine;
 
     // form width and height for spawn
-    private final int MAP_1_FORM_WIDTH = 1066;
-    private final int MAP_1_FORM_HEIGHT = 589;
-    
+    private final int FORM_WIDTH = 1066;
+    private final int FORM_HEIGHT = 589;
+
     // locations where the hero can "spawn" into
     private final int SPAWN_LOCATION_X = 890;
     private final int SPAWN_LOCATION_Y = 240;
@@ -35,73 +35,74 @@ public class Map1 extends javax.swing.JFrame {
      */
     public Map1(String mapName, GameEngine engine) {
         initComponents();
-        
+
         LinkedList<JLabel> wallImages = new LinkedList<>();
-        wallImages.add(wall1); 
-        wallImages.add(wall2); 
-        wallImages.add(wall3); 
+        wallImages.add(wall1);
+        wallImages.add(wall2);
+        wallImages.add(wall3);
         wallImages.add(wall4);
         wallImages.add(wall5);
-        
+
         LinkedList<JLabel> grassImages = new LinkedList<>();
-        grassImages.add(grass1); 
-        grassImages.add(grass2); 
-        grassImages.add(grass3); 
+        grassImages.add(grass1);
+        grassImages.add(grass2);
+        grassImages.add(grass3);
         grassImages.add(grass4);
         grassImages.add(grass5);
-        grassImages.add(grass6); 
-        grassImages.add(grass7); 
-        grassImages.add(grass8); 
+        grassImages.add(grass6);
+        grassImages.add(grass7);
+        grassImages.add(grass8);
         grassImages.add(grass9);
         grassImages.add(grass10);
-        grassImages.add(grass11); 
-        grassImages.add(grass12); 
-        grassImages.add(grass13); 
+        grassImages.add(grass11);
+        grassImages.add(grass12);
+        grassImages.add(grass13);
         grassImages.add(grass14);
         grassImages.add(grass15);
-        grassImages.add(grass16); 
-        grassImages.add(grass17); 
-        grassImages.add(grass18); 
+        grassImages.add(grass16);
+        grassImages.add(grass17);
+        grassImages.add(grass18);
         grassImages.add(grass19);
         grassImages.add(grass20);
-        grassImages.add(grass21); 
-        grassImages.add(grass22); 
-        grassImages.add(grass23); 
+        grassImages.add(grass21);
+        grassImages.add(grass22);
+        grassImages.add(grass23);
         grassImages.add(grass24);
         grassImages.add(grass25);
-        grassImages.add(grass26); 
-        grassImages.add(grass27); 
-        grassImages.add(grass28); 
+        grassImages.add(grass26);
+        grassImages.add(grass27);
+        grassImages.add(grass28);
         grassImages.add(grass29);
         grassImages.add(grass30);
-        grassImages.add(grass31); 
-        grassImages.add(grass32); 
-        grassImages.add(grass33); 
+        grassImages.add(grass31);
+        grassImages.add(grass32);
+        grassImages.add(grass33);
         grassImages.add(grass34);
         grassImages.add(grass35);
-        
+
         LinkedList<JLabel> cyborgImages = new LinkedList<>();
-        cyborgImages.add(lblCyborg1); 
-        
+        cyborgImages.add(lblCyborg1);
+
         LinkedList<JLabel> houseImages = new LinkedList<>();
-        houseImages.add(house1); 
-        
-        LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList(); 
-        NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2"); 
-        nextLevelBlocks.add(toMap2); 
-        
+        houseImages.add(house1);
+
+        LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList();
+        NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2");
+        nextLevelBlocks.add(toMap2);
+
         if (mapName.equals("map 2")) {
             lblHero.setLocation(MAIN_SPAWN_LOCATION_X, MAIN_SPAWN_LOCATION_Y);
         } else {
             lblHero.setLocation(SPAWN_LOCATION_X, SPAWN_LOCATION_Y);
         }
-        
+
         this.engine = engine;
-        engine.assign(wallImages, grassImages);
-        engine.createMap(this, MAP_1_FORM_WIDTH, MAP_1_FORM_HEIGHT, "map 1");
-        engine.createHouse(houseImages);
-        engine.createEnemies(cyborgImages, null, null);
+        engine.createGameObject(grassImages, "grass");
+        engine.createGameObject(wallImages, "walls");
+        engine.createGameObject(houseImages, "houses");
+        engine.createGameCharacter(cyborgImages, "cyborgs");
         engine.createHero(lblHero, nextLevelBlocks);
+        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 1");
     }
 
     @SuppressWarnings("unchecked")

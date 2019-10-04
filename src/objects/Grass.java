@@ -19,7 +19,7 @@ public class Grass extends GameObject {
      */
     public Grass(JLabel image) {
         super(image, 0, Directions.STOP, 0);
-        sprite.setImage("/animations/grass.png");
+        sprite.setImage("/animations/objects/grass.png");
         sprite.debug("");
         sprite.setBackground(0, 145, 0);
         sprite.removeBorder();

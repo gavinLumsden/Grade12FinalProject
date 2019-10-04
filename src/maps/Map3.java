@@ -2,8 +2,6 @@ package maps;
 
 import collections.LinkedList;
 import game.GameEngine;
-import game.Hero;
-import game.gametools.Mover;
 import javax.swing.JLabel;
 import objects.NextLevelBlock;
 
@@ -19,8 +17,8 @@ public class Map3 extends javax.swing.JFrame {
     private GameEngine engine;
 
     // form width and height for map 3
-    private final int MAP_3_FORM_WIDTH = 1300;
-    private final int MAP_3_FORM_HEIGHT = 900;
+    private final int FORM_WIDTH = 1300;
+    private final int FORM_HEIGHT = 900;
 
     /**
      * Creates the player village form
@@ -30,35 +28,46 @@ public class Map3 extends javax.swing.JFrame {
      */
     public Map3(String mapName, GameEngine engine) {
         initComponents();
-        
+
         LinkedList<JLabel> wallImages = new LinkedList<>();
-        wallImages.add(wall1); 
-        wallImages.add(wall2); 
-        wallImages.add(wall3); 
+        wallImages.add(wall1);
+        wallImages.add(wall2);
+        wallImages.add(wall3);
         wallImages.add(wall4);
-        
+
         LinkedList<JLabel> houseImages = new LinkedList<>();
-        houseImages.add(house1); 
-        houseImages.add(house2); 
-        houseImages.add(house3); 
-        houseImages.add(house4); 
-        houseImages.add(house5); 
-        houseImages.add(house6); 
-        houseImages.add(house7); 
-        houseImages.add(house8); 
-        houseImages.add(house9); 
-        houseImages.add(house10); 
-        houseImages.add(house11); 
-        
-        LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList(); 
-        NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2"); 
-        nextLevelBlocks.add(toMap2); 
-        
+        houseImages.add(house1);
+        houseImages.add(house2);
+        houseImages.add(house3);
+        houseImages.add(house4);
+        houseImages.add(house5);
+        houseImages.add(house6);
+        houseImages.add(house7);
+        houseImages.add(house8);
+        houseImages.add(house9);
+        houseImages.add(house10);
+        houseImages.add(house11);
+
+        LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList();
+        NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2");
+        nextLevelBlocks.add(toMap2);
+
+        LinkedList<JLabel> shopkeeperImages = new LinkedList();
+        shopkeeperImages.add(lblShopkeeper1);
+        shopkeeperImages.add(lblShopkeeper2);
+
+        LinkedList<JLabel> trainerImages = new LinkedList();
+        trainerImages.add(lblDamageTrainer);
+        trainerImages.add(lblDodgeTrainer);
+        trainerImages.add(lblHealthTrainer);
+        trainerImages.add(lblSpeedTrainer);
+
         this.engine = engine;
-        engine.createWalls(wallImages); 
-        engine.createMap(this, MAP_3_FORM_WIDTH, MAP_3_FORM_HEIGHT, "map 3"); 
-        engine.createHouse(houseImages);
+        engine.createGameObject(wallImages, "walls");
+        engine.createGameCharacter(shopkeeperImages, "shopkeepers");
+        engine.createGameCharacter(trainerImages, "trainers");
         engine.createHero(lblHero, nextLevelBlocks);
+        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 3");
     }
 
     @SuppressWarnings("unchecked")
@@ -82,7 +91,12 @@ public class Map3 extends javax.swing.JFrame {
         house9 = new javax.swing.JLabel();
         house10 = new javax.swing.JLabel();
         house11 = new javax.swing.JLabel();
+        lblShopkeeper1 = new javax.swing.JLabel();
+        lblShopkeeper2 = new javax.swing.JLabel();
+        lblDamageTrainer = new javax.swing.JLabel();
+        lblDodgeTrainer = new javax.swing.JLabel();
         lblHealthTrainer = new javax.swing.JLabel();
+        lblSpeedTrainer = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -172,11 +186,41 @@ public class Map3 extends javax.swing.JFrame {
         getContentPane().add(house11);
         house11.setBounds(430, 630, 200, 200);
 
+        lblShopkeeper1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblShopkeeper1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
+        lblShopkeeper1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(lblShopkeeper1);
+        lblShopkeeper1.setBounds(1090, 230, 100, 100);
+
+        lblShopkeeper2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblShopkeeper2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
+        lblShopkeeper2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(lblShopkeeper2);
+        lblShopkeeper2.setBounds(890, 230, 100, 100);
+
+        lblDamageTrainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDamageTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
+        lblDamageTrainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(lblDamageTrainer);
+        lblDamageTrainer.setBounds(80, 230, 100, 100);
+
+        lblDodgeTrainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDodgeTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
+        lblDodgeTrainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(lblDodgeTrainer);
+        lblDodgeTrainer.setBounds(290, 230, 100, 100);
+
         lblHealthTrainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHealthTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
         lblHealthTrainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblHealthTrainer);
-        lblHealthTrainer.setBounds(80, 230, 100, 100);
+        lblHealthTrainer.setBounds(490, 230, 100, 100);
+
+        lblSpeedTrainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSpeedTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
+        lblSpeedTrainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(lblSpeedTrainer);
+        lblSpeedTrainer.setBounds(690, 230, 100, 100);
 
         background.setBackground(new java.awt.Color(102, 51, 0));
         background.setOpaque(true);
@@ -217,8 +261,13 @@ public class Map3 extends javax.swing.JFrame {
     private javax.swing.JLabel house7;
     private javax.swing.JLabel house8;
     private javax.swing.JLabel house9;
+    private javax.swing.JLabel lblDamageTrainer;
+    private javax.swing.JLabel lblDodgeTrainer;
     private javax.swing.JLabel lblHealthTrainer;
     private javax.swing.JLabel lblHero;
+    private javax.swing.JLabel lblShopkeeper1;
+    private javax.swing.JLabel lblShopkeeper2;
+    private javax.swing.JLabel lblSpeedTrainer;
     private javax.swing.JLabel lblToMap2;
     private javax.swing.JLabel wall1;
     private javax.swing.JLabel wall2;

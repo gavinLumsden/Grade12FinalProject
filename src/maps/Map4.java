@@ -18,8 +18,8 @@ public class Map4 extends javax.swing.JFrame {
     private GameEngine engine;
 
     // form width and height for enemy village 
-    private final int MAP_4_FORM_WIDTH = 1065;
-    private final int MAP_4_FORM_HEIGHT = 589;
+    private final int FORM_WIDTH = 1065;
+    private final int FORM_HEIGHT = 589;
 
     /**
      * Creates an enemy village form
@@ -29,63 +29,65 @@ public class Map4 extends javax.swing.JFrame {
      */
     public Map4(String mapName, GameEngine engine) {
         initComponents();
-        
+
         LinkedList<JLabel> wallImages = new LinkedList<>();
-        wallImages.add(wall1); 
-        wallImages.add(wall2); 
-        wallImages.add(wall3); 
+        wallImages.add(wall1);
+        wallImages.add(wall2);
+        wallImages.add(wall3);
         wallImages.add(wall4);
         wallImages.add(wall5);
-        
+
         LinkedList<JLabel> grassImages = new LinkedList<>();
-        grassImages.add(grass1); 
-        grassImages.add(grass2); 
-        grassImages.add(grass3); 
+        grassImages.add(grass1);
+        grassImages.add(grass2);
+        grassImages.add(grass3);
         grassImages.add(grass4);
         grassImages.add(grass5);
-        grassImages.add(grass6); 
-        grassImages.add(grass7); 
-        grassImages.add(grass8); 
+        grassImages.add(grass6);
+        grassImages.add(grass7);
+        grassImages.add(grass8);
         grassImages.add(grass9);
         grassImages.add(grass10);
-        grassImages.add(grass11); 
-        grassImages.add(grass12); 
-        grassImages.add(grass13); 
+        grassImages.add(grass11);
+        grassImages.add(grass12);
+        grassImages.add(grass13);
         grassImages.add(grass14);
         grassImages.add(grass15);
-        grassImages.add(grass16); 
-        grassImages.add(grass17); 
-        grassImages.add(grass18); 
+        grassImages.add(grass16);
+        grassImages.add(grass17);
+        grassImages.add(grass18);
         grassImages.add(grass19);
         grassImages.add(grass20);
-        grassImages.add(grass21); 
-        grassImages.add(grass22); 
-        grassImages.add(grass23); 
+        grassImages.add(grass21);
+        grassImages.add(grass22);
+        grassImages.add(grass23);
         grassImages.add(grass24);
         grassImages.add(grass25);
-        grassImages.add(grass26); 
-        
+        grassImages.add(grass26);
+
         LinkedList<JLabel> rampageImages = new LinkedList<>();
-        rampageImages.add(lblRampage1); 
-        
-        
+        rampageImages.add(lblRampage1);
+
         LinkedList<JLabel> nailImages = new LinkedList<>();
-        nailImages.add(lblNail1); 
-        nailImages.add(lblNail2); 
-        
+        nailImages.add(lblNail1);
+        nailImages.add(lblNail2);
+
         LinkedList<JLabel> cyborgImages = new LinkedList<>();
-        cyborgImages.add(lblCyborg1); 
-        cyborgImages.add(lblCyborg2); 
-        
-        LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList(); 
-        NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2"); 
-        nextLevelBlocks.add(toMap2); 
-        
+        cyborgImages.add(lblCyborg1);
+        cyborgImages.add(lblCyborg2);
+
+        LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList();
+        NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2");
+        nextLevelBlocks.add(toMap2);
+
         this.engine = engine;
-        engine.assign(wallImages, grassImages);
-        engine.createMap(this, MAP_4_FORM_WIDTH, MAP_4_FORM_HEIGHT, "map 4");
-        engine.createEnemies(rampageImages, nailImages, cyborgImages);
+        engine.createGameObject(grassImages, "grass");
+        engine.createGameObject(wallImages, "walls");
+        engine.createGameCharacter(cyborgImages, "cyborgs");
+        engine.createGameCharacter(nailImages, "nails");
+        engine.createGameCharacter(rampageImages, "rampages");
         engine.createHero(lblHero, nextLevelBlocks);
+        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 4");
     }
 
     @SuppressWarnings("unchecked")
