@@ -18,8 +18,8 @@ public class BattleUI extends javax.swing.JFrame {
     private boolean onItem = false;
     private boolean onAttack = false;
 
-    private final int FORM_WIDTH = 1020; // width of the form
-    private final int FORM_HEIGHT = 540; // height of the form
+    private final int FORM_WIDTH = 1400; // width of the form
+    private final int FORM_HEIGHT = 850; // height of the form
 
     private GameCharacter heroClass; // the hero
     private Enemy enemy;             // the enemy to fight
@@ -118,21 +118,25 @@ public class BattleUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnRun = new javax.swing.JButton();
-        enemyHealthBar = new javax.swing.JProgressBar();
-        bossOnlyUltimate = new javax.swing.JProgressBar();
-        playerUltimate = new javax.swing.JProgressBar();
         playerHealthBar = new javax.swing.JProgressBar();
+        enemyHealthBar = new javax.swing.JProgressBar();
+        enemyUltimateBar = new javax.swing.JProgressBar();
+        playerUltimateBar = new javax.swing.JProgressBar();
+        playerSpeed = new javax.swing.JProgressBar();
+        lblPlayerDodgeChance = new javax.swing.JLabel();
+        lblPlayerDamage = new javax.swing.JLabel();
+        btnRun = new javax.swing.JLabel();
+        btnSwitch = new javax.swing.JLabel();
+        btnUltimate = new javax.swing.JLabel();
+        btnAttackOrItem1 = new javax.swing.JLabel();
         btnAttackOrItem2 = new javax.swing.JLabel();
         btnAttackOrItem4 = new javax.swing.JLabel();
-        btnAttackOrItem1 = new javax.swing.JLabel();
         btnAttackOrItem3 = new javax.swing.JLabel();
-        btnSwitchBetweenItemsAndAttacks = new javax.swing.JLabel();
-        notPokemonPicture1 = new javax.swing.JLabel();
-        notPokemonPicture2 = new javax.swing.JLabel();
-        lblPlayerNameAndStats = new javax.swing.JLabel();
-        lblEnemyNameAndStats = new javax.swing.JLabel();
-        background = new javax.swing.JLabel();
+        lblEnemyUltimate = new javax.swing.JLabel();
+        lblPlayerUltimate = new javax.swing.JLabel();
+        lblEnemyHealth = new javax.swing.JLabel();
+        lblPlayerHealth = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -142,233 +146,239 @@ public class BattleUI extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        btnRun.setText("Run");
-        btnRun.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRunMouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnRun);
-        btnRun.setBounds(903, 10, 90, 23);
+        playerHealthBar.setForeground(new java.awt.Color(0, 255, 51));
+        playerHealthBar.setValue(100);
+        playerHealthBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        playerHealthBar.setOpaque(true);
+        getContentPane().add(playerHealthBar);
+        playerHealthBar.setBounds(930, 460, 376, 45);
 
         enemyHealthBar.setForeground(new java.awt.Color(0, 255, 51));
         enemyHealthBar.setValue(100);
         enemyHealthBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         enemyHealthBar.setOpaque(true);
         getContentPane().add(enemyHealthBar);
-        enemyHealthBar.setBounds(10, 10, 240, 18);
+        enemyHealthBar.setBounds(60, 110, 365, 45);
 
-        bossOnlyUltimate.setForeground(new java.awt.Color(0, 255, 51));
-        bossOnlyUltimate.setValue(100);
-        bossOnlyUltimate.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        bossOnlyUltimate.setOpaque(true);
-        getContentPane().add(bossOnlyUltimate);
-        bossOnlyUltimate.setBounds(10, 30, 120, 18);
+        enemyUltimateBar.setForeground(new java.awt.Color(0, 255, 51));
+        enemyUltimateBar.setValue(100);
+        enemyUltimateBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        enemyUltimateBar.setOpaque(true);
+        getContentPane().add(enemyUltimateBar);
+        enemyUltimateBar.setBounds(60, 165, 212, 30);
 
-        playerUltimate.setForeground(new java.awt.Color(0, 255, 51));
-        playerUltimate.setValue(100);
-        playerUltimate.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        playerUltimate.setOpaque(true);
-        getContentPane().add(playerUltimate);
-        playerUltimate.setBounds(870, 330, 120, 18);
+        playerUltimateBar.setForeground(new java.awt.Color(0, 255, 51));
+        playerUltimateBar.setValue(100);
+        playerUltimateBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        playerUltimateBar.setOpaque(true);
+        getContentPane().add(playerUltimateBar);
+        playerUltimateBar.setBounds(1095, 420, 212, 30);
 
-        playerHealthBar.setForeground(new java.awt.Color(0, 255, 51));
-        playerHealthBar.setValue(100);
-        playerHealthBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        playerHealthBar.setOpaque(true);
-        getContentPane().add(playerHealthBar);
-        playerHealthBar.setBounds(750, 310, 240, 18);
+        playerSpeed.setForeground(new java.awt.Color(0, 255, 51));
+        playerSpeed.setValue(100);
+        playerSpeed.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        playerSpeed.setOpaque(true);
+        getContentPane().add(playerSpeed);
+        playerSpeed.setBounds(205, 752, 230, 30);
 
-        btnAttackOrItem2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnAttackOrItem2.setText("Attack 2");
-        btnAttackOrItem2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnAttackOrItem2.setOpaque(true);
-        btnAttackOrItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblPlayerDodgeChance.setBackground(new java.awt.Color(255, 255, 255));
+        lblPlayerDodgeChance.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblPlayerDodgeChance.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPlayerDodgeChance.setText("5%");
+        lblPlayerDodgeChance.setOpaque(true);
+        getContentPane().add(lblPlayerDodgeChance);
+        lblPlayerDodgeChance.setBounds(224, 583, 145, 45);
+
+        lblPlayerDamage.setBackground(new java.awt.Color(255, 255, 255));
+        lblPlayerDamage.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblPlayerDamage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPlayerDamage.setText("2");
+        lblPlayerDamage.setOpaque(true);
+        getContentPane().add(lblPlayerDamage);
+        lblPlayerDamage.setBounds(243, 669, 95, 45);
+
+        btnRun.setBackground(new java.awt.Color(255, 255, 255));
+        btnRun.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnRun.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnRun.setText("Run");
+        btnRun.setOpaque(true);
+        btnRun.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAttackOrItem2MouseClicked(evt);
+                btnRunMouseClicked(evt);
             }
         });
-        getContentPane().add(btnAttackOrItem2);
-        btnAttackOrItem2.setBounds(760, 370, 230, 60);
-
-        btnAttackOrItem4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnAttackOrItem4.setText("Attack 4");
-        btnAttackOrItem4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnAttackOrItem4.setOpaque(true);
-        btnAttackOrItem4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAttackOrItem4MouseClicked(evt);
+        btnRun.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnRunKeyPressed(evt);
             }
         });
-        getContentPane().add(btnAttackOrItem4);
-        btnAttackOrItem4.setBounds(760, 440, 230, 60);
+        getContentPane().add(btnRun);
+        btnRun.setBounds(1172, 100, 125, 15);
 
+        btnSwitch.setBackground(new java.awt.Color(255, 255, 255));
+        btnSwitch.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        btnSwitch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSwitch.setText("Switch");
+        btnSwitch.setOpaque(true);
+        btnSwitch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSwitchMouseClicked(evt);
+            }
+        });
+        btnSwitch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnSwitchKeyPressed(evt);
+            }
+        });
+        getContentPane().add(btnSwitch);
+        btnSwitch.setBounds(476, 610, 250, 56);
+
+        btnUltimate.setBackground(new java.awt.Color(255, 255, 255));
+        btnUltimate.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        btnUltimate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnUltimate.setText("Ultimate");
+        btnUltimate.setOpaque(true);
+        btnUltimate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUltimateMouseClicked(evt);
+            }
+        });
+        btnUltimate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnUltimateKeyPressed(evt);
+            }
+        });
+        getContentPane().add(btnUltimate);
+        btnUltimate.setBounds(476, 706, 250, 56);
+
+        btnAttackOrItem1.setBackground(new java.awt.Color(255, 255, 255));
+        btnAttackOrItem1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnAttackOrItem1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAttackOrItem1.setText("Attack 1");
-        btnAttackOrItem1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnAttackOrItem1.setOpaque(true);
         btnAttackOrItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAttackOrItem1MouseClicked(evt);
             }
         });
+        btnAttackOrItem1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnAttackOrItem1KeyPressed(evt);
+            }
+        });
         getContentPane().add(btnAttackOrItem1);
-        btnAttackOrItem1.setBounds(510, 370, 230, 60);
+        btnAttackOrItem1.setBounds(766, 610, 250, 56);
 
+        btnAttackOrItem2.setBackground(new java.awt.Color(255, 255, 255));
+        btnAttackOrItem2.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        btnAttackOrItem2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAttackOrItem2.setText("Attack 2");
+        btnAttackOrItem2.setOpaque(true);
+        btnAttackOrItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAttackOrItem2MouseClicked(evt);
+            }
+        });
+        btnAttackOrItem2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnAttackOrItem2KeyPressed(evt);
+            }
+        });
+        getContentPane().add(btnAttackOrItem2);
+        btnAttackOrItem2.setBounds(1057, 610, 250, 56);
+
+        btnAttackOrItem4.setBackground(new java.awt.Color(255, 255, 255));
+        btnAttackOrItem4.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        btnAttackOrItem4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAttackOrItem4.setText("Attack 4");
+        btnAttackOrItem4.setOpaque(true);
+        btnAttackOrItem4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAttackOrItem4MouseClicked(evt);
+            }
+        });
+        btnAttackOrItem4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnAttackOrItem4KeyPressed(evt);
+            }
+        });
+        getContentPane().add(btnAttackOrItem4);
+        btnAttackOrItem4.setBounds(1057, 706, 250, 56);
+
+        btnAttackOrItem3.setBackground(new java.awt.Color(255, 255, 255));
+        btnAttackOrItem3.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnAttackOrItem3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAttackOrItem3.setText("Attack 3");
-        btnAttackOrItem3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnAttackOrItem3.setOpaque(true);
         btnAttackOrItem3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAttackOrItem3MouseClicked(evt);
             }
         });
-        getContentPane().add(btnAttackOrItem3);
-        btnAttackOrItem3.setBounds(510, 440, 230, 60);
-
-        btnSwitchBetweenItemsAndAttacks.setBackground(new java.awt.Color(255, 255, 153));
-        btnSwitchBetweenItemsAndAttacks.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSwitchBetweenItemsAndAttacks.setText("Items");
-        btnSwitchBetweenItemsAndAttacks.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnSwitchBetweenItemsAndAttacks.setOpaque(true);
-        btnSwitchBetweenItemsAndAttacks.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSwitchBetweenItemsAndAttacksMouseClicked(evt);
-            }
-        });
-        btnSwitchBetweenItemsAndAttacks.addKeyListener(new java.awt.event.KeyAdapter() {
+        btnAttackOrItem3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnSwitchBetweenItemsAndAttacksKeyPressed(evt);
+                btnAttackOrItem3KeyPressed(evt);
             }
         });
-        getContentPane().add(btnSwitchBetweenItemsAndAttacks);
-        btnSwitchBetweenItemsAndAttacks.setBounds(130, 400, 230, 60);
+        getContentPane().add(btnAttackOrItem3);
+        btnAttackOrItem3.setBounds(766, 706, 250, 56);
 
-        notPokemonPicture1.setBackground(new java.awt.Color(255, 204, 204));
-        notPokemonPicture1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        notPokemonPicture1.setText("totally not pokemon");
-        notPokemonPicture1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        notPokemonPicture1.setOpaque(true);
-        getContentPane().add(notPokemonPicture1);
-        notPokemonPicture1.setBounds(500, 0, 500, 210);
+        lblEnemyUltimate.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        lblEnemyUltimate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEnemyUltimate.setText("100");
+        lblEnemyUltimate.setToolTipText("");
+        getContentPane().add(lblEnemyUltimate);
+        lblEnemyUltimate.setBounds(282, 166, 56, 27);
 
-        notPokemonPicture2.setBackground(new java.awt.Color(255, 204, 204));
-        notPokemonPicture2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        notPokemonPicture2.setText("totally not pokemon");
-        notPokemonPicture2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        notPokemonPicture2.setOpaque(true);
-        getContentPane().add(notPokemonPicture2);
-        notPokemonPicture2.setBounds(0, 150, 500, 210);
+        lblPlayerUltimate.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        lblPlayerUltimate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPlayerUltimate.setText("100");
+        lblPlayerUltimate.setToolTipText("");
+        getContentPane().add(lblPlayerUltimate);
+        lblPlayerUltimate.setBounds(1028, 420, 55, 30);
 
-        lblPlayerNameAndStats.setBackground(new java.awt.Color(204, 255, 204));
-        lblPlayerNameAndStats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPlayerNameAndStats.setText("pidgey level 11");
-        lblPlayerNameAndStats.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        lblPlayerNameAndStats.setOpaque(true);
-        getContentPane().add(lblPlayerNameAndStats);
-        lblPlayerNameAndStats.setBounds(500, 210, 240, 150);
+        lblEnemyHealth.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblEnemyHealth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEnemyHealth.setText("100");
+        getContentPane().add(lblEnemyHealth);
+        lblEnemyHealth.setBounds(437, 109, 75, 45);
 
-        lblEnemyNameAndStats.setBackground(new java.awt.Color(204, 255, 204));
-        lblEnemyNameAndStats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEnemyNameAndStats.setText("pidgey level 11");
-        lblEnemyNameAndStats.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        lblEnemyNameAndStats.setOpaque(true);
-        getContentPane().add(lblEnemyNameAndStats);
-        lblEnemyNameAndStats.setBounds(260, 0, 240, 150);
+        lblPlayerHealth.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblPlayerHealth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPlayerHealth.setText("100");
+        getContentPane().add(lblPlayerHealth);
+        lblPlayerHealth.setBounds(844, 460, 75, 45);
 
-        background.setBackground(new java.awt.Color(204, 255, 255));
-        background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        background.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        background.setOpaque(true);
-        getContentPane().add(background);
-        background.setBounds(0, 0, 1000, 510);
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/battling/battleingBackground.png"))); // NOI18N
+        lblBackground.setToolTipText("");
+        getContentPane().add(lblBackground);
+        lblBackground.setBounds(0, 50, 1370, 770);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSwitchBetweenItemsAndAttacksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSwitchBetweenItemsAndAttacksKeyPressed
-
-    }//GEN-LAST:event_btnSwitchBetweenItemsAndAttacksKeyPressed
+    private void btnAttackOrItem1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAttackOrItem1KeyPressed
+        
+    }//GEN-LAST:event_btnAttackOrItem1KeyPressed
 
     /**
      * used to switch between the players attacks and items
      * 
      * @param evt 
      */
-    private void btnSwitchBetweenItemsAndAttacksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSwitchBetweenItemsAndAttacksMouseClicked
-        switchAttackOrItem();
-    }//GEN-LAST:event_btnSwitchBetweenItemsAndAttacksMouseClicked
-
-    /**
-     * uses the players first item or attack
-     * 
-     * @param evt 
-     */
     private void btnAttackOrItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem1MouseClicked
-        if (onItem == true)
-            useItem(1);
-        else if (onAttack == true) {
-            if (attack1Usable == true) {
-                useAttack(1);
+        if (attack1Usable == true) {
+            if (onAttack == true) {
+                useAttack(1); 
+            }
+        } else {
+            if (onItem == true) {
+                useItem(1); 
             }
         }
     }//GEN-LAST:event_btnAttackOrItem1MouseClicked
 
-    /**
-     * uses the players second item or attack
-     * 
-     * @param evt 
-     */
-    private void btnAttackOrItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem2MouseClicked
-        if (onItem == true)
-            useItem(2);
-        else if (onAttack == true) {
-            if (attack2Usable == true) {
-                useAttack(2);
-            }
-        }
-    }//GEN-LAST:event_btnAttackOrItem2MouseClicked
-
-    /**
-     * uses the players third item or attack
-     * 
-     * @param evt 
-     */
-    private void btnAttackOrItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem3MouseClicked
-        if (onItem == true)
-            useItem(3);
-        else if (onAttack == true) {
-            if (attack3Usable == true) {
-                useAttack(3);
-            }
-        }
-    }//GEN-LAST:event_btnAttackOrItem3MouseClicked
-
-    /**
-     * uses the players fourth item or attack
-     * 
-     * @param evt 
-     */
-    private void btnAttackOrItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem4MouseClicked
-        if (onItem == true)
-            useItem(4);
-        else if (onAttack == true) {
-            if (attack4Usable == true) {
-                useAttack(4);
-            }
-        }
-    }//GEN-LAST:event_btnAttackOrItem4MouseClicked
-
-    /**
-     * used to "run away from" (end) a battle
-     * 
-     * @param evt 
-     */
-    private void btnRunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRunMouseClicked
-        run();
-    }//GEN-LAST:event_btnRunMouseClicked
-
+    
     /**
      * Makes sure the player either has to battle or run
      * 
@@ -378,22 +388,98 @@ public class BattleUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosed
 
+    private void btnRunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRunMouseClicked
+        run(); 
+    }//GEN-LAST:event_btnRunMouseClicked
+
+    private void btnRunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRunKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRunKeyPressed
+
+    private void btnSwitchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSwitchMouseClicked
+        switchAttackOrItem(); 
+    }//GEN-LAST:event_btnSwitchMouseClicked
+
+    private void btnSwitchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSwitchKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSwitchKeyPressed
+
+    private void btnUltimateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUltimateMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUltimateMouseClicked
+
+    private void btnUltimateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnUltimateKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUltimateKeyPressed
+
+    private void btnAttackOrItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem2MouseClicked
+        if (attack2Usable == true) {
+            if (onAttack == true) {
+                useAttack(2); 
+            }
+        } else {
+            if (onItem == true) {
+                useItem(2); 
+            }
+        }
+    }//GEN-LAST:event_btnAttackOrItem2MouseClicked
+
+    private void btnAttackOrItem2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAttackOrItem2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAttackOrItem2KeyPressed
+
+    private void btnAttackOrItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem4MouseClicked
+        if (attack4Usable == true) {
+            if (onAttack == true) {
+                useAttack(4); 
+            }
+        } else {
+            if (onItem == true) {
+                useItem(4); 
+            }
+        }
+    }//GEN-LAST:event_btnAttackOrItem4MouseClicked
+
+    private void btnAttackOrItem4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAttackOrItem4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAttackOrItem4KeyPressed
+
+    private void btnAttackOrItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem3MouseClicked
+        if (attack3Usable == true) {
+            if (onAttack == true) {
+                useAttack(3); 
+            }
+        } else {
+            if (onItem == true) {
+                useItem(3); 
+            }
+        }
+    }//GEN-LAST:event_btnAttackOrItem3MouseClicked
+
+    private void btnAttackOrItem3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAttackOrItem3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAttackOrItem3KeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
-    private javax.swing.JProgressBar bossOnlyUltimate;
     private javax.swing.JLabel btnAttackOrItem1;
     private javax.swing.JLabel btnAttackOrItem2;
     private javax.swing.JLabel btnAttackOrItem3;
     private javax.swing.JLabel btnAttackOrItem4;
-    private javax.swing.JButton btnRun;
-    private javax.swing.JLabel btnSwitchBetweenItemsAndAttacks;
+    private javax.swing.JLabel btnRun;
+    private javax.swing.JLabel btnSwitch;
+    private javax.swing.JLabel btnUltimate;
     private javax.swing.JProgressBar enemyHealthBar;
-    private javax.swing.JLabel lblEnemyNameAndStats;
-    private javax.swing.JLabel lblPlayerNameAndStats;
-    private javax.swing.JLabel notPokemonPicture1;
-    private javax.swing.JLabel notPokemonPicture2;
+    private javax.swing.JProgressBar enemyUltimateBar;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblEnemyHealth;
+    private javax.swing.JLabel lblEnemyUltimate;
+    private javax.swing.JLabel lblPlayerDamage;
+    private javax.swing.JLabel lblPlayerDodgeChance;
+    private javax.swing.JLabel lblPlayerHealth;
+    private javax.swing.JLabel lblPlayerUltimate;
     private javax.swing.JProgressBar playerHealthBar;
-    private javax.swing.JProgressBar playerUltimate;
+    private javax.swing.JProgressBar playerSpeed;
+    private javax.swing.JProgressBar playerUltimateBar;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -405,7 +491,7 @@ public class BattleUI extends javax.swing.JFrame {
         } else if (onAttack == true) {
             switchToItem();
         } else {
-            System.out.println("error");
+            System.out.println("error switching attacks and items");
         }
     }
 
@@ -415,7 +501,7 @@ public class BattleUI extends javax.swing.JFrame {
     private void switchToAttack() {
         onItem = false;
         onAttack = true;
-        btnSwitchBetweenItemsAndAttacks.setText("Items");
+        btnAttackOrItem1.setText("Items");
         btnAttackOrItem1.setText(playerAttack1);
         btnAttackOrItem2.setText(playerAttack2);
         btnAttackOrItem3.setText(playerAttack3);
@@ -428,7 +514,7 @@ public class BattleUI extends javax.swing.JFrame {
     private void switchToItem() {
         onItem = true;
         onAttack = false;
-        btnSwitchBetweenItemsAndAttacks.setText("Attacks");
+        btnAttackOrItem1.setText("Attacks");
         btnAttackOrItem1.setText("Item 1");
         btnAttackOrItem2.setText("Item 2");
         btnAttackOrItem3.setText("Item 3");
@@ -662,9 +748,9 @@ public class BattleUI extends javax.swing.JFrame {
         enemyBaseDodgeChance = enemy.dodgeChance;
         enemyBaseHealth      = enemy.health;
         enemyBasePunchSpeed  = enemy.punchSpeed;
-        lblEnemyNameAndStats.setText(enemyName);
+        lblPlayerDamage.setText(enemyName);
         enemyHealthBar.setValue(enemyMaxHealth);
-        lblEnemyNameAndStats.setText(
+        lblPlayerDamage.setText(
                 "<html><head></head><body>"
                 + "Name: " + enemyName
                 + "<br>"
@@ -694,7 +780,7 @@ public class BattleUI extends javax.swing.JFrame {
         playerBaseHealth      = heroClass.playerHealth;
         playerBasePunchSpeed  = heroClass.playerPunchSpeed;
         playerHealthBar.setValue(playerMaxHealth);
-        lblPlayerNameAndStats.setText(
+        lblPlayerDodgeChance.setText(
                 "<html><head></head><body>"
                 + "Name: " + playerName
                 + "<br>"
@@ -758,7 +844,7 @@ public class BattleUI extends javax.swing.JFrame {
                 } else if (enemyHealth <= 0) {
                     playerWin();
                 } else {
-                    lblPlayerNameAndStats.setText(
+                    lblPlayerDodgeChance.setText(
                             "<html><head></head><body>"
                             + "Name: " + playerName
                             + "<br>"
@@ -770,7 +856,7 @@ public class BattleUI extends javax.swing.JFrame {
                             + "<br>"
                             + "Punch Speed: " + playerPunchSpeed
                             + "</body></html>");
-                    lblEnemyNameAndStats.setText(
+                    lblPlayerDamage.setText(
                             "<html><head></head><body>"
                             + "Name: " + enemyName
                             + "<br>"

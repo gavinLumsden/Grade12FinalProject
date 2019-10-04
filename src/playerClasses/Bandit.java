@@ -90,7 +90,6 @@ public class Bandit extends GameCharacter {
      * @param previousMap
      * @param currentMapName
      * @param previousMapName
-     * @param prevoiusMapName
      */
     public Bandit(
             JLabel heroImage,
@@ -104,7 +103,6 @@ public class Bandit extends GameCharacter {
 
         this.currentMap  = currentMap; 
         this.previousMap = previousMap; 
-
         this.currentMapName  = currentMapName; 
         this.previousMapName = previousMapName; 
         
