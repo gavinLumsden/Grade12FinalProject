@@ -18,8 +18,8 @@ public class BattleUI extends javax.swing.JFrame {
     private boolean onItem = false;
     private boolean onAttack = false;
 
-    private final int FORM_WIDTH = 1400; // width of the form
-    private final int FORM_HEIGHT = 850; // height of the form
+    private final int FORM_WIDTH = 1382; // width of the form
+    private final int FORM_HEIGHT = 807; // height of the form
 
     private GameCharacter heroClass; // the hero
     private Enemy enemy;             // the enemy to fight
@@ -151,35 +151,35 @@ public class BattleUI extends javax.swing.JFrame {
         playerHealthBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         playerHealthBar.setOpaque(true);
         getContentPane().add(playerHealthBar);
-        playerHealthBar.setBounds(930, 460, 376, 45);
+        playerHealthBar.setBounds(930, 410, 376, 45);
 
         enemyHealthBar.setForeground(new java.awt.Color(0, 255, 51));
         enemyHealthBar.setValue(100);
         enemyHealthBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         enemyHealthBar.setOpaque(true);
         getContentPane().add(enemyHealthBar);
-        enemyHealthBar.setBounds(60, 110, 365, 45);
+        enemyHealthBar.setBounds(59, 59, 365, 45);
 
         enemyUltimateBar.setForeground(new java.awt.Color(0, 255, 51));
         enemyUltimateBar.setValue(100);
         enemyUltimateBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         enemyUltimateBar.setOpaque(true);
         getContentPane().add(enemyUltimateBar);
-        enemyUltimateBar.setBounds(60, 165, 212, 30);
+        enemyUltimateBar.setBounds(60, 115, 212, 30);
 
         playerUltimateBar.setForeground(new java.awt.Color(0, 255, 51));
         playerUltimateBar.setValue(100);
         playerUltimateBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         playerUltimateBar.setOpaque(true);
         getContentPane().add(playerUltimateBar);
-        playerUltimateBar.setBounds(1095, 420, 212, 30);
+        playerUltimateBar.setBounds(1095, 370, 212, 30);
 
         playerSpeed.setForeground(new java.awt.Color(0, 255, 51));
         playerSpeed.setValue(100);
         playerSpeed.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         playerSpeed.setOpaque(true);
         getContentPane().add(playerSpeed);
-        playerSpeed.setBounds(205, 752, 230, 30);
+        playerSpeed.setBounds(205, 702, 230, 30);
 
         lblPlayerDodgeChance.setBackground(new java.awt.Color(255, 255, 255));
         lblPlayerDodgeChance.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
@@ -187,7 +187,7 @@ public class BattleUI extends javax.swing.JFrame {
         lblPlayerDodgeChance.setText("5%");
         lblPlayerDodgeChance.setOpaque(true);
         getContentPane().add(lblPlayerDodgeChance);
-        lblPlayerDodgeChance.setBounds(224, 583, 145, 45);
+        lblPlayerDodgeChance.setBounds(222, 533, 145, 45);
 
         lblPlayerDamage.setBackground(new java.awt.Color(255, 255, 255));
         lblPlayerDamage.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
@@ -195,7 +195,7 @@ public class BattleUI extends javax.swing.JFrame {
         lblPlayerDamage.setText("2");
         lblPlayerDamage.setOpaque(true);
         getContentPane().add(lblPlayerDamage);
-        lblPlayerDamage.setBounds(243, 669, 95, 45);
+        lblPlayerDamage.setBounds(243, 618, 95, 45);
 
         btnRun.setBackground(new java.awt.Color(255, 255, 255));
         btnRun.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -213,7 +213,7 @@ public class BattleUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRun);
-        btnRun.setBounds(1172, 100, 125, 15);
+        btnRun.setBounds(1172, 50, 125, 15);
 
         btnSwitch.setBackground(new java.awt.Color(255, 255, 255));
         btnSwitch.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
@@ -231,7 +231,7 @@ public class BattleUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSwitch);
-        btnSwitch.setBounds(476, 610, 250, 56);
+        btnSwitch.setBounds(476, 560, 250, 56);
 
         btnUltimate.setBackground(new java.awt.Color(255, 255, 255));
         btnUltimate.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
@@ -249,7 +249,7 @@ public class BattleUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUltimate);
-        btnUltimate.setBounds(476, 706, 250, 56);
+        btnUltimate.setBounds(476, 655, 250, 56);
 
         btnAttackOrItem1.setBackground(new java.awt.Color(255, 255, 255));
         btnAttackOrItem1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
@@ -267,7 +267,7 @@ public class BattleUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAttackOrItem1);
-        btnAttackOrItem1.setBounds(766, 610, 250, 56);
+        btnAttackOrItem1.setBounds(766, 560, 250, 56);
 
         btnAttackOrItem2.setBackground(new java.awt.Color(255, 255, 255));
         btnAttackOrItem2.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
@@ -285,7 +285,7 @@ public class BattleUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAttackOrItem2);
-        btnAttackOrItem2.setBounds(1057, 610, 250, 56);
+        btnAttackOrItem2.setBounds(1057, 560, 250, 56);
 
         btnAttackOrItem4.setBackground(new java.awt.Color(255, 255, 255));
         btnAttackOrItem4.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
@@ -303,7 +303,7 @@ public class BattleUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAttackOrItem4);
-        btnAttackOrItem4.setBounds(1057, 706, 250, 56);
+        btnAttackOrItem4.setBounds(1057, 655, 250, 56);
 
         btnAttackOrItem3.setBackground(new java.awt.Color(255, 255, 255));
         btnAttackOrItem3.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
@@ -321,38 +321,38 @@ public class BattleUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAttackOrItem3);
-        btnAttackOrItem3.setBounds(766, 706, 250, 56);
+        btnAttackOrItem3.setBounds(766, 655, 250, 56);
 
         lblEnemyUltimate.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         lblEnemyUltimate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEnemyUltimate.setText("100");
         lblEnemyUltimate.setToolTipText("");
         getContentPane().add(lblEnemyUltimate);
-        lblEnemyUltimate.setBounds(282, 166, 56, 27);
+        lblEnemyUltimate.setBounds(280, 115, 56, 27);
 
         lblPlayerUltimate.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         lblPlayerUltimate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPlayerUltimate.setText("100");
         lblPlayerUltimate.setToolTipText("");
         getContentPane().add(lblPlayerUltimate);
-        lblPlayerUltimate.setBounds(1028, 420, 55, 30);
+        lblPlayerUltimate.setBounds(1027, 370, 55, 30);
 
         lblEnemyHealth.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblEnemyHealth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEnemyHealth.setText("100");
         getContentPane().add(lblEnemyHealth);
-        lblEnemyHealth.setBounds(437, 109, 75, 45);
+        lblEnemyHealth.setBounds(437, 60, 75, 45);
 
         lblPlayerHealth.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblPlayerHealth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPlayerHealth.setText("100");
         getContentPane().add(lblPlayerHealth);
-        lblPlayerHealth.setBounds(844, 460, 75, 45);
+        lblPlayerHealth.setBounds(844, 410, 75, 45);
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/battling/battleingBackground.png"))); // NOI18N
         lblBackground.setToolTipText("");
         getContentPane().add(lblBackground);
-        lblBackground.setBounds(0, 50, 1370, 770);
+        lblBackground.setBounds(0, 0, 1370, 770);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -780,18 +780,8 @@ public class BattleUI extends javax.swing.JFrame {
         playerBaseHealth      = heroClass.playerHealth;
         playerBasePunchSpeed  = heroClass.playerPunchSpeed;
         playerHealthBar.setValue(playerMaxHealth);
-        lblPlayerDodgeChance.setText(
-                "<html><head></head><body>"
-                + "Name: " + playerName
-                + "<br>"
-                + "Damage: " + playerDamage
-                + "<br>"
-                + "Dodge Chance: " + playerDodgeChance
-                + "<br>"
-                + "Health: " + playerHealth
-                + "<br>"
-                + "Punch Speed: " + playerPunchSpeed
-                + "</body></html>");
+        lblPlayerDodgeChance.setText(playerDodgeChance + "");
+        lblPlayerDamage.setText(playerDamage + "");
     }
 
     /**
@@ -844,32 +834,10 @@ public class BattleUI extends javax.swing.JFrame {
                 } else if (enemyHealth <= 0) {
                     playerWin();
                 } else {
-                    lblPlayerDodgeChance.setText(
-                            "<html><head></head><body>"
-                            + "Name: " + playerName
-                            + "<br>"
-                            + "Damage: " + playerDamage
-                            + "<br>"
-                            + "Dodge Chance: " + playerDodgeChance
-                            + "<br>"
-                            + "Health: " + playerHealth
-                            + "<br>"
-                            + "Punch Speed: " + playerPunchSpeed
-                            + "</body></html>");
-                    lblPlayerDamage.setText(
-                            "<html><head></head><body>"
-                            + "Name: " + enemyName
-                            + "<br>"
-                            + "Damage: " + enemyDamage
-                            + "<br>"
-                            + "Dodge Chance: " + enemyDodgeChance
-                            + "<br>"
-                            + "Health: " + enemyHealth
-                            + "<br>"
-                            + "Punch Speed: " + enemyPunchSpeed
-                            + "</body></html>");
+                    lblPlayerDodgeChance.setText(playerDodgeChance + "");
+                    lblPlayerDamage.setText(playerDamage + "");
                     playerHealthBar.setValue(playerHealth);
-                    enemyHealthBar.setValue(enemyHealth);
+                    enemyHealthBar.setValue(playerHealth);
                 }
             }
         });

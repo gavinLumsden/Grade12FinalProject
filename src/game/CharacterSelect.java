@@ -480,7 +480,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         if (selected.equals("")) {
             JOptionPane.showMessageDialog(null, "Please select a character!");
         } else {
-            Map1 spawn = new Map1("", engine);
+            Map1 map1 = new Map1("map 1", engine);
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnSelectMouseClicked

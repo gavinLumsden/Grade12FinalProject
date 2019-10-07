@@ -43,6 +43,8 @@ public class Hero {
      * @param hasBeenCreated
      * @param currentMap
      * @param previousMap
+     * @param currentMapName
+     * @param previousMapName
      */
     public Hero(
             JLabel heroImage,

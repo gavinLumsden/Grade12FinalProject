@@ -97,7 +97,6 @@ public class Vampire extends GameCharacter {
 
         this.currentMap  = currentMap; 
         this.previousMap = previousMap; 
-
         this.currentMapName  = currentMapName; 
         this.previousMapName = previousMapName; 
         

@@ -42,7 +42,7 @@ public class Hammer extends Enemy {
         attack3Duration = punchSpeed; 
         attack4Duration = punchSpeed; 
         
-        damage      = 2; 
+        damage      = 1; 
         dodgeChance = 5; 
         health      = 100; 
         maxHealth   = 100; 
