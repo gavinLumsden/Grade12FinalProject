@@ -86,8 +86,8 @@ public class Map4 extends javax.swing.JFrame {
         engine.createGameCharacter(cyborgImages, "cyborgs");
         engine.createGameCharacter(nailImages, "nails");
         engine.createGameCharacter(rampageImages, "rampages");
-        engine.createHero(lblHero, nextLevelBlocks);
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 4");
+        engine.createHero(lblHero, nextLevelBlocks);
     }
 
     @SuppressWarnings("unchecked")

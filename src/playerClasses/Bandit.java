@@ -122,10 +122,10 @@ public class Bandit extends GameCharacter {
         super.playerAttack2 = attack2; 
         super.playerAttack3 = attack3; 
         super.playerAttack4 = attack4; 
-        super.battleBack = battleBack; 
-        super.battleFront = battleFront; 
+        super.playerBattleBack = battleBack; 
+        super.playerBattleFront = battleFront; 
         
-        final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
+        final int[] DEFAULTS = { 69,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
         damage      = stats[0];
@@ -170,44 +170,44 @@ public class Bandit extends GameCharacter {
         super.playerName = NAME; 
 
         LinkedList<String> walkUpFiles = new LinkedList<>();
-        walkUpFiles.add("/animations/playerClasses/bandit/up/banditWalk1.png");
-        walkUpFiles.add("/animations/playerClasses/bandit/up/banditIdle.png");
-        walkUpFiles.add("/animations/playerClasses/bandit/up/banditWalk2.png");
-        walkUpFiles.add("/animations/playerClasses/bandit/up/banditIdle.png");
+        walkUpFiles.add("/animations/playerclasses/bandit/up/banditWalk1.png");
+        walkUpFiles.add("/animations/playerclasses/bandit/up/banditIdle.png");
+        walkUpFiles.add("/animations/playerclasses/bandit/up/banditWalk2.png");
+        walkUpFiles.add("/animations/playerclasses/bandit/up/banditIdle.png");
 
         LinkedList<String> walkDownFiles = new LinkedList<>();
-        walkDownFiles.add("/animations/playerClasses/bandit/down/banditWalk1.png");
-        walkDownFiles.add("/animations/playerClasses/bandit/down/banditIdle.png");
-        walkDownFiles.add("/animations/playerClasses/bandit/down/banditWalk2.png");
-        walkDownFiles.add("/animations/playerClasses/bandit/down/banditIdle.png");
+        walkDownFiles.add("/animations/playerclasses/bandit/down/banditWalk1.png");
+        walkDownFiles.add("/animations/playerclasses/bandit/down/banditIdle.png");
+        walkDownFiles.add("/animations/playerclasses/bandit/down/banditWalk2.png");
+        walkDownFiles.add("/animations/playerclasses/bandit/down/banditIdle.png");
 
         LinkedList<String> walkLeftFiles = new LinkedList<>();
-        walkLeftFiles.add("/animations/playerClasses/bandit/left/banditWalk1.png");
-        walkLeftFiles.add("/animations/playerClasses/bandit/left/banditIdle.png");
-        walkLeftFiles.add("/animations/playerClasses/bandit/left/banditWalk2.png");
-        walkLeftFiles.add("/animations/playerClasses/bandit/left/banditIdle.png");
+        walkLeftFiles.add("/animations/playerclasses/bandit/left/banditWalk1.png");
+        walkLeftFiles.add("/animations/playerclasses/bandit/left/banditIdle.png");
+        walkLeftFiles.add("/animations/playerclasses/bandit/left/banditWalk2.png");
+        walkLeftFiles.add("/animations/playerclasses/bandit/left/banditIdle.png");
 
         LinkedList<String> walkRightFiles = new LinkedList<>();
-        walkRightFiles.add("/animations/playerClasses/bandit/right/banditWalk1.png");
-        walkRightFiles.add("/animations/playerClasses/bandit/right/banditIdle.png");
-        walkRightFiles.add("/animations/playerClasses/bandit/right/banditWalk2.png");
-        walkRightFiles.add("/animations/playerClasses/bandit/right/banditIdle.png");
+        walkRightFiles.add("/animations/playerclasses/bandit/right/banditWalk1.png");
+        walkRightFiles.add("/animations/playerclasses/bandit/right/banditIdle.png");
+        walkRightFiles.add("/animations/playerclasses/bandit/right/banditWalk2.png");
+        walkRightFiles.add("/animations/playerclasses/bandit/right/banditIdle.png");
 
         LinkedList<String> stopUpFiles = new LinkedList<>();
-        stopUpFiles.add("/animations/playerClasses/bandit/up/banditIdle.png");
-        stopUpFiles.add("/animations/playerClasses/bandit/up/banditIdle.png");
+        stopUpFiles.add("/animations/playerclasses/bandit/up/banditIdle.png");
+        stopUpFiles.add("/animations/playerclasses/bandit/up/banditIdle.png");
 
         LinkedList<String> stopDownFiles = new LinkedList<>();
-        stopDownFiles.add("/animations/playerClasses/bandit/down/banditIdle.png");
-        stopDownFiles.add("/animations/playerClasses/bandit/down/banditIdle.png");
+        stopDownFiles.add("/animations/playerclasses/bandit/down/banditIdle.png");
+        stopDownFiles.add("/animations/playerclasses/bandit/down/banditIdle.png");
 
         LinkedList<String> stopLeftFiles = new LinkedList<>();
-        stopLeftFiles.add("/animations/playerClasses/bandit/left/banditIdle.png");
-        stopLeftFiles.add("/animations/playerClasses/bandit/left/banditIdle.png");
+        stopLeftFiles.add("/animations/playerclasses/bandit/left/banditIdle.png");
+        stopLeftFiles.add("/animations/playerclasses/bandit/left/banditIdle.png");
 
         LinkedList<String> stopRightFiles = new LinkedList<>();
-        stopRightFiles.add("/animations/playerClasses/bandit/right/banditIdle.png");
-        stopRightFiles.add("/animations/playerClasses/bandit/right/banditIdle.png");
+        stopRightFiles.add("/animations/playerclasses/bandit/right/banditIdle.png");
+        stopRightFiles.add("/animations/playerclasses/bandit/right/banditIdle.png");
 
         Animation walkUpAnimation = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
         Animation walkDownAnimation = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);

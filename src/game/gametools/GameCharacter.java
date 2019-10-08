@@ -66,8 +66,8 @@ public abstract class GameCharacter extends GameObject {
     public boolean attack3HasBeenUnlocked;
     public boolean attack4HasBeenUnlocked;
     
-    public String battleBack; 
-    public String battleFront; 
+    public String playerBattleBack; 
+    public String playerBattleFront; 
 
     /**
      * Constructor for the class, sets class property data

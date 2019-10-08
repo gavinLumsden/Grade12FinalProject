@@ -60,7 +60,7 @@ public class Rampage extends Enemy {
 
         super.name = NAME;
 
-        sprite.setImage("/animations/rampage/right/rampageIdle.png");
+        sprite.setImage("/animations/enemyclasses/rampage/right/rampageIdle.png");
         sprite.debug("");
         sprite.removeBorder();
     }

@@ -60,7 +60,7 @@ public class Trickster extends Enemy {
 
         super.name = NAME;
 
-        sprite.setImage("/animations/trickster/right/tricksterIdle.png");
+        sprite.setImage("/animations/enemyclasses/trickster/right/tricksterIdle.png");
         sprite.debug("");
         sprite.removeBorder();
     }

@@ -167,7 +167,7 @@ public class Map2 extends javax.swing.JFrame {
         nextLevelBlocks.add(toMap1);
         nextLevelBlocks.add(toMap3);
         nextLevelBlocks.add(toMap4);
-
+        
         if (mapName.equals("map 1")) {
             lblHero.setLocation(MAP_1_X, MAP_1_Y);
         } else if (mapName.equals("map 3")) {
@@ -182,8 +182,8 @@ public class Map2 extends javax.swing.JFrame {
         engine.createGameCharacter(cyborgImages, "cyborgs");
         engine.createGameCharacter(nailImages, "nails");
         engine.createGameCharacter(rampageImages, "rampages");
-        engine.createHero(lblHero, nextLevelBlocks);
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 2");
+        engine.createHero(lblHero, nextLevelBlocks);
     }
 
     @SuppressWarnings("unchecked")

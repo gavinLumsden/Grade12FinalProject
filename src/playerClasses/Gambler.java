@@ -159,44 +159,44 @@ public class Gambler extends GameCharacter {
         super.playerName = NAME; 
         
         LinkedList<String> walkUpFiles = new LinkedList<>();
-        walkUpFiles.add("/animations/gambler/up/gamblerWalk1.png");
-        walkUpFiles.add("/animations/gambler/up/gamblerIdle.png");
-        walkUpFiles.add("/animations/gambler/up/gamblerWalk2.png");
-        walkUpFiles.add("/animations/gambler/up/gamblerIdle.png");
+        walkUpFiles.add("/animations/playerclasses/gambler/up/gamblerWalk1.png");
+        walkUpFiles.add("/animations/playerclasses/gambler/up/gamblerIdle.png");
+        walkUpFiles.add("/animations/playerclasses/gambler/up/gamblerWalk2.png");
+        walkUpFiles.add("/animations/playerclasses/gambler/up/gamblerIdle.png");
 
         LinkedList<String> walkDownFiles = new LinkedList<>();
-        walkDownFiles.add("/animations/gambler/down/gamblerWalk1.png");
-        walkDownFiles.add("/animations/gambler/down/gamblerIdle.png");
-        walkDownFiles.add("/animations/gambler/down/gamblerWalk2.png");
-        walkDownFiles.add("/animations/gambler/down/gamblerIdle.png");
+        walkDownFiles.add("/animations/playerclasses/gambler/down/gamblerWalk1.png");
+        walkDownFiles.add("/animations/playerclasses/gambler/down/gamblerIdle.png");
+        walkDownFiles.add("/animations/playerclasses/gambler/down/gamblerWalk2.png");
+        walkDownFiles.add("/animations/playerclasses/gambler/down/gamblerIdle.png");
 
         LinkedList<String> walkLeftFiles = new LinkedList<>();
-        walkLeftFiles.add("/animations/gambler/left/gamblerWalk1.png");
-        walkLeftFiles.add("/animations/gambler/left/gamblerIdle.png");
-        walkLeftFiles.add("/animations/gambler/left/gamblerWalk2.png");
-        walkLeftFiles.add("/animations/gambler/left/gamblerIdle.png");
+        walkLeftFiles.add("/animations/playerclasses/gambler/left/gamblerWalk1.png");
+        walkLeftFiles.add("/animations/playerclasses/gambler/left/gamblerIdle.png");
+        walkLeftFiles.add("/animations/playerclasses/gambler/left/gamblerWalk2.png");
+        walkLeftFiles.add("/animations/playerclasses/gambler/left/gamblerIdle.png");
 
         LinkedList<String> walkRightFiles = new LinkedList<>();
-        walkRightFiles.add("/animations/gambler/right/gamblerWalk1.png");
-        walkRightFiles.add("/animations/gambler/right/gamblerIdle.png");
-        walkRightFiles.add("/animations/gambler/right/gamblerWalk2.png");
-        walkRightFiles.add("/animations/gambler/right/gamblerIdle.png");
+        walkRightFiles.add("/animations/playerclasses/gambler/right/gamblerWalk1.png");
+        walkRightFiles.add("/animations/playerclasses/gambler/right/gamblerIdle.png");
+        walkRightFiles.add("/animations/playerclasses/gambler/right/gamblerWalk2.png");
+        walkRightFiles.add("/animations/playerclasses/gambler/right/gamblerIdle.png");
 
         LinkedList<String> stopUpFiles = new LinkedList<>();
-        stopUpFiles.add("/animations/gambler/up/gamblerIdle.png");
-        stopUpFiles.add("/animations/gambler/up/gamblerIdle.png");
+        stopUpFiles.add("/animations/playerclasses/gambler/up/gamblerIdle.png");
+        stopUpFiles.add("/animations/playerclasses/gambler/up/gamblerIdle.png");
 
         LinkedList<String> stopDownFiles = new LinkedList<>();
-        stopDownFiles.add("/animations/gambler/down/gamblerIdle.png");
-        stopDownFiles.add("/animations/gambler/down/gamblerIdle.png");
+        stopDownFiles.add("/animations/playerclasses/gambler/down/gamblerIdle.png");
+        stopDownFiles.add("/animations/playerclasses/gambler/down/gamblerIdle.png");
 
         LinkedList<String> stopLeftFiles = new LinkedList<>();
-        stopLeftFiles.add("/animations/gambler/left/gamblerIdle.png");
-        stopLeftFiles.add("/animations/gambler/left/gamblerIdle.png");
+        stopLeftFiles.add("/animations/playerclasses/gambler/left/gamblerIdle.png");
+        stopLeftFiles.add("/animations/playerclasses/gambler/left/gamblerIdle.png");
 
         LinkedList<String> stopRightFiles = new LinkedList<>();
-        stopRightFiles.add("/animations/gambler/right/gamblerIdle.png");
-        stopRightFiles.add("/animations/gambler/right/gamblerIdle.png");
+        stopRightFiles.add("/animations/playerclasses/gambler/right/gamblerIdle.png");
+        stopRightFiles.add("/animations/playerclasses/gambler/right/gamblerIdle.png");
 
         Animation walkUpAnimation = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
         Animation walkDownAnimation = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);

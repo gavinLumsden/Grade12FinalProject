@@ -60,7 +60,7 @@ public class Kingpin extends Enemy {
 
         super.name = NAME;
 
-        sprite.setImage("/animations/kingpin/right/kingpinIdle.png");
+        sprite.setImage("/animations/enemyclasses/kingpin/right/kingpinIdle.png");
         sprite.debug("");
         sprite.removeBorder();
     }

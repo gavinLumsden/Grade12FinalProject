@@ -60,7 +60,7 @@ public class Nail extends Enemy {
 
         super.name = NAME;
 
-        sprite.setImage("/animations/nail/right/nailIdle.png");
+        sprite.setImage("/animations/enemyclasses/nail/right/nailIdle.png");
         sprite.debug("");
         sprite.removeBorder();
     }

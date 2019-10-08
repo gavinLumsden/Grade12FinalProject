@@ -101,8 +101,8 @@ public class Map1 extends javax.swing.JFrame {
         engine.createGameObject(wallImages, "walls");
         engine.createGameObject(houseImages, "houses");
         engine.createGameCharacter(cyborgImages, "cyborgs");
-        engine.createHero(lblHero, nextLevelBlocks);
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 1");
+        engine.createHero(lblHero, nextLevelBlocks);
     }
 
     @SuppressWarnings("unchecked")

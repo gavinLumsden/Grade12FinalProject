@@ -44,40 +44,40 @@ public class CharacterSelect extends javax.swing.JFrame {
         LinkedList<LinkedList<String>> imageFiles = new LinkedList<>();
 
         LinkedList<String> banditAnimations = new LinkedList<>();
-        banditAnimations.add("/animations/bandit/right/banditWalk1.png");
-        banditAnimations.add("/animations/bandit/right/banditIdle.png");
-        banditAnimations.add("/animations/bandit/right/banditWalk2.png");
-        banditAnimations.add("/animations/bandit/right/banditIdle.png");
+        banditAnimations.add("/animations/playerClasses/bandit/right/banditWalk1.png");
+        banditAnimations.add("/animations/playerClasses/bandit/right/banditIdle.png");
+        banditAnimations.add("/animations/playerClasses/bandit/right/banditWalk2.png");
+        banditAnimations.add("/animations/playerClasses/bandit/right/banditIdle.png");
 
         LinkedList<String> gamblerAnimations = new LinkedList<>();
-        gamblerAnimations.add("/animations/gambler/right/gamblerWalk1.png");
-        gamblerAnimations.add("/animations/gambler/right/gamblerIdle.png");
-        gamblerAnimations.add("/animations/gambler/right/gamblerWalk2.png");
-        gamblerAnimations.add("/animations/gambler/right/gamblerIdle.png");
+        gamblerAnimations.add("/animations/playerClasses/gambler/right/gamblerWalk1.png");
+        gamblerAnimations.add("/animations/playerClasses/gambler/right/gamblerIdle.png");
+        gamblerAnimations.add("/animations/playerClasses/gambler/right/gamblerWalk2.png");
+        gamblerAnimations.add("/animations/playerClasses/gambler/right/gamblerIdle.png");
 
         LinkedList<String> hackerAnimations = new LinkedList<>();
-        hackerAnimations.add("/animations/hacker/right/hackerWalk1.png");
-        hackerAnimations.add("/animations/hacker/right/hackerIdle.png");
-        hackerAnimations.add("/animations/hacker/right/hackerWalk2.png");
-        hackerAnimations.add("/animations/hacker/right/hackerIdle.png");
+        hackerAnimations.add("/animations/playerClasses/hacker/right/hackerWalk1.png");
+        hackerAnimations.add("/animations/playerClasses/hacker/right/hackerIdle.png");
+        hackerAnimations.add("/animations/playerClasses/hacker/right/hackerWalk2.png");
+        hackerAnimations.add("/animations/playerClasses/hacker/right/hackerIdle.png");
 
         LinkedList<String> juggernautAnimations = new LinkedList<>();
-        juggernautAnimations.add("/animations/juggernaut/right/juggernautWalk1.png");
-        juggernautAnimations.add("/animations/juggernaut/right/juggernautIdle.png");
-        juggernautAnimations.add("/animations/juggernaut/right/juggernautWalk2.png");
-        juggernautAnimations.add("/animations/juggernaut/right/juggernautIdle.png");
+        juggernautAnimations.add("/animations/playerClasses/juggernaut/right/juggernautWalk1.png");
+        juggernautAnimations.add("/animations/playerClasses/juggernaut/right/juggernautIdle.png");
+        juggernautAnimations.add("/animations/playerClasses/juggernaut/right/juggernautWalk2.png");
+        juggernautAnimations.add("/animations/playerClasses/juggernaut/right/juggernautIdle.png");
 
         LinkedList<String> mageAnimations = new LinkedList<>();
-        mageAnimations.add("/animations/mage/right/mageWalk1.png");
-        mageAnimations.add("/animations/mage/right/mageIdle1.png");
-        mageAnimations.add("/animations/mage/right/mageWalk2.png");
-        mageAnimations.add("/animations/mage/right/mageIdle1.png");
+        mageAnimations.add("/animations/playerClasses/mage/right/mageWalk1.png");
+        mageAnimations.add("/animations/playerClasses/mage/right/mageIdle1.png");
+        mageAnimations.add("/animations/playerClasses/mage/right/mageWalk2.png");
+        mageAnimations.add("/animations/playerClasses/mage/right/mageIdle1.png");
 
         LinkedList<String> vampireAnimations = new LinkedList<>();
-        vampireAnimations.add("/animations/vampire/right/vampireWalk1.png");
-        vampireAnimations.add("/animations/vampire/right/vampireIdle.png");
-        vampireAnimations.add("/animations/vampire/right/vampireWalk2.png");
-        vampireAnimations.add("/animations/vampire/right/vampireIdle.png");
+        vampireAnimations.add("/animations/playerClasses/vampire/right/vampireWalk1.png");
+        vampireAnimations.add("/animations/playerClasses/vampire/right/vampireIdle.png");
+        vampireAnimations.add("/animations/playerClasses/vampire/right/vampireWalk2.png");
+        vampireAnimations.add("/animations/playerClasses/vampire/right/vampireIdle.png");
 
         imageFiles.add(banditAnimations);
         imageFiles.add(gamblerAnimations);
@@ -163,7 +163,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         lblTitle.setBounds(4, 2, 550, 58);
 
         lblGambler.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblGambler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/gambler/right/gamblerIdle.png"))); // NOI18N
+        lblGambler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/gambler/right/gamblerIdle.png"))); // NOI18N
         lblGambler.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblGambler.setOpaque(true);
         lblGambler.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -181,7 +181,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         lblGambler.setBounds(340, 180, 100, 100);
 
         lblMage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/mage/right/mageIdle1.png"))); // NOI18N
+        lblMage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/mage/right/mageIdle1.png"))); // NOI18N
         lblMage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblMage.setOpaque(true);
         lblMage.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -199,7 +199,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         lblMage.setBounds(230, 180, 100, 100);
 
         lblJuggernaut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblJuggernaut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/juggernaut/right/juggernautIdle.png"))); // NOI18N
+        lblJuggernaut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/juggernaut/right/juggernautIdle.png"))); // NOI18N
         lblJuggernaut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblJuggernaut.setOpaque(true);
         lblJuggernaut.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -217,7 +217,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         lblJuggernaut.setBounds(230, 70, 100, 100);
 
         lblVampire.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVampire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/vampire/right/vampireIdle.png"))); // NOI18N
+        lblVampire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/vampire/right/vampireIdle.png"))); // NOI18N
         lblVampire.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblVampire.setOpaque(true);
         lblVampire.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,7 +235,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         lblVampire.setBounds(120, 70, 100, 100);
 
         lblBandit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBandit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/bandit/right/banditIdle.png"))); // NOI18N
+        lblBandit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/bandit/right/banditIdle.png"))); // NOI18N
         lblBandit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblBandit.setOpaque(true);
         lblBandit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -253,7 +253,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         lblBandit.setBounds(120, 180, 100, 100);
 
         lblHacker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHacker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/hacker/right/hackerIdle.png"))); // NOI18N
+        lblHacker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/hacker/right/hackerIdle.png"))); // NOI18N
         lblHacker.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblHacker.setOpaque(true);
         lblHacker.addMouseListener(new java.awt.event.MouseAdapter() {

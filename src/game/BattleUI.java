@@ -1058,7 +1058,7 @@ public class BattleUI extends javax.swing.JFrame {
     }
     
     private void setupAnimations() {
-        Icon icon = new ImageIcon(heroClass.battleBack); 
+        Icon icon = new ImageIcon(getClass().getResource(heroClass.playerBattleBack)); 
         lblPlayerBack.setIcon(icon);
     }
     

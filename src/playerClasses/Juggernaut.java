@@ -159,44 +159,44 @@ public class Juggernaut extends GameCharacter {
         super.playerName = NAME; 
 
         LinkedList<String> walkUpFiles = new LinkedList<>();
-        walkUpFiles.add("/animations/juggernaut/up/juggernautWalk1.png");
-        walkUpFiles.add("/animations/juggernaut/up/juggernautIdle.png");
-        walkUpFiles.add("/animations/juggernaut/up/juggernautWalk2.png");
-        walkUpFiles.add("/animations/juggernaut/up/juggernautIdle.png");
+        walkUpFiles.add("/animations/playerclasses/juggernaut/up/juggernautWalk1.png");
+        walkUpFiles.add("/animations/playerclasses/juggernaut/up/juggernautIdle.png");
+        walkUpFiles.add("/animations/playerclasses/juggernaut/up/juggernautWalk2.png");
+        walkUpFiles.add("/animations/playerclasses/juggernaut/up/juggernautIdle.png");
 
         LinkedList<String> walkDownFiles = new LinkedList<>();
-        walkDownFiles.add("/animations/juggernaut/down/juggernautWalk1.png");
-        walkDownFiles.add("/animations/juggernaut/down/juggernautIdle.png");
-        walkDownFiles.add("/animations/juggernaut/down/juggernautWalk2.png");
-        walkDownFiles.add("/animations/juggernaut/down/juggernautIdle.png");
+        walkDownFiles.add("/animations/playerclasses/juggernaut/down/juggernautWalk1.png");
+        walkDownFiles.add("/animations/playerclasses/juggernaut/down/juggernautIdle.png");
+        walkDownFiles.add("/animations/playerclasses/juggernaut/down/juggernautWalk2.png");
+        walkDownFiles.add("/animations/playerclasses/juggernaut/down/juggernautIdle.png");
 
         LinkedList<String> walkLeftFiles = new LinkedList<>();
-        walkLeftFiles.add("/animations/juggernaut/left/juggernautWalk1.png");
-        walkLeftFiles.add("/animations/juggernaut/left/juggernautIdle.png");
-        walkLeftFiles.add("/animations/juggernaut/left/juggernautWalk2.png");
-        walkLeftFiles.add("/animations/juggernaut/left/juggernautIdle.png");
+        walkLeftFiles.add("/animations/playerclasses/juggernaut/left/juggernautWalk1.png");
+        walkLeftFiles.add("/animations/playerclasses/juggernaut/left/juggernautIdle.png");
+        walkLeftFiles.add("/animations/playerclasses/juggernaut/left/juggernautWalk2.png");
+        walkLeftFiles.add("/animations/playerclasses/juggernaut/left/juggernautIdle.png");
 
         LinkedList<String> walkRightFiles = new LinkedList<>();
-        walkRightFiles.add("/animations/juggernaut/right/juggernautWalk1.png");
-        walkRightFiles.add("/animations/juggernaut/right/juggernautIdle.png");
-        walkRightFiles.add("/animations/juggernaut/right/juggernautWalk2.png");
-        walkRightFiles.add("/animations/juggernaut/right/juggernautIdle.png");
+        walkRightFiles.add("/animations/playerclasses/juggernaut/right/juggernautWalk1.png");
+        walkRightFiles.add("/animations/playerclasses/juggernaut/right/juggernautIdle.png");
+        walkRightFiles.add("/animations/playerclasses/juggernaut/right/juggernautWalk2.png");
+        walkRightFiles.add("/animations/playerclasses/juggernaut/right/juggernautIdle.png");
 
         LinkedList<String> stopUpFiles = new LinkedList<>();
-        stopUpFiles.add("/animations/juggernaut/up/juggernautIdle.png");
-        stopUpFiles.add("/animations/juggernaut/up/juggernautIdle.png");
+        stopUpFiles.add("/animations/playerclasses/juggernaut/up/juggernautIdle.png");
+        stopUpFiles.add("/animations/playerclasses/juggernaut/up/juggernautIdle.png");
 
         LinkedList<String> stopDownFiles = new LinkedList<>();
-        stopDownFiles.add("/animations/juggernaut/down/juggernautIdle.png");
-        stopDownFiles.add("/animations/juggernaut/down/juggernautIdle.png");
+        stopDownFiles.add("/animations/playerclasses/juggernaut/down/juggernautIdle.png");
+        stopDownFiles.add("/animations/playerclasses/juggernaut/down/juggernautIdle.png");
 
         LinkedList<String> stopLeftFiles = new LinkedList<>();
-        stopLeftFiles.add("/animations/juggernaut/left/juggernautIdle.png");
-        stopLeftFiles.add("/animations/juggernaut/left/juggernautIdle.png");
+        stopLeftFiles.add("/animations/playerclasses/juggernaut/left/juggernautIdle.png");
+        stopLeftFiles.add("/animations/playerclasses/juggernaut/left/juggernautIdle.png");
 
         LinkedList<String> stopRightFiles = new LinkedList<>();
-        stopRightFiles.add("/animations/juggernaut/right/juggernautIdle.png");
-        stopRightFiles.add("/animations/juggernaut/right/juggernautIdle.png");
+        stopRightFiles.add("/animations/playerclasses/juggernaut/right/juggernautIdle.png");
+        stopRightFiles.add("/animations/playerclasses/juggernaut/right/juggernautIdle.png");
 
         Animation walkUpAnimation = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
         Animation walkDownAnimation = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);

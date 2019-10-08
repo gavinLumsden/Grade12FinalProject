@@ -19,7 +19,7 @@ public class House extends GameObject {
      */
     public House(JLabel image) {
         super(image, 0, Directions.STOP, 0);
-        sprite.setImage("/animations/house.png");
+        sprite.setImage("/animations/objects/house.png");
         sprite.debug("");
         sprite.removeBorder();
     }

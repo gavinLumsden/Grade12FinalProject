@@ -66,8 +66,8 @@ public class Map3 extends javax.swing.JFrame {
         engine.createGameObject(wallImages, "walls");
         engine.createGameCharacter(shopkeeperImages, "shopkeepers");
         engine.createGameCharacter(trainerImages, "trainers");
-        engine.createHero(lblHero, nextLevelBlocks);
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 3");
+        engine.createHero(lblHero, nextLevelBlocks);
     }
 
     @SuppressWarnings("unchecked")

@@ -60,7 +60,7 @@ public class Cyborg extends Enemy {
 
         super.name = NAME;
 
-        sprite.setImage("/animations/cyborg/right/cyborgIdle.png");
+        sprite.setImage("/animations/enemyclasses/cyborg/right/cyborgIdle.png");
         sprite.debug("");
         sprite.removeBorder();
     }
