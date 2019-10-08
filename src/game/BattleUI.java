@@ -141,9 +141,10 @@ public class BattleUI extends javax.swing.JFrame {
         lblPlayerUltimate = new javax.swing.JLabel();
         lblEnemyHealth = new javax.swing.JLabel();
         lblPlayerHealth = new javax.swing.JLabel();
+        lblStatsBackground = new javax.swing.JLabel();
         lblEnemyFront = new javax.swing.JLabel();
         lblPlayerBack = new javax.swing.JLabel();
-        lblBackground = new javax.swing.JLabel();
+        lblWhiteBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -356,18 +357,23 @@ public class BattleUI extends javax.swing.JFrame {
         getContentPane().add(lblPlayerHealth);
         lblPlayerHealth.setBounds(844, 410, 75, 45);
 
+        lblStatsBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/battling/statsBackground.png"))); // NOI18N
+        lblStatsBackground.setToolTipText("");
+        getContentPane().add(lblStatsBackground);
+        lblStatsBackground.setBounds(0, 0, 1370, 770);
+
         lblEnemyFront.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/vampire/fightFront/fightFront.png"))); // NOI18N
         getContentPane().add(lblEnemyFront);
-        lblEnemyFront.setBounds(20, -10, 1350, 750);
+        lblEnemyFront.setBounds(10, 10, 1350, 750);
 
         lblPlayerBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/bandit/fightBack/fightBack.png"))); // NOI18N
         getContentPane().add(lblPlayerBack);
         lblPlayerBack.setBounds(10, 10, 1350, 750);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/battling/battleingBackground.png"))); // NOI18N
-        lblBackground.setToolTipText("");
-        getContentPane().add(lblBackground);
-        lblBackground.setBounds(0, 0, 1370, 770);
+        lblWhiteBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/battling/whiteBackground.png"))); // NOI18N
+        lblWhiteBackground.setToolTipText("");
+        getContentPane().add(lblWhiteBackground);
+        lblWhiteBackground.setBounds(0, 0, 1370, 770);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -485,7 +491,6 @@ public class BattleUI extends javax.swing.JFrame {
     private javax.swing.JLabel btnUltimate;
     private javax.swing.JProgressBar enemyHealthBar;
     private javax.swing.JProgressBar enemyUltimateBar;
-    private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblEnemyFront;
     private javax.swing.JLabel lblEnemyHealth;
     private javax.swing.JLabel lblEnemyUltimate;
@@ -494,6 +499,8 @@ public class BattleUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblPlayerDodgeChance;
     private javax.swing.JLabel lblPlayerHealth;
     private javax.swing.JLabel lblPlayerUltimate;
+    private javax.swing.JLabel lblStatsBackground;
+    private javax.swing.JLabel lblWhiteBackground;
     private javax.swing.JProgressBar playerHealthBar;
     private javax.swing.JProgressBar playerSpeed;
     private javax.swing.JProgressBar playerUltimateBar;
@@ -851,7 +858,7 @@ public class BattleUI extends javax.swing.JFrame {
                 } else if (enemyHealth <= 0) {
                     playerWin();
                 } else {
-                    lblPlayerDodgeChance.setText(playerDodgeChance + "");
+                    lblPlayerDodgeChance.setText(playerDodgeChance + "%");
                     lblPlayerDamage.setText(playerDamage + "");
                     playerHealthBar.setValue(playerHealth);
                     enemyHealthBar.setValue(playerHealth);
