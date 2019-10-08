@@ -371,6 +371,7 @@ public class Map1 extends javax.swing.JFrame {
         getContentPane().add(grass34);
         grass34.setBounds(230, 130, 100, 100);
 
+        house1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         house1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/house.png"))); // NOI18N
         getContentPane().add(house1);
         house1.setBounds(830, 30, 200, 200);
@@ -393,7 +394,7 @@ public class Map1 extends javax.swing.JFrame {
         background.setBackground(new java.awt.Color(102, 51, 0));
         background.setOpaque(true);
         getContentPane().add(background);
-        background.setBounds(10, -10, 1060, 560);
+        background.setBounds(0, 0, 1060, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
