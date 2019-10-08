@@ -2,8 +2,12 @@ package game;
 
 import game.gametools.GameCharacter;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
@@ -106,6 +110,7 @@ public class BattleUI extends javax.swing.JFrame {
         this.enemy = enemy;
         setupEnemy();
         setupPlayer();
+        setupAnimations(); 
         setupMusic();
         setupPlayerAttacks();
         setupEffects(); 
@@ -353,7 +358,7 @@ public class BattleUI extends javax.swing.JFrame {
 
         lblEnemyFront.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/vampire/fightFront/fightFront.png"))); // NOI18N
         getContentPane().add(lblEnemyFront);
-        lblEnemyFront.setBounds(10, 10, 1350, 750);
+        lblEnemyFront.setBounds(20, -10, 1350, 750);
 
         lblPlayerBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/bandit/fightBack/fightBack.png"))); // NOI18N
         getContentPane().add(lblPlayerBack);
@@ -1050,6 +1055,11 @@ public class BattleUI extends javax.swing.JFrame {
 
             }
         });
+    }
+    
+    private void setupAnimations() {
+        Icon icon = new ImageIcon(heroClass.battleBack); 
+        lblPlayerBack.setIcon(icon);
     }
     
 }

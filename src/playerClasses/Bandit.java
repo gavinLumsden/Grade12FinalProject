@@ -48,6 +48,9 @@ public class Bandit extends GameCharacter {
     public String attack3 = "Cut"; 
     public String attack4 = "Evade"; 
     
+    public String battleBack = "/animations/playerClasses/bandit/fightBack/fightBack.png";
+    public String battleFront = "/animations/playerClasses/bandit/fightFront/fightFront.png";
+    
     private JFrame currentMap; 
     private JFrame previousMap; 
         
@@ -119,6 +122,8 @@ public class Bandit extends GameCharacter {
         super.playerAttack2 = attack2; 
         super.playerAttack3 = attack3; 
         super.playerAttack4 = attack4; 
+        super.battleBack = battleBack; 
+        super.battleFront = battleFront; 
         
         final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];

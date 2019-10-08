@@ -42,6 +42,9 @@ public class Vampire extends GameCharacter {
     public String attack3 = "Bats"; 
     public String attack4 = "Coffin"; 
     
+    public String battleBack = "/animations/playerClasses/vampire/fightBack/fightBack.png";
+    public String battleFight = "/animations/playerClasses/vampire/fightFront/fightFront.png";
+    
     private JFrame currentMap; 
     private JFrame previousMap; 
         
