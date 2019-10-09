@@ -125,7 +125,7 @@ public class Bandit extends GameCharacter {
         super.playerBattleBack = battleBack; 
         super.playerBattleFront = battleFront; 
         
-        final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
+        final int[] DEFAULTS = { 69,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
         damage      = stats[0];
@@ -241,67 +241,77 @@ public class Bandit extends GameCharacter {
     public void action() {
         mover.move();
         animate();
-        checkWalls();
-        checkNextLevelBlocks();
-        checkHouses(); 
-        checkEnemies();
+        boolean check = checkWalls();
+        if (check) check = checkNextLevelBlocks();
+        if (check) check = checkHouses(); 
+        if (check) check = checkEnemies();
         redraw();
     }
 
     /**
      * checks to see if the hero is overlapping with a wall
      */
-    private void checkWalls() {
+    private boolean checkWalls() {
         for (int i = 0; i < walls.size(); i++) {
             if (walls.get(i) != null) {
                 if (detector.isOverLapping(walls.get(i))) {
                     reactor.stickTo(walls.get(i));
+                    return false;
                 }
             }
         }
+        return true;
     }
 
     /**
      * checks to see if the hero is overlapping with a next level block
      */
-    private void checkNextLevelBlocks() {
+    private boolean checkNextLevelBlocks() {
         for (int i = 0; i < nextLevelBlocks.size(); i++) {
             if (nextLevelBlocks.get(i) != null) {
                 if (detector.isOverLapping(nextLevelBlocks.get(i))){
-                        engine.clearCurrentMap(); 
+                    engine.clearCurrentMap(); 
                     if (nextLevelBlocks.get(i).mapToGoTo.equals("1")) {
+                        timer.stop(); 
                         Map1 map1 = new Map1(currentMapName, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("2")) {
+                        timer.stop(); 
                         Map2 map2 = new Map2(currentMapName, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("3")) {
+                        timer.stop(); 
                         Map3 map3 = new Map3(currentMapName, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("4")) {
+                        timer.stop(); 
                         Map4 map4 = new Map4(currentMapName, engine); 
                     } else {
                         System.out.println("error creating map");
                     }
+                    return false;
                 }
             }
         }
+        return true;
     }
     
     /**
      * checks to see if the hero is overlapping with a house
      */
-    private void checkHouses() {
+    private boolean checkHouses() {
         for (int i = 0; i < houses.size(); i++) {
             if (houses.get(i) != null) {
                 if (detector.isOverLapping(houses.get(i))) {
                     reactor.stickTo(houses.get(i));
+                    return false;
                 }
             }
         }
+        return true;
     }
 
     /**
      * checks to see if the hero is overlapping with an enemy
      */
-    private void checkEnemies() {
+    private boolean checkEnemies() {
         if (cyborgs != null) {
             for (int i = 0; i < cyborgs.size(); i++) {
                 if (detector.isOverLapping(cyborgs.get(i))) {
@@ -310,6 +320,7 @@ public class Bandit extends GameCharacter {
                     engine.pause(); 
                     BattleUI battleUI = new BattleUI(engine, this, cyborgs.get(i)); 
                     this.battleUI = battleUI; 
+                    return false;
                 }
             }
         }
@@ -321,6 +332,7 @@ public class Bandit extends GameCharacter {
                     engine.pause(); 
                     BattleUI battleUI = new BattleUI(engine, this, nails.get(i)); 
                     this.battleUI = battleUI; 
+                    return false;
                 }
             }
         }
@@ -332,9 +344,11 @@ public class Bandit extends GameCharacter {
                     engine.pause(); 
                     BattleUI battleUI = new BattleUI(engine, this, rampages.get(i)); 
                     this.battleUI = battleUI; 
+                    return false;
                 }
             }
         }
+        return true;
     }
 
     @Override

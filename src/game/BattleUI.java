@@ -861,7 +861,7 @@ public class BattleUI extends javax.swing.JFrame {
                     lblPlayerDodgeChance.setText(playerDodgeChance + "%");
                     lblPlayerDamage.setText(playerDamage + "");
                     playerHealthBar.setValue(playerHealth);
-                    enemyHealthBar.setValue(playerHealth);
+                    enemyHealthBar.setValue(enemyHealth);
                 }
             }
         });
@@ -905,7 +905,6 @@ public class BattleUI extends javax.swing.JFrame {
     private void enemyWin() {
         stopTimers(); 
         resetAbilities(); 
-//        engine.clearAll(this); 
         JOptionPane.showMessageDialog(null, "Oh no, you died!");
         JOptionPane.showMessageDialog(null, "GAME OVER");
         Introduction introduction = new Introduction(); 
