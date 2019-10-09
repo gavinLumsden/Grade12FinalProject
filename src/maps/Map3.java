@@ -128,7 +128,7 @@ public class Map3 extends javax.swing.JFrame {
         wall2.setText("Wall");
         wall2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(wall2);
-        wall2.setBounds(0, 0, 1230, 30);
+        wall2.setBounds(0, 0, 1260, 30);
 
         wall3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         wall3.setText("Wall");
@@ -140,7 +140,7 @@ public class Map3 extends javax.swing.JFrame {
         wall4.setText("Wall");
         wall4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(wall4);
-        wall4.setBounds(230, 830, 1000, 30);
+        wall4.setBounds(230, 830, 1030, 30);
 
         house1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/house.png"))); // NOI18N
         getContentPane().add(house1);
