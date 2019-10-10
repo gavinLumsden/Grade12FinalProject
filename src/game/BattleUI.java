@@ -2,8 +2,6 @@ package game;
 
 import game.gametools.GameCharacter;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Icon;
