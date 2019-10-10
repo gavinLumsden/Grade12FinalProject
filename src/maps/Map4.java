@@ -78,7 +78,9 @@ public class Map4 extends javax.swing.JFrame {
 
         LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList();
         NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2");
+        NextLevelBlock toMap5 = new NextLevelBlock(lblToMap5, "5");
         nextLevelBlocks.add(toMap2);
+        nextLevelBlocks.add(toMap5);
 
         this.engine = engine;
         engine.createGameObject(grassImages, "grass");
@@ -100,7 +102,6 @@ public class Map4 extends javax.swing.JFrame {
         wall3 = new javax.swing.JLabel();
         wall4 = new javax.swing.JLabel();
         wall5 = new javax.swing.JLabel();
-        lblToMap2 = new javax.swing.JLabel();
         lblCyborg2 = new javax.swing.JLabel();
         lblCyborg1 = new javax.swing.JLabel();
         lblNail1 = new javax.swing.JLabel();
@@ -132,6 +133,8 @@ public class Map4 extends javax.swing.JFrame {
         grass24 = new javax.swing.JLabel();
         grass25 = new javax.swing.JLabel();
         grass26 = new javax.swing.JLabel();
+        lblToMap2 = new javax.swing.JLabel();
+        lblToMap5 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -180,8 +183,6 @@ public class Map4 extends javax.swing.JFrame {
         wall5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(wall5);
         wall5.setBounds(0, 0, 30, 130);
-        getContentPane().add(lblToMap2);
-        lblToMap2.setBounds(830, 550, 200, 10);
 
         lblCyborg2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCyborg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/cyborg/right/cyborgIdle.png"))); // NOI18N
@@ -342,6 +343,10 @@ public class Map4 extends javax.swing.JFrame {
         grass26.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(grass26);
         grass26.setBounds(930, 30, 100, 100);
+        getContentPane().add(lblToMap2);
+        lblToMap2.setBounds(830, 550, 200, 10);
+        getContentPane().add(lblToMap5);
+        lblToMap5.setBounds(0, 130, 10, 200);
 
         background.setBackground(new java.awt.Color(102, 51, 0));
         background.setOpaque(true);
@@ -404,6 +409,7 @@ public class Map4 extends javax.swing.JFrame {
     private javax.swing.JLabel lblNail2;
     private javax.swing.JLabel lblRampage1;
     private javax.swing.JLabel lblToMap2;
+    private javax.swing.JLabel lblToMap5;
     private javax.swing.JLabel wall1;
     private javax.swing.JLabel wall2;
     private javax.swing.JLabel wall3;
