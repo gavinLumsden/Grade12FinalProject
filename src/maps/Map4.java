@@ -21,14 +21,23 @@ public class Map4 extends javax.swing.JFrame {
     private final int FORM_WIDTH = 1065;
     private final int FORM_HEIGHT = 589;
 
+    // locations where the hero can "spawn" into
+    private final int MAP_2_X = 880;
+    private final int MAP_2_Y = 430;
+    
+    private final int MAP_5_X = 30;
+    private final int MAP_5_Y = 180;
+
     /**
-     * Creates an enemy village form
+     * Creates Map 4
      *
-     * @param mapName
+     * @param currentMapName
      * @param engine
      */
-    public Map4(String mapName, GameEngine engine) {
+    public Map4(String currentMapName, GameEngine engine) {
+        LoadingScreen loadingScreen = new LoadingScreen(); 
         initComponents();
+        this.engine = engine;
 
         LinkedList<JLabel> wallImages = new LinkedList<>();
         wallImages.add(wall1);
@@ -81,8 +90,8 @@ public class Map4 extends javax.swing.JFrame {
         NextLevelBlock toMap5 = new NextLevelBlock(lblToMap5, "5");
         nextLevelBlocks.add(toMap2);
         nextLevelBlocks.add(toMap5);
-
-        this.engine = engine;
+        
+        setSpawnLocation(currentMapName); 
         engine.createGameObject(grassImages, "grass");
         engine.createGameObject(wallImages, "walls");
         engine.createGameCharacter(cyborgImages, "cyborgs");
@@ -90,6 +99,8 @@ public class Map4 extends javax.swing.JFrame {
         engine.createGameCharacter(rampageImages, "rampages");
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 4");
         engine.createHero(lblHero, nextLevelBlocks);
+        
+        loadingScreen.dispose();
     }
 
     @SuppressWarnings("unchecked")
@@ -416,5 +427,13 @@ public class Map4 extends javax.swing.JFrame {
     private javax.swing.JLabel wall4;
     private javax.swing.JLabel wall5;
     // End of variables declaration//GEN-END:variables
+
+    private void setSpawnLocation(String currentMapName) {
+        if (currentMapName.equals("map 2")) {
+            lblHero.setLocation(MAP_2_X, MAP_2_Y);
+        } else if (currentMapName.equals("map 5")) {
+            lblHero.setLocation(MAP_5_X, MAP_5_Y);
+        } 
+    }
 
 }

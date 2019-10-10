@@ -21,13 +21,15 @@ public class Map3 extends javax.swing.JFrame {
     private final int FORM_HEIGHT = 900;
 
     /**
-     * Creates the player village form
+     * Creates Map 3
      *
      * @param mapName
      * @param engine
      */
     public Map3(String mapName, GameEngine engine) {
+        LoadingScreen loadingScreen = new LoadingScreen(); 
         initComponents();
+        this.engine = engine;
 
         LinkedList<JLabel> wallImages = new LinkedList<>();
         wallImages.add(wall1);
@@ -61,13 +63,14 @@ public class Map3 extends javax.swing.JFrame {
         trainerImages.add(lblDodgeTrainer);
         trainerImages.add(lblHealthTrainer);
         trainerImages.add(lblSpeedTrainer);
-
-        this.engine = engine;
+        
         engine.createGameObject(wallImages, "walls");
         engine.createGameCharacter(shopkeeperImages, "shopkeepers");
         engine.createGameCharacter(trainerImages, "trainers");
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 3");
         engine.createHero(lblHero, nextLevelBlocks);
+        
+        loadingScreen.dispose();
     }
 
     @SuppressWarnings("unchecked")

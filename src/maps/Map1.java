@@ -21,20 +21,22 @@ public class Map1 extends javax.swing.JFrame {
     private final int FORM_HEIGHT = 589;
 
     // locations where the hero can "spawn" into
-    private final int SPAWN_LOCATION_X = 890;
-    private final int SPAWN_LOCATION_Y = 240;
+    private final int MAP_1_X = 890;
+    private final int MAP_1_Y = 240;
 
-    private final int MAIN_SPAWN_LOCATION_X = 380;
-    private final int MAIN_SPAWN_LOCATION_Y = 30;
+    private final int MAP_2_X = 380;
+    private final int MAP_2_Y = 30;
 
     /**
-     * Creates the spawn form
+     * Creates Map 1
      *
-     * @param mapName
+     * @param currentMapName
      * @param engine
      */
-    public Map1(String mapName, GameEngine engine) {
+    public Map1(String currentMapName, GameEngine engine) {
+        LoadingScreen loadingScreen = new LoadingScreen(); 
         initComponents();
+        this.engine = engine;
 
         LinkedList<JLabel> wallImages = new LinkedList<>();
         wallImages.add(wall1);
@@ -89,20 +91,16 @@ public class Map1 extends javax.swing.JFrame {
         LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList();
         NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2");
         nextLevelBlocks.add(toMap2);
-
-        if (mapName.equals("map 2")) {
-            lblHero.setLocation(MAIN_SPAWN_LOCATION_X, MAIN_SPAWN_LOCATION_Y);
-        } else {
-            lblHero.setLocation(SPAWN_LOCATION_X, SPAWN_LOCATION_Y);
-        }
-
-        this.engine = engine;
+        
+        setSpawnLocation(currentMapName); 
         engine.createGameObject(grassImages, "grass");
         engine.createGameObject(wallImages, "walls");
         engine.createGameObject(houseImages, "houses");
         engine.createGameCharacter(cyborgImages, "cyborgs");
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 1");
         engine.createHero(lblHero, nextLevelBlocks);
+        
+        loadingScreen.dispose();
     }
 
     @SuppressWarnings("unchecked")
@@ -464,5 +462,13 @@ public class Map1 extends javax.swing.JFrame {
     private javax.swing.JLabel wall4;
     private javax.swing.JLabel wall5;
     // End of variables declaration//GEN-END:variables
+
+    private void setSpawnLocation(String currentMapName) {
+        if (currentMapName.equals("map 1")) {
+            lblHero.setLocation(MAP_1_X, MAP_1_Y);
+        } else if (currentMapName.equals("map 2")) {
+            lblHero.setLocation(MAP_2_X, MAP_2_Y);
+        }
+    }
 
 }

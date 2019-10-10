@@ -31,13 +31,15 @@ public class Map2 extends javax.swing.JFrame {
     private final int MAP_4_Y = 30;
 
     /**
-     * Creates the main form
+     * Creates Map 2
      *
-     * @param mapName
+     * @param currentMapName
      * @param engine
      */
-    public Map2(String mapName, GameEngine engine) {
+    public Map2(String currentMapName, GameEngine engine) {
+        LoadingScreen loadingScreen = new LoadingScreen(); 
         initComponents();
+        this.engine = engine;
 
         LinkedList<JLabel> wallImages = new LinkedList<>();
         wallImages.add(wall1);
@@ -168,15 +170,7 @@ public class Map2 extends javax.swing.JFrame {
         nextLevelBlocks.add(toMap3);
         nextLevelBlocks.add(toMap4);
         
-        if (mapName.equals("map 1")) {
-            lblHero.setLocation(MAP_1_X, MAP_1_Y);
-        } else if (mapName.equals("map 3")) {
-            lblHero.setLocation(MAP_3_X, MAP_3_Y);
-        } else if (mapName.equals("map 4")) {
-            lblHero.setLocation(MAP_4_X, MAP_4_Y);
-        }
-
-        this.engine = engine;
+        setSpawnLocation(currentMapName); 
         engine.createGameObject(grassImages, "grass");
         engine.createGameObject(wallImages, "walls");
         engine.createGameCharacter(cyborgImages, "cyborgs");
@@ -184,6 +178,8 @@ public class Map2 extends javax.swing.JFrame {
         engine.createGameCharacter(rampageImages, "rampages");
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 2");
         engine.createHero(lblHero, nextLevelBlocks);
+        
+        loadingScreen.dispose();
     }
 
     @SuppressWarnings("unchecked")
@@ -984,5 +980,15 @@ public class Map2 extends javax.swing.JFrame {
     private javax.swing.JLabel wall6;
     private javax.swing.JLabel wall7;
     // End of variables declaration//GEN-END:variables
+
+    private void setSpawnLocation(String currentMapName) {
+        if (currentMapName.equals("map 1")) {
+            lblHero.setLocation(MAP_1_X, MAP_1_Y);
+        } else if (currentMapName.equals("map 3")) {
+            lblHero.setLocation(MAP_3_X, MAP_3_Y);
+        } else if (currentMapName.equals("map 4")) {
+            lblHero.setLocation(MAP_4_X, MAP_4_Y);
+        }
+    }
 
 }
