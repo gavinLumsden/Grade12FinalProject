@@ -204,7 +204,7 @@ public class Map1 extends javax.swing.JFrame {
         lblToMap2.setBounds(330, 0, 200, 10);
 
         lblCyborg1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCyborg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/cyborg/right/cyborgIdle.png"))); // NOI18N
+        lblCyborg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/cyborg/down/cyborgIdle.png"))); // NOI18N
         lblCyborg1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblCyborg1);
         lblCyborg1.setBounds(380, 30, 100, 100);

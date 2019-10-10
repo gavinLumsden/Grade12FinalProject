@@ -772,13 +772,13 @@ public class Map5 extends javax.swing.JFrame {
         lblCyborg1.setBounds(930, 380, 100, 100);
 
         lblRampage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRampage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/rampage/right/rampageIdle.png"))); // NOI18N
+        lblRampage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/rampage/up/rampageIdle.png"))); // NOI18N
         lblRampage1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblRampage1);
         lblRampage1.setBounds(580, 730, 100, 100);
 
         lblRampage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRampage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/rampage/right/rampageIdle.png"))); // NOI18N
+        lblRampage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/rampage/down/rampageIdle.png"))); // NOI18N
         lblRampage2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblRampage2);
         lblRampage2.setBounds(780, 30, 100, 100);

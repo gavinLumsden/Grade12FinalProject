@@ -78,11 +78,9 @@ public class Map4 extends javax.swing.JFrame {
         rampageImages.add(lblRampage1);
 
         LinkedList<JLabel> nailImages = new LinkedList<>();
-        nailImages.add(lblNail1);
         nailImages.add(lblNail2);
 
         LinkedList<JLabel> cyborgImages = new LinkedList<>();
-        cyborgImages.add(lblCyborg1);
         cyborgImages.add(lblCyborg2);
 
         LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList();
@@ -114,8 +112,6 @@ public class Map4 extends javax.swing.JFrame {
         wall4 = new javax.swing.JLabel();
         wall5 = new javax.swing.JLabel();
         lblCyborg2 = new javax.swing.JLabel();
-        lblCyborg1 = new javax.swing.JLabel();
-        lblNail1 = new javax.swing.JLabel();
         lblNail2 = new javax.swing.JLabel();
         lblRampage1 = new javax.swing.JLabel();
         grass1 = new javax.swing.JLabel();
@@ -196,22 +192,10 @@ public class Map4 extends javax.swing.JFrame {
         wall5.setBounds(0, 0, 30, 130);
 
         lblCyborg2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCyborg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/cyborg/right/cyborgIdle.png"))); // NOI18N
+        lblCyborg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/cyborg/down/cyborgIdle.png"))); // NOI18N
         lblCyborg2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblCyborg2);
         lblCyborg2.setBounds(880, 180, 100, 100);
-
-        lblCyborg1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCyborg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/cyborg/right/cyborgIdle.png"))); // NOI18N
-        lblCyborg1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(lblCyborg1);
-        lblCyborg1.setBounds(630, 180, 100, 100);
-
-        lblNail1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNail1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/nail/right/nailIdle.png"))); // NOI18N
-        lblNail1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(lblNail1);
-        lblNail1.setBounds(230, 180, 100, 100);
 
         lblNail2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNail2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/nail/right/nailIdle.png"))); // NOI18N
@@ -413,10 +397,8 @@ public class Map4 extends javax.swing.JFrame {
     private javax.swing.JLabel grass7;
     private javax.swing.JLabel grass8;
     private javax.swing.JLabel grass9;
-    private javax.swing.JLabel lblCyborg1;
     private javax.swing.JLabel lblCyborg2;
     private javax.swing.JLabel lblHero;
-    private javax.swing.JLabel lblNail1;
     private javax.swing.JLabel lblNail2;
     private javax.swing.JLabel lblRampage1;
     private javax.swing.JLabel lblToMap2;

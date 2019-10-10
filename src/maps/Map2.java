@@ -361,19 +361,19 @@ public class Map2 extends javax.swing.JFrame {
         lblToMap4.setBounds(230, 0, 200, 10);
 
         lblNail1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNail1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/nail/right/nailIdle.png"))); // NOI18N
+        lblNail1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/nail/left/nailIdle.png"))); // NOI18N
         lblNail1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblNail1);
         lblNail1.setBounds(1330, 380, 100, 100);
 
         lblRampage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRampage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/rampage/right/rampageIdle.png"))); // NOI18N
+        lblRampage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/rampage/down/rampageIdle.png"))); // NOI18N
         lblRampage1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblRampage1);
         lblRampage1.setBounds(280, 30, 100, 100);
 
         lblRampage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRampage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/rampage/right/rampageIdle.png"))); // NOI18N
+        lblRampage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/rampage/down/rampageIdle.png"))); // NOI18N
         lblRampage2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblRampage2);
         lblRampage2.setBounds(1380, 30, 100, 100);

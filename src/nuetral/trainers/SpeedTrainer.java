@@ -12,6 +12,7 @@ public class SpeedTrainer extends Trainer {
 
     public SpeedTrainer(JLabel image) {
         super(image);
+        super.sprite.setImage("/animations/trainers/speed/down/speedIdle.png");
     }
 
 }

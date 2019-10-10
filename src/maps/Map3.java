@@ -56,7 +56,7 @@ public class Map3 extends javax.swing.JFrame {
 
         LinkedList<JLabel> shopkeeperImages = new LinkedList();
         shopkeeperImages.add(lblShopkeeper1);
-        shopkeeperImages.add(lblShopkeeper2);
+        shopkeeperImages.add(lblDodgeTrainer);
 
         LinkedList<JLabel> trainerImages = new LinkedList();
         trainerImages.add(lblDamageTrainer);
@@ -95,9 +95,9 @@ public class Map3 extends javax.swing.JFrame {
         house10 = new javax.swing.JLabel();
         house11 = new javax.swing.JLabel();
         lblShopkeeper1 = new javax.swing.JLabel();
-        lblShopkeeper2 = new javax.swing.JLabel();
-        lblDamageTrainer = new javax.swing.JLabel();
         lblDodgeTrainer = new javax.swing.JLabel();
+        lblDamageTrainer = new javax.swing.JLabel();
+        lblShopkeeper2 = new javax.swing.JLabel();
         lblHealthTrainer = new javax.swing.JLabel();
         lblSpeedTrainer = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
@@ -190,37 +190,36 @@ public class Map3 extends javax.swing.JFrame {
         house11.setBounds(430, 630, 200, 200);
 
         lblShopkeeper1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblShopkeeper1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
         lblShopkeeper1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblShopkeeper1);
-        lblShopkeeper1.setBounds(1090, 230, 100, 100);
-
-        lblShopkeeper2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblShopkeeper2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
-        lblShopkeeper2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(lblShopkeeper2);
-        lblShopkeeper2.setBounds(890, 230, 100, 100);
-
-        lblDamageTrainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDamageTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
-        lblDamageTrainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(lblDamageTrainer);
-        lblDamageTrainer.setBounds(80, 230, 100, 100);
+        lblShopkeeper1.setBounds(90, 230, 100, 100);
 
         lblDodgeTrainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDodgeTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
+        lblDodgeTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/trainers/dodge/down/dodgeIdle.png"))); // NOI18N
         lblDodgeTrainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblDodgeTrainer);
-        lblDodgeTrainer.setBounds(290, 230, 100, 100);
+        lblDodgeTrainer.setBounds(890, 230, 100, 100);
+
+        lblDamageTrainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDamageTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/trainers/damage/down/strengthIdle.png"))); // NOI18N
+        lblDamageTrainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(lblDamageTrainer);
+        lblDamageTrainer.setBounds(1090, 230, 100, 100);
+
+        lblShopkeeper2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblShopkeeper2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper2/down/shopkeeperIdle.png"))); // NOI18N
+        lblShopkeeper2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(lblShopkeeper2);
+        lblShopkeeper2.setBounds(290, 230, 100, 100);
 
         lblHealthTrainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHealthTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
+        lblHealthTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/trainers/health/down/healthIdle.png"))); // NOI18N
         lblHealthTrainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblHealthTrainer);
         lblHealthTrainer.setBounds(490, 230, 100, 100);
 
         lblSpeedTrainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSpeedTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/shopkeepers/shopkeeper.png"))); // NOI18N
+        lblSpeedTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/trainers/speed/down/speedIdle.png"))); // NOI18N
         lblSpeedTrainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblSpeedTrainer);
         lblSpeedTrainer.setBounds(690, 230, 100, 100);

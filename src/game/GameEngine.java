@@ -142,10 +142,10 @@ public class GameEngine {
         }
         if (characterToCreate.equals("trainers")) {
             trainers = new LinkedList<>();
-            DamageTrainer newDamageTrainer = new DamageTrainer(images.get(1));
-            DodgeTrainer newDodgeTrainer = new DodgeTrainer(images.get(2));
-            HealthTrainer newHealthTrainer = new HealthTrainer(images.get(3));
-            SpeedTrainer newSpeedTrainer = new SpeedTrainer(images.get(4));
+            DamageTrainer newDamageTrainer = new DamageTrainer(images.get(0));
+            DodgeTrainer newDodgeTrainer = new DodgeTrainer(images.get(1));
+            HealthTrainer newHealthTrainer = new HealthTrainer(images.get(2));
+            SpeedTrainer newSpeedTrainer = new SpeedTrainer(images.get(3));
             trainers.add(newDamageTrainer);
             trainers.add(newDodgeTrainer);
             trainers.add(newHealthTrainer);
