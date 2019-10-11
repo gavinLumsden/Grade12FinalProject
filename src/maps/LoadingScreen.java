@@ -1,6 +1,5 @@
 package maps;
 
-import game.GameEngine;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -23,10 +22,8 @@ public class LoadingScreen extends javax.swing.JDialog {
      * Creates new form LoadingScreen2
      * @param parent
      * @param modal
-     * @param engine
-     * @param currentMapName
      */
-    public LoadingScreen(java.awt.Frame parent, boolean modal, GameEngine engine, String currentMapName) {
+    public LoadingScreen(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         initLook();
