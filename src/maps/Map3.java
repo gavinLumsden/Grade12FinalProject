@@ -27,7 +27,7 @@ public class Map3 extends javax.swing.JFrame {
      * @param engine
      */
     public Map3(String mapName, GameEngine engine) {
-        LoadingScreen loadingScreen = new LoadingScreen(); 
+        LoadingScreen loadingScreen = new LoadingScreen(this, true); 
         initComponents();
         this.engine = engine;
 
@@ -201,7 +201,7 @@ public class Map3 extends javax.swing.JFrame {
         lblDodgeTrainer.setBounds(890, 230, 100, 100);
 
         lblDamageTrainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDamageTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/trainers/damage/down/strengthIdle.png"))); // NOI18N
+        lblDamageTrainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/trainers/damage/down/damageIdle.png"))); // NOI18N
         lblDamageTrainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblDamageTrainer);
         lblDamageTrainer.setBounds(1090, 230, 100, 100);

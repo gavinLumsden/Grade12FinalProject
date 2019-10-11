@@ -16,6 +16,7 @@ import game.BattleUI;
 import javax.swing.JFrame;
 import maps.Map1;
 import javax.swing.JLabel;
+import maps.LoadingScreen;
 import maps.Map2;
 import maps.Map3;
 import maps.Map4;

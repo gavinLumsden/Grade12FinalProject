@@ -37,7 +37,7 @@ public class Map2 extends javax.swing.JFrame {
      * @param engine
      */
     public Map2(String currentMapName, GameEngine engine) {
-        LoadingScreen loadingScreen = new LoadingScreen(); 
+        LoadingScreen loadingScreen = new LoadingScreen(this, true); 
         initComponents();
         this.engine = engine;
 

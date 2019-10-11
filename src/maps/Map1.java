@@ -2,7 +2,9 @@ package maps;
 
 import collections.LinkedList;
 import game.GameEngine;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import objects.NextLevelBlock;
 
 /**
@@ -34,73 +36,7 @@ public class Map1 extends javax.swing.JFrame {
      * @param engine
      */
     public Map1(String currentMapName, GameEngine engine) {
-        LoadingScreen loadingScreen = new LoadingScreen(); 
-        initComponents();
-        this.engine = engine;
-
-        LinkedList<JLabel> wallImages = new LinkedList<>();
-        wallImages.add(wall1);
-        wallImages.add(wall2);
-        wallImages.add(wall3);
-        wallImages.add(wall4);
-        wallImages.add(wall5);
-
-        LinkedList<JLabel> grassImages = new LinkedList<>();
-        grassImages.add(grass1);
-        grassImages.add(grass2);
-        grassImages.add(grass3);
-        grassImages.add(grass4);
-        grassImages.add(grass5);
-        grassImages.add(grass6);
-        grassImages.add(grass7);
-        grassImages.add(grass8);
-        grassImages.add(grass9);
-        grassImages.add(grass10);
-        grassImages.add(grass11);
-        grassImages.add(grass12);
-        grassImages.add(grass13);
-        grassImages.add(grass14);
-        grassImages.add(grass15);
-        grassImages.add(grass16);
-        grassImages.add(grass17);
-        grassImages.add(grass18);
-        grassImages.add(grass19);
-        grassImages.add(grass20);
-        grassImages.add(grass21);
-        grassImages.add(grass22);
-        grassImages.add(grass23);
-        grassImages.add(grass24);
-        grassImages.add(grass25);
-        grassImages.add(grass26);
-        grassImages.add(grass27);
-        grassImages.add(grass28);
-        grassImages.add(grass29);
-        grassImages.add(grass30);
-        grassImages.add(grass31);
-        grassImages.add(grass32);
-        grassImages.add(grass33);
-        grassImages.add(grass34);
-        grassImages.add(grass35);
-
-        LinkedList<JLabel> cyborgImages = new LinkedList<>();
-        cyborgImages.add(lblCyborg1);
-
-        LinkedList<JLabel> houseImages = new LinkedList<>();
-        houseImages.add(house1);
-
-        LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList();
-        NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2");
-        nextLevelBlocks.add(toMap2);
-        
-        setSpawnLocation(currentMapName); 
-        engine.createGameObject(grassImages, "grass");
-        engine.createGameObject(wallImages, "walls");
-        engine.createGameObject(houseImages, "houses");
-        engine.createGameCharacter(cyborgImages, "cyborgs");
-        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 1");
-        engine.createHero(lblHero, nextLevelBlocks);
-        
-        loadingScreen.dispose();
+        LoadingScreen loadingScreen = new LoadingScreen(this, true, engine, currentMapName);
     }
 
     @SuppressWarnings("unchecked")
@@ -471,4 +407,73 @@ public class Map1 extends javax.swing.JFrame {
         }
     }
 
+    public void construtor(GameEngine engine, String currentMapName, JDialog loadingScreen) {
+        initComponents();
+        this.engine = engine;
+
+        LinkedList<JLabel> wallImages = new LinkedList<>();
+        wallImages.add(wall1);
+        wallImages.add(wall2);
+        wallImages.add(wall3);
+        wallImages.add(wall4);
+        wallImages.add(wall5);
+
+        LinkedList<JLabel> grassImages = new LinkedList<>();
+        grassImages.add(grass1);
+        grassImages.add(grass2);
+        grassImages.add(grass3);
+        grassImages.add(grass4);
+        grassImages.add(grass5);
+        grassImages.add(grass6);
+        grassImages.add(grass7);
+        grassImages.add(grass8);
+        grassImages.add(grass9);
+        grassImages.add(grass10);
+        grassImages.add(grass11);
+        grassImages.add(grass12);
+        grassImages.add(grass13);
+        grassImages.add(grass14);
+        grassImages.add(grass15);
+        grassImages.add(grass16);
+        grassImages.add(grass17);
+        grassImages.add(grass18);
+        grassImages.add(grass19);
+        grassImages.add(grass20);
+        grassImages.add(grass21);
+        grassImages.add(grass22);
+        grassImages.add(grass23);
+        grassImages.add(grass24);
+        grassImages.add(grass25);
+        grassImages.add(grass26);
+        grassImages.add(grass27);
+        grassImages.add(grass28);
+        grassImages.add(grass29);
+        grassImages.add(grass30);
+        grassImages.add(grass31);
+        grassImages.add(grass32);
+        grassImages.add(grass33);
+        grassImages.add(grass34);
+        grassImages.add(grass35);
+
+        LinkedList<JLabel> cyborgImages = new LinkedList<>();
+        cyborgImages.add(lblCyborg1);
+
+        LinkedList<JLabel> houseImages = new LinkedList<>();
+        houseImages.add(house1);
+
+        LinkedList<NextLevelBlock> nextLevelBlocks = new LinkedList();
+        NextLevelBlock toMap2 = new NextLevelBlock(lblToMap2, "2");
+        nextLevelBlocks.add(toMap2);
+
+        setSpawnLocation(currentMapName); 
+        engine.createGameObject(grassImages, "grass");
+        engine.createGameObject(wallImages, "walls");
+        engine.createGameObject(houseImages, "houses");
+        engine.createGameCharacter(cyborgImages, "cyborgs");
+        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 1");
+        engine.createHero(lblHero, nextLevelBlocks);
+
+        loadingScreen.dispose();
+    }
+    
 }
