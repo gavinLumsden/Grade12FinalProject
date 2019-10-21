@@ -13,6 +13,7 @@ public class DodgeTrainer extends Trainer {
     public DodgeTrainer(JLabel image) {
         super(image);
         super.sprite.setImage("/animations/trainers/dodge/down/dodgeIdle.png");
+        super.stat = "dodge"; 
     }
 
 }

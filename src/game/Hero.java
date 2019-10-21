@@ -16,6 +16,7 @@ import game.gametools.GameCharacter;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import nuetral.trainers.Trainer;
 import objects.House;
 
 /**
@@ -45,6 +46,7 @@ public class Hero {
      * @param previousMap
      * @param currentMapName
      * @param previousMapName
+     * @param trainers
      */
     public Hero(
             JLabel heroImage,
@@ -53,19 +55,20 @@ public class Hero {
             LinkedList<NextLevelBlock> nextLevelBlocks, 
             GameEngine engine, boolean hasBeenCreated,
             JFrame currentMap, JFrame previousMap,
-            String currentMapName, String previousMapName) {
+            String currentMapName, String previousMapName,
+            LinkedList<Trainer> trainers) {
         if (CharacterSelect.selected.equals("bandit")) {
-            heroClass = new Bandit(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapName, previousMapName);
+            heroClass = new Bandit(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapName, previousMapName, trainers);
         }  else if (CharacterSelect.selected.equals("gambler")) {
-            heroClass = new Gambler(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapName, previousMapName);
+            heroClass = new Gambler(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapName, previousMapName, trainers);
         } else if (CharacterSelect.selected.equals("hacker")) {
-            heroClass = new Hacker(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapName, previousMapName);
+            heroClass = new Hacker(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapName, previousMapName, trainers);
         }  else if (CharacterSelect.selected.equals("juggernaut")) {
-            heroClass = new Juggernaut(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapName, previousMapName);
+            heroClass = new Juggernaut(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapName, previousMapName, trainers);
         } else if (CharacterSelect.selected.equals("mage")) {
-            heroClass = new Mage(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapName, previousMapName);
+            heroClass = new Mage(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapName, previousMapName, trainers);
         }   else if (CharacterSelect.selected.equals("vampire")) {
-            heroClass = new Vampire(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapName, previousMapName);
+            heroClass = new Vampire(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapName, previousMapName, trainers);
         }
         heroClass.spawn();
         heroClass.sprite.animate(1);

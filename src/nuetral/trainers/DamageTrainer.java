@@ -13,6 +13,7 @@ public class DamageTrainer extends Trainer {
     public DamageTrainer(JLabel image) {
         super(image);
         super.sprite.setImage("/animations/trainers/damage/down/damageIdle.png");
+        super.stat = "damage"; 
     }
 
 }

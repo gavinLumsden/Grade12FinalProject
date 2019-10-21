@@ -20,6 +20,8 @@ import maps.Map2;
 import maps.Map3;
 import maps.Map4;
 import maps.Map5;
+import maps.Upgrade;
+import nuetral.trainers.Trainer;
 import objects.House;
 
 /**
@@ -41,6 +43,7 @@ public class Bandit extends GameCharacter {
     private LinkedList<Grass>          grass;
     private LinkedList<House>          houses; 
     private LinkedList<NextLevelBlock> nextLevelBlocks; 
+    private LinkedList<Trainer>        trainers; 
     
     public final String NAME = "Bandit"; 
     
@@ -78,6 +81,8 @@ public class Bandit extends GameCharacter {
     public int attack3Duration;   
     public int attack4Duration;
     
+    private boolean canTravel; 
+    
     /**
      * Creates a "bandit"
      *
@@ -94,6 +99,7 @@ public class Bandit extends GameCharacter {
      * @param previousMap
      * @param currentMapName
      * @param previousMapName
+     * @param trainers
      */
     public Bandit(
             JLabel heroImage,
@@ -102,9 +108,12 @@ public class Bandit extends GameCharacter {
             LinkedList<NextLevelBlock> nextLevelBlock, 
             GameEngine engine, boolean hasBeenCreated,
             JFrame currentMap, JFrame previousMap, 
-            String currentMapName, String previousMapName) {
+            String currentMapName, String previousMapName,
+            LinkedList<Trainer> trainers) {
         super(heroImage, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
+        canTravel = true; 
+        
         this.currentMap  = currentMap; 
         this.previousMap = previousMap; 
         this.currentMapName  = currentMapName; 
@@ -114,6 +123,7 @@ public class Bandit extends GameCharacter {
         this.walls = walls;
         this.houses = houses; 
         this.nextLevelBlocks = nextLevelBlock; 
+        this.trainers = trainers; 
 
         this.cyborgs = cyborgs;
         this.nails = nails;
@@ -246,6 +256,7 @@ public class Bandit extends GameCharacter {
         if (check) check = checkNextLevelBlocks();
         if (check) check = checkHouses(); 
         if (check) check = checkEnemies();
+        if (check) check = checkTrainers();
         redraw();
     }
 
@@ -351,10 +362,27 @@ public class Bandit extends GameCharacter {
 //                    return false;
 //                }
 //            }
-//        }
+//        } 
         return true;
     }
 
+
+    private boolean checkTrainers() {
+        if (canTravel == true) { 
+            if (trainers != null) {
+                for (int i = 0; i < trainers.size(); i++) {
+                    if (detector.isOverLapping(trainers.get(i))) {
+                        canTravel = false; 
+                        engine.pause();
+                        Upgrade upgrade = new Upgrade(trainers.get(i).stat); 
+                        return false; 
+                    }
+                }
+            }
+        }
+        return true; 
+    }
+    
     @Override
     public void attack1() {
         battleUI.playerDodgeChance *= 2; 

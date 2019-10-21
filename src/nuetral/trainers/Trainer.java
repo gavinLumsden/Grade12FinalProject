@@ -12,6 +12,8 @@ import javax.swing.JLabel;
  */
 public class Trainer extends GameObject {
 
+    public String stat; 
+    
     /**
      * Constructor for the class
      *

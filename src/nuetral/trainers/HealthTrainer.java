@@ -13,6 +13,7 @@ public class HealthTrainer extends Trainer {
     public HealthTrainer(JLabel image) {
         super(image);
         super.sprite.setImage("/animations/trainers/health/down/healthIdle.png");
+        super.stat = "health"; 
     }
 
 }

@@ -19,6 +19,7 @@ import maps.Map2;
 import maps.Map4;
 import maps.Map3;
 import javax.swing.JLabel;
+import nuetral.trainers.Trainer;
 import objects.House;
 
 public class Mage extends GameCharacter {
@@ -84,6 +85,7 @@ public class Mage extends GameCharacter {
      * @param previousMap
      * @param currentMapName
      * @param previousMapName
+     * @param trainers
      */
     public Mage(
             JLabel heroImage,
@@ -92,7 +94,8 @@ public class Mage extends GameCharacter {
             LinkedList<NextLevelBlock> nextLevelBlock, 
             GameEngine engine, boolean hasBeenCreated,
             JFrame currentMap, JFrame previousMap, 
-            String currentMapName, String previousMapName) {
+            String currentMapName, String previousMapName, 
+            LinkedList<Trainer> trainers) {
         super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
         this.currentMap  = currentMap; 

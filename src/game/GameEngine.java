@@ -187,7 +187,8 @@ public class GameEngine {
                 nextLevelBlocks,
                 this, hasBeenCreated,
                 currentMap, previousMap,
-                currentMapName, previousMapName);
+                currentMapName, previousMapName,
+                trainers);
         hasBeenCreated = true;
         hero.update();
     }
@@ -267,10 +268,6 @@ public class GameEngine {
         if (previousMap != null) {
             previousMap.dispose();
         }
-    }
-
-    public void construct() {
-        
     }
     
 }
