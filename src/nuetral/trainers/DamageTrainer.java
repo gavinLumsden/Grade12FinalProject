@@ -10,10 +10,16 @@ import javax.swing.JLabel;
  */
 public class DamageTrainer extends Trainer {
 
+    public String stat = "damage"; 
+    public String quote = "Trainer Damage says: now that's a lot of damage!"; 
+    public String price = "+1 damage = 100 gold"; 
+
     public DamageTrainer(JLabel image) {
         super(image);
         super.sprite.setImage("/animations/trainers/damage/down/damageIdle.png");
-        super.stat = "damage"; 
+        super.stat = stat; 
+        super.quote = quote; 
+        super.price = price; 
     }
 
 }

@@ -374,7 +374,7 @@ public class Bandit extends GameCharacter {
                     if (detector.isOverLapping(trainers.get(i))) {
                         canTravel = false; 
                         engine.pause();
-                        Upgrade upgrade = new Upgrade(trainers.get(i).stat); 
+                        Upgrade upgrade = new Upgrade(trainers.get(i)); 
                         return false; 
                     }
                 }

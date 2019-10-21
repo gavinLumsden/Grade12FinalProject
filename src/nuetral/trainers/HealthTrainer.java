@@ -10,10 +10,16 @@ import javax.swing.JLabel;
  */
 public class HealthTrainer extends Trainer {
 
+    public String stat = "health"; 
+    public String quote = "Trainer Health says: heros sometimes die"; 
+    public String price = "+1 health = 100 gold"; 
+
     public HealthTrainer(JLabel image) {
         super(image);
         super.sprite.setImage("/animations/trainers/health/down/healthIdle.png");
-        super.stat = "health"; 
+        super.stat = stat; 
+        super.quote = quote; 
+        super.price = price; 
     }
 
 }

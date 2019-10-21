@@ -1,5 +1,7 @@
 package maps;
 
+import nuetral.trainers.Trainer;
+
 /**
  * @author g.lumsden
  */
@@ -9,11 +11,13 @@ public class Upgrade extends javax.swing.JFrame {
     private final int FORM_WIDTH = 500; 
     private final int FORM_HEIGHT = 420; 
     
+    private int statToUpgrade; 
+    
     /**
      * Constructor for the class
      * @param trainer 
      */
-    public Upgrade(String trainer) {
+    public Upgrade(Trainer trainer) {
         initComponents();
         setupAnimations(trainer); 
         setupText(trainer); 
@@ -56,6 +60,11 @@ public class Upgrade extends javax.swing.JFrame {
 
         btnUpgrade.setFont(new java.awt.Font("Times New Roman", 1, 75)); // NOI18N
         btnUpgrade.setText("Upgrade");
+        btnUpgrade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpgradeMouseClicked(evt);
+            }
+        });
         getContentPane().add(btnUpgrade);
         btnUpgrade.setBounds(30, 240, 420, 130);
 
@@ -66,6 +75,10 @@ public class Upgrade extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnUpgradeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpgradeMouseClicked
+        
+    }//GEN-LAST:event_btnUpgradeMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUpgrade;
@@ -79,7 +92,7 @@ public class Upgrade extends javax.swing.JFrame {
      * setups the animations for the selected trainer
      * @param trainer 
      */
-    private void setupAnimations(String trainer) {
+    private void setupAnimations(Trainer trainer) {
         
     }
 
@@ -87,20 +100,9 @@ public class Upgrade extends javax.swing.JFrame {
      * setups the text (specific to each trainer)
      * @param trainer 
      */
-    private void setupText(String trainer) {
-        if (trainer.equals("damage")) {
-            lblTrainerText.setText("Trainer Damage says: dmaage");
-            lblPrice.setText("+1 damage = 100 gold");
-        } else if (trainer.equals("dodge")) {
-            lblTrainerText.setText("Trainer Dodge says: move");
-            lblPrice.setText("+1% dodge chance = 100 gold");
-        } else if (trainer.equals("health")) {
-            lblTrainerText.setText("Trainer Health says: heros sometimes die");
-            lblPrice.setText("+1 health = 100 gold");
-        } else if (trainer.equals("speed")) {
-            lblTrainerText.setText("Trainer Speed says: fast");
-            lblPrice.setText("+1 punch speed = 100 gold");
-        }
+    private void setupText(Trainer trainer) {
+        lblTrainerText.setText(trainer.quote);
+        lblPrice.setText(trainer.price);
     }
 
     /**
@@ -112,5 +114,5 @@ public class Upgrade extends javax.swing.JFrame {
         this.setResizable(false);
         this.setVisible(true);
     }
-
+    
 }

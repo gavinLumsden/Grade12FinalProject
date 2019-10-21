@@ -10,10 +10,16 @@ import javax.swing.JLabel;
  */
 public class SpeedTrainer extends Trainer {
 
+    public String stat = "speed"; 
+    public String quote = "Trainer Speed says: fast"; 
+    public String price = "+1 punch speed = 100 gold"; 
+
     public SpeedTrainer(JLabel image) {
         super(image);
         super.sprite.setImage("/animations/trainers/speed/down/speedIdle.png");
-        super.stat = "speed"; 
+        super.stat = stat; 
+        super.quote = quote; 
+        super.price = price; 
     }
 
 }

@@ -10,10 +10,16 @@ import javax.swing.JLabel;
  */
 public class DodgeTrainer extends Trainer {
 
+    public String stat = "dodge"; 
+    public String quote = "Trainer Dodge says: move"; 
+    public String price = "+1% dodge chance = 100 gold"; 
+
     public DodgeTrainer(JLabel image) {
         super(image);
         super.sprite.setImage("/animations/trainers/dodge/down/dodgeIdle.png");
-        super.stat = "dodge"; 
+        super.stat = stat; 
+        super.quote = quote; 
+        super.price = price; 
     }
 
 }
