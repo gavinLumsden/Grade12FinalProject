@@ -37,7 +37,6 @@ public class Map5 extends javax.swing.JFrame {
      * @param engine
      */
     public Map5(String currentMapName, GameEngine engine) {
-        LoadingScreen loadingScreen = new LoadingScreen(this, true); 
         initComponents();
         this.engine = engine;
 
@@ -186,8 +185,6 @@ public class Map5 extends javax.swing.JFrame {
         engine.createGameCharacter(rampageImages, "rampages");
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 5");
         engine.createHero(lblHero, nextLevelBlocks);
-        
-        loadingScreen.dispose();
     }
     
     @SuppressWarnings("unchecked")

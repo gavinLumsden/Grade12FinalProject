@@ -34,7 +34,6 @@ public class Map1 extends javax.swing.JFrame {
      * @param engine
      */
     public Map1(String currentMapName, GameEngine engine) {
-        LoadingScreen loadingScreen = new LoadingScreen(this, true);
         initComponents();
         this.engine = engine;
 
@@ -99,8 +98,6 @@ public class Map1 extends javax.swing.JFrame {
         engine.createGameCharacter(cyborgImages, "cyborgs");
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 1");
         engine.createHero(lblHero, nextLevelBlocks);
-
-        loadingScreen.dispose();
     }
 
     @SuppressWarnings("unchecked")

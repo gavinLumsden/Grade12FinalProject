@@ -21,6 +21,7 @@ public class House extends GameObject {
         super(image, 0, Directions.STOP, 0);
         sprite.setImage("/animations/objects/house.png");
         sprite.debug("");
+        sprite.setBackground(0, 0, 255);
         sprite.removeBorder();
     }
 
