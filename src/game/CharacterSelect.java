@@ -17,8 +17,8 @@ import javax.swing.JOptionPane;
 public class CharacterSelect extends javax.swing.JFrame {
 
     // height and witdth of the form
-    private final int FORM_WIDTH = 1382;
-    private final int FORM_HEIGHT = 800;
+    private final int FORM_WIDTH = 576;
+    private final int FORM_HEIGHT = 348;
 
     // properties
     private GameEngine engine;
@@ -134,7 +134,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelect);
-        btnSelect.setBounds(320, 390, 270, 100);
+        btnSelect.setBounds(140, 160, 100, 50);
 
         btnAbilities.setBackground(new java.awt.Color(255, 255, 0));
         btnAbilities.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
@@ -148,7 +148,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAbilities);
-        btnAbilities.setBounds(780, 400, 270, 100);
+        btnAbilities.setBounds(310, 160, 140, 40);
 
         lblVampire.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVampire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/vampire/right/vampireIdle.png"))); // NOI18N
@@ -166,7 +166,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblVampire);
-        lblVampire.setBounds(128, 174, 238, 242);
+        lblVampire.setBounds(54, 70, 95, 97);
 
         lblJuggernaut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJuggernaut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/juggernaut/right/juggernautIdle.png"))); // NOI18N
@@ -184,7 +184,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblJuggernaut);
-        lblJuggernaut.setBounds(574, 174, 238, 242);
+        lblJuggernaut.setBounds(237, 70, 95, 97);
 
         lblHacker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHacker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/hacker/right/hackerIdle.png"))); // NOI18N
@@ -202,7 +202,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblHacker);
-        lblHacker.setBounds(1000, 174, 238, 242);
+        lblHacker.setBounds(412, 70, 95, 97);
 
         lblBandit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBandit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/bandit/right/banditIdle.png"))); // NOI18N
@@ -220,7 +220,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblBandit);
-        lblBandit.setBounds(128, 477, 238, 242);
+        lblBandit.setBounds(54, 194, 95, 97);
 
         lblMage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/mage/right/mageIdle1.png"))); // NOI18N
@@ -238,7 +238,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblMage);
-        lblMage.setBounds(574, 477, 238, 242);
+        lblMage.setBounds(237, 194, 95, 97);
 
         lblGambler.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblGambler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/gambler/right/gamblerIdle.png"))); // NOI18N
@@ -256,12 +256,12 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblGambler);
-        lblGambler.setBounds(1000, 477, 238, 242);
+        lblGambler.setBounds(412, 194, 95, 97);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/formBackgrounds/characterSelectBackground.png"))); // NOI18N
         background.setOpaque(true);
         getContentPane().add(background);
-        background.setBounds(0, 0, 1370, 770);
+        background.setBounds(0, 0, 560, 310);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
