@@ -17,8 +17,8 @@ import javax.swing.JOptionPane;
 public class CharacterSelect extends javax.swing.JFrame {
 
     // height and witdth of the form
-    private final int FORM_WIDTH = 2000;
-    private final int FORM_HEIGHT = 2000;
+    private final int FORM_WIDTH = 1382;
+    private final int FORM_HEIGHT = 800;
 
     // properties
     private GameEngine engine;
@@ -122,7 +122,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(null);
 
-        btnSelect.setBackground(new java.awt.Color(153, 255, 153));
+        btnSelect.setBackground(new java.awt.Color(255, 255, 0));
         btnSelect.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnSelect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnSelect.setText("Select");
@@ -134,9 +134,9 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelect);
-        btnSelect.setBounds(810, 290, 270, 100);
+        btnSelect.setBounds(320, 390, 270, 100);
 
-        btnAbilities.setBackground(new java.awt.Color(153, 255, 153));
+        btnAbilities.setBackground(new java.awt.Color(255, 255, 0));
         btnAbilities.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnAbilities.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAbilities.setText("Abilities");
@@ -148,7 +148,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAbilities);
-        btnAbilities.setBounds(800, 410, 270, 100);
+        btnAbilities.setBounds(780, 400, 270, 100);
 
         lblVampire.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVampire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/vampire/right/vampireIdle.png"))); // NOI18N
@@ -166,7 +166,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblVampire);
-        lblVampire.setBounds(140, 190, 210, 210);
+        lblVampire.setBounds(128, 174, 238, 242);
 
         lblJuggernaut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJuggernaut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/juggernaut/right/juggernautIdle.png"))); // NOI18N
@@ -184,7 +184,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblJuggernaut);
-        lblJuggernaut.setBounds(590, 190, 210, 210);
+        lblJuggernaut.setBounds(574, 174, 238, 242);
 
         lblHacker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHacker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/hacker/right/hackerIdle.png"))); // NOI18N
@@ -202,7 +202,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblHacker);
-        lblHacker.setBounds(1010, 180, 220, 230);
+        lblHacker.setBounds(1000, 174, 238, 242);
 
         lblBandit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBandit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/bandit/right/banditIdle.png"))); // NOI18N
@@ -220,7 +220,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblBandit);
-        lblBandit.setBounds(140, 490, 210, 220);
+        lblBandit.setBounds(128, 477, 238, 242);
 
         lblMage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/mage/right/mageIdle1.png"))); // NOI18N
@@ -238,7 +238,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblMage);
-        lblMage.setBounds(590, 490, 210, 210);
+        lblMage.setBounds(574, 477, 238, 242);
 
         lblGambler.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblGambler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/gambler/right/gamblerIdle.png"))); // NOI18N
@@ -256,7 +256,7 @@ public class CharacterSelect extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblGambler);
-        lblGambler.setBounds(1010, 490, 220, 210);
+        lblGambler.setBounds(1000, 477, 238, 242);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/formBackgrounds/characterSelectBackground.png"))); // NOI18N
         background.setOpaque(true);
@@ -411,32 +411,55 @@ public class CharacterSelect extends javax.swing.JFrame {
         if (isClicked) {
             unClick(); 
         } else {
-            label.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
-            if (animations[spot].isRunning() == false) {
-                animations[spot].run();
-            }
             isClicked = true; 
+            btnSelect.setEnabled(true); 
+            btnAbilities.setEnabled(true); 
+            set(); 
         }
     }
     
     private void unClick() {
-        label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        animations[spot].stop(); 
-        isClicked = false; 
+        if (label != null) {
+            isClicked = false; 
+            btnSelect.setEnabled(false); 
+            btnAbilities.setEnabled(false); 
+            reset(); 
+        }
     }
 
     private void hoverIn() {
         if (!isClicked) {
-            animations[spot].run();
-            label.setBorder(BorderFactory.createBevelBorder(1, Color.green, Color.red));
+            set(); 
         }
     }
     
     private void hoverOut() {
         if (!isClicked) {
-            animations[spot].stop();
-            label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            reset(); 
+        }
+    }
+    
+    private void reset() {
+        if (label != null) {
+            for (int i = 0; i < animations.length; i++) {
+                animations[i].stop(); 
+            }
+            for (int i = 0; i < labels.length; i++) {
+                labels[i].setBorder(BorderFactory.createLineBorder(Color.black));
+            }
+            label = null; 
+            spot = 0; 
+            selected = ""; 
         }
     }
 
+    private void set() {
+        if (label != null) {
+            label.setBorder(BorderFactory.createBevelBorder(1, Color.yellow, Color.yellow));
+            if (animations[spot].isRunning() == false) {
+                animations[spot].run();
+            }
+        }
+    }
+    
 }
