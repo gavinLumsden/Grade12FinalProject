@@ -12,20 +12,21 @@ public class Abilities {
     public Abilities(String selected) {
         if (selected.equals("bandit")) {
             JOptionPane.showMessageDialog(null, "Class: Bandit\n\n"
-                    + "Ability 1: Swift,     increases dodge stat for _ seconds\n"
-                    + "Ability 2: Poison,    slows the enemy down for _ seconds\n"
-                    + "Ablilty 3: Stab,      makes the enemy bleed\n"
+                    + "Ability 1: Swift,     increases dodge stat by _ for _ seconds\n"
+                    + "Ability 2: Poison,    slows the enemy down by _for _ seconds\n"
+                    + "Ablilty 3: Stab,      makes the enemy bleed for _ seconds\n"
                     + "Ability 4: Evade,     100% to dodge the next _ attacks\n"
                     + "Passive:   Back Stab, when you dodge an attack you have a _% chance to hit the enemy back\n"
-                    + "Ultimate:  Elusive,   raises dodge stat for the rest of the battle");
+                    + "Ultimate:  Elusive,   raises dodge stat by _ for the rest of the battle");
         } else if (selected.equals("gambler")) {
             JOptionPane.showMessageDialog(null, "Class: Gambler\n\n"
-                    + "Ability 1: NAME_HERE, ABILITY_HERE\n"
-                    + "Ability 2: NAME_HERE, ABILITY_HERE\n"
-                    + "Ablilty 3: NAME_HERE, ABILITY_HERE\n"
-                    + "Ability 4: NAME_HERE, ABILITY_HERE\n"
-                    + "Passive:   NAME_HERE, PASSIVE_HERE\n"
-                    + "Ultimate:  NAME_HERE, ULTIMATE_HERE");
+                    + "Ability 1: Coin flip, raises or lowers a random stat by _% for _ seconds\n"
+                    + "Ability 2: Risk,      has a chance to take reduced or more damage for _ seconds\n"
+                    + "Ablilty 3: Bribe,     costs gold but stuns the enemy for _ seconds\n"
+                    + "Ability 4: Rob,       next hit give you gold\n"
+                    + "Passive:   Lucky,     gains more gold after battles\n"
+                    + "Ultimate:  Gamble,    has a chance to: immense damage to the enemy, decent damage to yourself, causes ALL stats (player and enemy) to be random (between the min and max) for _ seconds");
+                    // GENIOUS IDEA: slot machine appears when you use your ultimate
         } else if (selected.equals("hacker")) {
             JOptionPane.showMessageDialog(null, "Class: Hacker\n\n"
                     + "Ability 1: Crash,       disables enemy punch for _ seconds \n"
@@ -44,12 +45,12 @@ public class Abilities {
                     + "Ultimate:  Invincible,  immune to damage for _ seconds");
         } else if (selected.equals("mage")) {
             JOptionPane.showMessageDialog(null, "Class: Mage\n\n"
-                    + "Ability 1: Burn,     Burns the enemy\n"
-                    + "Ability 2: Freeze,   slows the enemy down\n"
-                    + "Ablilty 3: NAME_HERE, ABILITY_HERE\n"
-                    + "Ability 4: NAME_HERE, ABILITY_HERE\n"
-                    + "Passive:   Incinerator, every hit burns the enemy (very low damage)\n"
-                    + "Ultimate:  ULTIMATE_HERE, ULTIMATE_HERE");
+                    + "Ability 1: Fire ball,     Burns the enemy for _ seconds\n"
+                    + "Ability 2: Freeze,        slows the enemy down for _ seconds\n"
+                    + "Ablilty 3: Lighting,      stuns the enemy for _ seconds\n"
+                    + "Ability 4: Fire wall,     blocks enemy attacks for _ seconds\n"
+                    + "Passive:   Incinerator,   every hit burns the enemy (very low damage)\n"
+                    + "Ultimate:  Fire Hawk,     all burn effects on the enemy are faster for _ seconds");
         }  else if (selected.equals("vampire")) {
             JOptionPane.showMessageDialog(null, "Class: Vampire\n\n"
                     + "Ability 1: Absorb,    get _% of your next punchs damage as health\n"
