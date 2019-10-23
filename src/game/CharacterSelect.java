@@ -17,18 +17,17 @@ import javax.swing.JOptionPane;
 public class CharacterSelect extends javax.swing.JFrame {
 
     // height and witdth of the form
-    private final int FORM_WIDTH = 576;
+    private final int FORM_WIDTH  = 576;
     private final int FORM_HEIGHT = 348;
 
     // properties
-    private GameEngine engine;
-    private JLabel[] labels;
+    private GameEngine  engine;
+    private JLabel[]    labels;
     private Animation[] animations;
 
-    private boolean isClicked;
-    
-    private JLabel label; 
-    private int spot;
+    private boolean      isClicked;
+    private JLabel       label; 
+    private int          spot;
     public static String selected;
 
     /**
@@ -38,7 +37,6 @@ public class CharacterSelect extends javax.swing.JFrame {
      */
     public CharacterSelect(GameEngine engine) {
         initComponents();
-
         this.engine = engine;
 
         LinkedList<LinkedList<String>> imageFiles = new LinkedList<>();
@@ -98,9 +96,8 @@ public class CharacterSelect extends javax.swing.JFrame {
         }
 
         isClicked = false;
-        btnSelect.setEnabled(false);
-        btnAbilities.setEnabled(false);
         selected = "";
+        
         setupForm();
     }
 
@@ -108,8 +105,6 @@ public class CharacterSelect extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSelect = new javax.swing.JLabel();
-        btnAbilities = new javax.swing.JLabel();
         lblVampire = new javax.swing.JLabel();
         lblJuggernaut = new javax.swing.JLabel();
         lblHacker = new javax.swing.JLabel();
@@ -121,34 +116,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(null);
-
-        btnSelect.setBackground(new java.awt.Color(255, 255, 0));
-        btnSelect.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        btnSelect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSelect.setText("Select");
-        btnSelect.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnSelect.setOpaque(true);
-        btnSelect.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSelectMouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnSelect);
-        btnSelect.setBounds(140, 160, 100, 50);
-
-        btnAbilities.setBackground(new java.awt.Color(255, 255, 0));
-        btnAbilities.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        btnAbilities.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnAbilities.setText("Abilities");
-        btnAbilities.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnAbilities.setOpaque(true);
-        btnAbilities.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAbilitiesMouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnAbilities);
-        btnAbilities.setBounds(310, 160, 140, 40);
 
         lblVampire.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVampire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/vampire/right/vampireIdle.png"))); // NOI18N
@@ -266,23 +233,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelectMouseClicked
-        if (selected.equals("")) {
-            JOptionPane.showMessageDialog(null, "Please select a character!");
-        } else {
-            Map1 map1 = new Map1("map 1", engine);
-            this.setVisible(false);
-        }
-    }//GEN-LAST:event_btnSelectMouseClicked
-
-    private void btnAbilitiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbilitiesMouseClicked
-        if (selected.equals("")) {
-            JOptionPane.showMessageDialog(null, "Please select a character!");
-        } else {
-            Abilities abilities = new Abilities(selected); 
-        }
-    }//GEN-LAST:event_btnAbilitiesMouseClicked
-
     private void lblVampireMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVampireMouseClicked
         label = lblVampire; 
         spot = 5; 
@@ -385,6 +335,16 @@ public class CharacterSelect extends javax.swing.JFrame {
         hoverOut(); 
     }//GEN-LAST:event_lblGamblerMouseExited
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
+    private javax.swing.JLabel lblBandit;
+    private javax.swing.JLabel lblGambler;
+    private javax.swing.JLabel lblHacker;
+    private javax.swing.JLabel lblJuggernaut;
+    private javax.swing.JLabel lblMage;
+    private javax.swing.JLabel lblVampire;
+    // End of variables declaration//GEN-END:variables
+
     /**
      * setups the form
      */
@@ -394,51 +354,52 @@ public class CharacterSelect extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
-    private javax.swing.JLabel btnAbilities;
-    private javax.swing.JLabel btnSelect;
-    private javax.swing.JLabel lblBandit;
-    private javax.swing.JLabel lblGambler;
-    private javax.swing.JLabel lblHacker;
-    private javax.swing.JLabel lblJuggernaut;
-    private javax.swing.JLabel lblMage;
-    private javax.swing.JLabel lblVampire;
-    // End of variables declaration//GEN-END:variables
-
+    
+    /**
+     * When the user clicks on a jlabel
+     */
     private void click() {
         if (isClicked) {
             unClick(); 
         } else {
             isClicked = true; 
-            btnSelect.setEnabled(true); 
-            btnAbilities.setEnabled(true); 
             set(); 
+            this.setVisible(false);
+            Information info = new Information(selected, engine, this); 
         }
     }
     
+    /**
+     * when the user has already clicked on a jlabel
+     */
     private void unClick() {
         if (label != null) {
             isClicked = false; 
-            btnSelect.setEnabled(false); 
-            btnAbilities.setEnabled(false); 
             reset(); 
         }
     }
 
+    /**
+     * when the user moves the mouse over a jlabel
+     */
     private void hoverIn() {
         if (!isClicked) {
             set(); 
         }
     }
     
+    /**
+     * when the user moves the mouse off of a jlabel
+     */
     private void hoverOut() {
         if (!isClicked) {
             reset(); 
         }
     }
     
+    /**
+     * resets all of the jlabels
+     */
     private void reset() {
         if (label != null) {
             for (int i = 0; i < animations.length; i++) {
@@ -453,6 +414,9 @@ public class CharacterSelect extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * highlights a jlabel
+     */
     private void set() {
         if (label != null) {
             label.setBorder(BorderFactory.createBevelBorder(1, Color.yellow, Color.yellow));

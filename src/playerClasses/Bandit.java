@@ -136,7 +136,7 @@ public class Bandit extends GameCharacter {
         super.playerBattleBack = battleBack; 
         super.playerBattleFront = battleFront; 
         
-        final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
+        final int[] DEFAULTS = { 69,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
         damage      = stats[0];
@@ -327,42 +327,42 @@ public class Bandit extends GameCharacter {
      * checks to see if the hero is overlapping with an enemy
      */
     private boolean checkEnemies() {
-//        if (cyborgs != null) {
-//            for (int i = 0; i < cyborgs.size(); i++) {
-//                if (detector.isOverLapping(cyborgs.get(i))) {
-//                    cyborgs.get(i).sprite.setLocation(10000, 10000);
-//                    cyborgs.get(i).update();
-//                    engine.pause(); 
-//                    BattleUI battleUI = new BattleUI(engine, this, cyborgs.get(i)); 
-//                    this.battleUI = battleUI; 
-//                    return false;
-//                }
-//            }
-//        }
-//        if (nails != null) {
-//            for (int i = 0; i < nails.size(); i++) {
-//                if (detector.isOverLapping(nails.get(i))) {
-//                    nails.get(i).sprite.setLocation(10000, 10000);
-//                    nails.get(i).update();
-//                    engine.pause(); 
-//                    BattleUI battleUI = new BattleUI(engine, this, nails.get(i)); 
-//                    this.battleUI = battleUI; 
-//                    return false;
-//                }
-//            }
-//        }
-//        if (rampages != null) {
-//            for (int i = 0; i < rampages.size(); i++) {
-//                if (detector.isOverLapping(rampages.get(i))) {
-//                    rampages.get(i).sprite.setLocation(10000, 10000);
-//                    rampages.get(i).update();
-//                    engine.pause(); 
-//                    BattleUI battleUI = new BattleUI(engine, this, rampages.get(i)); 
-//                    this.battleUI = battleUI; 
-//                    return false;
-//                }
-//            }
-//        } 
+        if (cyborgs != null) {
+            for (int i = 0; i < cyborgs.size(); i++) {
+                if (detector.isOverLapping(cyborgs.get(i))) {
+                    cyborgs.get(i).sprite.setLocation(10000, 10000);
+                    cyborgs.get(i).update();
+                    engine.pause(); 
+                    BattleUI battleUI = new BattleUI(engine, this, cyborgs.get(i)); 
+                    this.battleUI = battleUI; 
+                    return false;
+                }
+            }
+        }
+        if (nails != null) {
+            for (int i = 0; i < nails.size(); i++) {
+                if (detector.isOverLapping(nails.get(i))) {
+                    nails.get(i).sprite.setLocation(10000, 10000);
+                    nails.get(i).update();
+                    engine.pause(); 
+                    BattleUI battleUI = new BattleUI(engine, this, nails.get(i)); 
+                    this.battleUI = battleUI; 
+                    return false;
+                }
+            }
+        }
+        if (rampages != null) {
+            for (int i = 0; i < rampages.size(); i++) {
+                if (detector.isOverLapping(rampages.get(i))) {
+                    rampages.get(i).sprite.setLocation(10000, 10000);
+                    rampages.get(i).update();
+                    engine.pause(); 
+                    BattleUI battleUI = new BattleUI(engine, this, rampages.get(i)); 
+                    this.battleUI = battleUI; 
+                    return false;
+                }
+            }
+        } 
         return true;
     }
 
