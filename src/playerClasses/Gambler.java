@@ -428,5 +428,21 @@ public class Gambler extends GameCharacter {
     public void resetAttack4() {
         
     }
+
+    /**
+     * Generates a random number
+     *
+     * @param low the lowest number in the range
+     * @param high the highest number in the range
+     * @return the generated number
+     */
+    private int random(int low, int high) {
+        double seed = Math.random();
+        double L = (double) low;
+        double H = (double) high;
+        double number = (H - L + 1) * seed + L;
+        int answer = (int) number;
+        return answer;
+    }
     
 }
