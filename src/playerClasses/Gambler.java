@@ -19,6 +19,8 @@ import maps.Map2;
 import maps.Map4;
 import maps.Map3;
 import javax.swing.JLabel;
+import maps.Map5;
+import maps.Upgrade;
 import nuetral.trainers.Trainer;
 import objects.House;
 
@@ -35,13 +37,30 @@ public class Gambler extends GameCharacter {
     private LinkedList<Grass>          grass;
     private LinkedList<House>          houses; 
     private LinkedList<NextLevelBlock> nextLevelBlocks; 
+    private LinkedList<Trainer>        trainers; 
     
     public final String NAME = "Gambler"; 
     
-    public String attack1 = "gambler attack 1"; 
-    public String attack2 = "gambler attack 2"; 
-    public String attack3 = "gambler attack 3"; 
-    public String attack4 = "gambler attack 4"; 
+    /**
+    * Class: Gambler
+    * Ability 1: Coin flip, raises or lowers a random stat by _% for _ seconds
+    * Ability 2: Risk,      has a chance to take reduced or more damage for _ seconds
+    * Ablilty 3: Bribe,     costs gold but stuns the enemy for _ seconds
+    * Ability 4: Rob,       next hit give you gold
+    * Passive:   Lucky,     gains more gold after battles
+    * Ultimate:  Gamble,    has a chance to: immense damage to the enemy, decent damage to yourself, causes ALL stats (player and enemy) to be random (between the min and max) for _ seconds
+    // GENIOUS IDEA: slot machine appears when you use your ultimate
+    **/
+    
+    public String attack1  = "Coin flip"; 
+    public String attack2  = "Risk"; 
+    public String attack3  = "Bribe"; 
+    public String attack4  = "Rob"; 
+    public String passive  = "Lucky"; 
+    public String ultimate = "Gamble"; 
+    
+    public String battleBack  = "/animations/playerClasses/gambler/fightBack/fightBack.png";
+    public String battleFront = "/animations/playerClasses/gambler/fightFront/fightFront.png";
     
     private JFrame currentMap; 
     private JFrame previousMap; 
@@ -68,6 +87,8 @@ public class Gambler extends GameCharacter {
     public int attack2Duration;     
     public int attack3Duration;   
     public int attack4Duration;
+    
+    private boolean canTravel; 
 
     /**
      * Creates a "gambler"
@@ -112,10 +133,14 @@ public class Gambler extends GameCharacter {
         this.nails = nails;
         this.rampages = rampages;
         
-        super.playerAttack1 = attack1; 
-        super.playerAttack2 = attack2; 
-        super.playerAttack3 = attack3; 
-        super.playerAttack4 = attack4; 
+        super.playerAttack1Name  = attack1; 
+        super.playerAttack2Name  = attack2; 
+        super.playerAttack3Name  = attack3; 
+        super.playerAttack4Name  = attack4; 
+        super.playerPassiveName  = passive; 
+        super.playerUltimateName = ultimate; 
+        super.playerBattleBack   = battleBack; 
+        super.playerBattleFront  = battleFront; 
         
         final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
@@ -234,67 +259,81 @@ public class Gambler extends GameCharacter {
     public void action() {
         mover.move();
         animate();
-        checkWalls();
-        checkNextLevelBlocks();
-        checkHouses(); 
-        checkEnemies();
+        boolean check = checkWalls();
+        if (check) check = checkNextLevelBlocks();
+        if (check) check = checkHouses(); 
+        if (check) check = checkEnemies();
+        if (check) check = checkTrainers();
         redraw();
     }
 
     /**
      * checks to see if the hero is overlapping with a wall
      */
-    private void checkWalls() {
+    private boolean checkWalls() {
         for (int i = 0; i < walls.size(); i++) {
             if (walls.get(i) != null) {
                 if (detector.isOverLapping(walls.get(i))) {
                     reactor.stickTo(walls.get(i));
+                    return false;
                 }
             }
         }
+        return true;
     }
 
     /**
      * checks to see if the hero is overlapping with a next level block
      */
-    private void checkNextLevelBlocks() {
+    private boolean checkNextLevelBlocks() {
         for (int i = 0; i < nextLevelBlocks.size(); i++) {
             if (nextLevelBlocks.get(i) != null) {
                 if (detector.isOverLapping(nextLevelBlocks.get(i))){
-                        engine.clearCurrentMap(); 
+                    engine.clearCurrentMap(); 
                     if (nextLevelBlocks.get(i).mapToGoTo.equals("1")) {
+                        timer.stop(); 
                         Map1 map1 = new Map1(currentMapName, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("2")) {
+                        timer.stop(); 
                         Map2 map2 = new Map2(currentMapName, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("3")) {
+                        timer.stop(); 
                         Map3 map3 = new Map3(currentMapName, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("4")) {
+                        timer.stop(); 
                         Map4 map4 = new Map4(currentMapName, engine); 
+                    } else if (nextLevelBlocks.get(i).mapToGoTo.equals("5")) {
+                        timer.stop(); 
+                        Map5 map5 = new Map5(currentMapName, engine); 
                     } else {
                         System.out.println("error creating map");
                     }
+                    return false;
                 }
             }
         }
+        return true;
     }
     
     /**
      * checks to see if the hero is overlapping with a house
      */
-    private void checkHouses() {
+    private boolean checkHouses() {
         for (int i = 0; i < houses.size(); i++) {
             if (houses.get(i) != null) {
                 if (detector.isOverLapping(houses.get(i))) {
                     reactor.stickTo(houses.get(i));
+                    return false;
                 }
             }
         }
+        return true;
     }
 
     /**
      * checks to see if the hero is overlapping with an enemy
      */
-    private void checkEnemies() {
+    private boolean checkEnemies() {
         if (cyborgs != null) {
             for (int i = 0; i < cyborgs.size(); i++) {
                 if (detector.isOverLapping(cyborgs.get(i))) {
@@ -303,6 +342,7 @@ public class Gambler extends GameCharacter {
                     engine.pause(); 
                     BattleUI battleUI = new BattleUI(engine, this, cyborgs.get(i)); 
                     this.battleUI = battleUI; 
+                    return false;
                 }
             }
         }
@@ -314,6 +354,7 @@ public class Gambler extends GameCharacter {
                     engine.pause(); 
                     BattleUI battleUI = new BattleUI(engine, this, nails.get(i)); 
                     this.battleUI = battleUI; 
+                    return false;
                 }
             }
         }
@@ -325,9 +366,27 @@ public class Gambler extends GameCharacter {
                     engine.pause(); 
                     BattleUI battleUI = new BattleUI(engine, this, rampages.get(i)); 
                     this.battleUI = battleUI; 
+                    return false;
+                }
+            }
+        } 
+        return true;
+    }
+
+    private boolean checkTrainers() {
+        if (canTravel == true) { 
+            if (trainers != null) {
+                for (int i = 0; i < trainers.size(); i++) {
+                    if (detector.isOverLapping(trainers.get(i))) {
+                        canTravel = false; 
+                        engine.pause();
+                        Upgrade upgrade = new Upgrade(trainers.get(i)); 
+                        return false; 
+                    }
                 }
             }
         }
+        return true; 
     }
 
     @Override

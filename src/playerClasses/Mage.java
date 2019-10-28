@@ -19,6 +19,8 @@ import maps.Map2;
 import maps.Map4;
 import maps.Map3;
 import javax.swing.JLabel;
+import maps.Map5;
+import maps.Upgrade;
 import nuetral.trainers.Trainer;
 import objects.House;
 
@@ -35,13 +37,29 @@ public class Mage extends GameCharacter {
     private LinkedList<Grass>          grass;
     private LinkedList<House>          houses; 
     private LinkedList<NextLevelBlock> nextLevelBlocks; 
+    private LinkedList<Trainer>        trainers; 
     
     public final String NAME = "Mage"; 
     
-    public String attack1 = "mage attack 1"; 
-    public String attack2 = "mage attack 2"; 
-    public String attack3 = "mage attack 3"; 
-    public String attack4 = "mage attack 4"; 
+    /**
+    * Class: Mage
+    * Ability 1: Fire ball,   Burns the enemy for _ seconds
+    * Ability 2: Freeze,      slows the enemy down for _ seconds
+    * Ablilty 3: Lighting,    stuns the enemy for _ seconds
+    * Ability 4: Fire wall,   blocks enemy attacks for _ seconds
+    * Passive:   Incinerator, every hit burns the enemy (very low damage)
+    * Ultimate:  Fire Hawk,   all burn effects on the enemy are faster for _ seconds
+    */
+    
+    public String attack1  = "Fire ball"; 
+    public String attack2  = "Freeze"; 
+    public String attack3  = "Lighting"; 
+    public String attack4  = "Fire wall"; 
+    public String passive  = "Incinerator"; 
+    public String ultimate = "Fire Hawk"; 
+    
+    public String battleBack  = "/animations/playerClasses/mage/fightBack/fightBack1.png";
+    public String battleFront = "/animations/playerClasses/mage/fightFront/fightFront1.png";
     
     private JFrame currentMap; 
     private JFrame previousMap; 
@@ -68,6 +86,8 @@ public class Mage extends GameCharacter {
     public int attack2Duration;     
     public int attack3Duration;   
     public int attack4Duration;
+    
+    private boolean canTravel; 
 
     /**
      * Creates a "mage"
@@ -112,10 +132,14 @@ public class Mage extends GameCharacter {
         this.nails = nails;
         this.rampages = rampages;
         
-        super.playerAttack1 = attack1; 
-        super.playerAttack2 = attack2; 
-        super.playerAttack3 = attack3; 
-        super.playerAttack4 = attack4; 
+        super.playerAttack1Name  = attack1; 
+        super.playerAttack2Name  = attack2; 
+        super.playerAttack3Name  = attack3; 
+        super.playerAttack4Name  = attack4; 
+        super.playerPassiveName  = passive; 
+        super.playerUltimateName = ultimate; 
+        super.playerBattleBack   = battleBack; 
+        super.playerBattleFront  = battleFront; 
         
         final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
@@ -238,67 +262,81 @@ public class Mage extends GameCharacter {
     public void action() {
         mover.move();
         animate();
-        checkWalls();
-        checkNextLevelBlocks();
-        checkHouses(); 
-        checkEnemies();
+        boolean check = checkWalls();
+        if (check) check = checkNextLevelBlocks();
+        if (check) check = checkHouses(); 
+        if (check) check = checkEnemies();
+        if (check) check = checkTrainers();
         redraw();
     }
 
     /**
      * checks to see if the hero is overlapping with a wall
      */
-    private void checkWalls() {
+    private boolean checkWalls() {
         for (int i = 0; i < walls.size(); i++) {
             if (walls.get(i) != null) {
                 if (detector.isOverLapping(walls.get(i))) {
                     reactor.stickTo(walls.get(i));
+                    return false;
                 }
             }
         }
+        return true;
     }
 
     /**
      * checks to see if the hero is overlapping with a next level block
      */
-    private void checkNextLevelBlocks() {
+    private boolean checkNextLevelBlocks() {
         for (int i = 0; i < nextLevelBlocks.size(); i++) {
             if (nextLevelBlocks.get(i) != null) {
                 if (detector.isOverLapping(nextLevelBlocks.get(i))){
-                        engine.clearCurrentMap(); 
+                    engine.clearCurrentMap(); 
                     if (nextLevelBlocks.get(i).mapToGoTo.equals("1")) {
+                        timer.stop(); 
                         Map1 map1 = new Map1(currentMapName, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("2")) {
+                        timer.stop(); 
                         Map2 map2 = new Map2(currentMapName, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("3")) {
+                        timer.stop(); 
                         Map3 map3 = new Map3(currentMapName, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("4")) {
+                        timer.stop(); 
                         Map4 map4 = new Map4(currentMapName, engine); 
+                    } else if (nextLevelBlocks.get(i).mapToGoTo.equals("5")) {
+                        timer.stop(); 
+                        Map5 map5 = new Map5(currentMapName, engine); 
                     } else {
                         System.out.println("error creating map");
                     }
+                    return false;
                 }
             }
         }
+        return true;
     }
     
     /**
      * checks to see if the hero is overlapping with a house
      */
-    private void checkHouses() {
+    private boolean checkHouses() {
         for (int i = 0; i < houses.size(); i++) {
             if (houses.get(i) != null) {
                 if (detector.isOverLapping(houses.get(i))) {
                     reactor.stickTo(houses.get(i));
+                    return false;
                 }
             }
         }
+        return true;
     }
 
     /**
      * checks to see if the hero is overlapping with an enemy
      */
-    private void checkEnemies() {
+    private boolean checkEnemies() {
         if (cyborgs != null) {
             for (int i = 0; i < cyborgs.size(); i++) {
                 if (detector.isOverLapping(cyborgs.get(i))) {
@@ -307,6 +345,7 @@ public class Mage extends GameCharacter {
                     engine.pause(); 
                     BattleUI battleUI = new BattleUI(engine, this, cyborgs.get(i)); 
                     this.battleUI = battleUI; 
+                    return false;
                 }
             }
         }
@@ -318,6 +357,7 @@ public class Mage extends GameCharacter {
                     engine.pause(); 
                     BattleUI battleUI = new BattleUI(engine, this, nails.get(i)); 
                     this.battleUI = battleUI; 
+                    return false;
                 }
             }
         }
@@ -329,9 +369,27 @@ public class Mage extends GameCharacter {
                     engine.pause(); 
                     BattleUI battleUI = new BattleUI(engine, this, rampages.get(i)); 
                     this.battleUI = battleUI; 
+                    return false;
+                }
+            }
+        } 
+        return true;
+    }
+
+    private boolean checkTrainers() {
+        if (canTravel == true) { 
+            if (trainers != null) {
+                for (int i = 0; i < trainers.size(); i++) {
+                    if (detector.isOverLapping(trainers.get(i))) {
+                        canTravel = false; 
+                        engine.pause();
+                        Upgrade upgrade = new Upgrade(trainers.get(i)); 
+                        return false; 
+                    }
                 }
             }
         }
+        return true; 
     }
 
     @Override

@@ -47,12 +47,24 @@ public class Bandit extends GameCharacter {
     
     public final String NAME = "Bandit"; 
     
-    public String attack1 = "Boost"; 
-    public String attack2 = "Stab"; 
-    public String attack3 = "Cut"; 
-    public String attack4 = "Evade"; 
+    /**
+    * Class: Bandit
+    * Ability 1: Swift,     increases dodge stat by _ for _ seconds
+    * Ability 2: Poison,    slows the enemy down by _for _ seconds
+    * Ablilty 3: Stab,      makes the enemy bleed for _ seconds
+    * Ability 4: Evade,     100% to dodge the next _ attacks
+    * Passive:   Back Stab, when you dodge an attack you have a _% chance to hit the enemy back
+    * Ultimate:  Elusive,   raises dodge stat by _ for the rest of the battle
+    */
     
-    public String battleBack = "/animations/playerClasses/bandit/fightBack/fightBack.png";
+    public String attack1  = "Swift"; 
+    public String attack2  = "Poison"; 
+    public String attack3  = "Stab"; 
+    public String attack4  = "Evade"; 
+    public String passive  = "Back Stab"; 
+    public String ultimate = "Elusive"; 
+    
+    public String battleBack  = "/animations/playerClasses/bandit/fightBack/fightBack.png";
     public String battleFront = "/animations/playerClasses/bandit/fightFront/fightFront.png";
     
     private JFrame currentMap; 
@@ -129,12 +141,14 @@ public class Bandit extends GameCharacter {
         this.nails = nails;
         this.rampages = rampages;
         
-        super.playerAttack1 = attack1; 
-        super.playerAttack2 = attack2; 
-        super.playerAttack3 = attack3; 
-        super.playerAttack4 = attack4; 
-        super.playerBattleBack = battleBack; 
-        super.playerBattleFront = battleFront; 
+        super.playerAttack1Name  = attack1; 
+        super.playerAttack2Name  = attack2; 
+        super.playerAttack3Name  = attack3; 
+        super.playerAttack4Name  = attack4; 
+        super.playerPassiveName  = passive; 
+        super.playerUltimateName = ultimate; 
+        super.playerBattleBack   = battleBack; 
+        super.playerBattleFront  = battleFront; 
         
         final int[] DEFAULTS = { 69,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
@@ -366,7 +380,6 @@ public class Bandit extends GameCharacter {
         return true;
     }
 
-
     private boolean checkTrainers() {
         if (canTravel == true) { 
             if (trainers != null) {
@@ -393,10 +406,7 @@ public class Bandit extends GameCharacter {
     
     @Override
     public void attack2() {
-        battleUI.playerDamage *= 2; 
-        if (battleUI.playerDamage >= MAX_DAMAGE) {
-            battleUI.playerDamage = MAX_DAMAGE; 
-        }
+        battleUI.enemyPunchSpeed -= 50; 
     }
     
     @Override
@@ -416,7 +426,7 @@ public class Bandit extends GameCharacter {
     
     @Override
     public void resetAttack2() {
-        battleUI.playerDamage = battleUI.playerBaseDamage;
+        battleUI.enemyPunchSpeed = battleUI.enemyBasePunchSpeed; 
     }
     
     @Override

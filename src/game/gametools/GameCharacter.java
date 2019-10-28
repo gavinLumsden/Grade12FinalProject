@@ -1,6 +1,5 @@
 package game.gametools;
 
-import collections.LinkedList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -31,10 +30,12 @@ public abstract class GameCharacter extends GameObject {
     
     public String playerName; 
     
-    public String playerAttack1; 
-    public String playerAttack2; 
-    public String playerAttack3; 
-    public String playerAttack4; 
+    public String playerAttack1Name;
+    public String playerAttack2Name;
+    public String playerAttack3Name;
+    public String playerAttack4Name;
+    public String playerPassiveName;
+    public String playerUltimateName;
     
     public int playerHealth;      // how much health you have (can be increased)
     public int playerMaxHealth;   // the maximum amount of health you can have (can be increased)

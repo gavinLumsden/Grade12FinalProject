@@ -437,28 +437,28 @@ public class BattleUI extends javax.swing.JFrame {
             heroClass.attack1();
             attack1Duration.start();
             attack1Cooldown.start();
-            System.out.println(playerName + " used: " + heroClass.playerAttack1 + "!");
+            System.out.println(playerName + " used: " + heroClass.playerAttack1Name + "!");
         } else if (attackToUse == 2) {
             btnAttackOrItem2.setBackground(Color.red);
             attack2Usable = false;
             heroClass.attack2();
             attack2Duration.start();
             attack2Cooldown.start();
-            System.out.println(playerName + " used: " + heroClass.playerAttack2 + "!");
+            System.out.println(playerName + " used: " + heroClass.playerAttack2Name + "!");
         } else if (attackToUse == 3) {
             btnAttackOrItem3.setBackground(Color.red);
             attack3Usable = false;
             heroClass.attack3();
             attack3Duration.start();
             attack3Cooldown.start();
-            System.out.println(playerName + " used: " + heroClass.playerAttack3 + "!");
+            System.out.println(playerName + " used: " + heroClass.playerAttack3Name + "!");
         } else if (attackToUse == 4) {
             btnAttackOrItem4.setBackground(Color.red);
             attack4Usable = false;
             heroClass.attack4();
             attack4Duration.start();
             attack4Cooldown.start();
-            System.out.println(playerName + " used: " + heroClass.playerAttack4 + "!");
+            System.out.println(playerName + " used: " + heroClass.playerAttack4Name + "!");
         } else {
             System.out.println("error using attack");
         }
@@ -505,10 +505,10 @@ public class BattleUI extends javax.swing.JFrame {
             heroClass.attack4HasBeenUnlocked = true; 
         }
           
-        playerAttack1 = heroClass.playerAttack1;
-        playerAttack2 = heroClass.playerAttack2;
-        playerAttack3 = heroClass.playerAttack3;
-        playerAttack4 = heroClass.playerAttack4;
+        playerAttack1 = heroClass.playerAttack1Name;
+        playerAttack2 = heroClass.playerAttack2Name;
+        playerAttack3 = heroClass.playerAttack3Name;
+        playerAttack4 = heroClass.playerAttack4Name;
 
         onAttack = true;
 
