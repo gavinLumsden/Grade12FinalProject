@@ -1,6 +1,7 @@
 package game;
 
 import maps.Map1;
+import playerClasses.Bandit;
 
 /**
  * @author g.lumsden
@@ -43,7 +44,7 @@ public class Information extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblSelect.setBackground(new java.awt.Color(255, 255, 0));
-        lblSelect.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblSelect.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         lblSelect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSelect.setText("Select");
         lblSelect.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -54,7 +55,7 @@ public class Information extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblSelect);
-        lblSelect.setBounds(620, 350, 130, 120);
+        lblSelect.setBounds(310, 370, 100, 100);
 
         lblHeroImage.setBackground(new java.awt.Color(0, 153, 51));
         lblHeroImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -62,17 +63,17 @@ public class Information extends javax.swing.JFrame {
         lblHeroImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblHeroImage.setOpaque(true);
         getContentPane().add(lblHeroImage);
-        lblHeroImage.setBounds(10, 10, 460, 460);
+        lblHeroImage.setBounds(310, 10, 100, 100);
 
         lblHeroInformation.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblHeroInformation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHeroInformation.setText("ok");
+        lblHeroInformation.setText("Name: Bandit");
         lblHeroInformation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(lblHeroInformation);
-        lblHeroInformation.setBounds(480, 10, 270, 330);
+        lblHeroInformation.setBounds(10, 10, 290, 460);
 
         lblBack.setBackground(new java.awt.Color(255, 255, 0));
-        lblBack.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblBack.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         lblBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBack.setText("Back");
         lblBack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -83,7 +84,7 @@ public class Information extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblBack);
-        lblBack.setBounds(480, 350, 130, 120);
+        lblBack.setBounds(310, 190, 100, 100);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -110,7 +111,7 @@ public class Information extends javax.swing.JFrame {
      * setups the image and information for the hero
      */
     private void setupHero() {
-        
+        lblHeroInformation.setText(Bandit.abilitiesInformation); 
     }
 
     /**

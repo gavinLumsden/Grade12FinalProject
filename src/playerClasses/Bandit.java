@@ -64,6 +64,16 @@ public class Bandit extends GameCharacter {
     public String passive  = "Back Stab"; 
     public String ultimate = "Elusive"; 
     
+    public static String abilitiesInformation = 
+        "* Class: Bandit\n" +
+        "* Ability 1: Swift,     increases dodge stat by _ for _ seconds\n" +
+        "* Ability 2: Poison,    slows the enemy down by _for _ seconds\n" +
+        "* Ablilty 3: Stab,      makes the enemy bleed for _ seconds\n" +
+        "* Ability 4: Evade,     100% to dodge the next _ attacks\n" +
+        "* Passive:   Back Stab, when you dodge an attack you have a _% chance to hit the enemy back\n" +
+        "* Ultimate:  Elusive,   raises dodge stat by _ for the rest of the battle\n";
+    
+    public String idlePicture = "/animations/playerClasses/bandit/right/banditIdle.png"; 
     public String battleBack  = "/animations/playerClasses/bandit/fightBack/fightBack.png";
     public String battleFront = "/animations/playerClasses/bandit/fightFront/fightFront.png";
     
