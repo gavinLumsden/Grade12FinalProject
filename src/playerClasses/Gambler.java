@@ -391,12 +391,17 @@ public class Gambler extends GameCharacter {
 
     @Override
     public void attack1() {
-        System.out.println("make abililties (1) for gambler");
+        int number = random(1, 3); 
+        if      (number == 1) battleUI.playerDamage *= 2; 
+        else if (number == 2) battleUI.playerDodgeChance *= 2; 
+        else if (number == 3) battleUI.playerPunchSpeed /= 2; // potential bug with int and double
     }
     
     @Override
     public void attack2() {
-        System.out.println("make abililties (2) for gambler");
+        int number = random(1, 2); 
+        if (number == 1) battleUI.enemyDamage /= 2; 
+        if (number == 2) battleUI.enemyDamage *= 2; 
     }
     
     @Override
@@ -411,7 +416,9 @@ public class Gambler extends GameCharacter {
     
     @Override
     public void resetAttack1() {
-        
+        battleUI.playerDamage      = battleUI.playerBaseDamage;  
+        battleUI.playerDodgeChance = battleUI.playerBaseDodgeChance;  
+        battleUI.playerPunchSpeed  = battleUI.playerBasePunchSpeed;  
     }
     
     @Override

@@ -89,11 +89,11 @@ public class Map4 extends javax.swing.JFrame {
         nextLevelBlocks.add(toMap5);
         
         setSpawnLocation(currentMapName); 
-        engine.createGameObject(grassImages, "grass");
-        engine.createGameObject(wallImages, "walls");
-        engine.createGameCharacter(cyborgImages, "cyborgs");
-        engine.createGameCharacter(nailImages, "nails");
-        engine.createGameCharacter(rampageImages, "rampages");
+        engine.createGameObject(grassImages,      "grass");
+        engine.createGameObject(wallImages,       "walls");
+        engine.createGameCharacter(cyborgImages,  "cyborgs",  4);
+        engine.createGameCharacter(nailImages,    "nails",    4);
+        engine.createGameCharacter(rampageImages, "rampages", 4);
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 4");
         engine.createHero(lblHero, nextLevelBlocks);
     }

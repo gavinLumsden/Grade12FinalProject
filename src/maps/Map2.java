@@ -170,11 +170,11 @@ public class Map2 extends javax.swing.JFrame {
         nextLevelBlocks.add(toMap4);
         
         setSpawnLocation(currentMapName); 
-        engine.createGameObject(grassImages, "grass");
-        engine.createGameObject(wallImages, "walls");
-        engine.createGameCharacter(cyborgImages, "cyborgs");
-        engine.createGameCharacter(nailImages, "nails");
-        engine.createGameCharacter(rampageImages, "rampages");
+        engine.createGameObject(grassImages,      "grass");
+        engine.createGameObject(wallImages,       "walls");
+        engine.createGameCharacter(cyborgImages,  "cyborgs",  2);
+        engine.createGameCharacter(nailImages,    "nails",    2);
+        engine.createGameCharacter(rampageImages, "rampages", 2);
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 2");
         engine.createHero(lblHero, nextLevelBlocks);
     }

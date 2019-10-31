@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 public class Cyborg extends Enemy {
 
     public final String NAME = "Cyborg";
+    
+    public int level; 
 
     public String attack1 = "cyborg attack 1";
     public String attack2 = "cyborg attack 2";
@@ -19,6 +21,12 @@ public class Cyborg extends Enemy {
     public int health;      // how much health you have (can be increased)
     public int punchSpeed;  // how fast you hit (can be increased)
     
+    private int baseDamage      = 5; 
+    private int baseDodgeChance = 5;
+    private int baseHealth      = 100; 
+    private int baseMaxHealth   = 100; 
+    private int basePunchSpeed  = 1000; 
+    
     public int attack1Cooldown;
     public int attack2Cooldown;    
     public int attack3Cooldown;   
@@ -29,9 +37,11 @@ public class Cyborg extends Enemy {
     public int attack3Duration;   
     public int attack4Duration;
 
-    public Cyborg(JLabel image, int amount, int direction, int numberOfDirections, int delay) {
+    public Cyborg(JLabel image, int amount, int direction, int numberOfDirections, int delay, int level) {
         super(image, 0, Directions.STOP, 0, 0);
 
+        this.level = level; 
+        
         attack1Cooldown = 3000; 
         attack2Cooldown = 3000; 
         attack3Cooldown = 5000; 
@@ -42,11 +52,11 @@ public class Cyborg extends Enemy {
         attack3Duration = punchSpeed; 
         attack4Duration = punchSpeed; 
         
-        damage      = 1; 
-        dodgeChance = 5; 
-        health      = 100; 
-        maxHealth   = 100; 
-        punchSpeed  = 1000; 
+        damage      = (baseDamage      + level); 
+        dodgeChance = (baseDodgeChance + level); 
+        health      = (baseHealth      + level); 
+        maxHealth   = (baseMaxHealth   + level); 
+        punchSpeed  = (basePunchSpeed  + level); 
         
         super.attack1 = attack1;
         super.attack2 = attack2;

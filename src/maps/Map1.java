@@ -95,7 +95,7 @@ public class Map1 extends javax.swing.JFrame {
         engine.createGameObject(grassImages, "grass");
         engine.createGameObject(wallImages, "walls");
         engine.createGameObject(houseImages, "houses");
-        engine.createGameCharacter(cyborgImages, "cyborgs");
+        engine.createGameCharacter(cyborgImages, "cyborgs", 1);
         engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 1");
         engine.createHero(lblHero, nextLevelBlocks);
     }

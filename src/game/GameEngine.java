@@ -5,8 +5,12 @@ import objects.NextLevelBlock;
 import objects.Grass;
 import objects.Wall;
 import enemyClasses.Cyborg;
+import enemyClasses.Engineer;
+import enemyClasses.Hammer;
+import enemyClasses.Kingpin;
 import enemyClasses.Nail;
 import enemyClasses.Rampage;
+import enemyClasses.Trickster;
 import game.gametools.Directions;
 import game.gametools.MediaPlayer;
 import java.awt.event.KeyEvent;
@@ -30,9 +34,13 @@ import objects.House;
 public class GameEngine {
 
     // enemies
-    private LinkedList<Cyborg> cyborgs;
-    private LinkedList<Nail> nails;
-    private LinkedList<Rampage> rampages;
+    private LinkedList<Cyborg>    cyborgs;
+    private LinkedList<Engineer>  engineers;
+    private LinkedList<Hammer>    hammers;
+    private LinkedList<Kingpin>   kingpins;
+    private LinkedList<Nail>      nails;
+    private LinkedList<Rampage>   rampages;
+    private LinkedList<Trickster> tricksters;
 
     // shopkeepers 
     private LinkedList<Shopkeeper> shopkeepers;
@@ -132,7 +140,7 @@ public class GameEngine {
      * @param images
      * @param characterToCreate 
      */
-    public void createGameCharacter(LinkedList<JLabel> images, String characterToCreate) {
+    public void createGameCharacter(LinkedList<JLabel> images, String characterToCreate, int level) {
         if (characterToCreate.equals("shopkeepers")) {
             shopkeepers = new LinkedList<>();
             for (int i = 0; i < shopkeepers.size(); i++) {
@@ -154,22 +162,50 @@ public class GameEngine {
         if (characterToCreate.equals("cyborgs")) {
             cyborgs = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                Cyborg newCyborg = new Cyborg(images.get(i), 25, Directions.STOP, 4, 100);
+                Cyborg newCyborg = new Cyborg(images.get(i), 25, Directions.STOP, 4, 100, level);
                 cyborgs.add(newCyborg);
+            }
+        }
+        if (characterToCreate.equals("engineers")) {
+            engineers = new LinkedList<>();
+            for (int i = 0; i < images.size(); i++) {
+                Engineer newEngineer = new Engineer(images.get(i), 25, Directions.STOP, 4, 100, level);
+                engineers.add(newEngineer);
+            }
+        }
+        if (characterToCreate.equals("hammers")) {
+            hammers = new LinkedList<>();
+            for (int i = 0; i < images.size(); i++) {
+                Hammer newHammer = new Hammer(images.get(i), 25, Directions.STOP, 4, 100, level);
+                hammers.add(newHammer);
+            }
+        }
+        if (characterToCreate.equals("kingpins")) {
+            kingpins = new LinkedList<>();
+            for (int i = 0; i < images.size(); i++) {
+                Kingpin newKingpin = new Kingpin(images.get(i), 25, Directions.STOP, 4, 100, level);
+                kingpins.add(newKingpin);
             }
         }
         if (characterToCreate.equals("nails")) {
             nails = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                Nail newNail = new Nail(images.get(i), 25, Directions.STOP, 4, 100);
+                Nail newNail = new Nail(images.get(i), 25, Directions.STOP, 4, 100, level);
                 nails.add(newNail);
             }
         }
         if (characterToCreate.equals("rampages")) {
             rampages = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                Rampage newRampage = new Rampage(images.get(i), 25, Directions.STOP, 4, 100);
+                Rampage newRampage = new Rampage(images.get(i), 25, Directions.STOP, 4, 100, level);
                 rampages.add(newRampage);
+            }
+        }
+        if (characterToCreate.equals("tricksters")) {
+            tricksters = new LinkedList<>();
+            for (int i = 0; i < images.size(); i++) {
+                Trickster newTrickster = new Trickster(images.get(i), 25, Directions.STOP, 4, 100, level);
+                tricksters.add(newTrickster);
             }
         }
     }

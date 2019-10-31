@@ -7,10 +7,10 @@ public class LevelUp extends javax.swing.JFrame {
     private final int FORM_WIDTH = 420; 
     private final int FORM_HEIGHT = 320; 
     
-    private final int DAMAGE_UPGRADE_AMOUNT = 1; 
+    private final int DAMAGE_UPGRADE_AMOUNT       = 1; 
     private final int DODGE_CHANCE_UPGRADE_AMOUNT = 2; 
-    private final int MAX_HEALTH_UPGRADE_AMOUNT = 2; 
-    private final int PUNCH_SPEED_UPGRADE_AMOUNT = -50; 
+    private final int MAX_HEALTH_UPGRADE_AMOUNT   = 5; 
+    private final int PUNCH_SPEED_UPGRADE_AMOUNT  = -50; 
     
     private GameCharacter heroClass; 
     
@@ -129,7 +129,7 @@ public class LevelUp extends javax.swing.JFrame {
 
     private void btnUpgradeDodgeChanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpgradeDodgeChanceMouseClicked
         heroClass.playerDodgeChance += DODGE_CHANCE_UPGRADE_AMOUNT; 
-        System.out.println("You upgraded your dodge chance! Your dodge chance is now " + heroClass.playerDodgeChance + "!");
+        System.out.println("You upgraded your dodge chance! Your dodge chance is now " + heroClass.playerDodgeChance + "%!");
         this.dispose();
     }//GEN-LAST:event_btnUpgradeDodgeChanceMouseClicked
 
