@@ -142,7 +142,7 @@ public class Gambler extends GameCharacter {
         super.playerBattleBack   = battleBack; 
         super.playerBattleFront  = battleFront; 
         
-        final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
+        final int[] DEFAULTS = { 5,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
         damage      = stats[0];
@@ -159,8 +159,8 @@ public class Gambler extends GameCharacter {
         attack3Cooldown = 5000; 
         attack4Cooldown = 10000; 
         
-        attack1Duration = punchSpeed; 
-        attack2Duration = punchSpeed; 
+        attack1Duration = (punchSpeed * 3); 
+        attack2Duration = (punchSpeed * 3); 
         attack3Duration = punchSpeed; 
         attack4Duration = punchSpeed;
         
@@ -406,12 +406,15 @@ public class Gambler extends GameCharacter {
     
     @Override
     public void attack3() {
-        System.out.println("make abililties (3) for gambler");
+        if (gold >= 10) {
+            gold -= 10; 
+            battleUI.enemyEffects("stun");
+        }
     }
     
     @Override
     public void attack4() {
-        System.out.println("make abililties (4) for gambler");
+        gold += 20; 
     }
     
     @Override
@@ -423,7 +426,7 @@ public class Gambler extends GameCharacter {
     
     @Override
     public void resetAttack2() {
-        
+        battleUI.enemyDamage = battleUI.enemyBaseDamage; 
     }
     
     @Override

@@ -126,11 +126,10 @@ public class BattleUI extends javax.swing.JFrame {
         playerSpeed = new javax.swing.JProgressBar();
         playerHealthBar = new javax.swing.JProgressBar();
         playerUltimateBar = new javax.swing.JProgressBar();
-        btnRun = new javax.swing.JLabel();
         btnSwitch = new javax.swing.JLabel();
+        btnUltimate = new javax.swing.JLabel();
         btnAttackOrItem1 = new javax.swing.JLabel();
         btnAttackOrItem2 = new javax.swing.JLabel();
-        btnUltimate = new javax.swing.JLabel();
         btnAttackOrItem3 = new javax.swing.JLabel();
         btnAttackOrItem4 = new javax.swing.JLabel();
         lblEnemyUltimate = new javax.swing.JLabel();
@@ -139,6 +138,7 @@ public class BattleUI extends javax.swing.JFrame {
         lblPlayerDamage = new javax.swing.JLabel();
         lblPlayerUltimate = new javax.swing.JLabel();
         lblPlayerHealth = new javax.swing.JLabel();
+        btnRun = new javax.swing.JLabel();
         lblStatsBackground = new javax.swing.JLabel();
         lblEnemyFront = new javax.swing.JLabel();
         lblPlayerBack = new javax.swing.JLabel();
@@ -187,24 +187,6 @@ public class BattleUI extends javax.swing.JFrame {
         getContentPane().add(playerUltimateBar);
         playerUltimateBar.setBounds(1095, 370, 212, 30);
 
-        btnRun.setBackground(new java.awt.Color(255, 255, 255));
-        btnRun.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnRun.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnRun.setText("Run");
-        btnRun.setOpaque(true);
-        btnRun.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRunMouseClicked(evt);
-            }
-        });
-        btnRun.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnRunKeyPressed(evt);
-            }
-        });
-        getContentPane().add(btnRun);
-        btnRun.setBounds(1172, 50, 125, 15);
-
         btnSwitch.setBackground(new java.awt.Color(255, 255, 255));
         btnSwitch.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnSwitch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -212,22 +194,6 @@ public class BattleUI extends javax.swing.JFrame {
         btnSwitch.setOpaque(true);
         getContentPane().add(btnSwitch);
         btnSwitch.setBounds(476, 560, 250, 56);
-
-        btnAttackOrItem1.setBackground(new java.awt.Color(255, 255, 255));
-        btnAttackOrItem1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        btnAttackOrItem1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnAttackOrItem1.setText("Attack 1");
-        btnAttackOrItem1.setOpaque(true);
-        getContentPane().add(btnAttackOrItem1);
-        btnAttackOrItem1.setBounds(766, 560, 250, 56);
-
-        btnAttackOrItem2.setBackground(new java.awt.Color(255, 255, 255));
-        btnAttackOrItem2.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        btnAttackOrItem2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnAttackOrItem2.setText("Attack 2");
-        btnAttackOrItem2.setOpaque(true);
-        getContentPane().add(btnAttackOrItem2);
-        btnAttackOrItem2.setBounds(1057, 560, 250, 56);
 
         btnUltimate.setBackground(new java.awt.Color(255, 255, 255));
         btnUltimate.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
@@ -237,11 +203,42 @@ public class BattleUI extends javax.swing.JFrame {
         getContentPane().add(btnUltimate);
         btnUltimate.setBounds(476, 655, 250, 56);
 
+        btnAttackOrItem1.setBackground(new java.awt.Color(255, 255, 255));
+        btnAttackOrItem1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        btnAttackOrItem1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAttackOrItem1.setText("Attack 1");
+        btnAttackOrItem1.setOpaque(true);
+        btnAttackOrItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAttackOrItem1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnAttackOrItem1);
+        btnAttackOrItem1.setBounds(766, 560, 250, 56);
+
+        btnAttackOrItem2.setBackground(new java.awt.Color(255, 255, 255));
+        btnAttackOrItem2.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        btnAttackOrItem2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAttackOrItem2.setText("Attack 2");
+        btnAttackOrItem2.setOpaque(true);
+        btnAttackOrItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAttackOrItem2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnAttackOrItem2);
+        btnAttackOrItem2.setBounds(1057, 560, 250, 56);
+
         btnAttackOrItem3.setBackground(new java.awt.Color(255, 255, 255));
         btnAttackOrItem3.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnAttackOrItem3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAttackOrItem3.setText("Attack 3");
         btnAttackOrItem3.setOpaque(true);
+        btnAttackOrItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAttackOrItem3MouseClicked(evt);
+            }
+        });
         getContentPane().add(btnAttackOrItem3);
         btnAttackOrItem3.setBounds(766, 655, 250, 56);
 
@@ -250,6 +247,11 @@ public class BattleUI extends javax.swing.JFrame {
         btnAttackOrItem4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAttackOrItem4.setText("Attack 4");
         btnAttackOrItem4.setOpaque(true);
+        btnAttackOrItem4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAttackOrItem4MouseClicked(evt);
+            }
+        });
         getContentPane().add(btnAttackOrItem4);
         btnAttackOrItem4.setBounds(1057, 655, 250, 56);
 
@@ -295,6 +297,19 @@ public class BattleUI extends javax.swing.JFrame {
         getContentPane().add(lblPlayerHealth);
         lblPlayerHealth.setBounds(844, 410, 75, 45);
 
+        btnRun.setBackground(new java.awt.Color(255, 255, 255));
+        btnRun.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnRun.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnRun.setText("Run");
+        btnRun.setOpaque(true);
+        btnRun.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRunMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnRun);
+        btnRun.setBounds(1172, 50, 125, 15);
+
         lblStatsBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/battling/statsBackground.png"))); // NOI18N
         lblStatsBackground.setToolTipText("");
         getContentPane().add(lblStatsBackground);
@@ -330,9 +345,21 @@ public class BattleUI extends javax.swing.JFrame {
         run(); 
     }//GEN-LAST:event_btnRunMouseClicked
 
-    private void btnRunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRunKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRunKeyPressed
+    private void btnAttackOrItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem1MouseClicked
+        click(1); 
+    }//GEN-LAST:event_btnAttackOrItem1MouseClicked
+
+    private void btnAttackOrItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem2MouseClicked
+        click(2); 
+    }//GEN-LAST:event_btnAttackOrItem2MouseClicked
+
+    private void btnAttackOrItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem3MouseClicked
+        click(3); 
+    }//GEN-LAST:event_btnAttackOrItem3MouseClicked
+
+    private void btnAttackOrItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAttackOrItem4MouseClicked
+        click(4); 
+    }//GEN-LAST:event_btnAttackOrItem4MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAttackOrItem1;
@@ -919,6 +946,11 @@ public class BattleUI extends javax.swing.JFrame {
     private void setupAnimations() {
         Icon icon = new ImageIcon(getClass().getResource(heroClass.playerBattleBack)); 
         lblPlayerBack.setIcon(icon);
+    }
+
+    private void click(int number) {
+        if (onAttack) useAttack(number); 
+        if (onItem)   useItem(number); 
     }
     
 }

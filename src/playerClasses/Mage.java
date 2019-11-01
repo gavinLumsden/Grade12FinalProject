@@ -141,7 +141,7 @@ public class Mage extends GameCharacter {
         super.playerBattleBack   = battleBack; 
         super.playerBattleFront  = battleFront; 
         
-        final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
+        final int[] DEFAULTS = { 5,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
         damage      = stats[0];
@@ -158,10 +158,10 @@ public class Mage extends GameCharacter {
         attack3Cooldown = 5000; 
         attack4Cooldown = 10000; 
         
-        attack1Duration = punchSpeed; 
-        attack2Duration = punchSpeed; 
-        attack3Duration = punchSpeed; 
-        attack4Duration = punchSpeed; 
+        attack1Duration = (punchSpeed * 3); 
+        attack2Duration = (punchSpeed * 3); 
+        attack3Duration = (punchSpeed * 3); 
+        attack4Duration = (punchSpeed * 3); 
         
         super.playerDamage      = damage; 
         super.playerDodgeChance = dodgeChance; 
@@ -394,42 +394,42 @@ public class Mage extends GameCharacter {
 
     @Override
     public void attack1() {
-        System.out.println("give mage attacks (1)");
+        battleUI.enemyEffects("bleed");
     }
     
     @Override
     public void attack2() {
-        System.out.println("give mage attacks (2)");
+        battleUI.enemyPunchSpeed /= 2; 
     }
     
     @Override
     public void attack3() {
-        System.out.println("give mage attacks (3)");
+        battleUI.enemyEffects("stun"); 
     }
     
     @Override
     public void attack4() {
-        System.out.println("give mage attacks (4)");
+        battleUI.enemyDamage = 0; 
     }
 
     @Override
     public void resetAttack1() {
-    
+        battleUI.enemyEffects("stop bleed");
     }
 
     @Override
     public void resetAttack2() {
-    
+        battleUI.enemyPunchSpeed = battleUI.enemyBasePunchSpeed; 
     }
 
     @Override
     public void resetAttack3() {
-    
+        battleUI.enemyEffects("stop stun");
     }
 
     @Override
     public void resetAttack4() {
-    
+        battleUI.enemyDamage = battleUI.enemyBaseDamage; 
     }
 
 }

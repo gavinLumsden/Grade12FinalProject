@@ -43,9 +43,9 @@ public class Juggernaut extends GameCharacter {
     
     /**
     * Class: Juggernaut
-    * Ability 1: Unbreakable, take less damage
-    * Ability 2: Intimidate,  lowers the enemies attack by _%
-    * Ablilty 3: Unstoppable, next punch cannnot be dodged, does x_ damage
+    * Ability 1: Unbreakable, take less damage for _ seconds
+    * Ability 2: Intimidate,  lowers the enemies attack by _% for _ seconds
+    * Ability 3: Unstoppable, next punch cannot be dodged, does x_ damage
     * Ability 4: Bash,        stuns the enemy for _ seconds
     * Passive:   Iron Skin,   has more health
     * Ultimate:  Invincible,  immune to damage for _ seconds
@@ -141,7 +141,7 @@ public class Juggernaut extends GameCharacter {
         super.playerBattleBack   = battleBack; 
         super.playerBattleFront  = battleFront; 
         
-        final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
+        final int[] DEFAULTS = { 5,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
         damage      = stats[0];
@@ -158,7 +158,7 @@ public class Juggernaut extends GameCharacter {
         attack3Cooldown = 5000; 
         attack4Cooldown = 10000; 
         
-        attack1Duration = punchSpeed; 
+        attack1Duration = (punchSpeed * 3); 
         attack2Duration = (punchSpeed * 3); 
         attack3Duration = punchSpeed; 
         attack4Duration = (punchSpeed * 3); 
@@ -390,12 +390,12 @@ public class Juggernaut extends GameCharacter {
 
     @Override
     public void attack1() {
-        System.out.println("make ability 1 for juggernaut");
+        battleUI.enemyDamage /= 2; 
     }
     
     @Override
     public void attack2() {
-        battleUI.enemyDamage -= 1; 
+        battleUI.enemyDamage /= 2; 
     }
     
     @Override
@@ -411,7 +411,7 @@ public class Juggernaut extends GameCharacter {
 
     @Override
     public void resetAttack1() {
-        
+        battleUI.enemyDamage = battleUI.enemyBaseDamage; 
     }
 
     @Override
@@ -421,7 +421,7 @@ public class Juggernaut extends GameCharacter {
 
     @Override
     public void resetAttack3() {
-        battleUI.playerDamage = battleUI.playerBaseDamage; 
+        battleUI.playerDamage     = battleUI.playerBaseDamage; 
         battleUI.enemyDodgeChance = battleUI.enemyBaseDodgeChance; 
     }
 

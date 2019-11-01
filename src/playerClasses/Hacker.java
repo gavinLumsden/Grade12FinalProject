@@ -46,7 +46,7 @@ public class Hacker extends GameCharacter {
     * Ability 1: Crash,       disables enemy punch for _ seconds 
     * Ability 2: Virus,       increases damage for _ seconds
     * Ablilty 3: Copy,        replaces this ability with one from your enemy
-    * Ability 4: Reflect.exe, next time the enemy uses an ability they hit themself
+    * Ability 4: Reflect.exe, next time the enemy uses an ability they hit themselves
     * Passive:   Evasive,     enemy abilities have a higher chance of missing you
     * Ultimate:  EMP,         disables all enemy abilities for _ seconds
     */
@@ -141,7 +141,7 @@ public class Hacker extends GameCharacter {
         super.playerBattleBack   = battleBack; 
         super.playerBattleFront  = battleFront; 
         
-        final int[] DEFAULTS = { 2,5,100,100,1000,1,0,0 };
+        final int[] DEFAULTS = { 5,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
         damage      = stats[0];
@@ -400,12 +400,12 @@ public class Hacker extends GameCharacter {
     
     @Override
     public void attack3() {
-        battleUI.enemyEffects("disable abilities");
+        battleUI.playerEffects("steal enemy ability");
     }
     
     @Override
     public void attack4() {
-        battleUI.enemyEffects("reflect punch");
+        battleUI.enemyEffects("reflect ability");
     }
     
     @Override
@@ -420,12 +420,12 @@ public class Hacker extends GameCharacter {
     
     @Override
     public void resetAttack3() {
-        battleUI.enemyEffects("enable abilities");
+        battleUI.playerEffects("return enemy ability");
     }
     
     @Override
     public void resetAttack4() {
-        battleUI.enemyEffects("stop reflect");
+        battleUI.enemyEffects("stop reflect ability");
     }
 
 }

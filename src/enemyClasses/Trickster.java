@@ -21,7 +21,7 @@ public class Trickster extends Enemy {
     public int health;      // how much health you have (can be increased)
     public int punchSpeed;  // how fast you hit (can be increased)
     
-    private int baseDamage      = 5; 
+    private int baseDamage      = 1; 
     private int baseDodgeChance = 5;
     private int baseHealth      = 100; 
     private int baseMaxHealth   = 100; 
