@@ -33,10 +33,10 @@ public class Map5 extends javax.swing.JFrame {
     /**
      * Creates Map 5
      *
-     * @param currentMapName
+     * @param currentMapNumber
      * @param engine
      */
-    public Map5(String currentMapName, GameEngine engine) {
+    public Map5(int currentMapNumber, GameEngine engine) {
         initComponents();
         this.engine = engine;
 
@@ -177,13 +177,13 @@ public class Map5 extends javax.swing.JFrame {
         nextLevelBlocks.add(toMap7);
         nextLevelBlocks.add(toMap8);
 
-        setSpawnLocation(currentMapName); 
+        setSpawnLocation(currentMapNumber); 
         engine.createGameObject(grassImages,      "grass");
         engine.createGameObject(wallImages,       "walls");
-        engine.createGameCharacter(cyborgImages,  "cyborgs",  5);
-        engine.createGameCharacter(nailImages,    "nails",    5);
-        engine.createGameCharacter(rampageImages, "rampages", 5);
-        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 5");
+        engine.createGameCharacter(cyborgImages,  "cyborgs"); 
+        engine.createGameCharacter(nailImages,    "nails"); 
+        engine.createGameCharacter(rampageImages, "rampages"); 
+        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, 5);
         engine.createHero(lblHero, nextLevelBlocks);
     }
     
@@ -968,14 +968,14 @@ public class Map5 extends javax.swing.JFrame {
     private javax.swing.JLabel wall8;
     // End of variables declaration//GEN-END:variables
 
-    private void setSpawnLocation(String currentMapName) {
-        if (currentMapName.equals("map 2")) {
+    private void setSpawnLocation(int currentMapNumber) {
+        if (currentMapNumber == 2) {
             lblHero.setLocation(MAP_4_X, MAP_4_Y);
-        } else if (currentMapName.equals("map 6")) {
+        } else if (currentMapNumber == 6) {
             lblHero.setLocation(MAP_6_X, MAP_6_Y);
-        } else if (currentMapName.equals("map 7")) {
+        } else if (currentMapNumber == 7) {
             lblHero.setLocation(MAP_7_X, MAP_7_Y);
-        } else if (currentMapName.equals("map 8")) {
+        } else if (currentMapNumber == 8) {
             lblHero.setLocation(MAP_8_X, MAP_8_Y);
         }
     }

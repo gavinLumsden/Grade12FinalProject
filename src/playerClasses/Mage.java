@@ -64,8 +64,8 @@ public class Mage extends GameCharacter {
     private JFrame currentMap; 
     private JFrame previousMap; 
         
-    private String currentMapName; 
-    private String previousMapName; 
+    private int currentMapNumber; 
+    private int previousMapNumber; 
     
     public int damage;      // how much damage you do (can be increased)
     public int dodgeChance; // your chance of dodging  (can be increased)
@@ -103,8 +103,8 @@ public class Mage extends GameCharacter {
      * @param engine
      * @param currentMap
      * @param previousMap
-     * @param currentMapName
-     * @param previousMapName
+     * @param currentMapNumber
+     * @param previousMapNumber
      * @param trainers
      */
     public Mage(
@@ -114,14 +114,14 @@ public class Mage extends GameCharacter {
             LinkedList<NextLevelBlock> nextLevelBlock, 
             GameEngine engine, boolean hasBeenCreated,
             JFrame currentMap, JFrame previousMap, 
-            String currentMapName, String previousMapName, 
+            int currentMapNumber, int previousMapNumber, 
             LinkedList<Trainer> trainers) {
         super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
         this.currentMap  = currentMap; 
         this.previousMap = previousMap; 
-        this.currentMapName  = currentMapName; 
-        this.previousMapName = previousMapName; 
+        this.currentMapNumber  = currentMapNumber; 
+        this.previousMapNumber = previousMapNumber; 
         
         this.engine = engine;
         this.walls = walls;
@@ -295,19 +295,19 @@ public class Mage extends GameCharacter {
                     engine.clearCurrentMap(); 
                     if (nextLevelBlocks.get(i).mapToGoTo.equals("1")) {
                         timer.stop(); 
-                        Map1 map1 = new Map1(currentMapName, engine); 
+                        Map1 map1 = new Map1(currentMapNumber, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("2")) {
                         timer.stop(); 
-                        Map2 map2 = new Map2(currentMapName, engine); 
+                        Map2 map2 = new Map2(currentMapNumber, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("3")) {
                         timer.stop(); 
-                        Map3 map3 = new Map3(currentMapName, engine); 
+                        Map3 map3 = new Map3(currentMapNumber, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("4")) {
                         timer.stop(); 
-                        Map4 map4 = new Map4(currentMapName, engine); 
+                        Map4 map4 = new Map4(currentMapNumber, engine); 
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("5")) {
                         timer.stop(); 
-                        Map5 map5 = new Map5(currentMapName, engine); 
+                        Map5 map5 = new Map5(currentMapNumber, engine); 
                     } else {
                         System.out.println("error creating map");
                     }

@@ -31,10 +31,10 @@ public class Map4 extends javax.swing.JFrame {
     /**
      * Creates Map 4
      *
-     * @param currentMapName
+     * @param currentMapNumber
      * @param engine
      */
-    public Map4(String currentMapName, GameEngine engine) {
+    public Map4(int currentMapNumber, GameEngine engine) {
         initComponents();
         this.engine = engine;
 
@@ -88,13 +88,13 @@ public class Map4 extends javax.swing.JFrame {
         nextLevelBlocks.add(toMap2);
         nextLevelBlocks.add(toMap5);
         
-        setSpawnLocation(currentMapName); 
+        setSpawnLocation(currentMapNumber); 
         engine.createGameObject(grassImages,      "grass");
         engine.createGameObject(wallImages,       "walls");
-        engine.createGameCharacter(cyborgImages,  "cyborgs",  4);
-        engine.createGameCharacter(nailImages,    "nails",    4);
-        engine.createGameCharacter(rampageImages, "rampages", 4);
-        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 4");
+        engine.createGameCharacter(cyborgImages,  "cyborgs"); 
+        engine.createGameCharacter(nailImages,    "nails"); 
+        engine.createGameCharacter(rampageImages, "rampages"); 
+        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, 4);
         engine.createHero(lblHero, nextLevelBlocks);
     }
 
@@ -407,10 +407,10 @@ public class Map4 extends javax.swing.JFrame {
     private javax.swing.JLabel wall5;
     // End of variables declaration//GEN-END:variables
 
-    private void setSpawnLocation(String currentMapName) {
-        if (currentMapName.equals("map 2")) {
+    private void setSpawnLocation(int currentMapNumber) {
+        if (currentMapNumber == 2) {
             lblHero.setLocation(MAP_2_X, MAP_2_Y);
-        } else if (currentMapName.equals("map 5")) {
+        } else if (currentMapNumber == 5) {
             lblHero.setLocation(MAP_5_X, MAP_5_Y);
         } 
     }

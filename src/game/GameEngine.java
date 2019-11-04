@@ -64,8 +64,8 @@ public class GameEngine {
     private final int INTRO_FORM_HEIGHT = 319;
 
     // what map (name) the player is on
-    public String currentMapName;
-    public String previousMapName;
+    public int currentMapNumber;
+    public int previousMapNumber;
 
     // what map the player is on
     public JFrame currentMap;
@@ -140,7 +140,7 @@ public class GameEngine {
      * @param images
      * @param characterToCreate 
      */
-    public void createGameCharacter(LinkedList<JLabel> images, String characterToCreate, int level) {
+    public void createGameCharacter(LinkedList<JLabel> images, String characterToCreate) {
         if (characterToCreate.equals("shopkeepers")) {
             shopkeepers = new LinkedList<>();
             for (int i = 0; i < shopkeepers.size(); i++) {
@@ -162,49 +162,56 @@ public class GameEngine {
         if (characterToCreate.equals("cyborgs")) {
             cyborgs = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                Cyborg newCyborg = new Cyborg(images.get(i), 25, Directions.STOP, 4, 100, level);
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                Cyborg newCyborg = new Cyborg(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 cyborgs.add(newCyborg);
             }
         }
         if (characterToCreate.equals("engineers")) {
             engineers = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                Engineer newEngineer = new Engineer(images.get(i), 25, Directions.STOP, 4, 100, level);
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                Engineer newEngineer = new Engineer(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 engineers.add(newEngineer);
             }
         }
         if (characterToCreate.equals("hammers")) {
             hammers = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                Hammer newHammer = new Hammer(images.get(i), 25, Directions.STOP, 4, 100, level);
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                Hammer newHammer = new Hammer(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 hammers.add(newHammer);
             }
         }
         if (characterToCreate.equals("kingpins")) {
             kingpins = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                Kingpin newKingpin = new Kingpin(images.get(i), 25, Directions.STOP, 4, 100, level);
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                Kingpin newKingpin = new Kingpin(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 kingpins.add(newKingpin);
             }
         }
         if (characterToCreate.equals("nails")) {
             nails = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                Nail newNail = new Nail(images.get(i), 25, Directions.STOP, 4, 100, level);
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                Nail newNail = new Nail(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 nails.add(newNail);
             }
         }
         if (characterToCreate.equals("rampages")) {
             rampages = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                Rampage newRampage = new Rampage(images.get(i), 25, Directions.STOP, 4, 100, level);
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                Rampage newRampage = new Rampage(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 rampages.add(newRampage);
             }
         }
         if (characterToCreate.equals("tricksters")) {
             tricksters = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                Trickster newTrickster = new Trickster(images.get(i), 25, Directions.STOP, 4, 100, level);
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                Trickster newTrickster = new Trickster(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 tricksters.add(newTrickster);
             }
         }
@@ -223,7 +230,7 @@ public class GameEngine {
                 nextLevelBlocks,
                 this, hasBeenCreated,
                 currentMap, previousMap,
-                currentMapName, previousMapName,
+                currentMapNumber, previousMapNumber,
                 trainers);
         hasBeenCreated = true;
         hero.update();
@@ -267,15 +274,15 @@ public class GameEngine {
      * @param formHeight
      * @param mapName
      */
-    public void createMap(JFrame map, int formWidth, int formHeight, String mapName) {
+    public void createMap(JFrame map, int formWidth, int formHeight, int mapNumber) {
         map.setSize(formWidth, formHeight);
         map.setResizable(false);
         map.setLocationRelativeTo(null);
         map.setVisible(true);
-        previousMapName = currentMapName;
+        previousMapNumber = currentMapNumber; 
         previousMap = currentMap;
         currentMap = map;
-        currentMapName = mapName;
+        currentMapNumber = mapNumber;
         moveable = true;
     }
 
@@ -304,6 +311,22 @@ public class GameEngine {
         if (previousMap != null) {
             previousMap.dispose();
         }
+    }
+
+    /**
+     * Generates a random number
+     *
+     * @param low the lowest number in the range
+     * @param high the highest number in the range
+     * @return the generated number
+     */
+    private int random(int low, int high) {
+        double seed = Math.random();
+        double L = (double) low;
+        double H = (double) high;
+        double number = (H - L + 1) * seed + L;
+        int answer = (int) number;
+        return answer;
     }
     
 }

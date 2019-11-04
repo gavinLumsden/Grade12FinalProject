@@ -33,10 +33,10 @@ public class Map2 extends javax.swing.JFrame {
     /**
      * Creates Map 2
      *
-     * @param currentMapName
+     * @param currentMapNumber
      * @param engine
      */
-    public Map2(String currentMapName, GameEngine engine) {
+    public Map2(int currentMapNumber, GameEngine engine) {
         initComponents();
         this.engine = engine;
 
@@ -169,13 +169,13 @@ public class Map2 extends javax.swing.JFrame {
         nextLevelBlocks.add(toMap3);
         nextLevelBlocks.add(toMap4);
         
-        setSpawnLocation(currentMapName); 
+        setSpawnLocation(currentMapNumber); 
         engine.createGameObject(grassImages,      "grass");
         engine.createGameObject(wallImages,       "walls");
-        engine.createGameCharacter(cyborgImages,  "cyborgs",  2);
-        engine.createGameCharacter(nailImages,    "nails",    2);
-        engine.createGameCharacter(rampageImages, "rampages", 2);
-        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 2");
+        engine.createGameCharacter(cyborgImages,  "cyborgs"); 
+        engine.createGameCharacter(nailImages,    "nails"); 
+        engine.createGameCharacter(rampageImages, "rampages"); 
+        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, 2);
         engine.createHero(lblHero, nextLevelBlocks);
     }
 
@@ -978,12 +978,12 @@ public class Map2 extends javax.swing.JFrame {
     private javax.swing.JLabel wall7;
     // End of variables declaration//GEN-END:variables
 
-    private void setSpawnLocation(String currentMapName) {
-        if (currentMapName.equals("map 1")) {
+    private void setSpawnLocation(int currentMapNumber) {
+        if (currentMapNumber == 1) {
             lblHero.setLocation(MAP_1_X, MAP_1_Y);
-        } else if (currentMapName.equals("map 3")) {
+        } else if (currentMapNumber == 3) {
             lblHero.setLocation(MAP_3_X, MAP_3_Y);
-        } else if (currentMapName.equals("map 4")) {
+        } else if (currentMapNumber == 4) {
             lblHero.setLocation(MAP_4_X, MAP_4_Y);
         }
     }

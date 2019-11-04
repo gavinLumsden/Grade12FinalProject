@@ -37,7 +37,6 @@ public class BattleUI extends javax.swing.JFrame {
     public int playerBaseDodgeChance; // the original percentage of how much the player can dodge enemy attacks (at the begining of the game) 
     public int playerBaseDamage;      // the original amount of damage the player had                           (at the begining of the game) 
     public int playerMaxHealth; // the maximum amount of health the player can have
-    public int playerLevel; 
     private String playerName;  // the name of the class the player is using 
 
     public int enemyHealth;      // how much health the enemy has
@@ -536,28 +535,28 @@ public class BattleUI extends javax.swing.JFrame {
         btnAttackOrItem3.setText(playerAttack3);
         btnAttackOrItem4.setText(playerAttack4);
 
-        if (playerLevel >= 1) {
+        if (heroClass.playerLevel >= 1) {
             btnAttackOrItem1.setBackground(Color.green);
             attack1Usable = true; 
         } else {
             btnAttackOrItem1.setBackground(Color.black); 
         }
         
-        if (playerLevel >= 2) {
+        if (heroClass.playerLevel >= 2) {
             btnAttackOrItem2.setBackground(Color.green);
             attack2Usable = true; 
         } else {
             btnAttackOrItem2.setBackground(Color.black); 
         }
         
-        if (playerLevel >= 5) {
+        if (heroClass.playerLevel >= 5) {
             btnAttackOrItem3.setBackground(Color.green);
             attack3Usable = true; 
         } else {
             btnAttackOrItem3.setBackground(Color.black); 
         }
         
-        if (playerLevel >= 10) {
+        if (heroClass.playerLevel >= 10) {
             btnAttackOrItem4.setBackground(Color.green);
             attack4Usable = true; 
         } else {
@@ -656,9 +655,7 @@ public class BattleUI extends javax.swing.JFrame {
         playerHealth          = heroClass.playerHealth;
         playerMaxHealth       = heroClass.playerMaxHealth; 
         playerPunchSpeed      = heroClass.playerPunchSpeed;
-        
         playerName            = heroClass.playerName;
-        playerLevel           = heroClass.playerLevel; 
         
         playerBaseDamage      = heroClass.playerDamage;
         playerBaseDodgeChance = heroClass.playerDodgeChance;
@@ -752,7 +749,7 @@ public class BattleUI extends javax.swing.JFrame {
                     playerHealth,
                     playerMaxHealth, 
                     playerPunchSpeed, 
-                    playerLevel, 
+                    heroClass.playerLevel, 
                     heroClass.exp, 
                     heroClass.gold
                 };
@@ -781,31 +778,24 @@ public class BattleUI extends javax.swing.JFrame {
      * when the player wins
      */
     private void playerWin() {
-        giveExp();
-        giveGold();
         stopTimers(); 
         resetAbilities(); 
-        engine.clearMap(this);
-        engine.play();
-        int random = random(1, 2);
-        if (random == 1) {
-            engine.mediaPlayer.stop();
-            engine.mediaPlayer.playWAV("/sounds/walkingSoundtrack.wav");
-        } else if (random == 2) {
-            engine.mediaPlayer.stop();
-            engine.mediaPlayer.playWAV("/sounds/introSoundtrack.wav");
-        }
+        giveExp();
+        giveGold();
         int stats[] = {
             playerDamage,
             playerDodgeChance,
             playerHealth,
             playerMaxHealth, 
             playerPunchSpeed, 
-            playerLevel, 
+            heroClass.playerLevel, 
             heroClass.exp, 
             heroClass.gold
         };
         stats = CharacterData.saveData(heroClass, stats);
+        engine.clearMap(this);
+        engine.play();
+        engine.mediaPlayer.playWAV("/sounds/walkingSoundtrack.wav");
     }
 
     /**
@@ -817,7 +807,7 @@ public class BattleUI extends javax.swing.JFrame {
         System.out.println("You got " + expToGive + " exp! You know have " + heroClass.exp + " exp!"); 
         if (heroClass.exp >= 100) {
             LevelUp levelUp = new LevelUp(heroClass); 
-            playerLevel++; 
+            heroClass.playerLevel++; 
             heroClass.exp -= 100; 
         }
     }

@@ -23,10 +23,10 @@ public class Map3 extends javax.swing.JFrame {
     /**
      * Creates Map 3
      *
-     * @param mapName
+     * @param currentMapNumber
      * @param engine
      */
-    public Map3(String mapName, GameEngine engine) {
+    public Map3(int currentMapNumber, GameEngine engine) {
         initComponents();
         this.engine = engine;
 
@@ -78,9 +78,9 @@ public class Map3 extends javax.swing.JFrame {
         engine.createGameObject(wallImages,          "walls");
         engine.createGameObject(grassImages,         "grass"); 
         engine.createGameObject(houseImages,         "houses"); 
-        engine.createGameCharacter(shopkeeperImages, "shopkeepers", 0);
-        engine.createGameCharacter(trainerImages,    "trainers", 0);
-        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, "map 3");
+        engine.createGameCharacter(shopkeeperImages, "shopkeepers"); 
+        engine.createGameCharacter(trainerImages,    "trainers"); 
+        engine.createMap(this, FORM_WIDTH, FORM_HEIGHT, 3);
         engine.createHero(lblHero, nextLevelBlocks);
     }
 

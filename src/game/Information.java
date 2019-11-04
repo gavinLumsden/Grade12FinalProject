@@ -92,7 +92,7 @@ public class Information extends javax.swing.JFrame {
     private void lblSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSelectMouseClicked
         this.dispose();
         cs.dispose();
-        Map1 map1 = new Map1("map 1", engine);
+        Map1 map1 = new Map1(1, engine);
     }//GEN-LAST:event_lblSelectMouseClicked
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
