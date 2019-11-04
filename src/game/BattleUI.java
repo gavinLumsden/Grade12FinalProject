@@ -741,8 +741,6 @@ public class BattleUI extends javax.swing.JFrame {
             if (chance != 5) {
                 stopTimers(); 
                 resetAbilities(); 
-                engine.clearMap(this);
-                engine.play();
                 int stats[] = {
                     playerDamage,
                     playerDodgeChance,
@@ -754,6 +752,9 @@ public class BattleUI extends javax.swing.JFrame {
                     heroClass.gold
                 };
                 stats = CharacterData.saveData(heroClass, stats);
+                engine.clearMap(this);
+                engine.play();
+                engine.mediaPlayer.playWAV("/sounds/walkingSoundtrack.wav");
             } else {
                 btnRun.setEnabled(false);
                 System.out.println("Oh no! You couldn't get away!");
