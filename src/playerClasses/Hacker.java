@@ -169,9 +169,9 @@ public class Hacker extends GameCharacter {
         super.playerMaxHealth   = maxHealth; 
         super.playerPunchSpeed  = punchSpeed; 
         
-        super.level = level; 
-        super.exp   = exp; 
-        super.gold  = gold; 
+        super.playerLevel = level; 
+        super.exp         = exp; 
+        super.gold        = gold; 
         
         super.attack1Cooldown = attack1Cooldown; 
         super.attack2Cooldown = attack2Cooldown; 

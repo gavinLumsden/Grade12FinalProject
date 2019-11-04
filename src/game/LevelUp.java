@@ -17,6 +17,7 @@ public class LevelUp extends javax.swing.JFrame {
     public LevelUp(GameCharacter heroClass) {
         initComponents();
         this.heroClass = heroClass; 
+        heroClass.heal(); 
         setupForm(); 
     }
     

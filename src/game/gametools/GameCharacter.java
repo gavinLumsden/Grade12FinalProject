@@ -48,7 +48,7 @@ public abstract class GameCharacter extends GameObject {
     public final int MAX_HEALTH       = 200; 
     public final int MAX_PUNCH_SPEED  = 500; 
     
-    public int level; 
+    public int playerLevel; 
     public int exp; 
     public int gold; 
     
@@ -148,6 +148,10 @@ public abstract class GameCharacter extends GameObject {
                 sprite.run(7);
             }
         }
+    }
+    
+    public void heal() {
+        playerHealth = playerMaxHealth; 
     }
 
     public abstract void attack1();

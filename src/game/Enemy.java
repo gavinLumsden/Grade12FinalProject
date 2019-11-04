@@ -4,8 +4,6 @@ import game.gametools.GameCharacter;
 import javax.swing.JLabel;
 
 public abstract class Enemy extends GameCharacter {
-
-    public String name; 
     
     public String attack1;
     public String attack2;
@@ -17,6 +15,8 @@ public abstract class Enemy extends GameCharacter {
     public int punchSpeed;
     public int dodgeChance; 
     public int damage; 
+    public int level; 
+    public String name; 
     
     /**
      * Constructor for the class

@@ -36,22 +36,22 @@ public class BattleUI extends javax.swing.JFrame {
     public int playerBasePunchSpeed;  // the original speed of how fast the player punchs                       (at the begining of the game)  
     public int playerBaseDodgeChance; // the original percentage of how much the player can dodge enemy attacks (at the begining of the game) 
     public int playerBaseDamage;      // the original amount of damage the player had                           (at the begining of the game) 
-
     public int playerMaxHealth; // the maximum amount of health the player can have
+    public int playerLevel; 
     private String playerName;  // the name of the class the player is using 
 
     public int enemyHealth;      // how much health the enemy has
     public int enemyPunchSpeed;  // how fast the enemy punchs
     public int enemyDodgeChance; // how much the enemy can dodge enemy attacks
     public int enemyDamage;      // how much damage the enemy does
+    public int enemyMaxHealth; // the maximum amount of health the enemy can have
+    public int enemyLevel; 
+    private String enemyName;  // the name of the class of the enemy 
 
     public int enemyBaseHealth;      // the original amount of health the enemy had                           (at the begining of the game) 
     public int enemyBasePunchSpeed;  // the original speed of how fast the enemy punchs                       (at the begining of the game)  
     public int enemyBaseDodgeChance; // the original percentage of how much the enemy can dodge enemy attacks (at the begining of the game) 
     public int enemyBaseDamage;      // the original amount of damage the enemy had                           (at the begining of the game) 
-
-    public int enemyMaxHealth; // the maximum amount of health the enemy can have
-    private String enemyName;  // the name of the class of the enemy 
 
     private String playerAttack1; // the players first attack
     private String playerAttack2; // the players second attack
@@ -82,11 +82,9 @@ public class BattleUI extends javax.swing.JFrame {
     // "effects" that can be used on the enemy and player
     private Timer playerBleed;
     private Timer playerStun;
-    private Timer playerDisablePunch;
     private Timer playerDisableAbilities;
     private Timer enemyBleed;
     private Timer enemyStun;
-    private Timer enemyDisablePunch;
     private Timer enemyDisableAbilities;
 
     // used while the players attacks are on "cooldown"
@@ -459,33 +457,41 @@ public class BattleUI extends javax.swing.JFrame {
      */
     private void useAttack(int attackToUse) {
         if (attackToUse == 1) {
-            btnAttackOrItem1.setBackground(Color.red);
-            attack1Usable = false;
-            heroClass.attack1();
-            attack1Duration.start();
-            attack1Cooldown.start();
-            System.out.println(playerName + " used: " + heroClass.playerAttack1Name + "!");
+            if (attack1Usable) {
+                btnAttackOrItem1.setBackground(Color.red);
+                attack1Usable = false;
+                heroClass.attack1();
+                attack1Duration.start();
+                attack1Cooldown.start();
+                System.out.println(playerName + " used: " + heroClass.playerAttack1Name + "!");
+            }
         } else if (attackToUse == 2) {
-            btnAttackOrItem2.setBackground(Color.red);
-            attack2Usable = false;
-            heroClass.attack2();
-            attack2Duration.start();
-            attack2Cooldown.start();
-            System.out.println(playerName + " used: " + heroClass.playerAttack2Name + "!");
+            if (attack2Usable) {
+                btnAttackOrItem2.setBackground(Color.red);
+                attack2Usable = false;
+                heroClass.attack2();
+                attack2Duration.start();
+                attack2Cooldown.start();
+                System.out.println(playerName + " used: " + heroClass.playerAttack2Name + "!");
+            }
         } else if (attackToUse == 3) {
-            btnAttackOrItem3.setBackground(Color.red);
-            attack3Usable = false;
-            heroClass.attack3();
-            attack3Duration.start();
-            attack3Cooldown.start();
-            System.out.println(playerName + " used: " + heroClass.playerAttack3Name + "!");
+            if (attack3Usable) {
+                btnAttackOrItem3.setBackground(Color.red);
+                attack3Usable = false;
+                heroClass.attack3();
+                attack3Duration.start();
+                attack3Cooldown.start();
+                System.out.println(playerName + " used: " + heroClass.playerAttack3Name + "!");
+            }
         } else if (attackToUse == 4) {
-            btnAttackOrItem4.setBackground(Color.red);
-            attack4Usable = false;
-            heroClass.attack4();
-            attack4Duration.start();
-            attack4Cooldown.start();
-            System.out.println(playerName + " used: " + heroClass.playerAttack4Name + "!");
+            if (attack4Usable) {
+                btnAttackOrItem4.setBackground(Color.red);
+                attack4Usable = false;
+                heroClass.attack4();
+                attack4Duration.start();
+                attack4Cooldown.start();
+                System.out.println(playerName + " used: " + heroClass.playerAttack4Name + "!");
+            }
         } else {
             System.out.println("error using attack");
         }
@@ -518,20 +524,7 @@ public class BattleUI extends javax.swing.JFrame {
     /**
      * setups the players attacks
      */
-    private void setupPlayerAttacks() {
-        if (heroClass.level >= 1) {
-            heroClass.attack1HasBeenUnlocked = true; 
-        } 
-        if (heroClass.level >= 2) {
-            heroClass.attack2HasBeenUnlocked = true; 
-        } 
-        if (heroClass.level >= 5) {
-            heroClass.attack3HasBeenUnlocked = true; 
-        } 
-        if (heroClass.level >= 10) {
-            heroClass.attack4HasBeenUnlocked = true; 
-        }
-          
+    private void setupPlayerAttacks() {          
         playerAttack1 = heroClass.playerAttack1Name;
         playerAttack2 = heroClass.playerAttack2Name;
         playerAttack3 = heroClass.playerAttack3Name;
@@ -544,38 +537,23 @@ public class BattleUI extends javax.swing.JFrame {
         btnAttackOrItem3.setText(playerAttack3);
         btnAttackOrItem4.setText(playerAttack4);
 
-        if (heroClass.attack1HasBeenUnlocked == true) {
+        if (playerLevel >= 1) {
             btnAttackOrItem1.setBackground(Color.green);
-            attack1Usable = true;
-        } else if (heroClass.attack1HasBeenUnlocked == false) {
-            btnAttackOrItem1.setBackground(Color.red);
-            attack1Usable = false;
+            attack1Usable = true; 
         }
-        
-        if (heroClass.attack2HasBeenUnlocked == true) {
+        if (playerLevel >= 2) {
             btnAttackOrItem2.setBackground(Color.green);
-            attack2Usable = true;
-        } else if (heroClass.attack2HasBeenUnlocked == false) {
-            btnAttackOrItem2.setBackground(Color.red);
-            attack2Usable = false;
+            attack2Usable = true; 
         }
-        
-        if (heroClass.attack3HasBeenUnlocked == true) {
+        if (playerLevel >= 5) {
             btnAttackOrItem3.setBackground(Color.green);
-            attack3Usable = true;
-        } else if (heroClass.attack3HasBeenUnlocked == false) {
-            btnAttackOrItem3.setBackground(Color.red);
-            attack3Usable = false;
+            attack3Usable = true; 
+        }
+        if (playerLevel >= 10) {
+            btnAttackOrItem4.setBackground(Color.green);
+            attack4Usable = true; 
         }
         
-        if (heroClass.attack4HasBeenUnlocked == true) {
-            btnAttackOrItem4.setBackground(Color.green);
-            attack4Usable = true;
-        } else if (heroClass.attack4HasBeenUnlocked == false) {
-            btnAttackOrItem4.setBackground(Color.red);
-            attack4Usable = false;
-        }
-
         attack1Cooldown = new Timer(heroClass.attack1Cooldown, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -643,6 +621,8 @@ public class BattleUI extends javax.swing.JFrame {
      * setups the enemy and their stats
      */
     private void setupEnemy() {
+        enemyName            = enemy.name; 
+        enemyLevel           = enemy.level; 
         enemyDamage          = enemy.damage;
         enemyDodgeChance     = enemy.dodgeChance;
         enemyHealth          = enemy.health;
@@ -654,19 +634,7 @@ public class BattleUI extends javax.swing.JFrame {
         enemyBasePunchSpeed  = enemy.punchSpeed;
         lblPlayerDamage.setText(enemyName);
         enemyHealthBar.setValue(enemyMaxHealth);
-        lblPlayerDamage.setText(
-                "<html><head></head><body>"
-                + "Name: " + enemyName
-                + "<br>"
-                + "Damage: " + enemyDamage
-                + "<br>"
-                + "Dodge Chance: " + enemyDodgeChance
-                + "<br>"
-                + "Health: " + enemyHealth
-                + "<br>"
-                + "Punch Speed: " + enemyPunchSpeed
-                + "</body></html>");
-        System.out.println("You've encountered " + enemyName + "!");
+        System.out.println("You've encountered a level " + enemyLevel + " " + enemyName + "!");
     }
 
     /**
@@ -678,14 +646,23 @@ public class BattleUI extends javax.swing.JFrame {
         playerHealth          = heroClass.playerHealth;
         playerMaxHealth       = heroClass.playerMaxHealth; 
         playerPunchSpeed      = heroClass.playerPunchSpeed;
+        
         playerName            = heroClass.playerName;
+        playerLevel           = heroClass.playerLevel; 
+        
         playerBaseDamage      = heroClass.playerDamage;
         playerBaseDodgeChance = heroClass.playerDodgeChance;
         playerBaseHealth      = heroClass.playerHealth;
         playerBasePunchSpeed  = heroClass.playerPunchSpeed;
+        
         playerHealthBar.setValue(playerMaxHealth);
         lblPlayerDodgeChance.setText(playerDodgeChance + "");
         lblPlayerDamage.setText(playerDamage + "");
+        
+        attack1Usable = false; 
+        attack2Usable = false; 
+        attack3Usable = false; 
+        attack4Usable = false; 
     }
 
     /**
@@ -765,7 +742,7 @@ public class BattleUI extends javax.swing.JFrame {
                     playerHealth,
                     playerMaxHealth, 
                     playerPunchSpeed, 
-                    heroClass.level, 
+                    playerLevel, 
                     heroClass.exp, 
                     heroClass.gold
                 };
@@ -814,7 +791,7 @@ public class BattleUI extends javax.swing.JFrame {
             playerHealth,
             playerMaxHealth, 
             playerPunchSpeed, 
-            heroClass.level, 
+            playerLevel, 
             heroClass.exp, 
             heroClass.gold
         };
@@ -825,11 +802,12 @@ public class BattleUI extends javax.swing.JFrame {
      * gives the player experience
      */
     private void giveExp() {
-        heroClass.exp += 50;
-        System.out.println("You got " + 50 + " exp!");
+        int expToGive = (50 + (enemyLevel * 2)); 
+        heroClass.exp += expToGive; 
+        System.out.println("You got " + expToGive + " exp! You know have " + heroClass.exp + " exp!"); 
         if (heroClass.exp >= 100) {
             LevelUp levelUp = new LevelUp(heroClass); 
-            heroClass.level++; 
+            playerLevel++; 
             heroClass.exp -= 100; 
         }
     }
@@ -838,8 +816,9 @@ public class BattleUI extends javax.swing.JFrame {
      * gives the player gold
      */
     private void giveGold() {
-        heroClass.gold += 10; 
-        System.out.println("You got " + 10 + " gold!");
+        int goldToGive = (10 + (enemyLevel * 2)); 
+        heroClass.gold += goldToGive; 
+        System.out.println("You got " + goldToGive + " gold! You know have " + heroClass.gold + " gold!"); 
     }
 
     /**
@@ -891,6 +870,23 @@ public class BattleUI extends javax.swing.JFrame {
         playerPunching.stop();
         enemyPunching.stop();
         update.stop();
+        
+        attack1Cooldown.stop();
+        attack1Duration.stop(); 
+        attack2Cooldown.stop();
+        attack2Duration.stop(); 
+        attack3Cooldown.stop();
+        attack3Duration.stop(); 
+        attack4Cooldown.stop();
+        attack4Duration.stop(); 
+        
+        enemyBleed.stop();
+        enemyDisableAbilities.stop(); 
+        enemyStun.stop(); 
+        
+        playerBleed.stop();
+        playerDisableAbilities.stop(); 
+        playerStun.stop(); 
     }
     
     /**
