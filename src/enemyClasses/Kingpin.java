@@ -67,8 +67,8 @@ public class Kingpin extends Enemy {
         super.dodgeChance = dodgeChance;
         super.health      = health;
         super.punchSpeed  = punchSpeed;
-
-        super.name = NAME;
+        super.name        = NAME;
+        super.level       = this.level; 
 
         sprite.setImage("/animations/enemyclasses/kingpin/right/kingpinIdle.png");
         sprite.debug("");

@@ -67,8 +67,8 @@ public class Engineer extends Enemy {
         super.dodgeChance = dodgeChance;
         super.health      = health;
         super.punchSpeed  = punchSpeed;
-
-        super.name = NAME;
+        super.name        = NAME;
+        super.level       = this.level; 
 
         sprite.setImage("/animations/enemyclasses/engineer/right/engineerIdle.png");
         sprite.debug("");

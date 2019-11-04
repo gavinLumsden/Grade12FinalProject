@@ -67,8 +67,8 @@ public class Rampage extends Enemy {
         super.dodgeChance = dodgeChance;
         super.health      = health;
         super.punchSpeed  = punchSpeed;
-
-        super.name = NAME;
+        super.name        = NAME;
+        super.level       = this.level; 
 
         sprite.setImage("/animations/enemyclasses/rampage/right/rampageIdle.png");
         sprite.debug("");

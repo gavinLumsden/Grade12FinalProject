@@ -67,8 +67,8 @@ public class Nail extends Enemy {
         super.dodgeChance = dodgeChance;
         super.health      = health;
         super.punchSpeed  = punchSpeed;
-
-        super.name = NAME;
+        super.name        = NAME;
+        super.level       = this.level; 
 
         sprite.setImage("/animations/enemyclasses/nail/right/nailIdle.png");
         sprite.debug("");

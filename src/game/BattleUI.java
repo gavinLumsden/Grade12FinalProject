@@ -416,7 +416,6 @@ public class BattleUI extends javax.swing.JFrame {
     private void switchToItem() {
         onItem = true;
         onAttack = false;
-        btnAttackOrItem1.setText("Attacks");
         btnAttackOrItem1.setText("Item 1");
         btnAttackOrItem2.setText("Item 2");
         btnAttackOrItem3.setText("Item 3");
@@ -540,20 +539,31 @@ public class BattleUI extends javax.swing.JFrame {
         if (playerLevel >= 1) {
             btnAttackOrItem1.setBackground(Color.green);
             attack1Usable = true; 
+        } else {
+            btnAttackOrItem1.setBackground(Color.black); 
         }
+        
         if (playerLevel >= 2) {
             btnAttackOrItem2.setBackground(Color.green);
             attack2Usable = true; 
+        } else {
+            btnAttackOrItem2.setBackground(Color.black); 
         }
+        
         if (playerLevel >= 5) {
             btnAttackOrItem3.setBackground(Color.green);
             attack3Usable = true; 
+        } else {
+            btnAttackOrItem3.setBackground(Color.black); 
         }
+        
         if (playerLevel >= 10) {
             btnAttackOrItem4.setBackground(Color.green);
             attack4Usable = true; 
+        } else {
+            btnAttackOrItem4.setBackground(Color.black); 
         }
-        
+                
         attack1Cooldown = new Timer(heroClass.attack1Cooldown, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
