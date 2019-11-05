@@ -741,17 +741,7 @@ public class BattleUI extends javax.swing.JFrame {
             if (chance != 5) {
                 stopTimers(); 
                 resetAbilities(); 
-                int stats[] = {
-                    playerDamage,
-                    playerDodgeChance,
-                    playerHealth,
-                    playerMaxHealth, 
-                    playerPunchSpeed, 
-                    heroClass.playerLevel, 
-                    heroClass.exp, 
-                    heroClass.gold
-                };
-                stats = CharacterData.saveData(heroClass, stats);
+                save(); 
                 engine.clearMap(this);
                 engine.play();
                 engine.mediaPlayer.playWAV("/sounds/walkingSoundtrack.wav");
@@ -783,17 +773,7 @@ public class BattleUI extends javax.swing.JFrame {
         resetAbilities(); 
         giveExp();
         giveGold();
-        int stats[] = {
-            playerDamage,
-            playerDodgeChance,
-            playerHealth,
-            playerMaxHealth, 
-            playerPunchSpeed, 
-            heroClass.playerLevel, 
-            heroClass.exp, 
-            heroClass.gold
-        };
-        stats = CharacterData.saveData(heroClass, stats);
+        save(); 
         engine.clearMap(this);
         engine.play();
         engine.mediaPlayer.playWAV("/sounds/walkingSoundtrack.wav");
@@ -948,6 +928,20 @@ public class BattleUI extends javax.swing.JFrame {
     private void click(int number) {
         if (onAttack) useAttack(number); 
         if (onItem)   useItem(number); 
+    }
+
+    private void save() {
+        int stats[] = {
+            playerDamage,
+            playerDodgeChance,
+            playerHealth,
+            playerMaxHealth, 
+            playerPunchSpeed, 
+            heroClass.playerLevel, 
+            heroClass.exp, 
+            heroClass.gold
+        };
+        stats = CharacterData.saveData(heroClass, stats);
     }
     
 }

@@ -1,5 +1,7 @@
 package game;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import maps.Map1;
 import playerClasses.Bandit;
 
@@ -90,8 +92,8 @@ public class Information extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSelectMouseClicked
-        this.dispose();
         cs.dispose();
+        this.dispose();
         Map1 map1 = new Map1(1, engine);
     }//GEN-LAST:event_lblSelectMouseClicked
 
@@ -111,7 +113,13 @@ public class Information extends javax.swing.JFrame {
      * setups the image and information for the hero
      */
     private void setupHero() {
-        lblHeroInformation.setText(Bandit.abilitiesInformation); 
+        String image = Hero.getIcon(selected); 
+        if (image != null) {
+            Icon icon = new ImageIcon(getClass().getResource(image)); 
+            lblHeroImage.setIcon(icon); 
+        } else {
+            System.out.println("error assigning hero image");
+        }
     }
 
     /**

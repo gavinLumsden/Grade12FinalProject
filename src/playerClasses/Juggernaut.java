@@ -58,8 +58,9 @@ public class Juggernaut extends GameCharacter {
     public String passive  = "Iron Skin"; 
     public String ultimate = "Invincible"; 
     
-    public String battleBack  = "/animations/playerClasses/juggernaut/fightBack/fightBack.png";
-    public String battleFront = "/animations/playerClasses/juggernaut/fightFront/fightFront.png";
+    public static final String IDLE_ICON         = "/animations/playerClasses/juggernaut/right/juggernautIdle.png"; 
+    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/juggernaut/fightBack/fightBack.png";
+    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/juggernaut/fightFront/fightFront.png";
     
     private JFrame currentMap; 
     private JFrame previousMap; 
@@ -138,8 +139,8 @@ public class Juggernaut extends GameCharacter {
         super.playerAttack4Name  = attack4; 
         super.playerPassiveName  = passive; 
         super.playerUltimateName = ultimate; 
-        super.playerBattleBack   = battleBack; 
-        super.playerBattleFront  = battleFront; 
+        super.playerBattleBack   = BATTLE_BACK_ICON; 
+        super.playerBattleFront  = BATTLE_FRONT_ICON; 
         
         final int[] DEFAULTS = { 5,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];

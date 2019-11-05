@@ -58,8 +58,9 @@ public class Hacker extends GameCharacter {
     public String passive  = "Evasive"; 
     public String ultimate = "EMP"; 
     
-    public String battleBack  = "/animations/playerClasses/hacker/fightBack/fightBack.png";
-    public String battleFront = "/animations/playerClasses/hacker/fightFront/fightFront.png";
+    public static final String IDLE_ICON         = "/animations/playerClasses/hacker/right/hackerIdle.png"; 
+    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/hacker/fightBack/fightBack.png";
+    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/hacker/fightFront/fightFront.png";
     
     private JFrame currentMap; 
     private JFrame previousMap; 
@@ -138,8 +139,8 @@ public class Hacker extends GameCharacter {
         super.playerAttack4Name  = attack4; 
         super.playerPassiveName  = passive; 
         super.playerUltimateName = ultimate; 
-        super.playerBattleBack   = battleBack; 
-        super.playerBattleFront  = battleFront; 
+        super.playerBattleBack   = BATTLE_BACK_ICON; 
+        super.playerBattleFront  = BATTLE_FRONT_ICON; 
         
         final int[] DEFAULTS = { 5,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];

@@ -73,9 +73,9 @@ public class Bandit extends GameCharacter {
         "* Passive:   Back Stab, when you dodge an attack you have a _% chance to hit the enemy back\n" +
         "* Ultimate:  Elusive,   raises dodge stat by _ for the rest of the battle\n";
     
-    public String idlePicture = "/animations/playerClasses/bandit/right/banditIdle.png"; 
-    public String battleBack  = "/animations/playerClasses/bandit/fightBack/fightBack.png";
-    public String battleFront = "/animations/playerClasses/bandit/fightFront/fightFront.png";
+    public static final String IDLE_ICON         = "/animations/playerClasses/bandit/right/banditIdle.png"; 
+    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/bandit/fightBack/fightBack.png";
+    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/bandit/fightFront/fightFront.png";
     
     private JFrame currentMap; 
     private JFrame previousMap; 
@@ -157,8 +157,8 @@ public class Bandit extends GameCharacter {
         super.playerAttack4Name  = attack4; 
         super.playerPassiveName  = passive; 
         super.playerUltimateName = ultimate; 
-        super.playerBattleBack   = battleBack; 
-        super.playerBattleFront  = battleFront; 
+        super.playerBattleBack   = BATTLE_BACK_ICON; 
+        super.playerBattleFront  = BATTLE_FRONT_ICON; 
         
         final int[] DEFAULTS = { 5,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];

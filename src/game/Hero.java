@@ -107,5 +107,15 @@ public class Hero {
     public void keyRelease(KeyEvent evt) {
         heroClass.mover.stop();
     }
+    
+    public static String getIcon(String selected) {
+        if      (selected.equals("bandit"))     return Bandit.IDLE_ICON; 
+        else if (selected.equals("gambler"))    return Gambler.IDLE_ICON; 
+        else if (selected.equals("hacker"))     return Hacker.IDLE_ICON; 
+        else if (selected.equals("juggernaut")) return Juggernaut.IDLE_ICON; 
+        else if (selected.equals("mage"))       return Mage.IDLE_ICON; 
+        else if (selected.equals("vampire"))    return Vampire.IDLE_ICON; 
+        else                                    return null; 
+    }
 
 }

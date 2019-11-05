@@ -58,8 +58,9 @@ public class Vampire extends GameCharacter {
     public String passive  = "Leech"; 
     public String ultimate = "Consume"; 
     
-    public String battleBack  = "/animations/playerClasses/vampire/fightBack/fightBack.png";
-    public String battleFront = "/animations/playerClasses/vampire/fightFront/fightFront.png";
+    public static final String IDLE_ICON         = "/animations/playerClasses/mage/right/mageIdle.png"; 
+    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/mage/fightBack/fightBack.png";
+    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/mage/fightFront/fightFront.png";
     
     private JFrame currentMap; 
     private JFrame previousMap; 
@@ -138,11 +139,9 @@ public class Vampire extends GameCharacter {
         super.playerAttack4Name  = attack4; 
         super.playerPassiveName  = passive; 
         super.playerUltimateName = ultimate; 
-        super.playerBattleBack   = battleBack; 
-        super.playerBattleFront  = battleFront; 
         
-        super.playerBattleBack = battleBack; 
-        super.playerBattleFront = battleFront; 
+        super.playerBattleBack   = BATTLE_BACK_ICON; 
+        super.playerBattleFront  = BATTLE_FRONT_ICON; 
         
         final int[] DEFAULTS = { 5,5,100,100,1000,1,0,0 };
         int stats[] = new int[DEFAULTS.length];
