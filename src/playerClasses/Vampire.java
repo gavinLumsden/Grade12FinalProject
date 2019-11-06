@@ -58,9 +58,9 @@ public class Vampire extends GameCharacter {
     public String passive  = "Leech"; 
     public String ultimate = "Consume"; 
     
-    public static final String IDLE_ICON         = "/animations/playerClasses/mage/right/mageIdle.png"; 
-    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/mage/fightBack/fightBack.png";
-    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/mage/fightFront/fightFront.png";
+    public static final String IDLE_ICON         = "/animations/playerClasses/vampire/right/vampireIdle.png"; 
+    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/vampire/fightBack/fightBack.png";
+    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/vampire/fightFront/fightFront.png";
     
     private JFrame currentMap; 
     private JFrame previousMap; 

@@ -73,6 +73,7 @@ public class GameEngine {
 
     private boolean moveable;
     private boolean hasBeenCreated;
+    private boolean paused; 
 
     /**
      * creates a game engine
@@ -80,6 +81,7 @@ public class GameEngine {
     public GameEngine() {
         mediaPlayer = new MediaPlayer();
         hasBeenCreated = false;
+        paused = false; 
     }
 
     /**
@@ -88,9 +90,9 @@ public class GameEngine {
      * @param evt
      */
     public void keyPress(KeyEvent evt) {
-        if (moveable == true) {
-            hero.keyPress(evt);
-        }
+        int key = evt.getKeyCode(); 
+        if      (key == 27)        pause(); 
+        else if (moveable == true) hero.keyPress(evt);
     }
 
     /**
@@ -240,10 +242,17 @@ public class GameEngine {
      * Pauses the game
      */
     public void pause() {
-        //stop the animaitons and moving
-        moveable = false;
-        hero.heroClass.sprite.stop();
-        hero.heroClass.mover.stop();
+        if (paused) {
+            
+            paused = false; 
+            play();
+        } else if (!paused) {
+            //stop the animaitons and moving
+            paused = true; 
+            moveable = false;
+            hero.heroClass.sprite.stop();
+            hero.heroClass.mover.stop();
+        }
     }
 
     /**

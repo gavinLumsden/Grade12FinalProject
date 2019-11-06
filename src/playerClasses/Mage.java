@@ -58,9 +58,9 @@ public class Mage extends GameCharacter {
     public String passive  = "Incinerator"; 
     public String ultimate = "Fire Hawk"; 
     
-    public static final String IDLE_ICON         = "/animations/playerClasses/mage/right/mageIdle.png"; 
-    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/mage/fightBack/fightBack.png";
-    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/mage/fightFront/fightFront.png";
+    public static final String IDLE_ICON         = "/animations/playerClasses/mage/right/mageIdle1.png"; 
+    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/mage/fightBack/fightBack1.png";
+    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/mage/fightFront/fightFront1.png";
     
     private JFrame currentMap; 
     private JFrame previousMap; 
