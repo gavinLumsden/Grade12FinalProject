@@ -1,4 +1,4 @@
-package game;
+package jframes;
 
 /**
  * Credits.java - A form that shows the end credits to the game

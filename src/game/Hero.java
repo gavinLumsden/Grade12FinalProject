@@ -1,5 +1,6 @@
 package game;
 
+import jframes.CharacterSelect;
 import collections.LinkedList;
 import objects.NextLevelBlock;
 import objects.Wall;

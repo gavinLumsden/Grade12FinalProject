@@ -5,7 +5,7 @@ import collections.LinkedList;
 import enemyClasses.Cyborg;
 import enemyClasses.Nail;
 import enemyClasses.Rampage;
-import game.BattleUI;
+import jframes.BattleUI;
 import objects.Grass;
 import objects.Wall;
 import objects.NextLevelBlock;

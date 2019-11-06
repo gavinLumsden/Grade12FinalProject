@@ -1,6 +1,7 @@
-package game;
+package jframes;
 
 import collections.LinkedList;
+import game.GameEngine;
 import game.gametools.Animation;
 import maps.Map1;
 import java.awt.Color;

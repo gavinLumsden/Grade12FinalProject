@@ -1,6 +1,6 @@
 package gametest;
 
-import game.Introduction;
+import jframes.Introduction;
 
 /**
  * GameTest.java - Creates the game

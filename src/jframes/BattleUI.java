@@ -1,5 +1,8 @@
-package game;
+package jframes;
 
+import game.CharacterData;
+import game.Enemy;
+import game.GameEngine;
 import game.gametools.GameCharacter;
 import java.awt.Color;
 import java.awt.event.ActionEvent;

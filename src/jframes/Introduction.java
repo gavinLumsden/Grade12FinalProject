@@ -1,4 +1,6 @@
-package game;
+package jframes;
+
+import game.GameEngine;
 
 /**
  * Introduction.java - A form that creates a new game or quits the program

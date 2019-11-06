@@ -12,7 +12,7 @@ import game.gametools.Directions;
 import game.gametools.GameCharacter;
 import game.GameEngine;
 import game.gametools.Animation;
-import game.BattleUI; 
+import jframes.BattleUI; 
 import javax.swing.JFrame;
 import maps.Map1;
 import javax.swing.JLabel;

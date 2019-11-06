@@ -1,4 +1,4 @@
-package game;
+package jframes;
 
 import game.gametools.GameCharacter;
 

@@ -1,5 +1,7 @@
 package game;
 
+import jframes.Menu;
+import jframes.Introduction;
 import collections.LinkedList;
 import objects.NextLevelBlock;
 import objects.Grass;
@@ -58,6 +60,9 @@ public class GameEngine {
 
     // used to play music
     public MediaPlayer mediaPlayer;
+    
+    // menu used when the game is paused
+    public Menu menu; 
 
     // form width and height for the introduction
     private final int INTRO_FORM_WIDTH = 416;
@@ -243,8 +248,6 @@ public class GameEngine {
      */
     public void pause() {
         if (paused) {
-            
-            paused = false; 
             play();
         } else if (!paused) {
             //stop the animaitons and moving
@@ -252,6 +255,8 @@ public class GameEngine {
             moveable = false;
             hero.heroClass.sprite.stop();
             hero.heroClass.mover.stop();
+            currentMap.setVisible(false);
+            menu = new Menu(this); 
         }
     }
 
@@ -259,6 +264,9 @@ public class GameEngine {
      * Plays the game
      */
     public void play() {
+        menu.dispose(); 
+        currentMap.setVisible(true);
+        paused = false; 
         moveable = true;
     }
 
