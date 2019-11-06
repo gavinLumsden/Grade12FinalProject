@@ -13,77 +13,64 @@ public class Introduction extends javax.swing.JFrame {
     // width and height for the form
     private GameEngine engine;
 
+    // form width and height for the introduction
+    private final int FORM_WIDTH = 700;
+    private final int FORM_HEIGHT = 800;
+
     /**
      * Default constructor for the class
      */
     public Introduction() {
         initComponents();
         engine = new GameEngine();
-        engine.createIntro(this);
+        setupForm();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblGameTitle = new javax.swing.JLabel();
         btnQuit = new javax.swing.JLabel();
         btnNewGame = new javax.swing.JLabel();
         btnLoadGame = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        lblGameTitle.setBackground(new java.awt.Color(153, 255, 153));
-        lblGameTitle.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        lblGameTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblGameTitle.setText("MECHABOX");
-        lblGameTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lblGameTitle.setOpaque(true);
-        getContentPane().add(lblGameTitle);
-        lblGameTitle.setBounds(0, 0, 400, 70);
-
-        btnQuit.setBackground(new java.awt.Color(255, 153, 153));
         btnQuit.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnQuit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnQuit.setText("Quit");
-        btnQuit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnQuit.setOpaque(true);
         btnQuit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnQuitMouseClicked(evt);
             }
         });
         getContentPane().add(btnQuit);
-        btnQuit.setBounds(0, 210, 400, 70);
+        btnQuit.setBounds(90, 600, 490, 95);
 
-        btnNewGame.setBackground(new java.awt.Color(153, 255, 255));
         btnNewGame.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnNewGame.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnNewGame.setText("New game");
-        btnNewGame.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnNewGame.setOpaque(true);
         btnNewGame.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnNewGameMouseClicked(evt);
             }
         });
         getContentPane().add(btnNewGame);
-        btnNewGame.setBounds(0, 70, 400, 70);
+        btnNewGame.setBounds(90, 270, 490, 95);
 
-        btnLoadGame.setBackground(new java.awt.Color(255, 255, 153));
         btnLoadGame.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnLoadGame.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnLoadGame.setText("Load game");
-        btnLoadGame.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnLoadGame.setOpaque(true);
         btnLoadGame.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnLoadGameMouseClicked(evt);
             }
         });
         getContentPane().add(btnLoadGame);
-        btnLoadGame.setBounds(0, 140, 400, 70);
+        btnLoadGame.setBounds(90, 430, 490, 105);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/formBackgrounds/mainMenu.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 670, 770);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -105,7 +92,15 @@ public class Introduction extends javax.swing.JFrame {
     private javax.swing.JLabel btnLoadGame;
     private javax.swing.JLabel btnNewGame;
     private javax.swing.JLabel btnQuit;
-    private javax.swing.JLabel lblGameTitle;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    private void setupForm() {
+        engine.mediaPlayer.playWAV("/sounds/introSoundtrack.wav");
+        this.setSize(FORM_WIDTH, FORM_HEIGHT);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setVisible(true);
+    }
 
 }

@@ -64,10 +64,6 @@ public class GameEngine {
     // menu used when the game is paused
     public Menu menu; 
 
-    // form width and height for the introduction
-    private final int INTRO_FORM_WIDTH = 416;
-    private final int INTRO_FORM_HEIGHT = 319;
-
     // what map (name) the player is on
     public int currentMapNumber;
     public int previousMapNumber;
@@ -268,19 +264,6 @@ public class GameEngine {
         currentMap.setVisible(true);
         paused = false; 
         moveable = true;
-    }
-
-    /**
-     * creates the intro form
-     *
-     * @param intro
-     */
-    public void createIntro(Introduction intro) {
-        mediaPlayer.playWAV("/sounds/introSoundtrack.wav");
-        intro.setSize(INTRO_FORM_WIDTH, INTRO_FORM_HEIGHT);
-        intro.setLocationRelativeTo(null);
-        intro.setResizable(false);
-        intro.setVisible(true);
     }
 
     /**
