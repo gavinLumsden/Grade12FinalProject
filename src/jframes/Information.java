@@ -5,7 +5,6 @@ import game.Hero;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import maps.Map1;
-import playerClasses.Bandit;
 
 /**
  * @author g.lumsden
@@ -13,8 +12,8 @@ import playerClasses.Bandit;
 public class Information extends javax.swing.JFrame {
 
     // the height and width of the form
-    private final int FORM_WIDTH  = 770;  
-    private final int FORM_HEIGHT = 510; 
+    private final int FORM_WIDTH  = 1500;  
+    private final int FORM_HEIGHT = 900; 
     
     private String          selected; 
     private GameEngine      engine; 
@@ -40,55 +39,35 @@ public class Information extends javax.swing.JFrame {
     private void initComponents() {
 
         lblSelect = new javax.swing.JLabel();
-        lblHeroImage = new javax.swing.JLabel();
-        lblHeroInformation = new javax.swing.JLabel();
         lblBack = new javax.swing.JLabel();
+        lblHeroInformation = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        lblSelect.setBackground(new java.awt.Color(255, 255, 0));
-        lblSelect.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         lblSelect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSelect.setText("Select");
-        lblSelect.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lblSelect.setOpaque(true);
         lblSelect.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSelectMouseClicked(evt);
             }
         });
         getContentPane().add(lblSelect);
-        lblSelect.setBounds(500, 250, 250, 250);
+        lblSelect.setBounds(920, 630, 380, 90);
 
-        lblHeroImage.setBackground(new java.awt.Color(0, 153, 51));
-        lblHeroImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHeroImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/bandit/down/banditIdle.png"))); // NOI18N
-        lblHeroImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lblHeroImage.setOpaque(true);
-        getContentPane().add(lblHeroImage);
-        lblHeroImage.setBounds(10, 10, 100, 100);
-
-        lblHeroInformation.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        lblHeroInformation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHeroInformation.setText("Hero information");
-        lblHeroInformation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(lblHeroInformation);
-        lblHeroInformation.setBounds(0, 0, 500, 500);
-
-        lblBack.setBackground(new java.awt.Color(255, 255, 0));
-        lblBack.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         lblBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBack.setText("Back");
-        lblBack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lblBack.setOpaque(true);
         lblBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblBackMouseClicked(evt);
             }
         });
         getContentPane().add(lblBack);
-        lblBack.setBounds(500, 0, 250, 250);
+        lblBack.setBounds(920, 500, 390, 100);
+
+        lblHeroInformation.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblHeroInformation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHeroInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/formBackgrounds/characterInformationBandit.png"))); // NOI18N
+        getContentPane().add(lblHeroInformation);
+        lblHeroInformation.setBounds(0, 0, 1370, 770);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -106,7 +85,6 @@ public class Information extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblBack;
-    private javax.swing.JLabel lblHeroImage;
     private javax.swing.JLabel lblHeroInformation;
     private javax.swing.JLabel lblSelect;
     // End of variables declaration//GEN-END:variables
@@ -115,12 +93,12 @@ public class Information extends javax.swing.JFrame {
      * setups the image and information for the hero
      */
     private void setupHero() {
-        String image = Hero.getIcon(selected); 
-        if (image != null) {
-            Icon icon = new ImageIcon(getClass().getResource(image)); 
-            lblHeroImage.setIcon(icon); 
+        String informationIcon = Hero.getInformationIcon(selected); 
+        if (informationIcon != null) {
+            Icon icon = new ImageIcon(getClass().getResource(informationIcon)); 
+            lblHeroInformation.setIcon(icon); 
         } else {
-            System.out.println("error assigning hero image");
+            System.out.println("error assigning hero information");
         }
     }
 

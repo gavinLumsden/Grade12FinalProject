@@ -59,6 +59,7 @@ public class Gambler extends GameCharacter {
     public String passive  = "Lucky"; 
     public String ultimate = "Gamble"; 
     
+    public static final String INFORMATION_ICON  = "/animations/formBackgrounds/characterInformationGambler.png"; 
     public static final String IDLE_ICON         = "/animations/playerClasses/gambler/right/gamblerIdle.png"; 
     public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/gambler/fightBack/fightBack.png";
     public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/gambler/fightFront/fightFront.png";

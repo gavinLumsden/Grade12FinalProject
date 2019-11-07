@@ -58,6 +58,7 @@ public class Hacker extends GameCharacter {
     public String passive  = "Evasive"; 
     public String ultimate = "EMP"; 
     
+    public static final String INFORMATION_ICON  = "/animations/formBackgrounds/characterInformationHacker.png"; 
     public static final String IDLE_ICON         = "/animations/playerClasses/hacker/right/hackerIdle.png"; 
     public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/hacker/fightBack/fightBack.png";
     public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/hacker/fightFront/fightFront.png";

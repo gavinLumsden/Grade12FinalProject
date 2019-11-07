@@ -58,6 +58,7 @@ public class Juggernaut extends GameCharacter {
     public String passive  = "Iron Skin"; 
     public String ultimate = "Invincible"; 
     
+    public static final String INFORMATION_ICON  = "/animations/formBackgrounds/characterInformationJuggernaut.png"; 
     public static final String IDLE_ICON         = "/animations/playerClasses/juggernaut/right/juggernautIdle.png"; 
     public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/juggernaut/fightBack/fightBack.png";
     public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/juggernaut/fightFront/fightFront.png";

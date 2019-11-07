@@ -73,6 +73,7 @@ public class Bandit extends GameCharacter {
         "* Passive:   Back Stab, when you dodge an attack you have a _% chance to hit the enemy back\n" +
         "* Ultimate:  Elusive,   raises dodge stat by _ for the rest of the battle\n";
     
+    public static final String INFORMATION_ICON  = "/animations/formBackgrounds/characterInformationBandit.png"; 
     public static final String IDLE_ICON         = "/animations/playerClasses/bandit/right/banditIdle.png"; 
     public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/bandit/fightBack/fightBack.png";
     public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/bandit/fightFront/fightFront.png";

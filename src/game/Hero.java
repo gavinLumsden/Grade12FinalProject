@@ -109,13 +109,23 @@ public class Hero {
         heroClass.mover.stop();
     }
     
-    public static String getIcon(String selected) {
+    public static String getIdleIcon(String selected) {
         if      (selected.equals("bandit"))     return Bandit.IDLE_ICON; 
         else if (selected.equals("gambler"))    return Gambler.IDLE_ICON; 
         else if (selected.equals("hacker"))     return Hacker.IDLE_ICON; 
         else if (selected.equals("juggernaut")) return Juggernaut.IDLE_ICON; 
         else if (selected.equals("mage"))       return Mage.IDLE_ICON; 
         else if (selected.equals("vampire"))    return Vampire.IDLE_ICON; 
+        else                                    return null; 
+    }
+    
+    public static String getInformationIcon(String selected) {
+        if      (selected.equals("bandit"))     return Bandit.INFORMATION_ICON; 
+        else if (selected.equals("gambler"))    return Gambler.INFORMATION_ICON; 
+        else if (selected.equals("hacker"))     return Hacker.INFORMATION_ICON; 
+        else if (selected.equals("juggernaut")) return Juggernaut.INFORMATION_ICON; 
+        else if (selected.equals("mage"))       return Mage.INFORMATION_ICON; 
+        else if (selected.equals("vampire"))    return Vampire.INFORMATION_ICON; 
         else                                    return null; 
     }
 
