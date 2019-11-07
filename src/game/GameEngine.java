@@ -1,7 +1,6 @@
 package game;
 
 import jframes.Menu;
-import jframes.Introduction;
 import collections.LinkedList;
 import objects.NextLevelBlock;
 import objects.Grass;
@@ -28,7 +27,7 @@ import objects.House;
 
 /**
  * GameEngine.java - Represents an "engine" that controls many things to do with
- * forms, heros and enemies
+ * maps, heros and enemies
  *
  * @author g.lumsden
  * @since 12-Jun-2019
