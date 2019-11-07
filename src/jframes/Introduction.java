@@ -14,8 +14,8 @@ public class Introduction extends javax.swing.JFrame {
     private GameEngine engine;
 
     // form width and height for the introduction
-    private final int FORM_WIDTH = 700;
-    private final int FORM_HEIGHT = 800;
+    private final int FORM_WIDTH = 686;
+    private final int FORM_HEIGHT = 808;
 
     /**
      * Default constructor for the class

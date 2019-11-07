@@ -27,12 +27,17 @@ public class Menu extends javax.swing.JFrame {
         lblQuit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         lblGameTitle.setBackground(new java.awt.Color(51, 255, 255));
         lblGameTitle.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblGameTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblGameTitle.setText("Menu");
+        lblGameTitle.setText("Pause Menu");
         lblGameTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblGameTitle.setOpaque(true);
         getContentPane().add(lblGameTitle);
@@ -76,6 +81,11 @@ public class Menu extends javax.swing.JFrame {
     private void lblQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuitMouseClicked
         System.exit(0);
     }//GEN-LAST:event_lblQuitMouseClicked
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        int key = evt.getKeyCode(); 
+        if (key == 27) engine.play();
+    }//GEN-LAST:event_formKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblGameTitle;
