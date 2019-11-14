@@ -1,11 +1,7 @@
 package jframes;
 
 import game.GameEngine;
-import game.gametools.Animation;
-import java.awt.Color;
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import static jframes.CharacterSelect.selected;
 
 /**
  * Introduction.java - A form that creates a new game or quits the program
@@ -15,14 +11,13 @@ import static jframes.CharacterSelect.selected;
  */
 public class Introduction extends javax.swing.JFrame {
 
-    // width and height for the form
+    // private properties 
     private GameEngine engine;
     private JLabel[]   labels;
-
     private boolean isClicked;
     private JLabel  label; 
 
-    // form width and height for the introduction
+    // width and height of the form
     private final int FORM_WIDTH  = 686;
     private final int FORM_HEIGHT = 808;
 
@@ -37,7 +32,7 @@ public class Introduction extends javax.swing.JFrame {
         };
         this.labels = labels;
         isClicked = false;
-        setupForm();
+        engine.createJFrame(FORM_WIDTH, FORM_HEIGHT, this);
     }
 
     @SuppressWarnings("unchecked")
@@ -109,48 +104,48 @@ public class Introduction extends javax.swing.JFrame {
 
     private void btnNewGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewGameMouseClicked
         label = btnNewGame; 
-        click(); 
+        isClicked = engine.click(labels, label, isClicked, null, 0); 
         this.setVisible(false);
         CharacterSelect characterSelect = new CharacterSelect(engine); 
     }//GEN-LAST:event_btnNewGameMouseClicked
 
     private void btnLoadGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadGameMouseClicked
         label = btnLoadGame; 
-        click(); 
+        isClicked = engine.click(labels, label, isClicked, null, 0); 
         System.out.println("no");
     }//GEN-LAST:event_btnLoadGameMouseClicked
 
     private void btnQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuitMouseClicked
         label = btnQuit; 
-        click(); 
+        isClicked = engine.click(labels, label, isClicked, null, 0); 
         System.exit(0);
     }//GEN-LAST:event_btnQuitMouseClicked
 
     private void btnNewGameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewGameMouseEntered
         label = btnNewGame; 
-        hoverIn(); 
+        engine.hoverIn(labels, label, isClicked, null, 0); 
     }//GEN-LAST:event_btnNewGameMouseEntered
 
     private void btnNewGameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewGameMouseExited
-        hoverOut(); 
+        engine.hoverOut(labels, label, isClicked, null, 0); 
     }//GEN-LAST:event_btnNewGameMouseExited
 
     private void btnLoadGameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadGameMouseEntered
         label = btnLoadGame; 
-        hoverIn(); 
+        engine.hoverIn(labels, label, isClicked, null, 0); 
     }//GEN-LAST:event_btnLoadGameMouseEntered
 
     private void btnLoadGameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadGameMouseExited
-        hoverOut(); 
+        engine.hoverOut(labels, label, isClicked, null, 0); 
     }//GEN-LAST:event_btnLoadGameMouseExited
 
     private void btnQuitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuitMouseEntered
         label = btnQuit; 
-        hoverIn(); 
+        engine.hoverIn(labels, label, isClicked, null, 0); 
     }//GEN-LAST:event_btnQuitMouseEntered
 
     private void btnQuitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuitMouseExited
-        hoverOut(); 
+        engine.hoverOut(labels, label, isClicked, null, 0); 
     }//GEN-LAST:event_btnQuitMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -159,75 +154,5 @@ public class Introduction extends javax.swing.JFrame {
     private javax.swing.JLabel btnQuit;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-
-    private void setupForm() {
-        engine.mediaPlayer.playWAV("/sounds/introSoundtrack.wav");
-        this.setSize(FORM_WIDTH, FORM_HEIGHT);
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
-        this.setVisible(true);
-    }
-    
-    /**
-     * When the user clicks on a jlabel
-     */
-    private void click() {
-        if (isClicked) {
-            unClick(); 
-        } else {
-            isClicked = true; 
-            set(); 
-        }
-    }
-    
-    /**
-     * when the user has already clicked on a jlabel
-     */
-    private void unClick() {
-        if (label != null) {
-            isClicked = false; 
-            reset(); 
-        }
-    }
-
-    /**
-     * when the user moves the mouse over a jlabel
-     */
-    private void hoverIn() {
-        if (!isClicked) {
-            set(); 
-        }
-    }
-    
-    /**
-     * when the user moves the mouse off of a jlabel
-     */
-    private void hoverOut() {
-        if (!isClicked) {
-            reset(); 
-        }
-    }
-    
-    /**
-     * resets all of the jlabels
-     */
-    private void reset() {
-        if (label != null) {
-            for (int i = 0; i < labels.length; i++) {
-                labels[i].setBorder(BorderFactory.createLineBorder(Color.black));
-            }
-            label = null; 
-            selected = ""; 
-        }
-    }
-
-    /**
-     * highlights a jlabel
-     */
-    private void set() {
-        if (label != null) {
-            label.setBorder(BorderFactory.createBevelBorder(1, Color.yellow, Color.yellow));
-        }
-    }
-    
+     
 }

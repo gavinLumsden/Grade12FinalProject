@@ -12,9 +12,12 @@ import enemyClasses.Kingpin;
 import enemyClasses.Nail;
 import enemyClasses.Rampage;
 import enemyClasses.Trickster;
+import game.gametools.Animation;
 import game.gametools.Directions;
 import game.gametools.MediaPlayer;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import nuetral.shopkeeper.Shopkeeper;
@@ -35,12 +38,12 @@ import objects.House;
 public class GameEngine {
 
     // enemies
-    private LinkedList<Cyborg>    cyborgs;
-    private LinkedList<Engineer>  engineers;
-    private LinkedList<Hammer>    hammers;
-    private LinkedList<Kingpin>   kingpins;
-    private LinkedList<Nail>      nails;
-    private LinkedList<Rampage>   rampages;
+    private LinkedList<Cyborg> cyborgs;
+    private LinkedList<Engineer> engineers;
+    private LinkedList<Hammer> hammers;
+    private LinkedList<Kingpin> kingpins;
+    private LinkedList<Nail> nails;
+    private LinkedList<Rampage> rampages;
     private LinkedList<Trickster> tricksters;
 
     // shopkeepers 
@@ -59,9 +62,9 @@ public class GameEngine {
 
     // used to play music
     public MediaPlayer mediaPlayer;
-    
+
     // menu used when the game is paused
-    public Menu menu; 
+    public Menu menu;
 
     // what map (name) the player is on
     public int currentMapNumber;
@@ -73,7 +76,7 @@ public class GameEngine {
 
     private boolean moveable;
     private boolean hasBeenCreated;
-    private boolean paused; 
+    private boolean paused;
 
     /**
      * creates a game engine
@@ -81,7 +84,7 @@ public class GameEngine {
     public GameEngine() {
         mediaPlayer = new MediaPlayer();
         hasBeenCreated = false;
-        paused = false; 
+        paused = false;
     }
 
     /**
@@ -90,9 +93,12 @@ public class GameEngine {
      * @param evt
      */
     public void keyPress(KeyEvent evt) {
-        int key = evt.getKeyCode(); 
-        if      (key == 27)        pause(); 
-        else if (moveable == true) hero.keyPress(evt);
+        int key = evt.getKeyCode();
+        if (key == 27) {
+            pause();
+        } else if (moveable == true) {
+            hero.keyPress(evt);
+        }
     }
 
     /**
@@ -137,10 +143,10 @@ public class GameEngine {
     }
 
     /**
-     * creates game character 
-     * 
+     * creates game character
+     *
      * @param images
-     * @param characterToCreate 
+     * @param characterToCreate
      */
     public void createGameCharacter(LinkedList<JLabel> images, String characterToCreate) {
         if (characterToCreate.equals("shopkeepers")) {
@@ -164,7 +170,7 @@ public class GameEngine {
         if (characterToCreate.equals("cyborgs")) {
             cyborgs = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
                 Cyborg newCyborg = new Cyborg(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 cyborgs.add(newCyborg);
             }
@@ -172,7 +178,7 @@ public class GameEngine {
         if (characterToCreate.equals("engineers")) {
             engineers = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
                 Engineer newEngineer = new Engineer(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 engineers.add(newEngineer);
             }
@@ -180,7 +186,7 @@ public class GameEngine {
         if (characterToCreate.equals("hammers")) {
             hammers = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
                 Hammer newHammer = new Hammer(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 hammers.add(newHammer);
             }
@@ -188,7 +194,7 @@ public class GameEngine {
         if (characterToCreate.equals("kingpins")) {
             kingpins = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
                 Kingpin newKingpin = new Kingpin(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 kingpins.add(newKingpin);
             }
@@ -196,7 +202,7 @@ public class GameEngine {
         if (characterToCreate.equals("nails")) {
             nails = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
                 Nail newNail = new Nail(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 nails.add(newNail);
             }
@@ -204,7 +210,7 @@ public class GameEngine {
         if (characterToCreate.equals("rampages")) {
             rampages = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
                 Rampage newRampage = new Rampage(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 rampages.add(newRampage);
             }
@@ -212,7 +218,7 @@ public class GameEngine {
         if (characterToCreate.equals("tricksters")) {
             tricksters = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1)); 
+                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
                 Trickster newTrickster = new Trickster(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
                 tricksters.add(newTrickster);
             }
@@ -246,12 +252,12 @@ public class GameEngine {
             play();
         } else if (!paused) {
             //stop the animaitons and moving
-            paused = true; 
+            paused = true;
             moveable = false;
             hero.heroClass.sprite.stop();
             hero.heroClass.mover.stop();
             currentMap.setVisible(false);
-            menu = new Menu(this); 
+            menu = new Menu(this);
         }
     }
 
@@ -259,9 +265,9 @@ public class GameEngine {
      * Plays the game
      */
     public void play() {
-        menu.dispose(); 
+        menu.dispose();
         currentMap.setVisible(true);
-        paused = false; 
+        paused = false;
         moveable = true;
     }
 
@@ -278,7 +284,7 @@ public class GameEngine {
         map.setResizable(false);
         map.setLocationRelativeTo(null);
         map.setVisible(true);
-        previousMapNumber = currentMapNumber; 
+        previousMapNumber = currentMapNumber;
         previousMap = currentMap;
         currentMap = map;
         currentMapNumber = mapNumber;
@@ -327,5 +333,133 @@ public class GameEngine {
         int answer = (int) number;
         return answer;
     }
-    
+
+    /**
+     * Creates a JFrame using the parameters
+     * @param width
+     * @param height
+     * @param jframe 
+     */
+    public void createJFrame(int width, int height, JFrame jframe) {
+        jframe.setSize(width, height);
+        jframe.setResizable(false);
+        jframe.setLocationRelativeTo(null);
+        jframe.setVisible(true);
+    }
+
+    /**
+     * Used when the user clicks on a jlabel
+     * @param labels
+     * @param label
+     * @param isClicked
+     * @param animations
+     * @param spot
+     * @return 
+     */
+    public boolean click(JLabel[] labels, JLabel label, boolean isClicked, Animation[] animations, int spot) {
+        if (isClicked) {
+            unClick(labels, label, isClicked, animations, spot);
+            return false;
+        } else {
+            isClicked = true;
+            set(labels, label, isClicked, animations, spot);
+            return true;
+        }
+    }
+
+    /**
+     * Used to "unclick" a jlabel
+     * @param labels
+     * @param label
+     * @param isClicked
+     * @param animations
+     * @param spot 
+     */
+    public void unClick(JLabel[] labels, JLabel label, boolean isClicked, Animation[] animations, int spot) {
+        if (label != null) {
+            isClicked = false;
+            reset(labels, label, isClicked, animations, spot);
+        }
+    }
+
+    /**
+     * Used when the user hover overs a jlabel
+     * @param labels
+     * @param label
+     * @param isClicked
+     * @param animations
+     * @param spot 
+     */
+    public void hoverIn(JLabel[] labels, JLabel label, boolean isClicked, Animation[] animations, int spot) {
+        if (!isClicked) {
+            set(labels, label, isClicked, animations, spot);
+        }
+    }
+
+    /**
+     * Used when the user hovers away from a jlabel
+     * @param labels
+     * @param label
+     * @param isClicked
+     * @param animations
+     * @param spot 
+     */
+    public void hoverOut(JLabel[] labels, JLabel label, boolean isClicked, Animation[] animations, int spot) {
+        if (!isClicked) {
+            reset(labels, label, isClicked, animations, spot);
+        }
+    }
+
+    /**
+     * Used to "unclick" all the jlabels
+     * @param labels
+     * @param label
+     * @param isClicked
+     * @param animations
+     * @param spot 
+     */
+    public void reset(JLabel[] labels, JLabel label, boolean isClicked, Animation[] animations, int spot) {
+        if (animations == null) {
+            if (label != null) {
+                for (int i = 0; i < labels.length; i++) {
+                    labels[i].setBorder(BorderFactory.createLineBorder(Color.black));
+                }
+                label = null;
+            }
+        }
+        if (animations != null) {
+            for (int i = 0; i < animations.length; i++) {
+                animations[i].stop();
+            }
+            for (int i = 0; i < labels.length; i++) {
+                labels[i].setBorder(BorderFactory.createLineBorder(Color.black));
+            }
+            label = null;
+            spot = 0;
+        }
+    }
+
+    /**
+     * Used to highlight a jlabel and run the corresponding animation
+     * @param labels
+     * @param label
+     * @param isClicked
+     * @param animations
+     * @param spot 
+     */
+    public void set(JLabel[] labels, JLabel label, boolean isClicked, Animation[] animations, int spot) {
+        if (animations == null) {
+            if (label != null) {
+                label.setBorder(BorderFactory.createBevelBorder(1, Color.yellow, Color.yellow));
+            }
+        } else if (animations != null) {
+            if (label != null) {
+                label.setBorder(BorderFactory.createBevelBorder(1, Color.yellow, Color.yellow));
+            }
+            if (animations[spot].isRunning() == false) {
+                animations[spot].run();
+            }
+        }
+    }
+
 }

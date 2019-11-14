@@ -90,16 +90,13 @@ public class CharacterSelect extends javax.swing.JFrame {
             lblJuggernaut, lblMage, lblVampire
         };
         this.labels = labels;
-
         animations = new Animation[6];
         for (int i = 0; i < animations.length; i++) {
             animations[i] = new Animation(labels[i], imageFiles.get(i), 800, true);
         }
-
         isClicked = false;
         selected = "";
-        
-        setupForm();
+        engine.createJFrame(FORM_WIDTH, FORM_HEIGHT, this); 
     }
 
     @SuppressWarnings("unchecked")
@@ -238,102 +235,114 @@ public class CharacterSelect extends javax.swing.JFrame {
         label = lblVampire; 
         spot = 5; 
         selected = "vampire"; 
-        click(); 
+        engine.click(labels, label, isClicked, animations, spot); 
+        this.setVisible(false);
+        Information info = new Information(selected, engine, this); 
     }//GEN-LAST:event_lblVampireMouseClicked
 
     private void lblJuggernautMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblJuggernautMouseClicked
         label = lblJuggernaut; 
         spot = 3; 
         selected = "juggernaut"; 
-        click(); 
+        engine.click(labels, label, isClicked, animations, spot); 
+        this.setVisible(false);
+        Information info = new Information(selected, engine, this); 
     }//GEN-LAST:event_lblJuggernautMouseClicked
 
     private void lblHackerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHackerMouseClicked
         label = lblHacker; 
         spot = 2; 
         selected = "hacker"; 
-        click(); 
+        engine.click(labels, label, isClicked, animations, spot); 
+        this.setVisible(false);
+        Information info = new Information(selected, engine, this); 
     }//GEN-LAST:event_lblHackerMouseClicked
 
     private void lblBanditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanditMouseClicked
         label = lblBandit; 
         spot = 0; 
         selected = "bandit"; 
-        click(); 
+        engine.click(labels, label, isClicked, animations, spot); 
+        this.setVisible(false);
+        Information info = new Information(selected, engine, this); 
     }//GEN-LAST:event_lblBanditMouseClicked
 
     private void lblMageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMageMouseClicked
         label = lblMage; 
         spot = 4; 
         selected = "mage"; 
-        click(); 
+        engine.click(labels, label, isClicked, animations, spot); 
+        this.setVisible(false);
+        Information info = new Information(selected, engine, this); 
     }//GEN-LAST:event_lblMageMouseClicked
 
     private void lblGamblerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGamblerMouseClicked
         label = lblGambler; 
         spot = 1; 
         selected = "gambler"; 
-        click(); 
+        engine.click(labels, label, isClicked, animations, spot); 
+        this.setVisible(false);
+        Information info = new Information(selected, engine, this); 
     }//GEN-LAST:event_lblGamblerMouseClicked
 
     private void lblVampireMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVampireMouseEntered
         label = lblVampire; 
         spot = 5; 
-        hoverIn(); 
+        engine.hoverIn(labels, label, isClicked, animations, spot); 
     }//GEN-LAST:event_lblVampireMouseEntered
 
     private void lblJuggernautMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblJuggernautMouseEntered
         label = lblJuggernaut; 
         spot = 3; 
-        hoverIn(); 
+        engine.hoverIn(labels, label, isClicked, animations, spot); 
     }//GEN-LAST:event_lblJuggernautMouseEntered
 
     private void lblHackerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHackerMouseEntered
         label = lblHacker; 
         spot = 2; 
-        hoverIn(); 
+        engine.hoverIn(labels, label, isClicked, animations, spot); 
     }//GEN-LAST:event_lblHackerMouseEntered
 
     private void lblBanditMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanditMouseEntered
         label = lblBandit; 
         spot = 0; 
-        hoverIn(); 
+        engine.hoverIn(labels, label, isClicked, animations, spot); 
     }//GEN-LAST:event_lblBanditMouseEntered
 
     private void lblMageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMageMouseEntered
         label = lblMage; 
         spot = 4; 
-        hoverIn(); 
+        engine.hoverIn(labels, label, isClicked, animations, spot); 
     }//GEN-LAST:event_lblMageMouseEntered
 
     private void lblGamblerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGamblerMouseEntered
         label = lblGambler; 
         spot = 1; 
-        hoverIn(); 
+        engine.hoverIn(labels, label, isClicked, animations, spot); 
     }//GEN-LAST:event_lblGamblerMouseEntered
 
     private void lblVampireMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVampireMouseExited
-        hoverOut(); 
+        engine.hoverOut(labels, label, isClicked, animations, spot); 
     }//GEN-LAST:event_lblVampireMouseExited
 
     private void lblJuggernautMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblJuggernautMouseExited
-        hoverOut(); 
+        engine.hoverOut(labels, label, isClicked, animations, spot); 
     }//GEN-LAST:event_lblJuggernautMouseExited
 
     private void lblHackerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHackerMouseExited
-        hoverOut(); 
+        engine.hoverOut(labels, label, isClicked, animations, spot); 
     }//GEN-LAST:event_lblHackerMouseExited
 
     private void lblBanditMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanditMouseExited
-        hoverOut(); 
+        engine.hoverOut(labels, label, isClicked, animations, spot); 
     }//GEN-LAST:event_lblBanditMouseExited
 
     private void lblMageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMageMouseExited
-        hoverOut(); 
+        engine.hoverOut(labels, label, isClicked, animations, spot); 
     }//GEN-LAST:event_lblMageMouseExited
 
     private void lblGamblerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGamblerMouseExited
-        hoverOut(); 
+        engine.hoverOut(labels, label, isClicked, animations, spot); 
     }//GEN-LAST:event_lblGamblerMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -346,85 +355,4 @@ public class CharacterSelect extends javax.swing.JFrame {
     private javax.swing.JLabel lblVampire;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * setups the form
-     */
-    private void setupForm() {
-        this.setSize(FORM_WIDTH, FORM_HEIGHT);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
-    }
-    
-    /**
-     * When the user clicks on a jlabel
-     */
-    private void click() {
-        if (isClicked) {
-            unClick(); 
-        } else {
-            isClicked = true; 
-            set(); 
-            this.setVisible(false);
-            Information info = new Information(selected, engine, this); 
-        }
-    }
-    
-    /**
-     * when the user has already clicked on a jlabel
-     */
-    private void unClick() {
-        if (label != null) {
-            isClicked = false; 
-            reset(); 
-        }
-    }
-
-    /**
-     * when the user moves the mouse over a jlabel
-     */
-    private void hoverIn() {
-        if (!isClicked) {
-            set(); 
-        }
-    }
-    
-    /**
-     * when the user moves the mouse off of a jlabel
-     */
-    private void hoverOut() {
-        if (!isClicked) {
-            reset(); 
-        }
-    }
-    
-    /**
-     * resets all of the jlabels
-     */
-    private void reset() {
-        if (label != null) {
-            for (int i = 0; i < animations.length; i++) {
-                animations[i].stop(); 
-            }
-            for (int i = 0; i < labels.length; i++) {
-                labels[i].setBorder(BorderFactory.createLineBorder(Color.black));
-            }
-            label = null; 
-            spot = 0; 
-            selected = ""; 
-        }
-    }
-
-    /**
-     * highlights a jlabel
-     */
-    private void set() {
-        if (label != null) {
-            label.setBorder(BorderFactory.createBevelBorder(1, Color.yellow, Color.yellow));
-            if (animations[spot].isRunning() == false) {
-                animations[spot].run();
-            }
-        }
-    }
-    
 }
