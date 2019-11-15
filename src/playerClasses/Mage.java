@@ -26,70 +26,68 @@ import objects.House;
 
 public class Mage extends GameCharacter {
 
-    private LinkedList<Cyborg>  cyborgs;
-    private LinkedList<Nail>    nails;
-    private LinkedList<Rampage> rampages; 
+    private LinkedList<Cyborg> cyborgs;
+    private LinkedList<Nail> nails;
+    private LinkedList<Rampage> rampages;
 
     private GameEngine engine;
-    private BattleUI   battleUI; 
-    
-    private LinkedList<Wall>           walls;
-    private LinkedList<Grass>          grass;
-    private LinkedList<House>          houses; 
-    private LinkedList<NextLevelBlock> nextLevelBlocks; 
-    private LinkedList<Trainer>        trainers; 
-    
-    public final String NAME = "Mage"; 
-    
+    private BattleUI battleUI;
+
+    private LinkedList<Wall> walls;
+    private LinkedList<Grass> grass;
+    private LinkedList<House> houses;
+    private LinkedList<NextLevelBlock> nextLevelBlocks;
+    private LinkedList<Trainer> trainers;
+
+    public final String NAME = "Mage";
+
     /**
-    * Class: Mage
-    * Ability 1: Fire ball,   Burns the enemy for _ seconds
-    * Ability 2: Freeze,      slows the enemy down for _ seconds
-    * Ablilty 3: Lighting,    stuns the enemy for _ seconds
-    * Ability 4: Fire wall,   blocks enemy attacks for _ seconds
-    * Passive:   Incinerator, every hit burns the enemy (very low damage)
-    * Ultimate:  Fire Hawk,   all burn effects on the enemy are faster for _ seconds
-    */
-    
-    public String attack1  = "Fire ball"; 
-    public String attack2  = "Freeze"; 
-    public String attack3  = "Lighting"; 
-    public String attack4  = "Fire wall"; 
-    public String passive  = "Incinerator"; 
-    public String ultimate = "Fire Hawk"; 
-    
-    public static final String INFORMATION_ICON  = "/animations/formBackgrounds/characterInformationMage.png"; 
-    public static final String IDLE_ICON         = "/animations/playerClasses/mage/right/mageIdle1.png"; 
-    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/mage/fightBack/fightBack1.png";
+     * Class: Mage Ability 1: Fire ball, Burns the enemy for _ seconds Ability
+     * 2: Freeze, slows the enemy down for _ seconds Ablilty 3: Lighting, stuns
+     * the enemy for _ seconds Ability 4: Fire wall, blocks enemy attacks for _
+     * seconds Passive: Incinerator, every hit burns the enemy (very low damage)
+     * Ultimate: Fire Hawk, all burn effects on the enemy are faster for _
+     * seconds
+     */
+    public String attack1 = "Fire ball";
+    public String attack2 = "Freeze";
+    public String attack3 = "Lighting";
+    public String attack4 = "Fire wall";
+    public String passive = "Incinerator";
+    public String ultimate = "Fire Hawk";
+
+    public static final String INFORMATION_ICON = "/animations/formBackgrounds/characterInformationMage.png";
+    public static final String IDLE_ICON = "/animations/playerClasses/mage/right/mageIdle1.png";
+    public static final String BATTLE_BACK_ICON = "/animations/playerClasses/mage/fightBack/fightBack1.png";
     public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/mage/fightFront/fightFront1.png";
-    
-    private JFrame currentMap; 
-    private JFrame previousMap; 
-        
-    private int currentMapNumber; 
-    private int previousMapNumber; 
-    
+
+    private JFrame currentMap;
+    private JFrame previousMap;
+
+    private int currentMapNumber;
+    private int previousMapNumber;
+
     public int damage;      // how much damage you do (can be increased)
     public int dodgeChance; // your chance of dodging  (can be increased)
     public int maxHealth;   // the maximum amount of health you can have (can be increased) 
     public int health;      // how much health you have (can be increased)
     public int punchSpeed;  // how fast you hit (can be increased)
-    
-    public int level; 
-    public int exp; 
-    public int gold; 
-    
+
+    public int level;
+    public int exp;
+    public int gold;
+
     public int attack1Cooldown;
-    public int attack2Cooldown;    
-    public int attack3Cooldown;   
+    public int attack2Cooldown;
+    public int attack3Cooldown;
     public int attack4Cooldown;
-    
-    public int attack1Duration;     
-    public int attack2Duration;     
-    public int attack3Duration;   
+
+    public int attack1Duration;
+    public int attack2Duration;
+    public int attack3Duration;
     public int attack4Duration;
-    
-    private boolean canTravel; 
+
+    private boolean canTravel;
 
     /**
      * Creates a "mage"
@@ -111,81 +109,81 @@ public class Mage extends GameCharacter {
      */
     public Mage(
             JLabel heroImage,
-            LinkedList<Wall> walls, LinkedList<House> houses, 
-            LinkedList<Cyborg> cyborgs, LinkedList<Nail> nails, LinkedList<Rampage> rampages, 
-            LinkedList<NextLevelBlock> nextLevelBlock, 
+            LinkedList<Wall> walls, LinkedList<House> houses,
+            LinkedList<Cyborg> cyborgs, LinkedList<Nail> nails, LinkedList<Rampage> rampages,
+            LinkedList<NextLevelBlock> nextLevelBlock,
             GameEngine engine, boolean hasBeenCreated,
-            JFrame currentMap, JFrame previousMap, 
-            int currentMapNumber, int previousMapNumber, 
+            JFrame currentMap, JFrame previousMap,
+            int currentMapNumber, int previousMapNumber,
             LinkedList<Trainer> trainers) {
         super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
-        this.currentMap  = currentMap; 
-        this.previousMap = previousMap; 
-        this.currentMapNumber  = currentMapNumber; 
-        this.previousMapNumber = previousMapNumber; 
-        
+        this.currentMap = currentMap;
+        this.previousMap = previousMap;
+        this.currentMapNumber = currentMapNumber;
+        this.previousMapNumber = previousMapNumber;
+
         this.engine = engine;
         this.walls = walls;
-        this.houses = houses; 
-        this.nextLevelBlocks = nextLevelBlock; 
+        this.houses = houses;
+        this.nextLevelBlocks = nextLevelBlock;
 
         this.cyborgs = cyborgs;
         this.nails = nails;
         this.rampages = rampages;
-        
-        super.playerAttack1Name  = attack1; 
-        super.playerAttack2Name  = attack2; 
-        super.playerAttack3Name  = attack3; 
-        super.playerAttack4Name  = attack4; 
-        super.playerPassiveName  = passive; 
-        super.playerUltimateName = ultimate; 
-        super.playerBattleBack   = BATTLE_BACK_ICON; 
-        super.playerBattleFront  = BATTLE_FRONT_ICON; 
-        
-        final int[] DEFAULTS = { 5,5,100,100,1000,1,0,0 };
+
+        super.playerAttack1Name = attack1;
+        super.playerAttack2Name = attack2;
+        super.playerAttack3Name = attack3;
+        super.playerAttack4Name = attack4;
+        super.playerPassiveName = passive;
+        super.playerUltimateName = ultimate;
+        super.playerBattleBack = BATTLE_BACK_ICON;
+        super.playerBattleFront = BATTLE_FRONT_ICON;
+
+        final int[] DEFAULTS = {5, 5, 100, 100, 1000, 1, 0, 0};
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
-        damage      = stats[0];
+        damage = stats[0];
         dodgeChance = stats[1];
-        health      = stats[2];
-        maxHealth   = stats[3];
-        punchSpeed  = stats[4]; 
-        level       = stats[5]; 
-        exp         = stats[6]; 
-        gold        = stats[7]; 
-        
-        attack1Cooldown = 3000; 
-        attack2Cooldown = 3000; 
-        attack3Cooldown = 5000; 
-        attack4Cooldown = 10000; 
-        
-        attack1Duration = (punchSpeed * 3); 
-        attack2Duration = (punchSpeed * 3); 
-        attack3Duration = (punchSpeed * 3); 
-        attack4Duration = (punchSpeed * 3); 
-        
-        super.playerDamage      = damage; 
-        super.playerDodgeChance = dodgeChance; 
-        super.playerHealth      = health; 
-        super.playerMaxHealth   = maxHealth; 
-        super.playerPunchSpeed  = punchSpeed; 
-        
-        super.playerLevel = level; 
-        super.exp         = exp; 
-        super.gold        = gold; 
-        
-        super.attack1Cooldown = attack1Cooldown; 
-        super.attack2Cooldown = attack2Cooldown; 
-        super.attack3Cooldown = attack3Cooldown; 
-        super.attack4Cooldown = attack4Cooldown; 
-        
-        super.attack1Duration = attack1Duration; 
-        super.attack2Duration = attack2Duration; 
-        super.attack3Duration = attack3Duration; 
-        super.attack4Duration = attack4Duration; 
-        
-        super.playerName = NAME; 
+        health = stats[2];
+        maxHealth = stats[3];
+        punchSpeed = stats[4];
+        level = stats[5];
+        exp = stats[6];
+        gold = stats[7];
+
+        attack1Cooldown = 3000;
+        attack2Cooldown = 3000;
+        attack3Cooldown = 5000;
+        attack4Cooldown = 10000;
+
+        attack1Duration = (punchSpeed * 3);
+        attack2Duration = (punchSpeed * 3);
+        attack3Duration = (punchSpeed * 3);
+        attack4Duration = (punchSpeed * 3);
+
+        super.playerDamage = damage;
+        super.playerDodgeChance = dodgeChance;
+        super.playerHealth = health;
+        super.playerMaxHealth = maxHealth;
+        super.playerPunchSpeed = punchSpeed;
+
+        super.playerLevel = level;
+        super.exp = exp;
+        super.gold = gold;
+
+        super.attack1Cooldown = attack1Cooldown;
+        super.attack2Cooldown = attack2Cooldown;
+        super.attack3Cooldown = attack3Cooldown;
+        super.attack4Cooldown = attack4Cooldown;
+
+        super.attack1Duration = attack1Duration;
+        super.attack2Duration = attack2Duration;
+        super.attack3Duration = attack3Duration;
+        super.attack4Duration = attack4Duration;
+
+        super.playerName = NAME;
 
         LinkedList<String> walkUpFiles = new LinkedList<>();
         walkUpFiles.add("/animations/playerclasses/mage/up/mageWalk1.png");
@@ -265,10 +263,18 @@ public class Mage extends GameCharacter {
         mover.move();
         animate();
         boolean check = checkWalls();
-        if (check) check = checkNextLevelBlocks();
-        if (check) check = checkHouses(); 
-        if (check) check = checkEnemies();
-        if (check) check = checkTrainers();
+        if (check) {
+            check = checkNextLevelBlocks();
+        }
+        if (check) {
+            check = checkHouses();
+        }
+        if (check) {
+            check = checkEnemies();
+        }
+        if (check) {
+            check = checkTrainers();
+        }
         redraw();
     }
 
@@ -293,23 +299,23 @@ public class Mage extends GameCharacter {
     private boolean checkNextLevelBlocks() {
         for (int i = 0; i < nextLevelBlocks.size(); i++) {
             if (nextLevelBlocks.get(i) != null) {
-                if (detector.isOverLapping(nextLevelBlocks.get(i))){
-                    engine.clearCurrentMap(); 
+                if (detector.isOverLapping(nextLevelBlocks.get(i))) {
+                    engine.clearCurrentMap();
                     if (nextLevelBlocks.get(i).mapToGoTo.equals("1")) {
-                        timer.stop(); 
-                        Map1 map1 = new Map1(currentMapNumber, engine); 
+                        timer.stop();
+                        Map1 map1 = new Map1(currentMapNumber, engine);
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("2")) {
-                        timer.stop(); 
-                        Map2 map2 = new Map2(currentMapNumber, engine); 
+                        timer.stop();
+                        Map2 map2 = new Map2(currentMapNumber, engine);
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("3")) {
-                        timer.stop(); 
-                        Map3 map3 = new Map3(currentMapNumber, engine); 
+                        timer.stop();
+                        Map3 map3 = new Map3(currentMapNumber, engine);
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("4")) {
-                        timer.stop(); 
-                        Map4 map4 = new Map4(currentMapNumber, engine); 
+                        timer.stop();
+                        Map4 map4 = new Map4(currentMapNumber, engine);
                     } else if (nextLevelBlocks.get(i).mapToGoTo.equals("5")) {
-                        timer.stop(); 
-                        Map5 map5 = new Map5(currentMapNumber, engine); 
+                        timer.stop();
+                        Map5 map5 = new Map5(currentMapNumber, engine);
                     } else {
                         System.out.println("error creating map");
                     }
@@ -319,7 +325,7 @@ public class Mage extends GameCharacter {
         }
         return true;
     }
-    
+
     /**
      * checks to see if the hero is overlapping with a house
      */
@@ -344,9 +350,9 @@ public class Mage extends GameCharacter {
                 if (detector.isOverLapping(cyborgs.get(i))) {
                     cyborgs.get(i).sprite.setLocation(10000, 10000);
                     cyborgs.get(i).update();
-                    engine.pause(); 
-                    BattleUI battleUI = new BattleUI(engine, this, cyborgs.get(i)); 
-                    this.battleUI = battleUI; 
+                    engine.pause();
+                    BattleUI battleUI = new BattleUI(engine, this, cyborgs.get(i));
+                    this.battleUI = battleUI;
                     return false;
                 }
             }
@@ -356,9 +362,9 @@ public class Mage extends GameCharacter {
                 if (detector.isOverLapping(nails.get(i))) {
                     nails.get(i).sprite.setLocation(10000, 10000);
                     nails.get(i).update();
-                    engine.pause(); 
-                    BattleUI battleUI = new BattleUI(engine, this, nails.get(i)); 
-                    this.battleUI = battleUI; 
+                    engine.pause();
+                    BattleUI battleUI = new BattleUI(engine, this, nails.get(i));
+                    this.battleUI = battleUI;
                     return false;
                 }
             }
@@ -368,50 +374,50 @@ public class Mage extends GameCharacter {
                 if (detector.isOverLapping(rampages.get(i))) {
                     rampages.get(i).sprite.setLocation(10000, 10000);
                     rampages.get(i).update();
-                    engine.pause(); 
-                    BattleUI battleUI = new BattleUI(engine, this, rampages.get(i)); 
-                    this.battleUI = battleUI; 
+                    engine.pause();
+                    BattleUI battleUI = new BattleUI(engine, this, rampages.get(i));
+                    this.battleUI = battleUI;
                     return false;
                 }
             }
-        } 
+        }
         return true;
     }
 
     private boolean checkTrainers() {
-        if (canTravel == true) { 
+        if (canTravel == true) {
             if (trainers != null) {
                 for (int i = 0; i < trainers.size(); i++) {
                     if (detector.isOverLapping(trainers.get(i))) {
-                        canTravel = false; 
+                        canTravel = false;
                         engine.pause();
-                        Upgrade upgrade = new Upgrade(trainers.get(i)); 
-                        return false; 
+                        Upgrade upgrade = new Upgrade(trainers.get(i));
+                        return false;
                     }
                 }
             }
         }
-        return true; 
+        return true;
     }
 
     @Override
     public void attack1() {
         battleUI.enemyEffects("bleed");
     }
-    
+
     @Override
     public void attack2() {
-        battleUI.enemyPunchSpeed /= 2; 
+        battleUI.enemyPunchSpeed /= 2;
     }
-    
+
     @Override
     public void attack3() {
-        battleUI.enemyEffects("stun"); 
+        battleUI.enemyEffects("stun");
     }
-    
+
     @Override
     public void attack4() {
-        battleUI.enemyDamage = 0; 
+        battleUI.enemyDamage = 0;
     }
 
     @Override
@@ -421,7 +427,7 @@ public class Mage extends GameCharacter {
 
     @Override
     public void resetAttack2() {
-        battleUI.enemyPunchSpeed = battleUI.enemyBasePunchSpeed; 
+        battleUI.enemyPunchSpeed = battleUI.enemyBasePunchSpeed;
     }
 
     @Override
@@ -431,7 +437,7 @@ public class Mage extends GameCharacter {
 
     @Override
     public void resetAttack4() {
-        battleUI.enemyDamage = battleUI.enemyBaseDamage; 
+        battleUI.enemyDamage = battleUI.enemyBaseDamage;
     }
 
 }

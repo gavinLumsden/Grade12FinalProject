@@ -277,7 +277,7 @@ public class GameEngine {
      * @param map
      * @param formWidth
      * @param formHeight
-     * @param mapName
+     * @param mapNumber
      */
     public void createMap(JFrame map, int formWidth, int formHeight, int mapNumber) {
         map.setSize(formWidth, formHeight);
