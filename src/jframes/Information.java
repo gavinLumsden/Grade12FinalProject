@@ -1,8 +1,9 @@
 package jframes;
 
 import game.GameEngine;
-import java.awt.Color;
-import javax.swing.BorderFactory;
+import game.Hero;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import maps.Map1;
 
@@ -56,6 +57,7 @@ public class Information extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblSelect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSelect.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblSelect.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSelectMouseClicked(evt);
@@ -71,6 +73,7 @@ public class Information extends javax.swing.JFrame {
         lblSelect.setBounds(909, 618, 395, 104);
 
         lblBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblBackMouseClicked(evt);
@@ -136,7 +139,10 @@ public class Information extends javax.swing.JFrame {
      * setups the image and information for the hero
      */
     private void setupHero() {
-        
+        String image = Hero.getInformationIcon(selected); 
+        URL url = getClass().getResource(image); 
+        ImageIcon icon = new ImageIcon(url); 
+        lblHeroInformation.setIcon(icon);
     }
 
 }
