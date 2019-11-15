@@ -1,5 +1,6 @@
 package jframes;
 
+import collections.LinkedList;
 import game.CharacterData;
 import game.Enemy;
 import game.GameEngine;
@@ -74,20 +75,25 @@ public class BattleUI extends javax.swing.JFrame {
     private Timer attack2Cooldown;
     private Timer attack3Cooldown;
     private Timer attack4Cooldown;
+    private LinkedList<Timer> attackCooldowns;
 
     // the timer used to add a "duration" effect to the players abilities
     private Timer attack1Duration;
     private Timer attack2Duration;
     private Timer attack3Duration;
     private Timer attack4Duration;
+    private LinkedList<Timer> attackDurations;
 
     // "effects" that can be used on the enemy and player
     private Timer playerBleed;
     private Timer playerStun;
     private Timer playerDisableAbilities;
+    private LinkedList<Timer> playerEffects;
+    
     private Timer enemyBleed;
     private Timer enemyStun;
     private Timer enemyDisableAbilities;
+    private LinkedList<Timer> enemyEffects;
 
     // used while the players attacks are on "cooldown"
     private boolean attack1Usable;
@@ -106,15 +112,17 @@ public class BattleUI extends javax.swing.JFrame {
         this.engine = engine;
         this.heroClass = heroClass;
         this.enemy = enemy;
+        engine.menu.dispose(); 
         setupEnemy();
         setupPlayer();
         setupAnimations(); 
         setupMusic();
         setupPlayerAttacks();
         setupEffects(); 
+        setupArrays(); 
         setupPunching();
         update();
-        setupForm();
+        engine.createJFrame(FORM_WIDTH, FORM_HEIGHT, this);
     }
 
     @SuppressWarnings("unchecked")
@@ -148,6 +156,11 @@ public class BattleUI extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
             }
         });
         getContentPane().setLayout(null);
@@ -361,6 +374,17 @@ public class BattleUI extends javax.swing.JFrame {
         click(4); 
     }//GEN-LAST:event_btnAttackOrItem4MouseClicked
 
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        int key = evt.getKeyCode(); 
+        if (engine.menu != null) {
+            if (key == 27) {
+                pause(); 
+                Menu menu = new Menu(engine); 
+                engine.menu = menu; 
+            }
+        } 
+    }//GEN-LAST:event_formKeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAttackOrItem1;
     private javax.swing.JLabel btnAttackOrItem2;
@@ -422,16 +446,6 @@ public class BattleUI extends javax.swing.JFrame {
         btnAttackOrItem2.setText("Item 2");
         btnAttackOrItem3.setText("Item 3");
         btnAttackOrItem4.setText("Item 4");
-    }
-
-    /**
-     * setups the form
-     */
-    private void setupForm() {
-        this.setSize(FORM_WIDTH, FORM_HEIGHT);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
     }
 
     /**
@@ -945,6 +959,55 @@ public class BattleUI extends javax.swing.JFrame {
             heroClass.gold
         };
         stats = CharacterData.saveData(heroClass, stats);
+    }
+
+    private void pause() {
+        for (int i = 0; i < attackCooldowns.size(); i++) {
+            if (attackCooldowns.get(i).isRunning()) attackCooldowns.get(i).stop(); 
+        }
+        for (int i = 0; i < attackDurations.size(); i++) {
+            if (attackDurations.get(i).isRunning()) attackDurations.get(i).stop(); 
+        }
+        for (int i = 0; i < playerEffects.size(); i++) {
+            if (playerEffects.get(i).isRunning()) playerEffects.get(i).stop(); 
+        }
+        for (int i = 0; i < enemyEffects.size(); i++) {
+            if (enemyEffects.get(i).isRunning()) enemyEffects.get(i).stop(); 
+        }           
+        
+        playerPunching.stop();
+        enemyPunching.stop();
+        update.stop();
+    }
+    
+    private void play() {
+        playerPunching.start();
+        enemyPunching.start();
+        update.start();
+    }
+
+    private void setupArrays() {
+        attackCooldowns = new LinkedList<>(); 
+        attackCooldowns.add(attack1Cooldown); 
+        attackCooldowns.add(attack2Cooldown); 
+        attackCooldowns.add(attack3Cooldown); 
+        attackCooldowns.add(attack4Cooldown); 
+        
+        attackDurations = new LinkedList<>(); 
+        attackDurations.add(attack1Duration); 
+        attackDurations.add(attack2Duration); 
+        attackDurations.add(attack3Duration); 
+        attackDurations.add(attack4Duration); 
+        
+        playerEffects = new LinkedList<>(); 
+        playerEffects.add(playerBleed); 
+        playerEffects.add(playerDisableAbilities); 
+        playerEffects.add(playerStun); 
+        
+        enemyEffects = new LinkedList<>(); 
+        enemyEffects.add(enemyBleed); 
+        enemyEffects.add(enemyDisableAbilities); 
+        enemyEffects.add(enemyStun); 
     }
     
 }
