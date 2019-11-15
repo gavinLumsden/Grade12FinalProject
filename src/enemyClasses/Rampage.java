@@ -70,7 +70,7 @@ public class Rampage extends Enemy {
         super.name        = NAME;
         super.level       = this.level; 
 
-        sprite.setImage("/animations/enemyclasses/rampage/right/rampageIdle.png");
+        sprite.setImage("/animations/enemyclasses/rampage/rampageRightIdle.png");
         sprite.debug("");
         sprite.removeBorder();
     }

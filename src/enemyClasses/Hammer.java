@@ -70,7 +70,7 @@ public class Hammer extends Enemy {
         super.name        = NAME;
         super.level       = this.level; 
 
-        sprite.setImage("/animations/enemyclasses/hammer/right/hammerIdle.png");
+        sprite.setImage("/animations/enemyclasses/hammer/hammerRightIdle.png");
         sprite.debug("");
         sprite.removeBorder();
     }

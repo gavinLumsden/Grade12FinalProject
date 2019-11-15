@@ -20,24 +20,24 @@ import maps.Map4;
 import maps.Map3;
 import javax.swing.JLabel;
 import maps.Map5;
-import maps.Upgrade;
+import jframes.Upgrade;
 import nuetral.trainers.Trainer;
 import objects.House;
 
 public class Mage extends GameCharacter {
 
-    private LinkedList<Cyborg> cyborgs;
-    private LinkedList<Nail> nails;
+    private LinkedList<Cyborg>  cyborgs;
+    private LinkedList<Nail>    nails;
     private LinkedList<Rampage> rampages;
 
     private GameEngine engine;
-    private BattleUI battleUI;
+    private BattleUI  battleUI;
 
-    private LinkedList<Wall> walls;
-    private LinkedList<Grass> grass;
-    private LinkedList<House> houses;
+    private LinkedList<Wall>           walls;
+    private LinkedList<Grass>          grass;
+    private LinkedList<House>          houses;
     private LinkedList<NextLevelBlock> nextLevelBlocks;
-    private LinkedList<Trainer> trainers;
+    private LinkedList<Trainer>        trainers;
 
     public final String NAME = "Mage";
 
@@ -49,17 +49,17 @@ public class Mage extends GameCharacter {
      * Ultimate: Fire Hawk, all burn effects on the enemy are faster for _
      * seconds
      */
-    public String attack1 = "Fire ball";
-    public String attack2 = "Freeze";
-    public String attack3 = "Lighting";
-    public String attack4 = "Fire wall";
-    public String passive = "Incinerator";
+    public String attack1  = "Fire ball";
+    public String attack2  = "Freeze";
+    public String attack3  = "Lighting";
+    public String attack4  = "Fire wall";
+    public String passive  = "Incinerator";
     public String ultimate = "Fire Hawk";
 
-    public static final String INFORMATION_ICON = "/animations/formBackgrounds/characterInformationMage.png";
-    public static final String IDLE_ICON = "/animations/playerClasses/mage/right/mageIdle1.png";
-    public static final String BATTLE_BACK_ICON = "/animations/playerClasses/mage/fightBack/fightBack1.png";
-    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/mage/fightFront/fightFront1.png";
+    public static final String INFORMATION_ICON  = "/animations/formBackgrounds/characterInformationMage.png";
+    public static final String IDLE_ICON         = "/animations/playerClasses/mage/mageRightIdle1.png";
+    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/mage/mageFightBack1.png";
+    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/mage/mageFightFront1.png";
 
     private JFrame currentMap;
     private JFrame previousMap;
@@ -118,40 +118,40 @@ public class Mage extends GameCharacter {
             LinkedList<Trainer> trainers) {
         super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
-        this.currentMap = currentMap;
-        this.previousMap = previousMap;
-        this.currentMapNumber = currentMapNumber;
+        this.currentMap        = currentMap;
+        this.previousMap       = previousMap;
+        this.currentMapNumber  = currentMapNumber;
         this.previousMapNumber = previousMapNumber;
 
-        this.engine = engine;
-        this.walls = walls;
-        this.houses = houses;
+        this.engine          = engine;
+        this.walls           = walls;
+        this.houses          = houses;
         this.nextLevelBlocks = nextLevelBlock;
 
-        this.cyborgs = cyborgs;
-        this.nails = nails;
+        this.cyborgs  = cyborgs;
+        this.nails    = nails;
         this.rampages = rampages;
 
-        super.playerAttack1Name = attack1;
-        super.playerAttack2Name = attack2;
-        super.playerAttack3Name = attack3;
-        super.playerAttack4Name = attack4;
-        super.playerPassiveName = passive;
+        super.playerAttack1Name  = attack1;
+        super.playerAttack2Name  = attack2;
+        super.playerAttack3Name  = attack3;
+        super.playerAttack4Name  = attack4;
+        super.playerPassiveName  = passive;
         super.playerUltimateName = ultimate;
-        super.playerBattleBack = BATTLE_BACK_ICON;
-        super.playerBattleFront = BATTLE_FRONT_ICON;
+        super.playerBattleBack   = BATTLE_BACK_ICON;
+        super.playerBattleFront  = BATTLE_FRONT_ICON;
 
         final int[] DEFAULTS = {5, 5, 100, 100, 1000, 1, 0, 0};
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
-        damage = stats[0];
+        damage      = stats[0];
         dodgeChance = stats[1];
-        health = stats[2];
-        maxHealth = stats[3];
-        punchSpeed = stats[4];
-        level = stats[5];
-        exp = stats[6];
-        gold = stats[7];
+        health      = stats[2];
+        maxHealth   = stats[3];
+        punchSpeed  = stats[4];
+        level       = stats[5];
+        exp         = stats[6];
+        gold        = stats[7];
 
         attack1Cooldown = 3000;
         attack2Cooldown = 3000;
@@ -163,15 +163,15 @@ public class Mage extends GameCharacter {
         attack3Duration = (punchSpeed * 3);
         attack4Duration = (punchSpeed * 3);
 
-        super.playerDamage = damage;
+        super.playerDamage      = damage;
         super.playerDodgeChance = dodgeChance;
-        super.playerHealth = health;
-        super.playerMaxHealth = maxHealth;
-        super.playerPunchSpeed = punchSpeed;
+        super.playerHealth      = health;
+        super.playerMaxHealth   = maxHealth;
+        super.playerPunchSpeed  = punchSpeed;
 
         super.playerLevel = level;
-        super.exp = exp;
-        super.gold = gold;
+        super.exp         = exp;
+        super.gold        = gold;
 
         super.attack1Cooldown = attack1Cooldown;
         super.attack2Cooldown = attack2Cooldown;
@@ -186,48 +186,48 @@ public class Mage extends GameCharacter {
         super.playerName = NAME;
 
         LinkedList<String> walkUpFiles = new LinkedList<>();
-        walkUpFiles.add("/animations/playerclasses/mage/up/mageWalk1.png");
-        walkUpFiles.add("/animations/playerclasses/mage/up/mageIdle1.png");
-        walkUpFiles.add("/animations/playerclasses/mage/up/mageWalk2.png");
-        walkUpFiles.add("/animations/playerclasses/mage/up/mageIdle1.png");
+        walkUpFiles.add("/animations/playerclasses/mage/mageUpWalk1.png");
+        walkUpFiles.add("/animations/playerclasses/mage/mageUpIdle1.png");
+        walkUpFiles.add("/animations/playerclasses/mage/mageUpWalk2.png");
+        walkUpFiles.add("/animations/playerclasses/mage/mageUpIdle1.png");
 
         LinkedList<String> walkDownFiles = new LinkedList<>();
-        walkDownFiles.add("/animations/playerclasses/mage/down/mageWalk1.png");
-        walkDownFiles.add("/animations/playerclasses/mage/down/mageIdle1.png");
-        walkDownFiles.add("/animations/playerclasses/mage/down/mageWalk2.png");
-        walkDownFiles.add("/animations/playerclasses/mage/down/mageIdle1.png");
+        walkDownFiles.add("/animations/playerclasses/mage/mageDownWalk1.png");
+        walkDownFiles.add("/animations/playerclasses/mage/mageDownIdle1.png");
+        walkDownFiles.add("/animations/playerclasses/mage/mageDownWalk2.png");
+        walkDownFiles.add("/animations/playerclasses/mage/mageDownIdle1.png");
 
         LinkedList<String> walkLeftFiles = new LinkedList<>();
-        walkLeftFiles.add("/animations/playerclasses/mage/left/mageWalk1.png");
-        walkLeftFiles.add("/animations/playerclasses/mage/left/mageIdle1.png");
-        walkLeftFiles.add("/animations/playerclasses/mage/left/mageWalk2.png");
-        walkLeftFiles.add("/animations/playerclasses/mage/left/mageIdle1.png");
+        walkLeftFiles.add("/animations/playerclasses/mage/mageLeftWalk1.png");
+        walkLeftFiles.add("/animations/playerclasses/mage/mageLeftIdle1.png");
+        walkLeftFiles.add("/animations/playerclasses/mage/mageLeftWalk2.png");
+        walkLeftFiles.add("/animations/playerclasses/mage/mageLeftIdle1.png");
 
         LinkedList<String> walkRightFiles = new LinkedList<>();
-        walkRightFiles.add("/animations/playerclasses/mage/right/mageWalk1.png");
-        walkRightFiles.add("/animations/playerclasses/mage/right/mageIdle1.png");
-        walkRightFiles.add("/animations/playerclasses/mage/right/mageWalk2.png");
-        walkRightFiles.add("/animations/playerclasses/mage/right/mageIdle1.png");
+        walkRightFiles.add("/animations/playerclasses/mage/mageRightWalk1.png");
+        walkRightFiles.add("/animations/playerclasses/mage/mageRightIdle1.png");
+        walkRightFiles.add("/animations/playerclasses/mage/mageRightWalk2.png");
+        walkRightFiles.add("/animations/playerclasses/mage/mageRightIdle1.png");
 
         LinkedList<String> stopUpFiles = new LinkedList<>();
-        stopUpFiles.add("/animations/playerclasses/mage/up/mageIdle1.png");
-        stopUpFiles.add("/animations/playerclasses/mage/up/mageIdle2.png");
-        stopUpFiles.add("/animations/playerclasses/mage/up/mageIdle3.png");
+        stopUpFiles.add("/animations/playerclasses/mage/mageUpIdle1.png");
+        stopUpFiles.add("/animations/playerclasses/mage/mageUpIdle2.png");
+        stopUpFiles.add("/animations/playerclasses/mage/mageUpIdle3.png");
 
         LinkedList<String> stopDownFiles = new LinkedList<>();
-        stopDownFiles.add("/animations/playerclasses/mage/down/mageIdle1.png");
-        stopDownFiles.add("/animations/playerclasses/mage/down/mageIdle2.png");
-        stopDownFiles.add("/animations/playerclasses/mage/down/mageIdle3.png");
+        stopDownFiles.add("/animations/playerclasses/mage/mageDownIdle1.png");
+        stopDownFiles.add("/animations/playerclasses/mage/mageDownIdle2.png");
+        stopDownFiles.add("/animations/playerclasses/mage/mageDownIdle3.png");
 
         LinkedList<String> stopLeftFiles = new LinkedList<>();
-        stopLeftFiles.add("/animations/playerclasses/mage/left/mageIdle1.png");
-        stopLeftFiles.add("/animations/playerclasses/mage/left/mageIdle2.png");
-        stopLeftFiles.add("/animations/playerclasses/mage/left/mageIdle3.png");
+        stopLeftFiles.add("/animations/playerclasses/mage/mageLeftIdle1.png");
+        stopLeftFiles.add("/animations/playerclasses/mage/mageLeftIdle2.png");
+        stopLeftFiles.add("/animations/playerclasses/mage/mageLeftIdle3.png");
 
         LinkedList<String> stopRightFiles = new LinkedList<>();
-        stopRightFiles.add("/animations/playerclasses/mage/right/mageIdle1.png");
-        stopRightFiles.add("/animations/playerclasses/mage/right/mageIdle2.png");
-        stopRightFiles.add("/animations/playerclasses/mage/right/mageIdle3.png");
+        stopRightFiles.add("/animations/playerclasses/mage/mageRightIdle1.png");
+        stopRightFiles.add("/animations/playerclasses/mage/mageRightIdle2.png");
+        stopRightFiles.add("/animations/playerclasses/mage/mageRightIdle3.png");
 
         Animation walkUpAnimation = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
         Animation walkDownAnimation = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);

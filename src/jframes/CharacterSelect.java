@@ -22,10 +22,9 @@ public class CharacterSelect extends javax.swing.JFrame {
     private final int FORM_HEIGHT = 348;
 
     // properties
-    private GameEngine  engine;
-    private JLabel[]    labels;
-    private Animation[] animations;
-
+    private GameEngine   engine;
+    private JLabel[]     labels;
+    private Animation[]  animations;
     private boolean      isClicked;
     private JLabel       label; 
     private int          spot;
@@ -43,40 +42,40 @@ public class CharacterSelect extends javax.swing.JFrame {
         LinkedList<LinkedList<String>> imageFiles = new LinkedList<>();
 
         LinkedList<String> banditAnimations = new LinkedList<>();
-        banditAnimations.add("/animations/playerClasses/bandit/right/banditWalk1.png");
-        banditAnimations.add("/animations/playerClasses/bandit/right/banditIdle.png");
-        banditAnimations.add("/animations/playerClasses/bandit/right/banditWalk2.png");
-        banditAnimations.add("/animations/playerClasses/bandit/right/banditIdle.png");
+        banditAnimations.add("/animations/playerClasses/bandit/banditRightWalk1.png");
+        banditAnimations.add("/animations/playerClasses/bandit/banditRightIdle.png");
+        banditAnimations.add("/animations/playerClasses/bandit/banditRightWalk2.png");
+        banditAnimations.add("/animations/playerClasses/bandit/banditRightIdle.png");
 
         LinkedList<String> gamblerAnimations = new LinkedList<>();
-        gamblerAnimations.add("/animations/playerClasses/gambler/right/gamblerWalk1.png");
-        gamblerAnimations.add("/animations/playerClasses/gambler/right/gamblerIdle.png");
-        gamblerAnimations.add("/animations/playerClasses/gambler/right/gamblerWalk2.png");
-        gamblerAnimations.add("/animations/playerClasses/gambler/right/gamblerIdle.png");
+        gamblerAnimations.add("/animations/playerClasses/gambler/gamblerRightWalk1.png");
+        gamblerAnimations.add("/animations/playerClasses/gambler/gamblerRightIdle.png");
+        gamblerAnimations.add("/animations/playerClasses/gambler/gamblerRightWalk2.png");
+        gamblerAnimations.add("/animations/playerClasses/gambler/gamblerRightIdle.png");
 
         LinkedList<String> hackerAnimations = new LinkedList<>();
-        hackerAnimations.add("/animations/playerClasses/hacker/right/hackerWalk1.png");
-        hackerAnimations.add("/animations/playerClasses/hacker/right/hackerIdle.png");
-        hackerAnimations.add("/animations/playerClasses/hacker/right/hackerWalk2.png");
-        hackerAnimations.add("/animations/playerClasses/hacker/right/hackerIdle.png");
+        hackerAnimations.add("/animations/playerClasses/hacker/hackerRightWalk1.png");
+        hackerAnimations.add("/animations/playerClasses/hacker/hackerRightIdle.png");
+        hackerAnimations.add("/animations/playerClasses/hacker/hackerRightWalk2.png");
+        hackerAnimations.add("/animations/playerClasses/hacker/hackerRightIdle.png");
 
         LinkedList<String> juggernautAnimations = new LinkedList<>();
-        juggernautAnimations.add("/animations/playerClasses/juggernaut/right/juggernautWalk1.png");
-        juggernautAnimations.add("/animations/playerClasses/juggernaut/right/juggernautIdle.png");
-        juggernautAnimations.add("/animations/playerClasses/juggernaut/right/juggernautWalk2.png");
-        juggernautAnimations.add("/animations/playerClasses/juggernaut/right/juggernautIdle.png");
+        juggernautAnimations.add("/animations/playerClasses/juggernaut/juggernautRightWalk1.png");
+        juggernautAnimations.add("/animations/playerClasses/juggernaut/juggernautRightIdle.png");
+        juggernautAnimations.add("/animations/playerClasses/juggernaut/juggernautRightWalk2.png");
+        juggernautAnimations.add("/animations/playerClasses/juggernaut/juggernautRightIdle.png");
 
         LinkedList<String> mageAnimations = new LinkedList<>();
-        mageAnimations.add("/animations/playerClasses/mage/right/mageWalk1.png");
-        mageAnimations.add("/animations/playerClasses/mage/right/mageIdle1.png");
-        mageAnimations.add("/animations/playerClasses/mage/right/mageWalk2.png");
-        mageAnimations.add("/animations/playerClasses/mage/right/mageIdle1.png");
+        mageAnimations.add("/animations/playerClasses/mage/mageRightWalk1.png");
+        mageAnimations.add("/animations/playerClasses/mage/mageRightIdle1.png");
+        mageAnimations.add("/animations/playerClasses/mage/mageRightWalk2.png");
+        mageAnimations.add("/animations/playerClasses/mage/mageRightIdle1.png");
 
         LinkedList<String> vampireAnimations = new LinkedList<>();
-        vampireAnimations.add("/animations/playerClasses/vampire/right/vampireWalk1.png");
-        vampireAnimations.add("/animations/playerClasses/vampire/right/vampireIdle.png");
-        vampireAnimations.add("/animations/playerClasses/vampire/right/vampireWalk2.png");
-        vampireAnimations.add("/animations/playerClasses/vampire/right/vampireIdle.png");
+        vampireAnimations.add("/animations/playerClasses/vampire/vampireRightWalk1.png");
+        vampireAnimations.add("/animations/playerClasses/vampire/vampireRightIdle.png");
+        vampireAnimations.add("/animations/playerClasses/vampire/vampireRightWalk2.png");
+        vampireAnimations.add("/animations/playerClasses/vampire/vampireRightIdle.png");
 
         imageFiles.add(banditAnimations);
         imageFiles.add(gamblerAnimations);
@@ -116,7 +115,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblVampire.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVampire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/vampire/right/vampireIdle.png"))); // NOI18N
         lblVampire.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblVampire.setOpaque(true);
         lblVampire.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -134,7 +132,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         lblVampire.setBounds(54, 70, 95, 97);
 
         lblJuggernaut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblJuggernaut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/juggernaut/right/juggernautIdle.png"))); // NOI18N
         lblJuggernaut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblJuggernaut.setOpaque(true);
         lblJuggernaut.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,7 +149,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         lblJuggernaut.setBounds(237, 70, 95, 97);
 
         lblHacker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHacker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/hacker/right/hackerIdle.png"))); // NOI18N
         lblHacker.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblHacker.setOpaque(true);
         lblHacker.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -170,7 +166,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         lblHacker.setBounds(412, 70, 95, 97);
 
         lblBandit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBandit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/bandit/right/banditIdle.png"))); // NOI18N
         lblBandit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblBandit.setOpaque(true);
         lblBandit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -188,7 +183,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         lblBandit.setBounds(54, 194, 95, 97);
 
         lblMage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/mage/right/mageIdle1.png"))); // NOI18N
         lblMage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblMage.setOpaque(true);
         lblMage.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -206,7 +200,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         lblMage.setBounds(237, 194, 95, 97);
 
         lblGambler.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblGambler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/gambler/right/gamblerIdle.png"))); // NOI18N
         lblGambler.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblGambler.setOpaque(true);
         lblGambler.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -356,3 +349,4 @@ public class CharacterSelect extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+// make an absrtact class with all th pictures url linked to the google drive, make them static and public, use them across all classes!

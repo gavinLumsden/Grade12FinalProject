@@ -70,7 +70,7 @@ public class Cyborg extends Enemy {
         super.name        = NAME;
         super.level       = this.level; 
 
-        sprite.setImage("/animations/enemyclasses/cyborg/right/cyborgIdle.png");
+        sprite.setImage("/animations/enemyclasses/cyborg/cyborgRightIdle.png");
         sprite.debug("");
         sprite.removeBorder();
     }

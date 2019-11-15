@@ -20,7 +20,7 @@ import maps.Map2;
 import maps.Map3;
 import maps.Map4;
 import maps.Map5;
-import maps.Upgrade;
+import jframes.Upgrade;
 import nuetral.trainers.Trainer;
 import objects.House;
 
@@ -71,10 +71,10 @@ public class Bandit extends GameCharacter {
             + "* Passive:   Back Stab, when you dodge an attack you have a _% chance to hit the enemy back\n"
             + "* Ultimate:  Elusive,   raises dodge stat by _ for the rest of the battle\n";
 
-    public static final String INFORMATION_ICON = "/animations/formBackgrounds/characterInformationBandit.png";
-    public static final String IDLE_ICON = "/animations/playerClasses/bandit/right/banditIdle.png";
-    public static final String BATTLE_BACK_ICON = "/animations/playerClasses/bandit/fightBack/fightBack.png";
-    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/bandit/fightFront/fightFront.png";
+    public static final String INFORMATION_ICON  = "/animations/formBackgrounds/characterInformationBandit.png";
+    public static final String IDLE_ICON         = "/animations/playerClasses/bandit/banditRightIdle.png";
+    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/bandit/banditFightBack.png";
+    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/bandit/banditFightFront.png";
 
     private JFrame currentMap;
     private JFrame previousMap;
@@ -101,8 +101,6 @@ public class Bandit extends GameCharacter {
     public int attack2Duration;
     public int attack3Duration;
     public int attack4Duration;
-
-    private boolean canTravel;
 
     /**
      * Creates a "bandit"
@@ -132,8 +130,6 @@ public class Bandit extends GameCharacter {
             int currentMapNumber, int previousMapNumber,
             LinkedList<Trainer> trainers) {
         super(heroImage, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
-
-        canTravel = true;
 
         this.currentMap = currentMap;
         this.previousMap = previousMap;
@@ -390,15 +386,12 @@ public class Bandit extends GameCharacter {
     }
 
     private boolean checkTrainers() {
-        if (canTravel == true) {
-            if (trainers != null) {
-                for (int i = 0; i < trainers.size(); i++) {
-                    if (detector.isOverLapping(trainers.get(i))) {
-                        canTravel = false;
-                        engine.pause();
-                        Upgrade upgrade = new Upgrade(trainers.get(i));
-                        return false;
-                    }
+        if (trainers != null) {
+            for (int i = 0; i < trainers.size(); i++) {
+                if (detector.isOverLapping(trainers.get(i))) {
+                    engine.pause();
+                    Upgrade upgrade = new Upgrade(trainers.get(i));
+                    return false;
                 }
             }
         }

@@ -70,7 +70,7 @@ public class Engineer extends Enemy {
         super.name        = NAME;
         super.level       = this.level; 
 
-        sprite.setImage("/animations/enemyclasses/engineer/right/engineerIdle.png");
+        sprite.setImage("/animations/enemyclasses/engineer/engineerRightIdle.png");
         sprite.debug("");
         sprite.removeBorder();
     }

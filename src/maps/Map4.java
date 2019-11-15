@@ -153,8 +153,6 @@ public class Map4 extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblHero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/bandit/up/banditIdle.png"))); // NOI18N
-        lblHero.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblHero);
         lblHero.setBounds(880, 430, 100, 100);
 
@@ -189,150 +187,144 @@ public class Map4 extends javax.swing.JFrame {
         wall5.setBounds(0, 0, 30, 130);
 
         lblCyborg2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCyborg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/cyborg/down/cyborgIdle.png"))); // NOI18N
-        lblCyborg2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblCyborg2);
         lblCyborg2.setBounds(880, 180, 100, 100);
 
         lblNail2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNail2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/nail/right/nailIdle.png"))); // NOI18N
-        lblNail2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblNail2);
         lblNail2.setBounds(430, 180, 100, 100);
 
         lblRampage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRampage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/enemyclasses/rampage/right/rampageIdle.png"))); // NOI18N
-        lblRampage1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblRampage1);
         lblRampage1.setBounds(30, 180, 100, 100);
 
         grass1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass1);
         grass1.setBounds(630, 430, 100, 100);
 
         grass2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass2);
         grass2.setBounds(730, 430, 100, 100);
 
         grass3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass3);
         grass3.setBounds(430, 430, 100, 100);
 
         grass4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass4);
         grass4.setBounds(530, 430, 100, 100);
 
         grass5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass5);
         grass5.setBounds(330, 430, 100, 100);
 
         grass6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass6);
         grass6.setBounds(230, 430, 100, 100);
 
         grass7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass7);
         grass7.setBounds(30, 430, 100, 100);
 
         grass8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass8);
         grass8.setBounds(130, 430, 100, 100);
 
         grass9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass9);
         grass9.setBounds(630, 330, 100, 100);
 
         grass10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass10);
         grass10.setBounds(730, 330, 100, 100);
 
         grass11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass11);
         grass11.setBounds(430, 330, 100, 100);
 
         grass12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass12);
         grass12.setBounds(530, 330, 100, 100);
 
         grass13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass13);
         grass13.setBounds(330, 330, 100, 100);
 
         grass14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass14);
         grass14.setBounds(230, 330, 100, 100);
 
         grass15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass15.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass15);
         grass15.setBounds(30, 330, 100, 100);
 
         grass16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass16.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass16);
         grass16.setBounds(130, 330, 100, 100);
 
         grass17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass17.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass17);
         grass17.setBounds(530, 30, 100, 100);
 
         grass18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass18);
         grass18.setBounds(630, 30, 100, 100);
 
         grass19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass19.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass19);
         grass19.setBounds(30, 30, 100, 100);
 
         grass20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass20);
         grass20.setBounds(730, 30, 100, 100);
 
         grass21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass21.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass21);
         grass21.setBounds(230, 30, 100, 100);
 
         grass22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass22);
         grass22.setBounds(330, 30, 100, 100);
 
         grass23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass23);
         grass23.setBounds(430, 30, 100, 100);
 
         grass24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass24.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass24);
         grass24.setBounds(130, 30, 100, 100);
 
         grass25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass25.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass25);
         grass25.setBounds(830, 30, 100, 100);
 
         grass26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        grass26.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grass26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/objects/grass.png"))); // NOI18N
         getContentPane().add(grass26);
         grass26.setBounds(930, 30, 100, 100);
         getContentPane().add(lblToMap2);

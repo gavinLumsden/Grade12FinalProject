@@ -20,7 +20,7 @@ import maps.Map4;
 import maps.Map3;
 import javax.swing.JLabel;
 import maps.Map5;
-import maps.Upgrade;
+import jframes.Upgrade;
 import nuetral.trainers.Trainer;
 import objects.House;
 
@@ -56,10 +56,10 @@ public class Hacker extends GameCharacter {
     public String passive = "Evasive";
     public String ultimate = "EMP";
 
-    public static final String INFORMATION_ICON = "/animations/formBackgrounds/characterInformationHacker.png";
-    public static final String IDLE_ICON = "/animations/playerClasses/hacker/right/hackerIdle.png";
-    public static final String BATTLE_BACK_ICON = "/animations/playerClasses/hacker/fightBack/fightBack.png";
-    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/hacker/fightFront/fightFront.png";
+    public static final String INFORMATION_ICON  = "/animations/formBackgrounds/characterInformationHacker.png";
+    public static final String IDLE_ICON         = "/animations/playerClasses/hacker/hackerRightIdle.png";
+    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/hacker/hackerFightBack.png";
+    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/hacker/hackerFightFront.png";
 
     private JFrame currentMap;
     private JFrame previousMap;
@@ -186,44 +186,44 @@ public class Hacker extends GameCharacter {
         super.playerName = NAME;
 
         LinkedList<String> walkUpFiles = new LinkedList<>();
-        walkUpFiles.add("/animations/playerclasses/hacker/up/hackerWalk1.png");
-        walkUpFiles.add("/animations/playerclasses/hacker/up/hackerIdle.png");
-        walkUpFiles.add("/animations/playerclasses/hacker/up/hackerWalk2.png");
-        walkUpFiles.add("/animations/playerclasses/hacker/up/hackerIdle.png");
+        walkUpFiles.add("/animations/playerclasses/hacker/hackerUpWalk1.png");
+        walkUpFiles.add("/animations/playerclasses/hacker/hackerUpIdle.png");
+        walkUpFiles.add("/animations/playerclasses/hacker/hackerUpWalk2.png");
+        walkUpFiles.add("/animations/playerclasses/hacker/hackerUpIdle.png");
 
         LinkedList<String> walkDownFiles = new LinkedList<>();
-        walkDownFiles.add("/animations/playerclasses/hacker/down/hackerWalk1.png");
-        walkDownFiles.add("/animations/playerclasses/hacker/down/hackerIdle.png");
-        walkDownFiles.add("/animations/playerclasses/hacker/down/hackerWalk2.png");
-        walkDownFiles.add("/animations/playerclasses/hacker/down/hackerIdle.png");
+        walkDownFiles.add("/animations/playerclasses/hacker/hackerDownWalk1.png");
+        walkDownFiles.add("/animations/playerclasses/hacker/hackerDownIdle.png");
+        walkDownFiles.add("/animations/playerclasses/hacker/hackerDownWalk2.png");
+        walkDownFiles.add("/animations/playerclasses/hacker/hackerDownIdle.png");
 
         LinkedList<String> walkLeftFiles = new LinkedList<>();
-        walkLeftFiles.add("/animations/playerclasses/hacker/left/hackerWalk1.png");
-        walkLeftFiles.add("/animations/playerclasses/hacker/left/hackerIdle.png");
-        walkLeftFiles.add("/animations/playerclasses/hacker/left/hackerWalk2.png");
-        walkLeftFiles.add("/animations/playerclasses/hacker/left/hackerIdle.png");
+        walkLeftFiles.add("/animations/playerclasses/hacker/hackerLeftWalk1.png");
+        walkLeftFiles.add("/animations/playerclasses/hacker/hackerLeftIdle.png");
+        walkLeftFiles.add("/animations/playerclasses/hacker/hackerLeftWalk2.png");
+        walkLeftFiles.add("/animations/playerclasses/hacker/hackerLeftIdle.png");
 
         LinkedList<String> walkRightFiles = new LinkedList<>();
-        walkRightFiles.add("/animations/playerclasses/hacker/right/hackerWalk1.png");
-        walkRightFiles.add("/animations/playerclasses/hacker/right/hackerIdle.png");
-        walkRightFiles.add("/animations/playerclasses/hacker/right/hackerWalk2.png");
-        walkRightFiles.add("/animations/playerclasses/hacker/right/hackerIdle.png");
+        walkRightFiles.add("/animations/playerclasses/hacker/hackerRightWalk1.png");
+        walkRightFiles.add("/animations/playerclasses/hacker/hackerRightIdle.png");
+        walkRightFiles.add("/animations/playerclasses/hacker/hackerRightWalk2.png");
+        walkRightFiles.add("/animations/playerclasses/hacker/hackerRightIdle.png");
 
         LinkedList<String> stopUpFiles = new LinkedList<>();
-        stopUpFiles.add("/animations/playerclasses/hacker/up/hackerIdle.png");
-        stopUpFiles.add("/animations/playerclasses/hacker/up/hackerIdle.png");
+        stopUpFiles.add("/animations/playerclasses/hacker/hackerUpIdle.png");
+        stopUpFiles.add("/animations/playerclasses/hacker/hackerUpIdle.png");
 
         LinkedList<String> stopDownFiles = new LinkedList<>();
-        stopDownFiles.add("/animations/playerclasses/hacker/down/hackerIdle.png");
-        stopDownFiles.add("/animations/playerclasses/hacker/down/hackerIdle.png");
+        stopDownFiles.add("/animations/playerclasses/hacker/hackerDownIdle.png");
+        stopDownFiles.add("/animations/playerclasses/hacker/hackerDownIdle.png");
 
         LinkedList<String> stopLeftFiles = new LinkedList<>();
-        stopLeftFiles.add("/animations/playerclasses/hacker/left/hackerIdle.png");
-        stopLeftFiles.add("/animations/playerclasses/hacker/left/hackerIdle.png");
+        stopLeftFiles.add("/animations/playerclasses/hacker/hackerLeftIdle.png");
+        stopLeftFiles.add("/animations/playerclasses/hacker/hackerLeftIdle.png");
 
         LinkedList<String> stopRightFiles = new LinkedList<>();
-        stopRightFiles.add("/animations/playerclasses/hacker/right/hackerIdle.png");
-        stopRightFiles.add("/animations/playerclasses/hacker/right/hackerIdle.png");
+        stopRightFiles.add("/animations/playerclasses/hacker/hackerRightIdle.png");
+        stopRightFiles.add("/animations/playerclasses/hacker/hackerRightIdle.png");
 
         Animation walkUpAnimation = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
         Animation walkDownAnimation = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);

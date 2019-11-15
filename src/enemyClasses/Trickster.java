@@ -70,7 +70,7 @@ public class Trickster extends Enemy {
         super.name        = NAME;
         super.level       = this.level; 
 
-        sprite.setImage("/animations/enemyclasses/trickster/right/tricksterIdle.png");
+        sprite.setImage("/animations/enemyclasses/trickster/tricksterRightIdle.png");
         sprite.debug("");
         sprite.removeBorder();
     }

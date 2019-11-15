@@ -20,7 +20,7 @@ import maps.Map4;
 import maps.Map3;
 import javax.swing.JLabel;
 import maps.Map5;
-import maps.Upgrade;
+import jframes.Upgrade;
 import nuetral.trainers.Trainer;
 import objects.House;
 
@@ -56,10 +56,10 @@ public class Vampire extends GameCharacter {
     public String passive = "Leech";
     public String ultimate = "Consume";
 
-    public static final String INFORMATION_ICON = "/animations/formBackgrounds/characterInformationVampire.png";
-    public static final String IDLE_ICON = "/animations/playerClasses/vampire/right/vampireIdle.png";
-    public static final String BATTLE_BACK_ICON = "/animations/playerClasses/vampire/fightBack/fightBack.png";
-    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/vampire/fightFront/fightFront.png";
+    public static final String INFORMATION_ICON  = "/animations/formBackgrounds/characterInformationVampire.png";
+    public static final String IDLE_ICON         = "/animations/playerClasses/vampire/vampireRightIdle.png";
+    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/vampire/vampireFightBack.png";
+    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/vampire/vampireFightFront.png";
 
     private JFrame currentMap;
     private JFrame previousMap;
@@ -187,44 +187,44 @@ public class Vampire extends GameCharacter {
         super.playerName = NAME;
 
         LinkedList<String> walkUpFiles = new LinkedList<>();
-        walkUpFiles.add("/animations/playerclasses/vampire/up/vampireWalk1.png");
-        walkUpFiles.add("/animations/playerclasses/vampire/up/vampireIdle.png");
-        walkUpFiles.add("/animations/playerclasses/vampire/up/vampireWalk2.png");
-        walkUpFiles.add("/animations/playerclasses/vampire/up/vampireIdle.png");
+        walkUpFiles.add("/animations/playerclasses/vampire/vampireUpWalk1.png");
+        walkUpFiles.add("/animations/playerclasses/vampire/vampireUpIdle.png");
+        walkUpFiles.add("/animations/playerclasses/vampire/vampireUpWalk2.png");
+        walkUpFiles.add("/animations/playerclasses/vampire/vampireUpIdle.png");
 
         LinkedList<String> walkDownFiles = new LinkedList<>();
-        walkDownFiles.add("/animations/playerclasses/vampire/down/vampireWalk1.png");
-        walkDownFiles.add("/animations/playerclasses/vampire/down/vampireIdle.png");
-        walkDownFiles.add("/animations/playerclasses/vampire/down/vampireWalk2.png");
-        walkDownFiles.add("/animations/playerclasses/vampire/down/vampireIdle.png");
+        walkDownFiles.add("/animations/playerclasses/vampire/vampireDownWalk1.png");
+        walkDownFiles.add("/animations/playerclasses/vampire/vampireDownIdle.png");
+        walkDownFiles.add("/animations/playerclasses/vampire/vampireDownWalk2.png");
+        walkDownFiles.add("/animations/playerclasses/vampire/vampireDownIdle.png");
 
         LinkedList<String> walkLeftFiles = new LinkedList<>();
-        walkLeftFiles.add("/animations/playerclasses/vampire/left/vampireWalk1.png");
-        walkLeftFiles.add("/animations/playerclasses/vampire/left/vampireIdle.png");
-        walkLeftFiles.add("/animations/playerclasses/vampire/left/vampireWalk2.png");
-        walkLeftFiles.add("/animations/playerclasses/vampire/left/vampireIdle.png");
+        walkLeftFiles.add("/animations/playerclasses/vampire/vampireLeftWalk1.png");
+        walkLeftFiles.add("/animations/playerclasses/vampire/vampireLeftIdle.png");
+        walkLeftFiles.add("/animations/playerclasses/vampire/vampireLeftWalk2.png");
+        walkLeftFiles.add("/animations/playerclasses/vampire/vampireLeftIdle.png");
 
         LinkedList<String> walkRightFiles = new LinkedList<>();
-        walkRightFiles.add("/animations/playerclasses/vampire/right/vampireWalk1.png");
-        walkRightFiles.add("/animations/playerclasses/vampire/right/vampireIdle.png");
-        walkRightFiles.add("/animations/playerclasses/vampire/right/vampireWalk2.png");
-        walkRightFiles.add("/animations/playerclasses/vampire/right/vampireIdle.png");
+        walkRightFiles.add("/animations/playerclasses/vampire/vampireRightWalk1.png");
+        walkRightFiles.add("/animations/playerclasses/vampire/vampireRightIdle.png");
+        walkRightFiles.add("/animations/playerclasses/vampire/vampireRightWalk2.png");
+        walkRightFiles.add("/animations/playerclasses/vampire/vampireRightIdle.png");
 
         LinkedList<String> stopUpFiles = new LinkedList<>();
-        stopUpFiles.add("/animations/playerclasses/vampire/up/vampireIdle.png");
-        stopUpFiles.add("/animations/playerclasses/vampire/up/vampireIdle.png");
+        stopUpFiles.add("/animations/playerclasses/vampire/vampireUpIdle.png");
+        stopUpFiles.add("/animations/playerclasses/vampire/vampireUpIdle.png");
 
         LinkedList<String> stopDownFiles = new LinkedList<>();
-        stopDownFiles.add("/animations/playerclasses/vampire/down/vampireIdle.png");
-        stopDownFiles.add("/animations/playerclasses/vampire/down/vampireIdle.png");
+        stopDownFiles.add("/animations/playerclasses/vampire/vampireDownIdle.png");
+        stopDownFiles.add("/animations/playerclasses/vampire/vampireDownIdle.png");
 
         LinkedList<String> stopLeftFiles = new LinkedList<>();
-        stopLeftFiles.add("/animations/playerclasses/vampire/left/vampireIdle.png");
-        stopLeftFiles.add("/animations/playerclasses/vampire/left/vampireIdle.png");
+        stopLeftFiles.add("/animations/playerclasses/vampire/vampireLeftIdle.png");
+        stopLeftFiles.add("/animations/playerclasses/vampire/vampireLeftIdle.png");
 
         LinkedList<String> stopRightFiles = new LinkedList<>();
-        stopRightFiles.add("/animations/playerclasses/vampire/right/vampireIdle.png");
-        stopRightFiles.add("/animations/playerclasses/vampire/right/vampireIdle.png");
+        stopRightFiles.add("/animations/playerclasses/vampire/vampireRightIdle.png");
+        stopRightFiles.add("/animations/playerclasses/vampire/vampireRightIdle.png");
 
         Animation walkUpAnimation = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
         Animation walkDownAnimation = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);

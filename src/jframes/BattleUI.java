@@ -328,11 +328,11 @@ public class BattleUI extends javax.swing.JFrame {
         getContentPane().add(lblStatsBackground);
         lblStatsBackground.setBounds(0, 0, 1370, 770);
 
-        lblEnemyFront.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/vampire/fightFront/fightFront.png"))); // NOI18N
+        lblEnemyFront.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblEnemyFront);
         lblEnemyFront.setBounds(10, 10, 1350, 750);
 
-        lblPlayerBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/playerclasses/bandit/fightBack/fightBack.png"))); // NOI18N
+        lblPlayerBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblPlayerBack);
         lblPlayerBack.setBounds(10, 10, 1350, 750);
 

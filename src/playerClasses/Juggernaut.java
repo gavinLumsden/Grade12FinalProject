@@ -20,7 +20,7 @@ import maps.Map4;
 import maps.Map3;
 import javax.swing.JLabel;
 import maps.Map5;
-import maps.Upgrade;
+import jframes.Upgrade;
 import nuetral.trainers.Trainer;
 import objects.House;
 
@@ -55,10 +55,10 @@ public class Juggernaut extends GameCharacter {
     public String passive = "Iron Skin";
     public String ultimate = "Invincible";
 
-    public static final String INFORMATION_ICON = "/animations/formBackgrounds/characterInformationJuggernaut.png";
-    public static final String IDLE_ICON = "/animations/playerClasses/juggernaut/right/juggernautIdle.png";
-    public static final String BATTLE_BACK_ICON = "/animations/playerClasses/juggernaut/fightBack/fightBack.png";
-    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/juggernaut/fightFront/fightFront.png";
+    public static final String INFORMATION_ICON  = "/animations/formBackgrounds/characterInformationJuggernaut.png";
+    public static final String IDLE_ICON         = "/animations/playerClasses/juggernaut/juggernautRightIdle.png";
+    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/juggernaut/juggernautFightBack.png";
+    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/juggernaut/juggernautFightFront.png";
 
     private JFrame currentMap;
     private JFrame previousMap;
@@ -102,8 +102,8 @@ public class Juggernaut extends GameCharacter {
      * @param engine
      * @param currentMap
      * @param previousMap
-     * @param currentMapName
-     * @param previousMapName
+     * @param currentMapNumber
+     * @param previousMapNumber
      * @param trainers
      */
     public Juggernaut(
