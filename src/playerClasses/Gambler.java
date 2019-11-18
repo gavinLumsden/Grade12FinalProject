@@ -449,7 +449,7 @@ public class Gambler extends GameCharacter {
 
     @Override
     public void resetAttack3() {
-
+        battleUI.enemyEffects("no stun"); 
     }
 
     @Override
