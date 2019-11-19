@@ -1,6 +1,7 @@
 package nuetral.trainers;
 
 import game.Icons;
+import java.net.MalformedURLException;
 import javax.swing.JLabel;
 
 /**
@@ -15,7 +16,7 @@ public class DodgeTrainer extends Trainer {
     public String quote = "Trainer Dodge says: move"; 
     public String price = "+1% dodge chance = 100 gold"; 
 
-    public DodgeTrainer(JLabel image) {
+    public DodgeTrainer(JLabel image) throws MalformedURLException {
         super(image);
         super.sprite.setImage(Icons.TRAINER_DODGE_IDLE_DOWN);
         super.stat = stat; 

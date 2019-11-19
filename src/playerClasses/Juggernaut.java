@@ -16,6 +16,8 @@ import game.Icons;
 import game.gametools.Animation;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import maps.Map1;
 import maps.Map2;
@@ -248,10 +250,10 @@ public class Juggernaut extends GameCharacter {
         Animation walkLeftAnimation  = new Animation(heroImage, walkLeftFiles, super.WALK_DELAY, true);
         Animation walkRightAnimation = new Animation(heroImage, walkRightFiles, super.WALK_DELAY, true);
 
-        Animation stopUpAnimation    = new Animation(heroImage, stopUpFiles, super.IDLE_DELAY, true);
-        Animation stopDownAnimation  = new Animation(heroImage, stopDownFiles, super.IDLE_DELAY, true);
-        Animation stopLeftAnimation  = new Animation(heroImage, stopLeftFiles, super.IDLE_DELAY, true);
-        Animation stopRightAnimation = new Animation(heroImage, stopRightFiles, super.IDLE_DELAY, true);
+        Animation stopUpAnimation    = new Animation(heroImage, stopUpFiles, super.WALK_DELAY, true);
+        Animation stopDownAnimation  = new Animation(heroImage, stopDownFiles, super.WALK_DELAY, true);
+        Animation stopLeftAnimation  = new Animation(heroImage, stopLeftFiles, super.WALK_DELAY, true);
+        Animation stopRightAnimation = new Animation(heroImage, stopRightFiles, super.WALK_DELAY, true);
 
         LinkedList<Animation> animations = new LinkedList<>();
 
@@ -273,22 +275,18 @@ public class Juggernaut extends GameCharacter {
      */
     @Override
     public void action() {
-        mover.move();
-        animate();
-        boolean check = checkWalls();
-        if (check) {
-            check = checkNextLevelBlocks();
+        try {
+            mover.move();
+            animate();
+            boolean check = checkWalls();
+            if (check) check = checkNextLevelBlocks();
+            if (check) check = checkHouses();
+            if (check) check = checkEnemies();
+            if (check) check = checkTrainers();
+            redraw();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Juggernaut.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (check) {
-            check = checkHouses();
-        }
-        if (check) {
-            check = checkEnemies();
-        }
-        if (check) {
-            check = checkTrainers();
-        }
-        redraw();
     }
 
     /**
@@ -309,7 +307,7 @@ public class Juggernaut extends GameCharacter {
     /**
      * checks to see if the hero is overlapping with a next level block
      */
-    private boolean checkNextLevelBlocks() {
+    private boolean checkNextLevelBlocks() throws MalformedURLException {
         for (int i = 0; i < nextLevelBlocks.size(); i++) {
             if (nextLevelBlocks.get(i) != null) {
                 if (detector.isOverLapping(nextLevelBlocks.get(i))) {

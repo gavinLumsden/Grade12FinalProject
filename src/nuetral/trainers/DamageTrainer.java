@@ -1,6 +1,7 @@
 package nuetral.trainers;
 
 import game.Icons;
+import java.net.MalformedURLException;
 import javax.swing.JLabel;
 
 /**
@@ -15,7 +16,7 @@ public class DamageTrainer extends Trainer {
     public String quote = "Trainer Damage says: now that's a lot of damage!"; 
     public String price = "+1 damage = 100 gold"; 
 
-    public DamageTrainer(JLabel image) {
+    public DamageTrainer(JLabel image) throws MalformedURLException {
         super(image);
         super.sprite.setImage(Icons.TRAINER_DAMAGE_IDLE_DOWN);
         super.stat = stat; 

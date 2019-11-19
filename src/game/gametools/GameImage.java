@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -34,7 +35,7 @@ public class GameImage {
      *
      * @param label the label used to display the image
      */
-    public GameImage(JLabel label) {
+    public GameImage(JLabel label) throws MalformedURLException {
         this(label, "");               // set debug mode
     }
 
@@ -66,18 +67,7 @@ public class GameImage {
      * @param label the label used to display the image
      * @param imageFile the relative image filename to display
      */
-    public GameImage(JLabel label, String imageFile) {
-        this.label = label;                         // set parameter to property
-        setImage(imageFile);                        // set image
-    }
-    
-    /**
-     * Constructor for the class, sets class properties
-     *
-     * @param label the label used to display the image
-     * @param imageFile the relative image filename to display
-     */
-    public GameImage(JLabel label, URL imageFile) {
+    public GameImage(JLabel label, String imageFile) throws MalformedURLException {
         this.label = label;                         // set parameter to property
         setImage(imageFile);                        // set image
     }
@@ -177,24 +167,8 @@ public class GameImage {
         label.setBounds(x, y, w, h);
     }
 
-    /**
-     * Change the image inside a label to a new image an possibly resize the
-     * image to fit the label size
-     *
-     * @param imageFile the new image file to change the label to
-     */
-    public void setImage(String imageFile) {
-        this.imageFile = imageFile;             // set property to parameter
-        label.setBorder(null);                  // remove border
-        label.setOpaque(false);                 // remove background color
-        icon = new ImageIcon(getClass().getResource(imageFile));    // set icon
-        label.setIcon(icon);                    // set icon to label
-        show();                                 // display picturebox 
-//        resizeToContainer();                    // resize
-    }
-
-    public void setImage(URL url) {
-        this.url = url;             // set property to parameter
+    public void setImage(String imageFile) throws MalformedURLException {
+        this.url = new URL(imageFile);             // set property to parameter
         label.setBorder(null);                  // remove border
         label.setOpaque(false);                 // remove background color
         icon = new ImageIcon(url);    // set icon

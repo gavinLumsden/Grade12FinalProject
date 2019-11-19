@@ -22,8 +22,7 @@ public class Grass extends GameObject {
      */
     public Grass(JLabel image) throws MalformedURLException {
         super(image, 0, Directions.STOP, 0);
-        URL url = new URL(Icons.GRASS); 
-        sprite.setImage(url);
+        sprite.setImage(Icons.GRASS);
         sprite.debug("");
         sprite.setBackground(0, 145, 0);
         sprite.removeBorder();

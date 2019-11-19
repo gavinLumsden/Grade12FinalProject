@@ -3,6 +3,7 @@ package objects;
 import game.gametools.Directions;
 import game.gametools.GameObject;
 import java.awt.Color;
+import java.net.MalformedURLException;
 import javax.swing.JLabel;
 
 /**
@@ -18,7 +19,7 @@ public class Wall extends GameObject {
      *
      * @param image
      */
-    public Wall(JLabel image) {
+    public Wall(JLabel image) throws MalformedURLException {
         super(image, 0, Directions.STOP, 0);
         sprite.debug("", Color.black);
     }

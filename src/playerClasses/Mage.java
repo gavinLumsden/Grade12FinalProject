@@ -16,6 +16,8 @@ import game.Icons;
 import game.gametools.Animation;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import maps.Map1;
 import maps.Map2;
@@ -187,84 +189,60 @@ public class Mage extends GameCharacter {
         super.attack4Duration = attack4Duration;
 
         super.playerName = NAME;
-        
-        URL walkUp1 = new URL(Icons.MAGE_WALK_UP_1); 
-        URL walkUp2 = new URL(Icons.MAGE_WALK_UP_2); 
-        URL idleUp1 = new URL(Icons.MAGE_IDLE_UP_1); 
-        URL idleUp2 = new URL(Icons.MAGE_IDLE_UP_2); 
-        URL idleUp3 = new URL(Icons.MAGE_IDLE_UP_3); 
-        
-        URL walkDown1 = new URL(Icons.MAGE_WALK_DOWN_1); 
-        URL walkDown2 = new URL(Icons.MAGE_WALK_DOWN_2); 
-        URL idleDown1 = new URL(Icons.MAGE_IDLE_DOWN_1); 
-        URL idleDown2 = new URL(Icons.MAGE_IDLE_DOWN_2); 
-        URL idleDown3 = new URL(Icons.MAGE_IDLE_DOWN_3); 
-        
-        URL walkLeft1 = new URL(Icons.MAGE_WALK_LEFT_1); 
-        URL walkLeft2 = new URL(Icons.MAGE_WALK_LEFT_2); 
-        URL idleLeft1 = new URL(Icons.MAGE_IDLE_LEFT_1); 
-        URL idleLeft2 = new URL(Icons.MAGE_IDLE_LEFT_2); 
-        URL idleLeft3 = new URL(Icons.MAGE_IDLE_LEFT_3); 
-        
-        URL walkRight1 = new URL(Icons.MAGE_WALK_RIGHT_1); 
-        URL walkRight2 = new URL(Icons.MAGE_WALK_RIGHT_2); 
-        URL idleRight1 = new URL(Icons.MAGE_IDLE_RIGHT_1); 
-        URL idleRight2 = new URL(Icons.MAGE_IDLE_RIGHT_2); 
-        URL idleRight3 = new URL(Icons.MAGE_IDLE_RIGHT_3); 
 
-        LinkedList<URL> walkUpFiles = new LinkedList<>();
-        walkUpFiles.add(walkUp1);
-        walkUpFiles.add(idleUp1);
-        walkUpFiles.add(walkUp2);
-        walkUpFiles.add(idleUp1);
+        LinkedList<String> walkUpFiles = new LinkedList<>();
+        walkUpFiles.add(Icons.MAGE_WALK_UP_1);
+        walkUpFiles.add(Icons.MAGE_IDLE_UP_1);
+        walkUpFiles.add(Icons.MAGE_WALK_UP_2);
+        walkUpFiles.add(Icons.MAGE_IDLE_UP_1);
 
-        LinkedList<URL> walkDownFiles = new LinkedList<>();
-        walkDownFiles.add(walkDown1);
-        walkDownFiles.add(idleDown1);
-        walkDownFiles.add(walkDown2);
-        walkDownFiles.add(idleDown1);
+        LinkedList<String> walkDownFiles = new LinkedList<>();
+        walkDownFiles.add(Icons.MAGE_WALK_DOWN_1);
+        walkDownFiles.add(Icons.MAGE_IDLE_DOWN_1);
+        walkDownFiles.add(Icons.MAGE_WALK_DOWN_2);
+        walkDownFiles.add(Icons.MAGE_IDLE_DOWN_1);
 
-        LinkedList<URL> walkLeftFiles = new LinkedList<>();
-        walkLeftFiles.add(walkLeft1);
-        walkLeftFiles.add(idleLeft1);
-        walkLeftFiles.add(walkLeft2);
-        walkLeftFiles.add(idleLeft1);
+        LinkedList<String> walkLeftFiles = new LinkedList<>();
+        walkLeftFiles.add(Icons.MAGE_WALK_LEFT_1);
+        walkLeftFiles.add(Icons.MAGE_IDLE_LEFT_1);
+        walkLeftFiles.add(Icons.MAGE_WALK_LEFT_2);
+        walkLeftFiles.add(Icons.MAGE_IDLE_LEFT_1);
 
-        LinkedList<URL> walkRightFiles = new LinkedList<>();
-        walkRightFiles.add(walkRight1);
-        walkRightFiles.add(idleRight1);
-        walkRightFiles.add(walkRight2);
-        walkRightFiles.add(idleRight1);
+        LinkedList<String> walkRightFiles = new LinkedList<>();
+        walkRightFiles.add(Icons.MAGE_WALK_RIGHT_1);
+        walkRightFiles.add(Icons.MAGE_IDLE_RIGHT_1);
+        walkRightFiles.add(Icons.MAGE_WALK_RIGHT_2);
+        walkRightFiles.add(Icons.MAGE_IDLE_RIGHT_1);
 
-        LinkedList<URL> stopUpFiles = new LinkedList<>();
-        stopUpFiles.add(idleUp1);
-        stopUpFiles.add(idleUp2);
-        stopUpFiles.add(idleUp3);
+        LinkedList<String> stopUpFiles = new LinkedList<>();
+        stopUpFiles.add(Icons.MAGE_IDLE_UP_1);
+        stopUpFiles.add(Icons.MAGE_IDLE_UP_2);
+        stopUpFiles.add(Icons.MAGE_IDLE_UP_3);
 
-        LinkedList<URL> stopDownFiles = new LinkedList<>();
-        stopUpFiles.add(idleDown1);
-        stopUpFiles.add(idleDown2);
-        stopUpFiles.add(idleDown3);
+        LinkedList<String> stopDownFiles = new LinkedList<>();
+        stopDownFiles.add(Icons.MAGE_IDLE_DOWN_1);
+        stopDownFiles.add(Icons.MAGE_IDLE_DOWN_2);
+        stopDownFiles.add(Icons.MAGE_IDLE_DOWN_3);
 
-        LinkedList<URL> stopLeftFiles = new LinkedList<>();
-        stopUpFiles.add(idleLeft1);
-        stopUpFiles.add(idleLeft2);
-        stopUpFiles.add(idleLeft3);
+        LinkedList<String> stopLeftFiles = new LinkedList<>();
+        stopLeftFiles.add(Icons.MAGE_IDLE_LEFT_1);
+        stopLeftFiles.add(Icons.MAGE_IDLE_LEFT_2);
+        stopLeftFiles.add(Icons.MAGE_IDLE_LEFT_3);
 
-        LinkedList<URL> stopRightFiles = new LinkedList<>();
-        stopUpFiles.add(idleRight1);
-        stopUpFiles.add(idleRight2);
-        stopUpFiles.add(idleRight3);
+        LinkedList<String> stopRightFiles = new LinkedList<>();
+        stopRightFiles.add(Icons.MAGE_IDLE_RIGHT_1);
+        stopRightFiles.add(Icons.MAGE_IDLE_RIGHT_2);
+        stopRightFiles.add(Icons.MAGE_IDLE_RIGHT_3);
 
         Animation walkUpAnimation    = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
         Animation walkDownAnimation  = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);
         Animation walkLeftAnimation  = new Animation(heroImage, walkLeftFiles, super.WALK_DELAY, true);
         Animation walkRightAnimation = new Animation(heroImage, walkRightFiles, super.WALK_DELAY, true);
 
-        Animation stopUpAnimation    = new Animation(heroImage, stopUpFiles, super.IDLE_DELAY, true);
-        Animation stopDownAnimation  = new Animation(heroImage, stopDownFiles, super.IDLE_DELAY, true);
-        Animation stopLeftAnimation  = new Animation(heroImage, stopLeftFiles, super.IDLE_DELAY, true);
-        Animation stopRightAnimation = new Animation(heroImage, stopRightFiles, super.IDLE_DELAY, true);
+        Animation stopUpAnimation    = new Animation(heroImage, stopUpFiles, super.WALK_DELAY, true);
+        Animation stopDownAnimation  = new Animation(heroImage, stopDownFiles, super.WALK_DELAY, true);
+        Animation stopLeftAnimation  = new Animation(heroImage, stopLeftFiles, super.WALK_DELAY, true);
+        Animation stopRightAnimation = new Animation(heroImage, stopRightFiles, super.WALK_DELAY, true);
 
         LinkedList<Animation> animations = new LinkedList<>();
 
@@ -286,22 +264,18 @@ public class Mage extends GameCharacter {
      */
     @Override
     public void action() {
-        mover.move();
-        animate();
-        boolean check = checkWalls();
-        if (check) {
-            check = checkNextLevelBlocks();
+        try {
+            mover.move();
+            animate();
+            boolean check = checkWalls();
+            if (check) check = checkNextLevelBlocks();
+            if (check) check = checkHouses();
+            if (check) check = checkEnemies();
+            if (check) check = checkTrainers();
+            redraw();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Mage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (check) {
-            check = checkHouses();
-        }
-        if (check) {
-            check = checkEnemies();
-        }
-        if (check) {
-            check = checkTrainers();
-        }
-        redraw();
     }
 
     /**
@@ -322,7 +296,7 @@ public class Mage extends GameCharacter {
     /**
      * checks to see if the hero is overlapping with a next level block
      */
-    private boolean checkNextLevelBlocks() {
+    private boolean checkNextLevelBlocks() throws MalformedURLException {
         for (int i = 0; i < nextLevelBlocks.size(); i++) {
             if (nextLevelBlocks.get(i) != null) {
                 if (detector.isOverLapping(nextLevelBlocks.get(i))) {

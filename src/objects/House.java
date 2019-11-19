@@ -22,8 +22,7 @@ public class House extends GameObject {
      */
     public House(JLabel image) throws MalformedURLException {
         super(image, 0, Directions.STOP, 0);
-        URL url = new URL(Icons.HOUSE); 
-        sprite.setImage(url);
+        sprite.setImage(Icons.HOUSE);
         sprite.debug("");
         sprite.setBackground(0, 0, 255);
         sprite.removeBorder();

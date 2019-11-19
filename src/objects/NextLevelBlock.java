@@ -3,6 +3,7 @@ package objects;
 import game.gametools.Directions;
 import game.gametools.GameObject;
 import java.awt.Color;
+import java.net.MalformedURLException;
 import javax.swing.JLabel;
 
 /**
@@ -21,7 +22,7 @@ public class NextLevelBlock extends GameObject {
      * @param image
      * @param mapToGoTo
      */
-    public NextLevelBlock(JLabel image, String mapToGoTo) {
+    public NextLevelBlock(JLabel image, String mapToGoTo) throws MalformedURLException {
         super(image, 0, Directions.STOP, 0);
         this.mapToGoTo = mapToGoTo; 
         sprite.debug("", Color.WHITE);

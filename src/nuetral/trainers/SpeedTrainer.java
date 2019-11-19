@@ -1,6 +1,7 @@
 package nuetral.trainers;
 
 import game.Icons;
+import java.net.MalformedURLException;
 import javax.swing.JLabel;
 
 /**
@@ -15,7 +16,7 @@ public class SpeedTrainer extends Trainer {
     public String quote = "Trainer Speed says: fast"; 
     public String price = "+1 punch speed = 100 gold"; 
 
-    public SpeedTrainer(JLabel image) {
+    public SpeedTrainer(JLabel image) throws MalformedURLException {
         super(image);
         super.sprite.setImage(Icons.TRAINER_SPEED_IDLE_DOWN);
         super.stat = stat; 

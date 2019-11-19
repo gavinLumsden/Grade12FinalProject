@@ -149,7 +149,7 @@ public class GameEngine {
      * @param images
      * @param characterToCreate
      */
-    public void createGameCharacter(LinkedList<JLabel> images, String characterToCreate) {
+    public void createGameCharacter(LinkedList<JLabel> images, String characterToCreate) throws MalformedURLException {
         if (characterToCreate.equals("shopkeepers")) {
             shopkeepers = new LinkedList<>();
             for (int i = 0; i < shopkeepers.size(); i++) {

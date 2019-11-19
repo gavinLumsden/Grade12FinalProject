@@ -3,6 +3,8 @@ package enemyClasses;
 import game.Enemy;
 import game.Icons;
 import game.gametools.Directions;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javax.swing.JLabel;
 
 public class Engineer extends Enemy {
@@ -38,7 +40,7 @@ public class Engineer extends Enemy {
     public int attack3Duration;   
     public int attack4Duration;
 
-    public Engineer(JLabel image, int amount, int direction, int numberOfDirections, int delay, int level) {
+    public Engineer(JLabel image, int amount, int direction, int numberOfDirections, int delay, int level) throws MalformedURLException {
         super(image, 0, Directions.STOP, 0, 0);
 
         this.level = level; 
@@ -70,7 +72,7 @@ public class Engineer extends Enemy {
         super.punchSpeed  = punchSpeed;
         super.name        = NAME;
         super.level       = this.level; 
-
+ 
         sprite.setImage(Icons.ENGINEER_IDLE_DOWN);
         sprite.debug("");
         sprite.removeBorder();

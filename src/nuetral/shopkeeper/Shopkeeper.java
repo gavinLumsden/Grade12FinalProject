@@ -3,6 +3,7 @@ package nuetral.shopkeeper;
 import game.Icons;
 import game.gametools.Directions;
 import game.gametools.GameObject;
+import java.net.MalformedURLException;
 import javax.swing.JLabel;
 
 /**
@@ -18,7 +19,7 @@ public class Shopkeeper extends GameObject {
      *
      * @param image
      */
-    public Shopkeeper(JLabel image) {
+    public Shopkeeper(JLabel image) throws MalformedURLException {
         super(image, 0, Directions.STOP, 0);
         sprite.setImage(Icons.SHOPKEEPER_2_IDLE_DOWN);
         sprite.debug("");

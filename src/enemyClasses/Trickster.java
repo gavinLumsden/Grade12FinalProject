@@ -3,6 +3,8 @@ package enemyClasses;
 import game.Icons; 
 import game.Enemy;
 import game.gametools.Directions;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javax.swing.JLabel;
 
 public class Trickster extends Enemy {
@@ -38,7 +40,7 @@ public class Trickster extends Enemy {
     public int attack3Duration;   
     public int attack4Duration;
 
-    public Trickster(JLabel image, int amount, int direction, int numberOfDirections, int delay, int level) {
+    public Trickster(JLabel image, int amount, int direction, int numberOfDirections, int delay, int level) throws MalformedURLException {
         super(image, 0, Directions.STOP, 0, 0);
 
         this.level = level; 

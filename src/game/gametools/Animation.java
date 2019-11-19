@@ -3,6 +3,7 @@ package game.gametools;
 import collections.LinkedList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
 import java.net.URL;
 import javax.swing.JLabel;
 import javax.swing.Timer;
@@ -25,26 +26,6 @@ public class Animation <T> {
     private int fps;
     private int currentFrame;
     private int lastFrame;
-
-    /**
-     * Constructor for the class, sets class properties
-     *
-     * @param label the label hitbox use to display the animation inside
-     * @param imageFiles the list of relative image file names
-     * @param delay the delay (in milliseconds) for the entire animation
-     * @param shouldLoop should the animation loop (true) or not (false)
-     */
-    public Animation(JLabel label,
-            LinkedList<URL> imageFiles,
-            boolean shouldLoop,
-            int delay) {
-        if (isValid(imageFiles, label)) {            // check objects for nulls       
-            this.label = label;                     // parameter to property
-            setDelay(delay);                        //set the delay
-            setLoop(shouldLoop);                    // determine if looping
-            setImageFiles(imageFiles, true);              // set all image files
-        }
-    }
     
     /**
      * Constructor for the class, sets class properties
@@ -57,7 +38,7 @@ public class Animation <T> {
     public Animation(JLabel label,
             LinkedList<String> imageFiles,
             int delay,
-            boolean shouldLoop) {
+            boolean shouldLoop) throws MalformedURLException {
         if (isValid(label, imageFiles)) {            // check objects for nulls       
             this.label = label;                     // parameter to property
             setDelay(delay);                        //set the delay
@@ -142,23 +123,13 @@ public class Animation <T> {
             setTimer();  // set timer if timer is instantiated
         }
     }
-
-    /**
-     * Sets all the frame image files for the entire animation
-     *
-     * @param imageFiles the list of relative image file names
-     */
-    public void setImageFiles(LinkedList<URL> imageFiles, boolean fix) {
-        setFrames(imageFiles, true);                  // set all the frames
-        setTimer();                             // set the timer
-    }
     
     /**
      * Sets all the frame image files for the entire animation
      *
      * @param imageFiles the list of relative image file names
      */
-    public void setImageFiles(LinkedList<String> imageFiles) {
+    public void setImageFiles(LinkedList<String> imageFiles) throws MalformedURLException {
         setFrames(imageFiles);                  // set all the frames
         setTimer();                             // set the timer
     }
@@ -250,27 +221,12 @@ public class Animation <T> {
             }
         });                             // instatiate timer with the frame rate
     }
-
-    /**
-     * Sets all the frames for the animation from the image files, sets the
-     * first frame to visible
-     */
-    private void setFrames(LinkedList<URL> imageFiles, boolean fix) {
-        frames = new LinkedList<>();                        // create list
-        for (int i = 0; i < imageFiles.size(); i++) {       // traverse list
-            frames.add(new GameImage(label, imageFiles.get(i)));  // add frame
-            frames.get(i).hide();                           // hide frame
-        }
-        lastFrame = frames.size() - 1;                      // track laast frame
-        currentFrame = 0;                                   // set first frame
-        frames.get(currentFrame).show();                    // show first frame
-    }
     
     /**
      * Sets all the frames for the animation from the image files, sets the
      * first frame to visible
      */
-    private void setFrames(LinkedList<String> imageFiles) {
+    private void setFrames(LinkedList<String> imageFiles) throws MalformedURLException {
         frames = new LinkedList<>();                        // create list
         for (int i = 0; i < imageFiles.size(); i++) {       // traverse list
             frames.add(new GameImage(label, imageFiles.get(i)));  // add frame

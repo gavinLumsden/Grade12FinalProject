@@ -3,6 +3,8 @@ package enemyClasses;
 import game.Enemy;
 import game.Icons;
 import game.gametools.Directions;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javax.swing.JLabel;
 
 public class Rampage extends Enemy {
@@ -38,7 +40,7 @@ public class Rampage extends Enemy {
     public int attack3Duration;   
     public int attack4Duration;
 
-    public Rampage(JLabel image, int amount, int direction, int numberOfDirections, int delay, int level) {
+    public Rampage(JLabel image, int amount, int direction, int numberOfDirections, int delay, int level) throws MalformedURLException {
         super(image, 0, Directions.STOP, 0, 0);
 
         this.level = level; 

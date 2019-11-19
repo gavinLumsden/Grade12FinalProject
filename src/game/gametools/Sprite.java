@@ -2,7 +2,10 @@ package game.gametools;
 
 import collections.LinkedList;
 import java.awt.Color;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 /**
@@ -24,7 +27,7 @@ public class Sprite {
      * @param label the label hitbox used to display the image
      * @param animations the animations associated with the object
      */
-    public Sprite(JLabel label, LinkedList<Animation> animations) {
+    public Sprite(JLabel label, LinkedList<Animation> animations) throws MalformedURLException {
         gameImage = new GameImage(label);                  // set picturebox
         if (animations != null) {
             setAnimations(animations);  // set animations
@@ -37,7 +40,7 @@ public class Sprite {
      * @param label the label hitbox use to display the image
      * @param imageFile the relative image filename to display
      */
-    public Sprite(JLabel label, String imageFile) {
+    public Sprite(JLabel label, String imageFile) throws MalformedURLException {
         gameImage = new GameImage(label, imageFile);     // set picturebox
     }
 
@@ -72,7 +75,7 @@ public class Sprite {
      *
      * @param label the label hitbox use to display the image
      */
-    public Sprite(JLabel label) {
+    public Sprite(JLabel label) throws MalformedURLException {
         gameImage = new GameImage(label);               // set picturebox
     }
 
@@ -175,11 +178,11 @@ public class Sprite {
      * @param imageFile
      */
     public void setImage(String imageFile) {
-        gameImage.setImage(imageFile);
-    }
-
-    public void setImage(URL url) {
-        gameImage.setImage(url);
+        try {
+            gameImage.setImage(imageFile);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Sprite.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -339,7 +342,7 @@ public class Sprite {
      * @param index the animation to set the image files to
      * @param imageFiles the array of relative image file names
      */
-    private void setImageFiles(int index, LinkedList<String> imageFiles) {
+    private void setImageFiles(int index, LinkedList<String> imageFiles) throws MalformedURLException {
         animations.get(index).setImageFiles(imageFiles);
     }
 

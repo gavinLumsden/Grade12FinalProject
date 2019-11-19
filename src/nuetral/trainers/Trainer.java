@@ -2,6 +2,7 @@ package nuetral.trainers;
 
 import game.gametools.Directions;
 import game.gametools.GameObject;
+import java.net.MalformedURLException;
 import javax.swing.JLabel;
 
 /**
@@ -21,7 +22,7 @@ public class Trainer extends GameObject {
      *
      * @param image
      */
-    public Trainer(JLabel image) {
+    public Trainer(JLabel image) throws MalformedURLException {
         super(image, 0, Directions.STOP, 0);
         sprite.debug("");
     }
