@@ -2,6 +2,7 @@ package maps;
 
 import collections.LinkedList;
 import game.GameEngine;
+import java.net.MalformedURLException;
 import javax.swing.JLabel;
 import objects.NextLevelBlock;
 
@@ -26,7 +27,7 @@ public class Map3 extends javax.swing.JFrame {
      * @param currentMapNumber
      * @param engine
      */
-    public Map3(int currentMapNumber, GameEngine engine) {
+    public Map3(int currentMapNumber, GameEngine engine) throws MalformedURLException {
         initComponents();
         this.engine = engine;
 

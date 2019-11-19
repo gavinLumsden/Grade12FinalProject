@@ -13,6 +13,8 @@ import game.gametools.GameCharacter;
 import game.GameEngine;
 import game.Icons;
 import game.gametools.Animation;
+import java.net.MalformedURLException;
+import java.net.URL;
 import jframes.BattleUI;
 import javax.swing.JFrame;
 import maps.Map1;
@@ -129,7 +131,7 @@ public class Bandit extends GameCharacter {
             GameEngine engine, boolean hasBeenCreated,
             JFrame currentMap, JFrame previousMap,
             int currentMapNumber, int previousMapNumber,
-            LinkedList<Trainer> trainers) {
+            LinkedList<Trainer> trainers) throws MalformedURLException {
         super(heroImage, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
         this.currentMap = currentMap;
@@ -199,46 +201,62 @@ public class Bandit extends GameCharacter {
         super.attack4Duration = attack4Duration;
 
         super.playerName = NAME;
+        
+        URL walkUp1 = new URL(Icons.BANDIT_WALK_UP_1); 
+        URL walkUp2 = new URL(Icons.BANDIT_WALK_UP_2); 
+        URL idleUp  = new URL(Icons.BANDIT_IDLE_UP); 
+        
+        URL walkDown1 = new URL(Icons.BANDIT_WALK_DOWN_1); 
+        URL walkDown2 = new URL(Icons.BANDIT_WALK_DOWN_2); 
+        URL idleDown  = new URL(Icons.BANDIT_IDLE_DOWN); 
+        
+        URL walkLeft1 = new URL(Icons.BANDIT_WALK_LEFT_1); 
+        URL walkLeft2 = new URL(Icons.BANDIT_WALK_LEFT_2); 
+        URL idleLeft  = new URL(Icons.BANDIT_IDLE_LEFT); 
+        
+        URL walkRight1 = new URL(Icons.BANDIT_WALK_RIGHT_1); 
+        URL walkRight2 = new URL(Icons.BANDIT_WALK_RIGHT_2); 
+        URL idleRight  = new URL(Icons.BANDIT_IDLE_RIGHT); 
 
-        LinkedList<String> walkUpFiles = new LinkedList<>();
-        walkUpFiles.add(Icons.BANDIT_WALK_UP_1);
-        walkUpFiles.add(Icons.BANDIT_IDLE_UP);
-        walkUpFiles.add(Icons.BANDIT_WALK_UP_2);
-        walkUpFiles.add(Icons.BANDIT_IDLE_UP);
+        LinkedList<URL> walkUpFiles = new LinkedList<>();
+        walkUpFiles.add(walkUp1);
+        walkUpFiles.add(idleUp);
+        walkUpFiles.add(walkUp2);
+        walkUpFiles.add(idleUp);
 
-        LinkedList<String> walkDownFiles = new LinkedList<>();
-        walkDownFiles.add(Icons.BANDIT_WALK_DOWN_1);
-        walkDownFiles.add(Icons.BANDIT_IDLE_DOWN);
-        walkDownFiles.add(Icons.BANDIT_WALK_DOWN_2);
-        walkDownFiles.add(Icons.BANDIT_IDLE_DOWN);
+        LinkedList<URL> walkDownFiles = new LinkedList<>();
+        walkDownFiles.add(walkDown1);
+        walkDownFiles.add(idleDown);
+        walkDownFiles.add(walkDown2);
+        walkDownFiles.add(idleDown);
 
-        LinkedList<String> walkLeftFiles = new LinkedList<>();
-        walkLeftFiles.add(Icons.BANDIT_WALK_LEFT_1);
-        walkLeftFiles.add(Icons.BANDIT_IDLE_LEFT);
-        walkLeftFiles.add(Icons.BANDIT_WALK_LEFT_2);
-        walkLeftFiles.add(Icons.BANDIT_IDLE_LEFT);
+        LinkedList<URL> walkLeftFiles = new LinkedList<>();
+        walkLeftFiles.add(walkLeft1);
+        walkLeftFiles.add(idleLeft);
+        walkLeftFiles.add(walkLeft2);
+        walkLeftFiles.add(idleLeft);
 
-        LinkedList<String> walkRightFiles = new LinkedList<>();
-        walkRightFiles.add(Icons.BANDIT_WALK_RIGHT_1);
-        walkRightFiles.add(Icons.BANDIT_IDLE_RIGHT);
-        walkRightFiles.add(Icons.BANDIT_WALK_RIGHT_2);
-        walkRightFiles.add(Icons.BANDIT_IDLE_RIGHT);
+        LinkedList<URL> walkRightFiles = new LinkedList<>();
+        walkRightFiles.add(walkRight1);
+        walkRightFiles.add(idleRight);
+        walkRightFiles.add(walkRight2);
+        walkRightFiles.add(idleRight);
 
-        LinkedList<String> stopUpFiles = new LinkedList<>();
-        stopUpFiles.add(Icons.BANDIT_IDLE_UP);
-        stopUpFiles.add(Icons.BANDIT_IDLE_UP);
+        LinkedList<URL> stopUpFiles = new LinkedList<>();
+        stopUpFiles.add(idleUp);
+        stopUpFiles.add(idleUp);
 
-        LinkedList<String> stopDownFiles = new LinkedList<>();
-        stopDownFiles.add(Icons.BANDIT_IDLE_DOWN);
-        stopDownFiles.add(Icons.BANDIT_IDLE_DOWN);
+        LinkedList<URL> stopDownFiles = new LinkedList<>();
+        stopDownFiles.add(idleDown);
+        stopDownFiles.add(idleDown);
 
-        LinkedList<String> stopLeftFiles = new LinkedList<>();
-        stopLeftFiles.add(Icons.BANDIT_IDLE_LEFT);
-        stopLeftFiles.add(Icons.BANDIT_IDLE_LEFT);
+        LinkedList<URL> stopLeftFiles = new LinkedList<>();
+        stopLeftFiles.add(idleLeft);
+        stopLeftFiles.add(idleLeft);
 
-        LinkedList<String> stopRightFiles = new LinkedList<>();
-        stopRightFiles.add(Icons.BANDIT_IDLE_RIGHT);
-        stopRightFiles.add(Icons.BANDIT_IDLE_RIGHT);
+        LinkedList<URL> stopRightFiles = new LinkedList<>();
+        stopRightFiles.add(idleRight);
+        stopRightFiles.add(idleRight);
 
         Animation walkUpAnimation    = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
         Animation walkDownAnimation  = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);

@@ -2,9 +2,12 @@ package jframes;
 
 import collections.LinkedList;
 import game.GameEngine;
+import game.Icons;
 import game.gametools.Animation;
 import maps.Map1;
 import java.awt.Color;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -35,47 +38,72 @@ public class CharacterSelect extends javax.swing.JFrame {
      *
      * @param engine
      */
-    public CharacterSelect(GameEngine engine) {
+    public CharacterSelect(GameEngine engine) throws MalformedURLException {
         initComponents();
         this.engine = engine;
 
-        LinkedList<LinkedList<String>> imageFiles = new LinkedList<>();
+        LinkedList<LinkedList<URL>> imageFiles = new LinkedList<>();
 
-        LinkedList<String> banditAnimations = new LinkedList<>();
-        banditAnimations.add("/animations/playerClasses/bandit/banditRightWalk1.png");
-        banditAnimations.add("/animations/playerClasses/bandit/banditRightIdle.png");
-        banditAnimations.add("/animations/playerClasses/bandit/banditRightWalk2.png");
-        banditAnimations.add("/animations/playerClasses/bandit/banditRightIdle.png");
+        URL banditWalk1 = new URL(Icons.BANDIT_WALK_RIGHT_1); 
+        URL banditWalk2 = new URL(Icons.BANDIT_WALK_RIGHT_2); 
+        URL banditIdle  = new URL(Icons.BANDIT_IDLE_RIGHT); 
+        
+        URL gamblerWalk1 = new URL(Icons.GAMBLER_WALK_RIGHT_1); 
+        URL gamblerWalk2 = new URL(Icons.GAMBLER_WALK_RIGHT_2); 
+        URL gamblerIdle  = new URL(Icons.GAMBLER_IDLE_RIGHT); 
+        
+        URL hackerWalk1 = new URL(Icons.HACKER_WALK_RIGHT_1); 
+        URL hackerWalk2 = new URL(Icons.HACKER_WALK_RIGHT_2); 
+        URL hackerIdle  = new URL(Icons.HACKER_IDLE_RIGHT); 
+        
+        URL juggernautWalk1 = new URL(Icons.JUGGERNAUT_WALK_RIGHT_1); 
+        URL juggernautWalk2 = new URL(Icons.JUGGERNAUT_WALK_RIGHT_2); 
+        URL juggernautIdle  = new URL(Icons.JUGGERNAUT_IDLE_RIGHT); 
+        
+        URL mageWalk1 = new URL(Icons.MAGE_WALK_RIGHT_1); 
+        URL mageWalk2 = new URL(Icons.MAGE_WALK_RIGHT_2); 
+        URL mageIdle  = new URL(Icons.MAGE_IDLE_RIGHT_1); 
+        
+        URL vampireWalk1 = new URL(Icons.VAMPIRE_WALK_RIGHT_1); 
+        URL vampireWalk2 = new URL(Icons.VAMPIRE_WALK_RIGHT_2); 
+        URL vampireIdle  = new URL(Icons.VAMPIRE_IDLE_RIGHT); 
+        
+        
+        LinkedList<URL> banditAnimations = new LinkedList<>();
+        banditAnimations.add(banditWalk1);
+        banditAnimations.add(banditIdle); 
+        banditAnimations.add(banditWalk2);
+        banditAnimations.add(banditIdle); 
 
-        LinkedList<String> gamblerAnimations = new LinkedList<>();
-        gamblerAnimations.add("/animations/playerClasses/gambler/gamblerRightWalk1.png");
-        gamblerAnimations.add("/animations/playerClasses/gambler/gamblerRightIdle.png");
-        gamblerAnimations.add("/animations/playerClasses/gambler/gamblerRightWalk2.png");
-        gamblerAnimations.add("/animations/playerClasses/gambler/gamblerRightIdle.png");
+        LinkedList<URL> gamblerAnimations = new LinkedList<>();
+        gamblerAnimations.add(gamblerWalk1);
+        gamblerAnimations.add(gamblerIdle); 
+        gamblerAnimations.add(gamblerWalk2);
+        gamblerAnimations.add(gamblerIdle); 
 
-        LinkedList<String> hackerAnimations = new LinkedList<>();
-        hackerAnimations.add("/animations/playerClasses/hacker/hackerRightWalk1.png");
-        hackerAnimations.add("/animations/playerClasses/hacker/hackerRightIdle.png");
-        hackerAnimations.add("/animations/playerClasses/hacker/hackerRightWalk2.png");
-        hackerAnimations.add("/animations/playerClasses/hacker/hackerRightIdle.png");
+        LinkedList<URL> hackerAnimations = new LinkedList<>();
+        hackerAnimations.add(hackerWalk1);
+        hackerAnimations.add(hackerIdle); 
+        hackerAnimations.add(hackerWalk2);
+        hackerAnimations.add(hackerIdle); 
 
-        LinkedList<String> juggernautAnimations = new LinkedList<>();
-        juggernautAnimations.add("/animations/playerClasses/juggernaut/juggernautRightWalk1.png");
-        juggernautAnimations.add("/animations/playerClasses/juggernaut/juggernautRightIdle.png");
-        juggernautAnimations.add("/animations/playerClasses/juggernaut/juggernautRightWalk2.png");
-        juggernautAnimations.add("/animations/playerClasses/juggernaut/juggernautRightIdle.png");
+        LinkedList<URL> juggernautAnimations = new LinkedList<>();
+        juggernautAnimations.add(juggernautWalk1);
+        juggernautAnimations.add(juggernautIdle); 
+        juggernautAnimations.add(juggernautWalk2);
+        juggernautAnimations.add(juggernautIdle); 
 
-        LinkedList<String> mageAnimations = new LinkedList<>();
-        mageAnimations.add("/animations/playerClasses/mage/mageRightWalk1.png");
-        mageAnimations.add("/animations/playerClasses/mage/mageRightIdle1.png");
-        mageAnimations.add("/animations/playerClasses/mage/mageRightWalk2.png");
-        mageAnimations.add("/animations/playerClasses/mage/mageRightIdle1.png");
+        LinkedList<URL> mageAnimations = new LinkedList<>();
+        mageAnimations.add(mageWalk1);
+        mageAnimations.add(mageIdle); 
+        mageAnimations.add(mageWalk2);
+        mageAnimations.add(mageIdle); 
 
-        LinkedList<String> vampireAnimations = new LinkedList<>();
-        vampireAnimations.add("/animations/playerClasses/vampire/vampireRightWalk1.png");
-        vampireAnimations.add("/animations/playerClasses/vampire/vampireRightIdle.png");
-        vampireAnimations.add("/animations/playerClasses/vampire/vampireRightWalk2.png");
-        vampireAnimations.add("/animations/playerClasses/vampire/vampireRightIdle.png");
+        LinkedList<URL> vampireAnimations = new LinkedList<>();
+        vampireAnimations.add(banditWalk1);
+        vampireAnimations.add(banditIdle); 
+        vampireAnimations.add(banditWalk2);
+        vampireAnimations.add(banditIdle); 
 
         imageFiles.add(banditAnimations);
         imageFiles.add(gamblerAnimations);

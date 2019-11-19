@@ -15,6 +15,7 @@ import playerClasses.Bandit;
 import playerClasses.Gambler;
 import game.gametools.GameCharacter;
 import java.awt.event.KeyEvent;
+import java.net.MalformedURLException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import nuetral.trainers.Trainer;
@@ -57,7 +58,7 @@ public class Hero {
             GameEngine engine, boolean hasBeenCreated,
             JFrame currentMap, JFrame previousMap,
             int currentMapNumber, int previousMapNumber,
-            LinkedList<Trainer> trainers) {
+            LinkedList<Trainer> trainers) throws MalformedURLException {
         if (CharacterSelect.selected.equals("bandit")) {
             heroClass = new Bandit(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapNumber, previousMapNumber, trainers);
         }  else if (CharacterSelect.selected.equals("gambler")) {

@@ -26,6 +26,7 @@ public class GameImage {
 
     private JLabel label;
     private String imageFile;
+    private URL url; 
     private ImageIcon icon;
 
     /**
@@ -68,7 +69,17 @@ public class GameImage {
     public GameImage(JLabel label, String imageFile) {
         this.label = label;                         // set parameter to property
         setImage(imageFile);                        // set image
-//        resizeToContainer();                        // resize
+    }
+    
+    /**
+     * Constructor for the class, sets class properties
+     *
+     * @param label the label used to display the image
+     * @param imageFile the relative image filename to display
+     */
+    public GameImage(JLabel label, URL imageFile) {
+        this.label = label;                         // set parameter to property
+        setImage(imageFile);                        // set image
     }
 
     /**
@@ -180,6 +191,15 @@ public class GameImage {
         label.setIcon(icon);                    // set icon to label
         show();                                 // display picturebox 
 //        resizeToContainer();                    // resize
+    }
+
+    public void setImage(URL url) {
+        this.url = url;             // set property to parameter
+        label.setBorder(null);                  // remove border
+        label.setOpaque(false);                 // remove background color
+        icon = new ImageIcon(url);    // set icon
+        label.setIcon(icon);                    // set icon to label
+        show();                                 // display picturebox 
     }
 
     /**

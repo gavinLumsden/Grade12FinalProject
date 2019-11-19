@@ -3,6 +3,8 @@ package objects;
 import game.Icons;
 import game.gametools.Directions;
 import game.gametools.GameObject;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javax.swing.JLabel;
 
 /**
@@ -18,9 +20,10 @@ public class Grass extends GameObject {
      *
      * @param image
      */
-    public Grass(JLabel image) {
+    public Grass(JLabel image) throws MalformedURLException {
         super(image, 0, Directions.STOP, 0);
-        sprite.setImage(Icons.GRASS);
+        URL url = new URL(Icons.GRASS); 
+        sprite.setImage(url);
         sprite.debug("");
         sprite.setBackground(0, 145, 0);
         sprite.removeBorder();

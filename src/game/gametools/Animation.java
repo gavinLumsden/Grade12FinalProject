@@ -3,6 +3,7 @@ package game.gametools;
 import collections.LinkedList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
@@ -11,9 +12,10 @@ import javax.swing.Timer;
  * useful methods
  *
  * @author g.lumsden
+ * @param <T>
  * @since 14-May-2019
  */
-public class Animation {
+public class Animation <T> {
 
     private JLabel label;
     private LinkedList<GameImage> frames;
@@ -24,6 +26,26 @@ public class Animation {
     private int currentFrame;
     private int lastFrame;
 
+    /**
+     * Constructor for the class, sets class properties
+     *
+     * @param label the label hitbox use to display the animation inside
+     * @param imageFiles the list of relative image file names
+     * @param delay the delay (in milliseconds) for the entire animation
+     * @param shouldLoop should the animation loop (true) or not (false)
+     */
+    public Animation(JLabel label,
+            LinkedList<URL> imageFiles,
+            boolean shouldLoop,
+            int delay) {
+        if (isValid(imageFiles, label)) {            // check objects for nulls       
+            this.label = label;                     // parameter to property
+            setDelay(delay);                        //set the delay
+            setLoop(shouldLoop);                    // determine if looping
+            setImageFiles(imageFiles, true);              // set all image files
+        }
+    }
+    
     /**
      * Constructor for the class, sets class properties
      *
@@ -126,6 +148,16 @@ public class Animation {
      *
      * @param imageFiles the list of relative image file names
      */
+    public void setImageFiles(LinkedList<URL> imageFiles, boolean fix) {
+        setFrames(imageFiles, true);                  // set all the frames
+        setTimer();                             // set the timer
+    }
+    
+    /**
+     * Sets all the frame image files for the entire animation
+     *
+     * @param imageFiles the list of relative image file names
+     */
     public void setImageFiles(LinkedList<String> imageFiles) {
         setFrames(imageFiles);                  // set all the frames
         setTimer();                             // set the timer
@@ -223,6 +255,21 @@ public class Animation {
      * Sets all the frames for the animation from the image files, sets the
      * first frame to visible
      */
+    private void setFrames(LinkedList<URL> imageFiles, boolean fix) {
+        frames = new LinkedList<>();                        // create list
+        for (int i = 0; i < imageFiles.size(); i++) {       // traverse list
+            frames.add(new GameImage(label, imageFiles.get(i)));  // add frame
+            frames.get(i).hide();                           // hide frame
+        }
+        lastFrame = frames.size() - 1;                      // track laast frame
+        currentFrame = 0;                                   // set first frame
+        frames.get(currentFrame).show();                    // show first frame
+    }
+    
+    /**
+     * Sets all the frames for the animation from the image files, sets the
+     * first frame to visible
+     */
     private void setFrames(LinkedList<String> imageFiles) {
         frames = new LinkedList<>();                        // create list
         for (int i = 0; i < imageFiles.size(); i++) {       // traverse list
@@ -272,6 +319,30 @@ public class Animation {
      * @return the objects are valid (true) or not (false)
      */
     private boolean isValid(JLabel hitbox, LinkedList<String> imageFiles) {
+        if (hitbox == null) {
+            System.out.println("Animation not created, Label null!");
+            return false;
+        }
+        if (imageFiles == null) {
+            System.out.println("Animation not created, imageFiles null!");
+            return false;
+        }
+        if (imageFiles.size() == 0) {
+            System.out.println("Animation not created, imageFiles size 0!");
+            return false;
+        }
+        return true;
+    }
+    
+    /**
+     * Checks the various objects from the constructor to make sure they are
+     * valid objects to continue the construction
+     *
+     * @param hitbox the label hitbox use to display the animation inside
+     * @param imageFiles the list of relative image file names
+     * @return the objects are valid (true) or not (false)
+     */
+    private boolean isValid(LinkedList<URL> imageFiles, JLabel hitbox) {
         if (hitbox == null) {
             System.out.println("Animation not created, Label null!");
             return false;

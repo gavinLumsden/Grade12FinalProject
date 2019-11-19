@@ -17,6 +17,7 @@ import game.gametools.Directions;
 import game.gametools.MediaPlayer;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.net.MalformedURLException;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -118,7 +119,7 @@ public class GameEngine {
      * @param images
      * @param objectToCreate
      */
-    public void createGameObject(LinkedList<JLabel> images, String objectToCreate) {
+    public void createGameObject(LinkedList<JLabel> images, String objectToCreate) throws MalformedURLException {
         if (objectToCreate.equals("grass")) {
             grass = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
@@ -231,7 +232,7 @@ public class GameEngine {
      * @param heroImage
      * @param nextLevelBlocks
      */
-    public void createHero(JLabel heroImage, LinkedList<NextLevelBlock> nextLevelBlocks) {
+    public void createHero(JLabel heroImage, LinkedList<NextLevelBlock> nextLevelBlocks) throws MalformedURLException {
         hero = new Hero(heroImage,
                 walls, houses,
                 cyborgs, nails, rampages,

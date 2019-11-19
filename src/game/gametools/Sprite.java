@@ -2,6 +2,7 @@ package game.gametools;
 
 import collections.LinkedList;
 import java.awt.Color;
+import java.net.URL;
 import javax.swing.JLabel;
 
 /**
@@ -175,6 +176,10 @@ public class Sprite {
      */
     public void setImage(String imageFile) {
         gameImage.setImage(imageFile);
+    }
+
+    public void setImage(URL url) {
+        gameImage.setImage(url);
     }
 
     /**

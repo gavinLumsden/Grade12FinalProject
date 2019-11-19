@@ -2,7 +2,10 @@ package jframes;
 
 import game.GameEngine;
 import game.Hero;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import maps.Map1;
@@ -101,7 +104,11 @@ public class Information extends javax.swing.JFrame {
         engine.click(labels, label, isClicked, null, 0);
         cs.dispose();
         this.dispose();
-        Map1 map1 = new Map1(1, engine);
+        try {
+            Map1 map1 = new Map1(1, engine);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Information.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lblSelectMouseClicked
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked

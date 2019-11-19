@@ -1,6 +1,9 @@
 package jframes;
 
 import game.GameEngine;
+import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 /**
@@ -106,7 +109,11 @@ public class Introduction extends javax.swing.JFrame {
         label = btnNewGame; 
         isClicked = engine.click(labels, label, isClicked, null, 0); 
         this.setVisible(false);
-        CharacterSelect characterSelect = new CharacterSelect(engine); 
+        try { 
+            CharacterSelect characterSelect = new CharacterSelect(engine);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Introduction.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnNewGameMouseClicked
 
     private void btnLoadGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadGameMouseClicked
