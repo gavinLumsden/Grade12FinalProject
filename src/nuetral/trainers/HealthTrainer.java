@@ -1,5 +1,6 @@
 package nuetral.trainers;
 
+import game.Icons;
 import javax.swing.JLabel;
 
 /**
@@ -16,7 +17,7 @@ public class HealthTrainer extends Trainer {
 
     public HealthTrainer(JLabel image) {
         super(image);
-        super.sprite.setImage("/animations/trainers/health/down/healthIdle.png");
+        super.sprite.setImage(Icons.TRAINER_HEALTH_IDLE_DOWN);
         super.stat = stat; 
         super.quote = quote; 
         super.price = price; 

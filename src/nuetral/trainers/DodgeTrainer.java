@@ -1,5 +1,6 @@
 package nuetral.trainers;
 
+import game.Icons;
 import javax.swing.JLabel;
 
 /**
@@ -16,7 +17,7 @@ public class DodgeTrainer extends Trainer {
 
     public DodgeTrainer(JLabel image) {
         super(image);
-        super.sprite.setImage("/animations/trainers/dodge/down/dodgeIdle.png");
+        super.sprite.setImage(Icons.TRAINER_DODGE_IDLE_DOWN);
         super.stat = stat; 
         super.quote = quote; 
         super.price = price; 

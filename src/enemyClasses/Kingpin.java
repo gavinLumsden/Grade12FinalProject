@@ -1,5 +1,6 @@
 package enemyClasses;
 
+import game.Icons; 
 import game.Enemy;
 import game.gametools.Directions;
 import javax.swing.JLabel;
@@ -70,7 +71,7 @@ public class Kingpin extends Enemy {
         super.name        = NAME;
         super.level       = this.level; 
 
-        sprite.setImage("/animations/enemyclasses/kingpin/kingpinRightIdle.png");
+        sprite.setImage(Icons.KINGPIN_IDLE_DOWN);
         sprite.debug("");
         sprite.removeBorder();
     }

@@ -1,5 +1,6 @@
 package nuetral.shopkeeper;
 
+import game.Icons;
 import game.gametools.Directions;
 import game.gametools.GameObject;
 import javax.swing.JLabel;
@@ -19,7 +20,7 @@ public class Shopkeeper extends GameObject {
      */
     public Shopkeeper(JLabel image) {
         super(image, 0, Directions.STOP, 0);
-        sprite.setImage("/animations/shopkeepers/shopkeeper.png");
+        sprite.setImage(Icons.SHOPKEEPER_2_IDLE_DOWN);
         sprite.debug("");
         sprite.removeBorder();
     }

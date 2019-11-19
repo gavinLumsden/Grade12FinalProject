@@ -1,5 +1,6 @@
 package objects;
 
+import game.Icons;
 import game.gametools.Directions;
 import game.gametools.GameObject;
 import javax.swing.JLabel;
@@ -19,7 +20,7 @@ public class Grass extends GameObject {
      */
     public Grass(JLabel image) {
         super(image, 0, Directions.STOP, 0);
-        sprite.setImage("/animations/objects/grass.png");
+        sprite.setImage(Icons.GRASS);
         sprite.debug("");
         sprite.setBackground(0, 145, 0);
         sprite.removeBorder();

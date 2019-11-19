@@ -1,6 +1,7 @@
 package enemyClasses;
 
 import game.Enemy;
+import game.Icons;
 import game.gametools.Directions;
 import javax.swing.JLabel;
 
@@ -70,7 +71,7 @@ public class Rampage extends Enemy {
         super.name        = NAME;
         super.level       = this.level; 
 
-        sprite.setImage("/animations/enemyclasses/rampage/rampageRightIdle.png");
+        sprite.setImage(Icons.RAMPAGE_IDLE_DOWN);
         sprite.debug("");
         sprite.removeBorder();
     }

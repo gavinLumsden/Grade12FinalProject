@@ -1,5 +1,6 @@
 package objects;
 
+import game.Icons;
 import game.gametools.Directions;
 import game.gametools.GameObject;
 import javax.swing.JLabel;
@@ -19,7 +20,7 @@ public class House extends GameObject {
      */
     public House(JLabel image) {
         super(image, 0, Directions.STOP, 0);
-        sprite.setImage("/animations/objects/house.png");
+        sprite.setImage(Icons.HOUSE);
         sprite.debug("");
         sprite.setBackground(0, 0, 255);
         sprite.removeBorder();

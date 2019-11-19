@@ -1,5 +1,6 @@
 package nuetral.trainers;
 
+import game.Icons;
 import javax.swing.JLabel;
 
 /**
@@ -16,7 +17,7 @@ public class DamageTrainer extends Trainer {
 
     public DamageTrainer(JLabel image) {
         super(image);
-        super.sprite.setImage("/animations/trainers/damage/down/damageIdle.png");
+        super.sprite.setImage(Icons.TRAINER_DAMAGE_IDLE_DOWN);
         super.stat = stat; 
         super.quote = quote; 
         super.price = price; 
