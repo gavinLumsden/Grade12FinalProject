@@ -42,68 +42,43 @@ public class CharacterSelect extends javax.swing.JFrame {
         initComponents();
         this.engine = engine;
 
-        LinkedList<LinkedList<URL>> imageFiles = new LinkedList<>();
+        LinkedList<LinkedList<String>> imageFiles = new LinkedList<>();
+        
+        LinkedList<String> banditAnimations = new LinkedList<>();
+        banditAnimations.add(Icons.BANDIT_WALK_RIGHT_1);
+        banditAnimations.add(Icons.BANDIT_IDLE_RIGHT); 
+        banditAnimations.add(Icons.BANDIT_WALK_RIGHT_2);
+        banditAnimations.add(Icons.BANDIT_IDLE_RIGHT); 
 
-        URL banditWalk1 = new URL(Icons.BANDIT_WALK_RIGHT_1); 
-        URL banditWalk2 = new URL(Icons.BANDIT_WALK_RIGHT_2); 
-        URL banditIdle  = new URL(Icons.BANDIT_IDLE_RIGHT); 
-        
-        URL gamblerWalk1 = new URL(Icons.GAMBLER_WALK_RIGHT_1); 
-        URL gamblerWalk2 = new URL(Icons.GAMBLER_WALK_RIGHT_2); 
-        URL gamblerIdle  = new URL(Icons.GAMBLER_IDLE_RIGHT); 
-        
-        URL hackerWalk1 = new URL(Icons.HACKER_WALK_RIGHT_1); 
-        URL hackerWalk2 = new URL(Icons.HACKER_WALK_RIGHT_2); 
-        URL hackerIdle  = new URL(Icons.HACKER_IDLE_RIGHT); 
-        
-        URL juggernautWalk1 = new URL(Icons.JUGGERNAUT_WALK_RIGHT_1); 
-        URL juggernautWalk2 = new URL(Icons.JUGGERNAUT_WALK_RIGHT_2); 
-        URL juggernautIdle  = new URL(Icons.JUGGERNAUT_IDLE_RIGHT); 
-        
-        URL mageWalk1 = new URL(Icons.MAGE_WALK_RIGHT_1); 
-        URL mageWalk2 = new URL(Icons.MAGE_WALK_RIGHT_2); 
-        URL mageIdle  = new URL(Icons.MAGE_IDLE_RIGHT_1); 
-        
-        URL vampireWalk1 = new URL(Icons.VAMPIRE_WALK_RIGHT_1); 
-        URL vampireWalk2 = new URL(Icons.VAMPIRE_WALK_RIGHT_2); 
-        URL vampireIdle  = new URL(Icons.VAMPIRE_IDLE_RIGHT); 
-        
-        
-        LinkedList<URL> banditAnimations = new LinkedList<>();
-        banditAnimations.add(banditWalk1);
-        banditAnimations.add(banditIdle); 
-        banditAnimations.add(banditWalk2);
-        banditAnimations.add(banditIdle); 
+        LinkedList<String> gamblerAnimations = new LinkedList<>();
+        gamblerAnimations.add(Icons.GAMBLER_WALK_RIGHT_1);
+        gamblerAnimations.add(Icons.GAMBLER_IDLE_RIGHT); 
+        gamblerAnimations.add(Icons.GAMBLER_WALK_RIGHT_2);
+        gamblerAnimations.add(Icons.GAMBLER_IDLE_RIGHT); 
 
-        LinkedList<URL> gamblerAnimations = new LinkedList<>();
-        gamblerAnimations.add(gamblerWalk1);
-        gamblerAnimations.add(gamblerIdle); 
-        gamblerAnimations.add(gamblerWalk2);
-        gamblerAnimations.add(gamblerIdle); 
+        LinkedList<String> hackerAnimations = new LinkedList<>();
+        hackerAnimations.add(Icons.HACKER_WALK_RIGHT_1);
+        hackerAnimations.add(Icons.HACKER_IDLE_RIGHT); 
+        hackerAnimations.add(Icons.HACKER_WALK_RIGHT_2);
+        hackerAnimations.add(Icons.HACKER_IDLE_RIGHT); 
 
-        LinkedList<URL> hackerAnimations = new LinkedList<>();
-        hackerAnimations.add(hackerWalk1);
-        hackerAnimations.add(hackerIdle); 
-        hackerAnimations.add(hackerWalk2);
-        hackerAnimations.add(hackerIdle); 
+        LinkedList<String> juggernautAnimations = new LinkedList<>();
+        juggernautAnimations.add(Icons.JUGGERNAUT_WALK_RIGHT_1);
+        juggernautAnimations.add(Icons.JUGGERNAUT_IDLE_RIGHT); 
+        juggernautAnimations.add(Icons.JUGGERNAUT_WALK_RIGHT_2);
+        juggernautAnimations.add(Icons.JUGGERNAUT_IDLE_RIGHT); 
 
-        LinkedList<URL> juggernautAnimations = new LinkedList<>();
-        juggernautAnimations.add(juggernautWalk1);
-        juggernautAnimations.add(juggernautIdle); 
-        juggernautAnimations.add(juggernautWalk2);
-        juggernautAnimations.add(juggernautIdle); 
+        LinkedList<String> mageAnimations = new LinkedList<>();
+        mageAnimations.add(Icons.MAGE_WALK_RIGHT_1);
+        mageAnimations.add(Icons.MAGE_IDLE_RIGHT_1); 
+        mageAnimations.add(Icons.MAGE_WALK_RIGHT_2);
+        mageAnimations.add(Icons.MAGE_IDLE_RIGHT_1); 
 
-        LinkedList<URL> mageAnimations = new LinkedList<>();
-        mageAnimations.add(mageWalk1);
-        mageAnimations.add(mageIdle); 
-        mageAnimations.add(mageWalk2);
-        mageAnimations.add(mageIdle); 
-
-        LinkedList<URL> vampireAnimations = new LinkedList<>();
-        vampireAnimations.add(banditWalk1);
-        vampireAnimations.add(banditIdle); 
-        vampireAnimations.add(banditWalk2);
-        vampireAnimations.add(banditIdle); 
+        LinkedList<String> vampireAnimations = new LinkedList<>();
+        vampireAnimations.add(Icons.VAMPIRE_WALK_RIGHT_1);
+        vampireAnimations.add(Icons.VAMPIRE_IDLE_RIGHT); 
+        vampireAnimations.add(Icons.VAMPIRE_WALK_RIGHT_2);
+        vampireAnimations.add(Icons.VAMPIRE_IDLE_RIGHT); 
 
         imageFiles.add(banditAnimations);
         imageFiles.add(gamblerAnimations);

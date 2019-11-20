@@ -147,8 +147,7 @@ public class Information extends javax.swing.JFrame {
      */
     private void setupHero() {
         String image = Hero.getInformationIcon(selected); 
-        URL url = getClass().getResource(image); 
-        ImageIcon icon = new ImageIcon(url); 
+        ImageIcon icon = new ImageIcon(image); 
         lblHeroInformation.setIcon(icon);
     }
 
