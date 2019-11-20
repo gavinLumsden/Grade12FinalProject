@@ -97,8 +97,6 @@ public class Introduction extends javax.swing.JFrame {
         });
         getContentPane().add(btnLoadGame);
         btnLoadGame.setBounds(83, 423, 505, 120);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/formBackgrounds/mainMenu.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 670, 770);
 

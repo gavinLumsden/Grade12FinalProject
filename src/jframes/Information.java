@@ -92,7 +92,6 @@ public class Information extends javax.swing.JFrame {
         lblBack.setBounds(909, 495, 395, 104);
 
         lblHeroInformation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHeroInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/formBackgrounds/characterInformationBandit.png"))); // NOI18N
         getContentPane().add(lblHeroInformation);
         lblHeroInformation.setBounds(0, 0, 1360, 770);
 

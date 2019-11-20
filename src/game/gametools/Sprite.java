@@ -178,11 +178,7 @@ public class Sprite {
      * @param imageFile
      */
     public void setImage(String imageFile) {
-        try {
-            gameImage.setImage(imageFile);
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Sprite.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        gameImage.setImage(imageFile);
     }
 
     /**

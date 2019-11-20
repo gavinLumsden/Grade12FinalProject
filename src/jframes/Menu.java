@@ -110,10 +110,8 @@ public class Menu extends javax.swing.JFrame {
         });
         getContentPane().add(lblQuit);
         lblQuit.setBounds(83, 555, 505, 113);
-
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/formBackgrounds/menu.png"))); // NOI18N
         getContentPane().add(background);
-        background.setBounds(0, 0, 670, 732);
+        background.setBounds(0, 0, 670, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

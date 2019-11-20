@@ -4,13 +4,8 @@ import collections.LinkedList;
 import game.GameEngine;
 import game.Icons;
 import game.gametools.Animation;
-import maps.Map1;
-import java.awt.Color;
 import java.net.MalformedURLException;
-import java.net.URL;
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 /**
  * CharacterSelect.java - A form where the player selects their character
@@ -219,7 +214,6 @@ public class CharacterSelect extends javax.swing.JFrame {
         getContentPane().add(lblGambler);
         lblGambler.setBounds(412, 194, 95, 97);
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/animations/formBackgrounds/characterSelectBackground.png"))); // NOI18N
         background.setOpaque(true);
         getContentPane().add(background);
         background.setBounds(0, 0, 560, 310);

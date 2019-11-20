@@ -10,6 +10,8 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -86,7 +88,6 @@ public class GameImage {
             int width, int height) {
         this.label = label;                         // set parameter to property
         setImage(spriteSheet, x, y, width, height); // set image from sheet
-//        resizeToContainer();                        // resize
     }
 
     /**
@@ -115,7 +116,6 @@ public class GameImage {
      */
     public void resize(int width, int height) {
         label.setSize(width, height);                   // resize label
-//        resizeToContainer();                            // resize image
     }
 
     /**
@@ -167,12 +167,21 @@ public class GameImage {
         label.setBounds(x, y, w, h);
     }
 
-    public void setImage(String imageFile) throws MalformedURLException {
-        this.url = new URL(imageFile);             // set property to parameter
+    public void setImage(String imageFile) {
+        if (!imageFile.equals("")) {  // checking to see if there is an image assosiated with this game image
+            try {
+            this.url = new URL(imageFile);      // set property to parameter
+            Image image = ImageIO.read(url);    // something idk
+            icon = new ImageIcon(image);        // set icon
+            label.setIcon(icon);                // set icon to label
+            } catch (MalformedURLException ex) {
+                System.out.println("url error");
+            } catch (IOException ex) {
+                System.out.println("io error");
+            }
+        }            
         label.setBorder(null);                  // remove border
         label.setOpaque(false);                 // remove background color
-        icon = new ImageIcon(url);    // set icon
-        label.setIcon(icon);                    // set icon to label
         show();                                 // display picturebox 
     }
 
