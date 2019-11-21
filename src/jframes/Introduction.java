@@ -45,7 +45,7 @@ public class Introduction extends javax.swing.JFrame {
         btnQuit = new javax.swing.JLabel();
         btnNewGame = new javax.swing.JLabel();
         btnLoadGame = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -97,8 +97,8 @@ public class Introduction extends javax.swing.JFrame {
         });
         getContentPane().add(btnLoadGame);
         btnLoadGame.setBounds(83, 423, 505, 120);
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 670, 770);
+        getContentPane().add(background);
+        background.setBounds(0, 0, 670, 770);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,10 +154,10 @@ public class Introduction extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuitMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
     private javax.swing.JLabel btnLoadGame;
     private javax.swing.JLabel btnNewGame;
     private javax.swing.JLabel btnQuit;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
      
 }

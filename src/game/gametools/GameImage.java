@@ -10,8 +10,6 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -69,7 +67,7 @@ public class GameImage {
      * @param label the label used to display the image
      * @param imageFile the relative image filename to display
      */
-    public GameImage(JLabel label, String imageFile) throws MalformedURLException {
+    public GameImage(JLabel label, String imageFile) {
         this.label = label;                         // set parameter to property
         setImage(imageFile);                        // set image
     }
@@ -89,13 +87,25 @@ public class GameImage {
         this.label = label;                         // set parameter to property
         setImage(spriteSheet, x, y, width, height); // set image from sheet
     }
+    
+    private void setLabelIcon() {
+        try {
+            this.url = new URL(imageFile);      // set property to parameter
+            if (this.url == null) icon = new ImageIcon(imageFile);        // set icon
+            else                  icon = new ImageIcon(url);        // set icon
+            label.setIcon(icon);                // set icon to label
+        } catch (MalformedURLException ex) {
+            System.out.println("url error");
+        } 
+    }
+    
 
     /**
      * Shows (makes visible) the GameImage in the container
      */
     public void show() {
         if (imageFile != null) {
-            label.setIcon(icon); // checks for an image
+            setLabelIcon();
         }
         label.setVisible(true);                     // make label visible
     }
@@ -132,7 +142,7 @@ public class GameImage {
         Image newImage = originalImage.getScaledInstance(
                 width, height, Image.SCALE_SMOOTH);
         icon = new ImageIcon(newImage);  // set new image
-        label.setIcon(icon);                            // set icon to label
+//        setLabelIcon();                            // set icon to label
     }
 
     /**
@@ -169,16 +179,8 @@ public class GameImage {
 
     public void setImage(String imageFile) {
         if (!imageFile.equals("")) {  // checking to see if there is an image assosiated with this game image
-            try {
-            this.url = new URL(imageFile);      // set property to parameter
-            Image image = ImageIO.read(url);    // something idk
-            icon = new ImageIcon(image);        // set icon
-            label.setIcon(icon);                // set icon to label
-            } catch (MalformedURLException ex) {
-                System.out.println("url error");
-            } catch (IOException ex) {
-                System.out.println("io error");
-            }
+            this.imageFile = imageFile;
+            setLabelIcon();
         }            
         label.setBorder(null);                  // remove border
         label.setOpaque(false);                 // remove background color

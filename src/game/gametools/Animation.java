@@ -38,7 +38,7 @@ public class Animation <T> {
     public Animation(JLabel label,
             LinkedList<String> imageFiles,
             int delay,
-            boolean shouldLoop) throws MalformedURLException {
+            boolean shouldLoop) {
         if (isValid(label, imageFiles)) {            // check objects for nulls       
             this.label = label;                     // parameter to property
             setDelay(delay);                        //set the delay
@@ -129,7 +129,7 @@ public class Animation <T> {
      *
      * @param imageFiles the list of relative image file names
      */
-    public void setImageFiles(LinkedList<String> imageFiles) throws MalformedURLException {
+    public void setImageFiles(LinkedList<String> imageFiles)  {
         setFrames(imageFiles);                  // set all the frames
         setTimer();                             // set the timer
     }
@@ -226,7 +226,7 @@ public class Animation <T> {
      * Sets all the frames for the animation from the image files, sets the
      * first frame to visible
      */
-    private void setFrames(LinkedList<String> imageFiles) throws MalformedURLException {
+    private void setFrames(LinkedList<String> imageFiles) {
         frames = new LinkedList<>();                        // create list
         for (int i = 0; i < imageFiles.size(); i++) {       // traverse list
             frames.add(new GameImage(label, imageFiles.get(i)));  // add frame
