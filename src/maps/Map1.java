@@ -2,7 +2,6 @@ package maps;
 
 import collections.LinkedList;
 import game.GameEngine;
-import java.net.MalformedURLException;
 import javax.swing.JLabel;
 import objects.NextLevelBlock;
 
