@@ -1,7 +1,6 @@
 package game;
 
 import game.gametools.GameCharacter;
-import java.net.MalformedURLException;
 import javax.swing.JLabel;
 
 public abstract class Enemy extends GameCharacter {
@@ -28,7 +27,7 @@ public abstract class Enemy extends GameCharacter {
      * @param numberOfDirections
      * @param delay
      */
-    public Enemy(JLabel image, int amount, int direction, int numberOfDirections, int delay) throws MalformedURLException {
+    public Enemy(JLabel image, int amount, int direction, int numberOfDirections, int delay) {
         super(image, amount, direction, numberOfDirections, delay);
     }
 

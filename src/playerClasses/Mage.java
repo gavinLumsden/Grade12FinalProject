@@ -1,83 +1,62 @@
 package playerClasses;
 
-import game.CharacterData;
 import collections.LinkedList;
+import nuetral.trainers.Trainer;
 import enemyClasses.Cyborg;
 import enemyClasses.Nail;
 import enemyClasses.Rampage;
-import jframes.BattleUI;
 import objects.Grass;
 import objects.Wall;
 import objects.NextLevelBlock;
+import objects.House;
+import game.CharacterData;
 import game.gametools.Directions;
 import game.gametools.GameCharacter;
+import game.gametools.Animation;
 import game.GameEngine;
 import game.Icons;
-import game.gametools.Animation;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
 import maps.Map1;
 import maps.Map2;
 import maps.Map4;
 import maps.Map3;
-import javax.swing.JLabel;
 import maps.Map5;
 import jframes.Upgrade;
-import nuetral.trainers.Trainer;
-import objects.House;
+import jframes.BattleUI;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
 
 public class Mage extends GameCharacter {
 
-    private LinkedList<Cyborg>  cyborgs;
-    private LinkedList<Nail>    nails;
-    private LinkedList<Rampage> rampages;
-
-    private GameEngine engine;
-    private BattleUI  battleUI;
-
+    private LinkedList<Cyborg>         cyborgs;
+    private LinkedList<Nail>           nails;
+    private LinkedList<Rampage>        rampages;
     private LinkedList<Wall>           walls;
     private LinkedList<Grass>          grass;
     private LinkedList<House>          houses;
     private LinkedList<NextLevelBlock> nextLevelBlocks;
     private LinkedList<Trainer>        trainers;
+    
+    private GameEngine engine;
+    private BattleUI   battleUI;
 
     public final String NAME = "Mage";
-
-    /**
-     * Class: Mage Ability 1: Fire ball, Burns the enemy for _ seconds Ability
-     * 2: Freeze, slows the enemy down for _ seconds Ablilty 3: Lighting, stuns
-     * the enemy for _ seconds Ability 4: Fire wall, blocks enemy attacks for _
-     * seconds Passive: Incinerator, every hit burns the enemy (very low damage)
-     * Ultimate: Fire Hawk, all burn effects on the enemy are faster for _
-     * seconds
-     */
-    public String attack1  = "Fire ball";
-    public String attack2  = "Freeze";
-    public String attack3  = "Lighting";
-    public String attack4  = "Fire wall";
-    public String passive  = "Incinerator";
-    public String ultimate = "Fire Hawk";
-
-    public static final String INFORMATION_ICON  = "/animations/formBackgrounds/characterInformationMage.png";
-    public static final String IDLE_ICON         = "/animations/playerClasses/mage/mageRightIdle1.png";
-    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/mage/mageFightBack1.png";
-    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/mage/mageFightFront1.png";
+    public String attack1    = "Fire Ball";
+    public String attack2    = "Freeze";
+    public String attack3    = "Lightning";
+    public String attack4    = "Fire wall";
+    public String passive    = "Incinerator";
+    public String ultimate   = "Elementalist";
 
     private JFrame currentMap;
     private JFrame previousMap;
-
-    private int currentMapNumber;
-    private int previousMapNumber;
+    private int    currentMapNumber;
+    private int    previousMapNumber;
 
     public int damage;      // how much damage you do (can be increased)
     public int dodgeChance; // your chance of dodging  (can be increased)
     public int maxHealth;   // the maximum amount of health you can have (can be increased) 
     public int health;      // how much health you have (can be increased)
     public int punchSpeed;  // how fast you hit (can be increased)
-
     public int level;
     public int exp;
     public int gold;
@@ -86,13 +65,10 @@ public class Mage extends GameCharacter {
     public int attack2Cooldown;
     public int attack3Cooldown;
     public int attack4Cooldown;
-
     public int attack1Duration;
     public int attack2Duration;
     public int attack3Duration;
     public int attack4Duration;
-
-    private boolean canTravel;
 
     /**
      * Creates a "mage"
@@ -120,8 +96,8 @@ public class Mage extends GameCharacter {
             GameEngine engine, boolean hasBeenCreated,
             JFrame currentMap, JFrame previousMap,
             int currentMapNumber, int previousMapNumber,
-            LinkedList<Trainer> trainers) throws MalformedURLException {
-        super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
+            LinkedList<Trainer> trainers) {
+        super(heroImage, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
         this.currentMap        = currentMap;
         this.previousMap       = previousMap;
@@ -129,13 +105,13 @@ public class Mage extends GameCharacter {
         this.previousMapNumber = previousMapNumber;
 
         this.engine          = engine;
+        this.cyborgs         = cyborgs;
+        this.nails           = nails;
+        this.rampages        = rampages;
         this.walls           = walls;
         this.houses          = houses;
         this.nextLevelBlocks = nextLevelBlock;
-
-        this.cyborgs  = cyborgs;
-        this.nails    = nails;
-        this.rampages = rampages;
+        this.trainers        = trainers;
 
         super.playerAttack1Name  = attack1;
         super.playerAttack2Name  = attack2;
@@ -143,8 +119,8 @@ public class Mage extends GameCharacter {
         super.playerAttack4Name  = attack4;
         super.playerPassiveName  = passive;
         super.playerUltimateName = ultimate;
-        super.playerBattleBack   = BATTLE_BACK_ICON;
-        super.playerBattleFront  = BATTLE_FRONT_ICON;
+        super.playerBattleBack   = Icons.GAMBLER_BATTLE_BACK;
+        super.playerBattleFront  = Icons.GAMBLER_BATTLE_FRONT;
 
         final int[] DEFAULTS = {5, 5, 100, 100, 1000, 1, 0, 0};
         int stats[] = new int[DEFAULTS.length];
@@ -264,18 +240,14 @@ public class Mage extends GameCharacter {
      */
     @Override
     public void action() {
-        try {
-            mover.move();
-            animate();
-            boolean check = checkWalls();
-            if (check) check = checkNextLevelBlocks();
-            if (check) check = checkHouses();
-            if (check) check = checkEnemies();
-            if (check) check = checkTrainers();
-            redraw();
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Mage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        mover.move();
+        animate();
+        boolean check = checkWalls();
+        if (check) check = checkNextLevelBlocks();
+        if (check) check = checkHouses();
+        if (check) check = checkEnemies();
+        if (check) check = checkTrainers();
+        redraw();
     }
 
     /**
@@ -296,7 +268,7 @@ public class Mage extends GameCharacter {
     /**
      * checks to see if the hero is overlapping with a next level block
      */
-    private boolean checkNextLevelBlocks() throws MalformedURLException {
+    private boolean checkNextLevelBlocks() {
         for (int i = 0; i < nextLevelBlocks.size(); i++) {
             if (nextLevelBlocks.get(i) != null) {
                 if (detector.isOverLapping(nextLevelBlocks.get(i))) {
@@ -385,15 +357,12 @@ public class Mage extends GameCharacter {
     }
 
     private boolean checkTrainers() {
-        if (canTravel == true) {
-            if (trainers != null) {
-                for (int i = 0; i < trainers.size(); i++) {
-                    if (detector.isOverLapping(trainers.get(i))) {
-                        canTravel = false;
-                        engine.pause();
-                        Upgrade upgrade = new Upgrade(trainers.get(i));
-                        return false;
-                    }
+        if (trainers != null) {
+            for (int i = 0; i < trainers.size(); i++) {
+                if (detector.isOverLapping(trainers.get(i))) {
+                    engine.pause();
+                    Upgrade upgrade = new Upgrade(trainers.get(i));
+                    return false;
                 }
             }
         }

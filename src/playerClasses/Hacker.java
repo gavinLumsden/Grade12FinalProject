@@ -1,83 +1,62 @@
 package playerClasses;
 
-import game.CharacterData;
 import collections.LinkedList;
+import nuetral.trainers.Trainer;
 import enemyClasses.Cyborg;
 import enemyClasses.Nail;
 import enemyClasses.Rampage;
-import jframes.BattleUI;
 import objects.Grass;
 import objects.Wall;
 import objects.NextLevelBlock;
+import objects.House;
+import game.CharacterData;
 import game.gametools.Directions;
 import game.gametools.GameCharacter;
+import game.gametools.Animation;
 import game.GameEngine;
 import game.Icons;
-import game.gametools.Animation;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
 import maps.Map1;
 import maps.Map2;
 import maps.Map4;
 import maps.Map3;
-import javax.swing.JLabel;
 import maps.Map5;
 import jframes.Upgrade;
-import nuetral.trainers.Trainer;
-import objects.House;
+import jframes.BattleUI;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
 
 public class Hacker extends GameCharacter {
 
-    private LinkedList<Cyborg> cyborgs;
-    private LinkedList<Nail> nails;
-    private LinkedList<Rampage> rampages;
-
-    private GameEngine engine;
-    private BattleUI battleUI;
-
-    private LinkedList<Wall> walls;
-    private LinkedList<Grass> grass;
-    private LinkedList<House> houses;
+    private LinkedList<Cyborg>         cyborgs;
+    private LinkedList<Nail>           nails;
+    private LinkedList<Rampage>        rampages;
+    private LinkedList<Wall>           walls;
+    private LinkedList<Grass>          grass;
+    private LinkedList<House>          houses;
     private LinkedList<NextLevelBlock> nextLevelBlocks;
-    private LinkedList<Trainer> trainers;
+    private LinkedList<Trainer>        trainers;
+    
+    private GameEngine engine;
+    private BattleUI   battleUI;
 
     public final String NAME = "Hacker";
-
-    /**
-     * Class: Hacker Ability 1: Crash, disables enemy punch for _ seconds
-     * Ability 2: Virus, increases damage for _ seconds Ablilty 3: Copy,
-     * replaces this ability with one from your enemy Ability 4: Reflect.exe,
-     * next time the enemy uses an ability they hit themselves Passive: Evasive,
-     * enemy abilities have a higher chance of missing you Ultimate: EMP,
-     * disables all enemy abilities for _ seconds
-     */
-    public String attack1 = "Crash";
-    public String attack2 = "Virus";
-    public String attack3 = "Copy";
-    public String attack4 = "Reflect.exe";
-    public String passive = "Evasive";
-    public String ultimate = "EMP";
-
-    public static final String INFORMATION_ICON  = "/animations/formBackgrounds/characterInformationHacker.png";
-    public static final String IDLE_ICON         = "/animations/playerClasses/hacker/hackerRightIdle.png";
-    public static final String BATTLE_BACK_ICON  = "/animations/playerClasses/hacker/hackerFightBack.png";
-    public static final String BATTLE_FRONT_ICON = "/animations/playerClasses/hacker/hackerFightFront.png";
+    public String attack1    = "Hack";
+    public String attack2    = "Crash";
+    public String attack3    = "Copy";
+    public String attack4    = "Virus";
+    public String passive    = "Evasive";
+    public String ultimate   = "EMP";
 
     private JFrame currentMap;
     private JFrame previousMap;
-
-    private int currentMapNumber;
-    private int previousMapNumber;
+    private int    currentMapNumber;
+    private int    previousMapNumber;
 
     public int damage;      // how much damage you do (can be increased)
     public int dodgeChance; // your chance of dodging  (can be increased)
     public int maxHealth;   // the maximum amount of health you can have (can be increased) 
     public int health;      // how much health you have (can be increased)
     public int punchSpeed;  // how fast you hit (can be increased)
-
     public int level;
     public int exp;
     public int gold;
@@ -86,13 +65,10 @@ public class Hacker extends GameCharacter {
     public int attack2Cooldown;
     public int attack3Cooldown;
     public int attack4Cooldown;
-
     public int attack1Duration;
     public int attack2Duration;
     public int attack3Duration;
     public int attack4Duration;
-
-    private boolean canTravel;
 
     /**
      * Creates a "hacker"
@@ -120,43 +96,43 @@ public class Hacker extends GameCharacter {
             GameEngine engine, boolean hasBeenCreated,
             JFrame currentMap, JFrame previousMap,
             int currentMapNumber, int previousMapNumber,
-            LinkedList<Trainer> trainers) throws MalformedURLException {
-        super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
+            LinkedList<Trainer> trainers) {
+        super(heroImage, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
 
-        this.currentMap = currentMap;
-        this.previousMap = previousMap;
-        this.currentMapNumber = currentMapNumber;
+        this.currentMap        = currentMap;
+        this.previousMap       = previousMap;
+        this.currentMapNumber  = currentMapNumber;
         this.previousMapNumber = previousMapNumber;
 
-        this.engine = engine;
-        this.walls = walls;
-        this.houses = houses;
+        this.engine          = engine;
+        this.cyborgs         = cyborgs;
+        this.nails           = nails;
+        this.rampages        = rampages;
+        this.walls           = walls;
+        this.houses          = houses;
         this.nextLevelBlocks = nextLevelBlock;
+        this.trainers        = trainers;
 
-        this.cyborgs = cyborgs;
-        this.nails = nails;
-        this.rampages = rampages;
-
-        super.playerAttack1Name = attack1;
-        super.playerAttack2Name = attack2;
-        super.playerAttack3Name = attack3;
-        super.playerAttack4Name = attack4;
-        super.playerPassiveName = passive;
+        super.playerAttack1Name  = attack1;
+        super.playerAttack2Name  = attack2;
+        super.playerAttack3Name  = attack3;
+        super.playerAttack4Name  = attack4;
+        super.playerPassiveName  = passive;
         super.playerUltimateName = ultimate;
-        super.playerBattleBack = BATTLE_BACK_ICON;
-        super.playerBattleFront = BATTLE_FRONT_ICON;
+        super.playerBattleBack   = Icons.GAMBLER_BATTLE_BACK;
+        super.playerBattleFront  = Icons.GAMBLER_BATTLE_FRONT;
 
         final int[] DEFAULTS = {5, 5, 100, 100, 1000, 1, 0, 0};
         int stats[] = new int[DEFAULTS.length];
         stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
-        damage = stats[0];
+        damage      = stats[0];
         dodgeChance = stats[1];
-        health = stats[2];
-        maxHealth = stats[3];
-        punchSpeed = stats[4];
-        level = stats[5];
-        exp = stats[6];
-        gold = stats[7];
+        health      = stats[2];
+        maxHealth   = stats[3];
+        punchSpeed  = stats[4];
+        level       = stats[5];
+        exp         = stats[6];
+        gold        = stats[7];
 
         attack1Cooldown = 3000;
         attack2Cooldown = 3000;
@@ -168,15 +144,15 @@ public class Hacker extends GameCharacter {
         attack3Duration = punchSpeed;
         attack4Duration = punchSpeed;
 
-        super.playerDamage = damage;
+        super.playerDamage      = damage;
         super.playerDodgeChance = dodgeChance;
-        super.playerHealth = health;
-        super.playerMaxHealth = maxHealth;
-        super.playerPunchSpeed = punchSpeed;
+        super.playerHealth      = health;
+        super.playerMaxHealth   = maxHealth;
+        super.playerPunchSpeed  = punchSpeed;
 
         super.playerLevel = level;
-        super.exp = exp;
-        super.gold = gold;
+        super.exp         = exp;
+        super.gold        = gold;
 
         super.attack1Cooldown = attack1Cooldown;
         super.attack2Cooldown = attack2Cooldown;
@@ -260,18 +236,14 @@ public class Hacker extends GameCharacter {
      */
     @Override
     public void action() {
-        try {
-            mover.move();
-            animate();
-            boolean check = checkWalls();
-            if (check) check = checkNextLevelBlocks();
-            if (check) check = checkHouses();
-            if (check) check = checkEnemies();
-            if (check) check = checkTrainers();
-            redraw();
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Juggernaut.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        mover.move();
+        animate();
+        boolean check = checkWalls();
+        if (check) check = checkNextLevelBlocks();
+        if (check) check = checkHouses();
+        if (check) check = checkEnemies();
+        if (check) check = checkTrainers();
+        redraw();
     }
 
     /**
@@ -292,7 +264,7 @@ public class Hacker extends GameCharacter {
     /**
      * checks to see if the hero is overlapping with a next level block
      */
-    private boolean checkNextLevelBlocks() throws MalformedURLException {
+    private boolean checkNextLevelBlocks() {
         for (int i = 0; i < nextLevelBlocks.size(); i++) {
             if (nextLevelBlocks.get(i) != null) {
                 if (detector.isOverLapping(nextLevelBlocks.get(i))) {
@@ -381,15 +353,12 @@ public class Hacker extends GameCharacter {
     }
 
     private boolean checkTrainers() {
-        if (canTravel == true) {
-            if (trainers != null) {
-                for (int i = 0; i < trainers.size(); i++) {
-                    if (detector.isOverLapping(trainers.get(i))) {
-                        canTravel = false;
-                        engine.pause();
-                        Upgrade upgrade = new Upgrade(trainers.get(i));
-                        return false;
-                    }
+        if (trainers != null) {
+            for (int i = 0; i < trainers.size(); i++) {
+                if (detector.isOverLapping(trainers.get(i))) {
+                    engine.pause();
+                    Upgrade upgrade = new Upgrade(trainers.get(i));
+                    return false;
                 }
             }
         }

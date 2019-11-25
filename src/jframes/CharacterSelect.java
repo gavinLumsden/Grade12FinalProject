@@ -4,7 +4,6 @@ import collections.LinkedList;
 import game.GameEngine;
 import game.Icons;
 import game.gametools.Animation;
-import java.net.MalformedURLException;
 import javax.swing.JLabel;
 
 /**
@@ -33,7 +32,7 @@ public class CharacterSelect extends javax.swing.JFrame {
      *
      * @param engine
      */
-    public CharacterSelect(GameEngine engine) throws MalformedURLException {
+    public CharacterSelect(GameEngine engine) {
         initComponents();
         this.engine = engine;
 
@@ -87,10 +86,13 @@ public class CharacterSelect extends javax.swing.JFrame {
             lblJuggernaut, lblMage, lblVampire
         };
         this.labels = labels;
+        
         animations = new Animation[6];
         for (int i = 0; i < animations.length; i++) {
             animations[i] = new Animation(labels[i], imageFiles.get(i), 800, true);
         }
+        
+        engine.setImage(background, Icons.CHARACTER_SELECT_BACKGROUND);
         isClicked = false;
         selected = "";
         engine.createJFrame(FORM_WIDTH, FORM_HEIGHT, this); 

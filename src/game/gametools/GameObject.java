@@ -1,6 +1,5 @@
 package game.gametools;
 
-import java.net.MalformedURLException;
 import javax.swing.JLabel;
 
 /**
@@ -41,7 +40,7 @@ public class GameObject {
      *
      * @param image picture image used on a user interface
      */
-    public GameObject(JLabel image) throws MalformedURLException {
+    public GameObject(JLabel image) {
         this(image, 0, Directions.STOP, 0);
     }
 
@@ -56,7 +55,7 @@ public class GameObject {
     public GameObject(JLabel image,
             int amount,
             int direction,
-            int numberOfDirections) throws MalformedURLException {
+            int numberOfDirections) {
         coordinates = new Coordinates(amount, direction);
         sprite = new Sprite(image);
         sprite.update(coordinates);

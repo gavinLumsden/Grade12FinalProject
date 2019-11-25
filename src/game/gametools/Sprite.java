@@ -2,10 +2,6 @@ package game.gametools;
 
 import collections.LinkedList;
 import java.awt.Color;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 /**
@@ -27,7 +23,7 @@ public class Sprite {
      * @param label the label hitbox used to display the image
      * @param animations the animations associated with the object
      */
-    public Sprite(JLabel label, LinkedList<Animation> animations) throws MalformedURLException {
+    public Sprite(JLabel label, LinkedList<Animation> animations) {
         gameImage = new GameImage(label);                  // set picturebox
         if (animations != null) {
             setAnimations(animations);  // set animations
@@ -40,7 +36,7 @@ public class Sprite {
      * @param label the label hitbox use to display the image
      * @param imageFile the relative image filename to display
      */
-    public Sprite(JLabel label, String imageFile) throws MalformedURLException {
+    public Sprite(JLabel label, String imageFile) {
         gameImage = new GameImage(label, imageFile);     // set picturebox
     }
 
@@ -75,7 +71,7 @@ public class Sprite {
      *
      * @param label the label hitbox use to display the image
      */
-    public Sprite(JLabel label) throws MalformedURLException {
+    public Sprite(JLabel label) {
         gameImage = new GameImage(label);               // set picturebox
     }
 
@@ -338,7 +334,7 @@ public class Sprite {
      * @param index the animation to set the image files to
      * @param imageFiles the array of relative image file names
      */
-    private void setImageFiles(int index, LinkedList<String> imageFiles) throws MalformedURLException {
+    private void setImageFiles(int index, LinkedList<String> imageFiles) {
         animations.get(index).setImageFiles(imageFiles);
     }
 

@@ -15,7 +15,6 @@ import playerClasses.Bandit;
 import playerClasses.Gambler;
 import game.gametools.GameCharacter;
 import java.awt.event.KeyEvent;
-import java.net.MalformedURLException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import nuetral.trainers.Trainer;
@@ -58,7 +57,7 @@ public class Hero {
             GameEngine engine, boolean hasBeenCreated,
             JFrame currentMap, JFrame previousMap,
             int currentMapNumber, int previousMapNumber,
-            LinkedList<Trainer> trainers) throws MalformedURLException {
+            LinkedList<Trainer> trainers) {
         if (CharacterSelect.selected.equals("bandit")) {
             heroClass = new Bandit(heroImage, walls, houses, cyborgs, nails, rampages, nextLevelBlocks,  engine, hasBeenCreated, currentMap, previousMap, currentMapNumber, previousMapNumber, trainers);
         }  else if (CharacterSelect.selected.equals("gambler")) {
@@ -111,22 +110,22 @@ public class Hero {
     }
     
     public static String getIdleIcon(String selected) {
-        if      (selected.equals("bandit"))     return Bandit.IDLE_ICON; 
-        else if (selected.equals("gambler"))    return Gambler.IDLE_ICON; 
-        else if (selected.equals("hacker"))     return Hacker.IDLE_ICON; 
-        else if (selected.equals("juggernaut")) return Juggernaut.IDLE_ICON; 
-        else if (selected.equals("mage"))       return Mage.IDLE_ICON; 
-        else if (selected.equals("vampire"))    return Vampire.IDLE_ICON; 
+        if      (selected.equals("bandit"))     return Icons.BANDIT_IDLE_RIGHT; 
+        else if (selected.equals("gambler"))    return Icons.GAMBLER_IDLE_RIGHT; 
+        else if (selected.equals("hacker"))     return Icons.HACKER_IDLE_RIGHT; 
+        else if (selected.equals("juggernaut")) return Icons.JUGGERNAUT_IDLE_RIGHT; 
+        else if (selected.equals("mage"))       return Icons.MAGE_IDLE_RIGHT_1; 
+        else if (selected.equals("vampire"))    return Icons.VAMPIRE_IDLE_RIGHT; 
         else                                    return null; 
     }
     
     public static String getInformationIcon(String selected) {
-        if      (selected.equals("bandit"))     return Bandit.INFORMATION_ICON; 
-        else if (selected.equals("gambler"))    return Gambler.INFORMATION_ICON; 
-        else if (selected.equals("hacker"))     return Hacker.INFORMATION_ICON; 
-        else if (selected.equals("juggernaut")) return Juggernaut.INFORMATION_ICON; 
-        else if (selected.equals("mage"))       return Mage.INFORMATION_ICON; 
-        else if (selected.equals("vampire"))    return Vampire.INFORMATION_ICON; 
+        if      (selected.equals("bandit"))     return Icons.CHARACTER_INFORMATION_BANDIT; 
+        else if (selected.equals("gambler"))    return Icons.CHARACTER_INFORMATION_GAMBLER; 
+        else if (selected.equals("hacker"))     return Icons.CHARACTER_INFORMATION_HACKER; 
+        else if (selected.equals("juggernaut")) return Icons.CHARACTER_INFORMATION_JUGGERNAUT; 
+        else if (selected.equals("mage"))       return Icons.CHARACTER_INFORMATION_MAGE; 
+        else if (selected.equals("vampire"))    return Icons.CHARACTER_INFORMATION_VAMPIRE; 
         else                                    return null; 
     }
 

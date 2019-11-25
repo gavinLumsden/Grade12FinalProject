@@ -35,7 +35,7 @@ public class GameImage {
      *
      * @param label the label used to display the image
      */
-    public GameImage(JLabel label) throws MalformedURLException {
+    public GameImage(JLabel label) {
         this(label, "");               // set debug mode
     }
 

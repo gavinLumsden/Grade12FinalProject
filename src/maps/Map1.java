@@ -34,7 +34,7 @@ public class Map1 extends javax.swing.JFrame {
      * @param currentMapNumber
      * @param engine
      */
-    public Map1(int currentMapNumber, GameEngine engine) throws MalformedURLException {
+    public Map1(int currentMapNumber, GameEngine engine) {
         initComponents();
         this.engine = engine;
 

@@ -3,7 +3,6 @@ package game.gametools;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.net.MalformedURLException;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
@@ -84,7 +83,7 @@ public abstract class GameCharacter extends GameObject {
             int amount,
             int direction,
             int numberOfDirections,
-            int delay) throws MalformedURLException {
+            int delay) {
         super(image, amount, direction, numberOfDirections);
         input = new UserInput(super.coordinates, numberOfDirections);
         timer = new Timer(delay, new ActionListener() {

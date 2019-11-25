@@ -18,7 +18,10 @@ import game.gametools.MediaPlayer;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.net.MalformedURLException;
+import java.net.URL;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import nuetral.shopkeeper.Shopkeeper;
@@ -119,7 +122,7 @@ public class GameEngine {
      * @param images
      * @param objectToCreate
      */
-    public void createGameObject(LinkedList<JLabel> images, String objectToCreate) throws MalformedURLException {
+    public void createGameObject(LinkedList<JLabel> images, String objectToCreate) {
         if (objectToCreate.equals("grass")) {
             grass = new LinkedList<>();
             for (int i = 0; i < images.size(); i++) {
@@ -149,7 +152,7 @@ public class GameEngine {
      * @param images
      * @param characterToCreate
      */
-    public void createGameCharacter(LinkedList<JLabel> images, String characterToCreate) throws MalformedURLException {
+    public void createGameCharacter(LinkedList<JLabel> images, String characterToCreate) {
         if (characterToCreate.equals("shopkeepers")) {
             shopkeepers = new LinkedList<>();
             for (int i = 0; i < shopkeepers.size(); i++) {
@@ -232,7 +235,7 @@ public class GameEngine {
      * @param heroImage
      * @param nextLevelBlocks
      */
-    public void createHero(JLabel heroImage, LinkedList<NextLevelBlock> nextLevelBlocks) throws MalformedURLException {
+    public void createHero(JLabel heroImage, LinkedList<NextLevelBlock> nextLevelBlocks) {
         hero = new Hero(heroImage,
                 walls, houses,
                 cyborgs, nails, rampages,
@@ -460,6 +463,18 @@ public class GameEngine {
             if (animations[spot].isRunning() == false) {
                 animations[spot].run();
             }
+        }
+    }
+
+    public void setImage(JLabel label, String imageFile) {
+        try {
+            Icon icon; 
+            URL url = new URL(imageFile);                     // set property to parameter
+            if (url == null) icon = new ImageIcon(imageFile); // set icon
+            else             icon = new ImageIcon(url);       // set icon
+            label.setIcon(icon);                              // set icon to label
+        } catch (MalformedURLException ex) {
+            System.out.println("url error");
         }
     }
 
