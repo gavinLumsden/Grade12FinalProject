@@ -12,14 +12,18 @@ import javax.swing.JLabel;
  * @since 14-May-2019
  */
 public class Grass extends GameObject {
-
+    
     /**
      * Constructor for the class
      *
      * @param image
+     * @param x
+     * @param y
      */
-    public Grass(JLabel image) {
+    public Grass(JLabel image, int x, int y) {
         super(image, 0, Directions.STOP, 0);
+        super.coordinates.x = x; 
+        super.coordinates.y = y; 
         sprite.setImage(Icons.GRASS);
         sprite.debug("");
         sprite.setBackground(0, 145, 0);

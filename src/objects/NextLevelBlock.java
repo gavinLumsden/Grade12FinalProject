@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  * @since 14-May-2019
  */
 public class NextLevelBlock extends GameObject {
-
+    
     public String mapToGoTo; 
     
     /**
@@ -20,10 +20,14 @@ public class NextLevelBlock extends GameObject {
      *
      * @param image
      * @param mapToGoTo
+     * @param x
+     * @param y
      */
-    public NextLevelBlock(JLabel image, String mapToGoTo) {
+    public NextLevelBlock(JLabel image, String mapToGoTo, int x, int y) {
         super(image, 0, Directions.STOP, 0);
         this.mapToGoTo = mapToGoTo; 
+        super.coordinates.x = x; 
+        super.coordinates.y = y; 
         sprite.debug("", Color.WHITE);
         sprite.removeBorder();
     }
