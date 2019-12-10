@@ -28,7 +28,7 @@ public class Grid extends JFrame
         this.engine = engine; 
         setDataStructures();
         setFrame();    
-        setHero(); 
+        createHero(engine); 
         setActions();
         trim();  
         done = true; 
@@ -86,14 +86,19 @@ public class Grid extends JFrame
         this.setSize(frameWidth, frameHeight);
         this.setLocationRelativeTo(null);
     }
-
-    private void setHero() {
+    
+    @Override
+    public void setVisible(boolean visibility) {
+        this.getContentPane().setVisible(visibility);
+    }
+    
+    public void createHero(GameEngine engine) {
         JLabel heroImage = new JLabel();
         this.getContentPane().add(heroImage);
         heroImage.setBounds(10, 10, tileWidth, tileHeight);
         heroImage.setOpaque(true);
         this.getContentPane().setComponentZOrder(heroImage, 0);
-        heroCreator = new HeroCreator(locations, this, heroImage, engine, done);
+        heroCreator = new HeroCreator(locations, this, heroImage, engine, false);
     }
     
 }

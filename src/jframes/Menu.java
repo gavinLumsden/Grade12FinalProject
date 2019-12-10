@@ -126,7 +126,7 @@ public class Menu extends javax.swing.JFrame {
         label = lblQuit; 
         engine.click(labels, label, isClicked, null, 0); 
         this.dispose();
-        engine.currentMap.dispose();
+        engine.clearJFrame(this);
         Introduction intro = new Introduction(); 
     }//GEN-LAST:event_lblQuitMouseClicked
 

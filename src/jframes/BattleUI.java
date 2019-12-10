@@ -759,7 +759,7 @@ public class BattleUI extends javax.swing.JFrame {
                 stopTimers(); 
                 resetAbilities(); 
                 save(); 
-                engine.clearMap(this);
+                engine.clearJFrame(this);
                 engine.play();
                 engine.mediaPlayer.playWAV("/sounds/walkingSoundtrack.wav");
             } else {
@@ -791,7 +791,7 @@ public class BattleUI extends javax.swing.JFrame {
         giveExp();
         giveGold();
         save(); 
-        engine.clearMap(this);
+        engine.clearJFrame(this);
         engine.play();
         engine.mediaPlayer.playWAV("/sounds/walkingSoundtrack.wav");
     }

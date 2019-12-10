@@ -97,7 +97,7 @@ public class Information extends javax.swing.JFrame {
         engine.click(labels, label, isClicked, null, 0);
         cs.dispose();
         this.dispose();
-        new LoadingScreen(selected, engine); 
+        LoadingScreen loading = new LoadingScreen(selected, engine); 
     }//GEN-LAST:event_lblSelectMouseClicked
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked

@@ -75,7 +75,7 @@ public class GameEngine {
      * @param nextLevelBlocks
      */
     public void createHero(JLabel heroImage, LinkedList<NextLevelBlock> nextLevelBlocks) {
-        heroCreator = new HeroCreator(); 
+        grid.createHero(this);  
         hasBeenCreated = true;
         heroCreator.update();
     }
@@ -92,6 +92,7 @@ public class GameEngine {
             moveable = false;
             heroCreator.heroClass.sprite.stop();
             heroCreator.heroClass.mover.stop();
+            grid.setVisible(false);
             menu = new Menu(this);
         }
     }
@@ -101,56 +102,9 @@ public class GameEngine {
      */
     public void play() {
         menu.dispose();
-        grid.set
+        grid.setVisible(true);
         paused = false;
         moveable = true;
-    }
-
-    /**
-     * creates a map
-     *
-     * @param map
-     * @param formWidth
-     * @param formHeight
-     * @param mapNumber
-     */
-    public void createMap(JFrame map, int formWidth, int formHeight, int mapNumber) {
-        map.setSize(formWidth, formHeight);
-        map.setResizable(false);
-        map.setLocationRelativeTo(null);
-        map.setVisible(true);
-        previousMapNumber = currentMapNumber;
-        previousMap = currentMap;
-        currentMap = map;
-        currentMapNumber = mapNumber;
-        moveable = true;
-    }
-
-    /**
-     * clears a map
-     *
-     * @param map
-     */
-    public void clearMap(JFrame map) {
-        map.dispose();
-    }
-
-    /**
-     * clears the current map
-     */
-    public void clearCurrentMap() {
-        if (currentMap != null) {
-            currentMap.dispose();
-        }
-    }
-
-    /**
-     * clears the previous map
-     */
-    public void clearPreviousMap() {
-        if (previousMap != null) {
-            previousMap.dispose();
-        }
     }
 
     /**
@@ -168,20 +122,18 @@ public class GameEngine {
         int answer = (int) number;
         return answer;
     }
-
-    /**
-     * Creates a JFrame using the parameters
-     * @param width
-     * @param height
-     * @param jframe 
-     */
-    public void createJFrame(int width, int height, JFrame jframe) {
-        jframe.setSize(width, height);
-        jframe.setResizable(false);
-        jframe.setLocationRelativeTo(null);
-        jframe.setVisible(true);
+    
+    public void createJFrame(int formWidth, int formHeight, JFrame frame) {
+        frame.setSize(formWidth, formHeight);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
+        frame.setVisible(true);
     }
-
+    
+    public void clearJFrame(JFrame frame) {
+        frame.dispose();
+    }
+    
     /**
      * Used when the user clicks on a jlabel
      * @param labels
