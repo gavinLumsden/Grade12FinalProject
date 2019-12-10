@@ -11,7 +11,7 @@ import game.HeroCreator;
 public class Grid extends JFrame
 {
     
-    public static boolean done; 
+    public boolean done; 
     public int frameWidth;
     public int frameHeight;    
     public int tileWidth;
@@ -72,10 +72,10 @@ public class Grid extends JFrame
         this.addKeyListener(new KeyListener() {
             public void keyTyped(KeyEvent e) {  } 
             public void keyPressed(KeyEvent e) {                 
-                heroCreator.keyPress(e);
+                engine.keyPress(e);
             } 
             public void keyReleased(KeyEvent e) {
-                heroCreator.stop();
+                engine.keyRelease(e);
             }
         });
     }
@@ -87,11 +87,6 @@ public class Grid extends JFrame
         this.setLocationRelativeTo(null);
     }
     
-    @Override
-    public void setVisible(boolean visibility) {
-        this.getContentPane().setVisible(visibility);
-    }
-    
     public void createHero(GameEngine engine) {
         JLabel heroImage = new JLabel();
         this.getContentPane().add(heroImage);
@@ -99,6 +94,7 @@ public class Grid extends JFrame
         heroImage.setOpaque(true);
         this.getContentPane().setComponentZOrder(heroImage, 0);
         heroCreator = new HeroCreator(locations, this, heroImage, engine, false);
+        engine.setHero(heroCreator); 
     }
     
 }

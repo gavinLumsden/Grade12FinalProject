@@ -43,6 +43,10 @@ public class GameEngine {
         paused = false;
     }
 
+    public void setHero(HeroCreator heroCreator) {
+        this.heroCreator = heroCreator; 
+    }
+    
     /**
      * when the player presses a key
      *

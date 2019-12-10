@@ -51,6 +51,7 @@ public class Introduction extends javax.swing.JFrame {
 
         btnQuit.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnQuit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnQuit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnQuit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnQuitMouseClicked(evt);
@@ -67,6 +68,7 @@ public class Introduction extends javax.swing.JFrame {
 
         btnNewGame.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnNewGame.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnNewGame.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNewGame.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnNewGameMouseClicked(evt);
@@ -83,6 +85,7 @@ public class Introduction extends javax.swing.JFrame {
 
         btnLoadGame.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         btnLoadGame.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnLoadGame.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnLoadGame.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnLoadGameMouseClicked(evt);
@@ -96,6 +99,8 @@ public class Introduction extends javax.swing.JFrame {
         });
         getContentPane().add(btnLoadGame);
         btnLoadGame.setBounds(83, 423, 505, 120);
+
+        background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(background);
         background.setBounds(0, 0, 670, 770);
 

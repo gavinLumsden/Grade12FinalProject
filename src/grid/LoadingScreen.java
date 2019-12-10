@@ -14,16 +14,17 @@ public class LoadingScreen extends javax.swing.JFrame
     private final int FORM_WIDTH  = 520; 
     private final int FORM_HEIGHT = 171; 
     private int count; 
-    private Grid grid; 
     
+    private Grid grid; 
     public Timer timer; 
     
     public LoadingScreen(String selected, GameEngine engine) {
         initComponents();
-        setupForm(); 
+        engine.createJFrame(FORM_WIDTH, FORM_HEIGHT, this);
         setupTimers(); 
         grid = new Grid(selected, engine); 
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -47,13 +48,6 @@ public class LoadingScreen extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblText;
     // End of variables declaration//GEN-END:variables
-
-    private void setupForm() {
-        this.setSize(FORM_WIDTH, FORM_HEIGHT);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
-    }
     
     public void setupTimers() {
         timer = new Timer(500, new ActionListener() {
