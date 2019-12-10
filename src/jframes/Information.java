@@ -1,10 +1,9 @@
 package jframes;
 
 import game.GameEngine;
-import game.Hero;
-import javax.swing.ImageIcon;
+import game.HeroCreator; 
+import grid.LoadingScreen; 
 import javax.swing.JLabel;
-import maps.Map1;
 
 /**
  * @author g.lumsden
@@ -19,10 +18,9 @@ public class Information extends javax.swing.JFrame {
     private String          selected; 
     private GameEngine      engine; 
     private CharacterSelect cs; 
-    
     private JLabel[]   labels;
-    private boolean isClicked;
     private JLabel  label; 
+    private boolean isClicked;
         
     /**
      * Constructor for the class
@@ -99,7 +97,7 @@ public class Information extends javax.swing.JFrame {
         engine.click(labels, label, isClicked, null, 0);
         cs.dispose();
         this.dispose();
-        Map1 map1 = new Map1(1, engine);
+        new LoadingScreen(selected, engine); 
     }//GEN-LAST:event_lblSelectMouseClicked
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
@@ -137,7 +135,7 @@ public class Information extends javax.swing.JFrame {
      * setups the image and information for the hero
      */
     private void setupHero() {
-        String image = Hero.getInformationIcon(selected); 
+        String image = HeroCreator.getInformationIcon(selected); 
         engine.setImage(lblHeroInformation, image);
     }
 

@@ -3,17 +3,7 @@ package game;
 import jframes.Menu;
 import collections.LinkedList;
 import objects.NextLevelBlock;
-import objects.Grass;
-import objects.Wall;
-import enemyClasses.Cyborg;
-import enemyClasses.Engineer;
-import enemyClasses.Hammer;
-import enemyClasses.Kingpin;
-import enemyClasses.Nail;
-import enemyClasses.Rampage;
-import enemyClasses.Trickster;
 import game.gametools.Animation;
-import game.gametools.Directions;
 import game.gametools.MediaPlayer;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -24,13 +14,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import nuetral.shopkeeper.Shopkeeper;
-import nuetral.trainers.DamageTrainer;
-import nuetral.trainers.DodgeTrainer;
-import nuetral.trainers.HealthTrainer;
-import nuetral.trainers.SpeedTrainer;
-import nuetral.trainers.Trainer;
-import objects.House;
+import grid.Grid; 
 
 /**
  * GameEngine.java - Represents an "engine" that controls many things to do with
@@ -41,42 +25,10 @@ import objects.House;
  */
 public class GameEngine {
 
-    // enemies
-    private LinkedList<Cyborg> cyborgs;
-    private LinkedList<Engineer> engineers;
-    private LinkedList<Hammer> hammers;
-    private LinkedList<Kingpin> kingpins;
-    private LinkedList<Nail> nails;
-    private LinkedList<Rampage> rampages;
-    private LinkedList<Trickster> tricksters;
-
-    // shopkeepers 
-    private LinkedList<Shopkeeper> shopkeepers;
-
-    // trainers 
-    private LinkedList<Trainer> trainers;
-
-    // hero
-    public Hero hero;
-
-    // objects
-    private LinkedList<Wall> walls;
-    private LinkedList<Grass> grass;
-    private LinkedList<House> houses;
-
-    // used to play music
+    public Grid grid; 
+    public HeroCreator heroCreator;
     public MediaPlayer mediaPlayer;
-
-    // menu used when the game is paused
     public Menu menu;
-
-    // what map (name) the player is on
-    public int currentMapNumber;
-    public int previousMapNumber;
-
-    // what map the player is on
-    public JFrame currentMap;
-    public JFrame previousMap;
 
     private boolean moveable;
     private boolean hasBeenCreated;
@@ -101,7 +53,7 @@ public class GameEngine {
         if (key == 27) {
             pause();
         } else if (moveable == true) {
-            hero.keyPress(evt);
+            heroCreator.keyPress(evt);
         }
     }
 
@@ -112,120 +64,7 @@ public class GameEngine {
      */
     public void keyRelease(KeyEvent evt) {
         if (moveable == true) {
-            hero.keyRelease(evt);
-        }
-    }
-
-    /**
-     * creates a game object
-     *
-     * @param images
-     * @param objectToCreate
-     */
-    public void createGameObject(LinkedList<JLabel> images, String objectToCreate) {
-        if (objectToCreate.equals("grass")) {
-            grass = new LinkedList<>();
-            for (int i = 0; i < images.size(); i++) {
-                Grass newGrass = new Grass(images.get(i));
-                grass.add(newGrass);
-            }
-        }
-        if (objectToCreate.equals("walls")) {
-            walls = new LinkedList<>();
-            for (int i = 0; i < images.size(); i++) {
-                Wall newWall = new Wall(images.get(i));
-                walls.add(newWall);
-            }
-        }
-        if (objectToCreate.equals("houses")) {
-            houses = new LinkedList<>();
-            for (int i = 0; i < images.size(); i++) {
-                House newHouse = new House(images.get(i));
-                houses.add(newHouse);
-            }
-        }
-    }
-
-    /**
-     * creates game character
-     *
-     * @param images
-     * @param characterToCreate
-     */
-    public void createGameCharacter(LinkedList<JLabel> images, String characterToCreate) {
-        if (characterToCreate.equals("shopkeepers")) {
-            shopkeepers = new LinkedList<>();
-            for (int i = 0; i < shopkeepers.size(); i++) {
-                Shopkeeper newShopkeeper = new Shopkeeper(images.get(i));
-                shopkeepers.add(newShopkeeper);
-            }
-        }
-        if (characterToCreate.equals("trainers")) {
-            trainers = new LinkedList<>();
-            DamageTrainer newDamageTrainer = new DamageTrainer(images.get(0));
-            DodgeTrainer newDodgeTrainer = new DodgeTrainer(images.get(1));
-            HealthTrainer newHealthTrainer = new HealthTrainer(images.get(2));
-            SpeedTrainer newSpeedTrainer = new SpeedTrainer(images.get(3));
-            trainers.add(newDamageTrainer);
-            trainers.add(newDodgeTrainer);
-            trainers.add(newHealthTrainer);
-            trainers.add(newSpeedTrainer);
-        }
-        if (characterToCreate.equals("cyborgs")) {
-            cyborgs = new LinkedList<>();
-            for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
-                Cyborg newCyborg = new Cyborg(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
-                cyborgs.add(newCyborg);
-            }
-        }
-        if (characterToCreate.equals("engineers")) {
-            engineers = new LinkedList<>();
-            for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
-                Engineer newEngineer = new Engineer(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
-                engineers.add(newEngineer);
-            }
-        }
-        if (characterToCreate.equals("hammers")) {
-            hammers = new LinkedList<>();
-            for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
-                Hammer newHammer = new Hammer(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
-                hammers.add(newHammer);
-            }
-        }
-        if (characterToCreate.equals("kingpins")) {
-            kingpins = new LinkedList<>();
-            for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
-                Kingpin newKingpin = new Kingpin(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
-                kingpins.add(newKingpin);
-            }
-        }
-        if (characterToCreate.equals("nails")) {
-            nails = new LinkedList<>();
-            for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
-                Nail newNail = new Nail(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
-                nails.add(newNail);
-            }
-        }
-        if (characterToCreate.equals("rampages")) {
-            rampages = new LinkedList<>();
-            for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
-                Rampage newRampage = new Rampage(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
-                rampages.add(newRampage);
-            }
-        }
-        if (characterToCreate.equals("tricksters")) {
-            tricksters = new LinkedList<>();
-            for (int i = 0; i < images.size(); i++) {
-                int enemyLevel = random((currentMapNumber - 1), (currentMapNumber + 1));
-                Trickster newTrickster = new Trickster(images.get(i), 25, Directions.STOP, 4, 100, enemyLevel);
-                tricksters.add(newTrickster);
-            }
+            heroCreator.keyRelease(evt);
         }
     }
 
@@ -236,16 +75,9 @@ public class GameEngine {
      * @param nextLevelBlocks
      */
     public void createHero(JLabel heroImage, LinkedList<NextLevelBlock> nextLevelBlocks) {
-        hero = new Hero(heroImage,
-                walls, houses,
-                cyborgs, nails, rampages,
-                nextLevelBlocks,
-                this, hasBeenCreated,
-                currentMap, previousMap,
-                currentMapNumber, previousMapNumber,
-                trainers);
+        heroCreator = new HeroCreator(); 
         hasBeenCreated = true;
-        hero.update();
+        heroCreator.update();
     }
 
     /**
@@ -258,9 +90,8 @@ public class GameEngine {
             //stop the animaitons and moving
             paused = true;
             moveable = false;
-            hero.heroClass.sprite.stop();
-            hero.heroClass.mover.stop();
-            currentMap.setVisible(false);
+            heroCreator.heroClass.sprite.stop();
+            heroCreator.heroClass.mover.stop();
             menu = new Menu(this);
         }
     }
@@ -270,7 +101,7 @@ public class GameEngine {
      */
     public void play() {
         menu.dispose();
-        currentMap.setVisible(true);
+        grid.set
         paused = false;
         moveable = true;
     }
