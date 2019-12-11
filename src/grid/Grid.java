@@ -93,8 +93,8 @@ public class Grid extends JFrame
         heroImage.setBounds(10, 10, tileWidth, tileHeight);
         heroImage.setOpaque(true);
         this.getContentPane().setComponentZOrder(heroImage, 0);
-        heroCreator = new HeroCreator(locations, this, heroImage, engine, false);
-        engine.setHero(heroCreator); 
+        heroCreator = new HeroCreator(locations, this, heroImage, engine);
+        engine.setGrid(heroCreator, this); 
     }
     
 }

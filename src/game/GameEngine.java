@@ -43,8 +43,9 @@ public class GameEngine {
         paused = false;
     }
 
-    public void setHero(HeroCreator heroCreator) {
+    public void setGrid(HeroCreator heroCreator, Grid grid) {
         this.heroCreator = heroCreator; 
+        this.grid        = grid; 
     }
     
     /**

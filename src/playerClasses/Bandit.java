@@ -21,7 +21,7 @@ import javax.swing.JLabel;
  */
 public class Bandit extends GameCharacter {
 
-    public  JLabel                label; 
+    public  JLabel                heroImage; 
     private LinkedList<Animation> animations; 
     private Location[][]          locations; 
     private Grid                  grid; 
@@ -57,17 +57,21 @@ public class Bandit extends GameCharacter {
     
     /**
      * Creates a "bandit"
+     * @param locations
+     * @param grid
+     * @param heroImage
+     * @param engine
      */
-    public Bandit(Location[][] locations, Grid grid, JLabel label, GameEngine engine, boolean hasBeenCreated) {
-        super(label, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
+    public Bandit(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine) {
+        super(heroImage, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
         
-        this.label = label; 
+        this.heroImage = heroImage; 
         this.locations = locations; 
         this.grid      = grid; 
 
         final int[] DEFAULTS = {5, 5, 100, 100, 1000, 1, 0, 0};
         int stats[] = new int[DEFAULTS.length];
-        stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
+        stats = CharacterData.check(this, stats, DEFAULTS);
         damage      = stats[0];
         dodgeChance = stats[1];
         health      = stats[2];
@@ -153,15 +157,15 @@ public class Bandit extends GameCharacter {
         stopRightFiles.add(Icons.BANDIT_IDLE_RIGHT);
         stopRightFiles.add(Icons.BANDIT_IDLE_RIGHT);
 
-        Animation walkUpAnimation    = new Animation(label, walkUpFiles, WALK_DELAY, true);
-        Animation walkDownAnimation  = new Animation(label, walkDownFiles, WALK_DELAY, true);
-        Animation walkLeftAnimation  = new Animation(label, walkLeftFiles, WALK_DELAY, true);
-        Animation walkRightAnimation = new Animation(label, walkRightFiles, WALK_DELAY, true);
+        Animation walkUpAnimation    = new Animation(heroImage, walkUpFiles, WALK_DELAY, true);
+        Animation walkDownAnimation  = new Animation(heroImage, walkDownFiles, WALK_DELAY, true);
+        Animation walkLeftAnimation  = new Animation(heroImage, walkLeftFiles, WALK_DELAY, true);
+        Animation walkRightAnimation = new Animation(heroImage, walkRightFiles, WALK_DELAY, true);
 
-        Animation stopUpAnimation    = new Animation(label, stopUpFiles, WALK_DELAY, true);
-        Animation stopDownAnimation  = new Animation(label, stopDownFiles, WALK_DELAY, true);
-        Animation stopLeftAnimation  = new Animation(label, stopLeftFiles, WALK_DELAY, true);
-        Animation stopRightAnimation = new Animation(label, stopRightFiles, WALK_DELAY, true);
+        Animation stopUpAnimation    = new Animation(heroImage, stopUpFiles, WALK_DELAY, true);
+        Animation stopDownAnimation  = new Animation(heroImage, stopDownFiles, WALK_DELAY, true);
+        Animation stopLeftAnimation  = new Animation(heroImage, stopLeftFiles, WALK_DELAY, true);
+        Animation stopRightAnimation = new Animation(heroImage, stopRightFiles, WALK_DELAY, true);
 
         animations = new LinkedList<>();
 
@@ -213,11 +217,11 @@ public class Bandit extends GameCharacter {
     }
 
     private void moveMap() {
-        System.out.println("move map");
+        
     }
     
     private void battle() {
-        System.out.println("battle");
+        
     }
     
     @Override

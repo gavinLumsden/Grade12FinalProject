@@ -11,17 +11,11 @@ public class CharacterData {
     private static final String DATA_FILE = "/filedata/data.txt";
     private static FileHandler fileHandler;
     
-    public static int[] check(GameCharacter character, boolean hasBeenCreated, 
+    public static int[] check(GameCharacter character, 
             int[] stats, int[] defaults) {
-        if (hasBeenCreated) {
-            //recreating, read data from persistant storage (file)
-            stats = update(character);
+        for (int i = 0; i < stats.length; i++) {
+            stats[i] = defaults[i];
         }
-        else {
-            for (int i = 0; i < stats.length; i++) {
-                stats[i] = defaults[i];
-            }
-        }        
         save(character,stats);
         return stats;
     }

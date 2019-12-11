@@ -1,6 +1,7 @@
 package jframes;
 
 import game.GameEngine;
+import game.Icons;
 import javax.swing.JLabel;
 
 /**
@@ -18,6 +19,10 @@ public class Menu extends javax.swing.JFrame {
     private boolean isClicked;
     private JLabel  label; 
     
+    /**
+     * Constructor for the class
+     * @param engine 
+     */
     public Menu(GameEngine engine) {
         initComponents();
         this.engine = engine; 
@@ -26,6 +31,7 @@ public class Menu extends javax.swing.JFrame {
         };
         this.labels = labels;
         isClicked = false;
+        engine.setImage(background, Icons.MENU_BACKGROUND);
         engine.createJFrame(FORM_WIDTH, FORM_HEIGHT, this);
     }
 
@@ -125,7 +131,6 @@ public class Menu extends javax.swing.JFrame {
     private void lblQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuitMouseClicked
         label = lblQuit; 
         engine.click(labels, label, isClicked, null, 0); 
-        this.dispose();
         engine.clearJFrame(this);
         Introduction intro = new Introduction(); 
     }//GEN-LAST:event_lblQuitMouseClicked
@@ -138,13 +143,11 @@ public class Menu extends javax.swing.JFrame {
     private void lblItemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblItemsMouseClicked
         label = lblItems; 
         engine.click(labels, label, isClicked, null, 0); 
-        System.out.println("no");
     }//GEN-LAST:event_lblItemsMouseClicked
 
     private void lblUpgradesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUpgradesMouseClicked
         label = lblUpgrades; 
         engine.click(labels, label, isClicked, null, 0); 
-        System.out.println("no");
     }//GEN-LAST:event_lblUpgradesMouseClicked
 
     private void lblResumeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblResumeMouseEntered

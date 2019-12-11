@@ -22,19 +22,19 @@ public class HeroCreator
     /**
      * Creates a "hero"
     */
-    public HeroCreator(Location[][] locations, Grid grid, JLabel label, GameEngine engine, boolean hasBeenCreated) {
+    public HeroCreator(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine) {
         if (CharacterSelect.selected.equals("bandit")) {
-            heroClass = new Bandit(locations, grid, label, engine, hasBeenCreated);
+            heroClass = new Bandit(locations, grid, heroImage, engine);
         }  else if (CharacterSelect.selected.equals("gambler")) {
-            heroClass = new Gambler(locations, grid, label, engine, hasBeenCreated);
+            heroClass = new Gambler(locations, grid, heroImage, engine);
         } else if (CharacterSelect.selected.equals("hacker")) {
-            heroClass = new Hacker(locations, grid, label, engine, hasBeenCreated);
+            heroClass = new Hacker(locations, grid, heroImage, engine);
         }  else if (CharacterSelect.selected.equals("juggernaut")) {
-            heroClass = new Juggernaut(locations, grid, label, engine, hasBeenCreated);
+            heroClass = new Juggernaut(locations, grid, heroImage, engine);
         } else if (CharacterSelect.selected.equals("mage")) {
-            heroClass = new Mage(locations, grid, label, engine, hasBeenCreated);
+            heroClass = new Mage(locations, grid, heroImage, engine);
         }   else if (CharacterSelect.selected.equals("vampire")) {
-            heroClass = new Vampire(locations, grid, label, engine, hasBeenCreated);
+            heroClass = new Vampire(locations, grid, heroImage, engine);
         }
         heroClass.spawn();
         heroClass.sprite.animate(5);

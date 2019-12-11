@@ -51,8 +51,12 @@ public class Juggernaut extends GameCharacter {
 
     /**
      * Creates a "juggernaut"
+     * @param locations
+     * @param grid
+     * @param label
+     * @param engine
      */
-    public Juggernaut(Location[][] locations, Grid grid, JLabel label, GameEngine engine, boolean hasBeenCreated) {
+    public Juggernaut(Location[][] locations, Grid grid, JLabel label, GameEngine engine) {
         super(label, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
         
         this.label = label; 
@@ -61,7 +65,7 @@ public class Juggernaut extends GameCharacter {
 
         final int[] DEFAULTS = {5, 5, 100, 100, 1000, 1, 0, 0};
         int stats[] = new int[DEFAULTS.length];
-        stats = CharacterData.check(this, hasBeenCreated, stats, DEFAULTS);
+        stats = CharacterData.check(this, stats, DEFAULTS);
         damage      = stats[0];
         dodgeChance = stats[1];
         health      = stats[2];
