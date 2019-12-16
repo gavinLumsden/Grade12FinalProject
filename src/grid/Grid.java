@@ -31,7 +31,8 @@ public class Grid extends JFrame
         createHero(engine); 
         setActions();
         trim();  
-        done = true; 
+        done            = true; 
+        engine.moveable = true; 
     }
 
     private void setDataStructures() {

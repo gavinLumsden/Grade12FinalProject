@@ -30,7 +30,7 @@ public class GameEngine {
     public MediaPlayer mediaPlayer;
     public Menu menu;
 
-    private boolean moveable;
+    public boolean moveable;
     private boolean hasBeenCreated;
     private boolean paused;
 
@@ -55,11 +55,8 @@ public class GameEngine {
      */
     public void keyPress(KeyEvent evt) {
         int key = evt.getKeyCode();
-        if (key == 27) {
-            pause();
-        } else if (moveable == true) {
-            heroCreator.keyPress(evt);
-        }
+        if (key == 27) pause();
+        else if (moveable == true) heroCreator.keyPress(evt);
     }
 
     /**
