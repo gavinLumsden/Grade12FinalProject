@@ -39,6 +39,27 @@ public class HeroCreator
         heroClass.spawn();
         heroClass.sprite.animate(5);
     }
+    
+    /**
+     * Creates a "hero"
+    */
+    public HeroCreator(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine, String[] data) {
+        if (data[data.length].equals("bandit")) {
+            heroClass = new Bandit(locations, grid, heroImage, engine, data);
+        }  else if (data[data.length].equals("gambler")) {
+            heroClass = new Gambler(locations, grid, heroImage, engine, data);
+        } else if (data[data.length].equals("hacker")) {
+            heroClass = new Hacker(locations, grid, heroImage, engine, data);
+        }  else if (data[data.length].equals("juggernaut")) {
+            heroClass = new Juggernaut(locations, grid, heroImage, engine, data);
+        } else if (data[data.length].equals("mage")) {
+            heroClass = new Mage(locations, grid, heroImage, engine, data);
+        }   else if (data[data.length].equals("vampire")) {
+            heroClass = new Vampire(locations, grid, heroImage, engine, data);
+        }
+        heroClass.spawn();
+        heroClass.sprite.animate(5);
+    }
 
     /**
      * sets the label of a hero
@@ -96,6 +117,27 @@ public class HeroCreator
         else if (selected.equals("mage"))       return game.Icons.CHARACTER_INFORMATION_MAGE; 
         else if (selected.equals("vampire"))    return game.Icons.CHARACTER_INFORMATION_VAMPIRE; 
         else                                    return null; 
+    }
+    
+    public static void load(String[] data) {
+        if (data[data.length].equals("bandit")) {
+            Bandit bandit = new Bandit(data); 
+        } 
+        else if (data[data.length].equals("gambler")) {
+            
+        } 
+        else if (data[data.length].equals("hacker")) {
+            
+        } 
+        else if (data[data.length].equals("juggernaut")) {
+            
+        } 
+        else if (data[data.length].equals("mage")) {
+            
+        } 
+        else if (data[data.length].equals("vampire")) {
+            
+        } 
     }
     
 }

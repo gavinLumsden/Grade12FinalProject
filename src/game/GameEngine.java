@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import grid.Grid; 
+import grid.Location;
+import jframes.CharacterSelect;
 
 /**
  * GameEngine.java - Represents an "engine" that controls many things to do with
@@ -25,7 +27,9 @@ import grid.Grid;
  */
 public class GameEngine {
 
+    public Location[][] locations; 
     public Grid grid; 
+    
     public HeroCreator heroCreator;
     public MediaPlayer mediaPlayer;
     public Menu menu;
@@ -82,6 +86,38 @@ public class GameEngine {
         heroCreator.update();
     }
 
+    public void newGame(JFrame intro) {
+        intro.dispose();
+        CharacterSelect cs = new CharacterSelect(this); 
+    }
+    
+    public void loadGame(String[] data) {
+        Grid grid = new Grid(this);
+        
+    }
+    
+    public void newHero(Location[][] locations, Grid grid) {
+        this.grid = grid; 
+        this.locations = locations; 
+        JLabel heroImage = new JLabel();
+        grid.getContentPane().add(heroImage);
+        heroImage.setBounds(10, 10, grid.tileWidth, grid.tileHeight);
+        heroImage.setOpaque(true);
+        grid.getContentPane().setComponentZOrder(heroImage, 0);
+        heroCreator = new HeroCreator(locations, grid, heroImage, this); 
+    }
+    
+    public void loadHero(String[] data, Location[][] locations, Grid grid) {
+        this.grid = grid; 
+        this.locations = locations; 
+        JLabel heroImage = new JLabel();
+        grid.getContentPane().add(heroImage);
+        heroImage.setBounds(10, 10, grid.tileWidth, grid.tileHeight);
+        heroImage.setOpaque(true);
+        grid.getContentPane().setComponentZOrder(heroImage, 0);
+        heroCreator = new HeroCreator(locations, grid, heroImage, this, data); 
+    }
+    
     /**
      * Pauses the game
      */

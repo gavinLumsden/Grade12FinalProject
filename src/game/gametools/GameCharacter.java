@@ -47,6 +47,8 @@ public abstract class GameCharacter extends GameObject {
     public final int MAX_DODGE_CHANCE = 50; 
     public final int MAX_HEALTH       = 200; 
     public final int MAX_PUNCH_SPEED  = 500; 
+
+    public final int[] DEFAULTS = {5, 5, 100, 100, 1000, 1, 0, 0};
     
     public int playerLevel; 
     public int exp; 

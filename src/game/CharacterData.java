@@ -1,6 +1,5 @@
 package game;
 
-import collections.LinkedList;
 import game.gametools.FileHandler;
 import game.gametools.GameCharacter;
 
@@ -22,7 +21,7 @@ public class CharacterData <T> {
         fileHandler.write(newSave);
     }
     
-    public static String[] getSave() {
+    public static String[] load() {
         return fileHandler.read(); 
     }
     

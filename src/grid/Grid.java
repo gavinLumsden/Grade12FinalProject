@@ -24,11 +24,10 @@ public class Grid extends JFrame
     private Boundary     boundary; 
     private HeroCreator  heroCreator;
     
-    public Grid(String selected, GameEngine engine) {
+    public Grid(GameEngine engine) {
         this.engine = engine; 
         setDataStructures();
         setFrame();    
-        createHero(engine); 
         setActions();
         trim();  
         done            = true; 
@@ -88,14 +87,6 @@ public class Grid extends JFrame
         this.setLocationRelativeTo(null);
     }
     
-    public void createHero(GameEngine engine) {
-        JLabel heroImage = new JLabel();
-        this.getContentPane().add(heroImage);
-        heroImage.setBounds(10, 10, tileWidth, tileHeight);
-        heroImage.setOpaque(true);
-        this.getContentPane().setComponentZOrder(heroImage, 0);
-        heroCreator = new HeroCreator(locations, this, heroImage, engine);
-        engine.setGrid(heroCreator, this); 
-    }
+    
     
 }

@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 
 public class Gambler extends GameCharacter {
 
-    public  JLabel                label; 
+    public  JLabel                heroImage; 
     private LinkedList<Animation> animations; 
     private Location[][]          locations; 
     private Grid                  grid; 
@@ -50,22 +50,21 @@ public class Gambler extends GameCharacter {
     public int attack4Duration;
 
     /**
-     * Creates a "gambler"
+     * Constructor for the gambler player class (when loading a hero)
      * @param locations
      * @param grid
-     * @param label
+     * @param heroImage
      * @param engine
      */
-    public Gambler(Location[][] locations, Grid grid, JLabel label, GameEngine engine) {
-        super(label, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
+    public Gambler(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine) {
+        super(heroImage, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
         
-        this.label = label; 
+        this.heroImage = heroImage; 
         this.locations = locations; 
         this.grid      = grid; 
 
-        final int[] DEFAULTS = {5, 5, 100, 100, 1000, 1, 0, 0};
-        int stats[] = new int[DEFAULTS.length];
-        stats = CharacterData.check(this, stats, DEFAULTS);
+        int stats[] = new int[super.DEFAULTS.length];
+        stats = CharacterData.check(this, stats, super.DEFAULTS);
         damage      = stats[0];
         dodgeChance = stats[1];
         health      = stats[2];
@@ -109,7 +108,66 @@ public class Gambler extends GameCharacter {
         
         setAnimations(); 
     }
+    
+    /**
+     * Constructor for the gambler player class (when loading a hero)
+     * @param locations
+     * @param grid
+     * @param heroImage
+     * @param engine
+     * @param data 
+     */
+    public Gambler(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine, String[] data) {
+        super(heroImage, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
+        
+        this.heroImage = heroImage; 
+        this.locations = locations; 
+        this.grid      = grid; 
+        
+        damage      = Integer.parseInt(data[0]); 
+        dodgeChance = Integer.parseInt(data[1]); 
+        maxHealth   = Integer.parseInt(data[2]);    
+        health      = Integer.parseInt(data[3]);       
+        punchSpeed  = Integer.parseInt(data[4]);   
+        level       = Integer.parseInt(data[5]); 
+        exp         = Integer.parseInt(data[6]); 
+        gold        = Integer.parseInt(data[7]); 
 
+        attack1Cooldown = 3000;
+        attack2Cooldown = 3000;
+        attack3Cooldown = 5000;
+        attack4Cooldown = 10000;
+
+        attack1Duration = (punchSpeed * 3);
+        attack2Duration = (punchSpeed * 3);
+        attack3Duration = punchSpeed;
+        attack4Duration = punchSpeed; 
+
+        super.playerDamage      = damage;
+        super.playerDodgeChance = dodgeChance;
+        super.playerHealth      = health;
+        super.playerMaxHealth   = maxHealth;
+        super.playerPunchSpeed  = punchSpeed;
+
+        super.playerLevel = level;
+        super.exp         = exp;
+        super.gold        = gold;
+
+        super.attack1Cooldown = attack1Cooldown;
+        super.attack2Cooldown = attack2Cooldown;
+        super.attack3Cooldown = attack3Cooldown;
+        super.attack4Cooldown = attack4Cooldown;
+
+        super.attack1Duration = attack1Duration;
+        super.attack2Duration = attack2Duration;
+        super.attack3Duration = attack3Duration;
+        super.attack4Duration = attack4Duration;
+
+        super.playerName = NAME;
+        
+        setAnimations(); 
+    }
+    
     private void setAnimations() {
         LinkedList<String> walkUpFiles = new LinkedList<>();
         walkUpFiles.add(Icons.GAMBLER_WALK_UP_1);
@@ -151,15 +209,15 @@ public class Gambler extends GameCharacter {
         stopRightFiles.add(Icons.GAMBLER_IDLE_RIGHT);
         stopRightFiles.add(Icons.GAMBLER_IDLE_RIGHT);
 
-        Animation walkUpAnimation    = new Animation(label, walkUpFiles, super.WALK_DELAY, true);
-        Animation walkDownAnimation  = new Animation(label, walkDownFiles, super.WALK_DELAY, true);
-        Animation walkLeftAnimation  = new Animation(label, walkLeftFiles, super.WALK_DELAY, true);
-        Animation walkRightAnimation = new Animation(label, walkRightFiles, super.WALK_DELAY, true);
+        Animation walkUpAnimation    = new Animation(heroImage, walkUpFiles, super.WALK_DELAY, true);
+        Animation walkDownAnimation  = new Animation(heroImage, walkDownFiles, super.WALK_DELAY, true);
+        Animation walkLeftAnimation  = new Animation(heroImage, walkLeftFiles, super.WALK_DELAY, true);
+        Animation walkRightAnimation = new Animation(heroImage, walkRightFiles, super.WALK_DELAY, true);
 
-        Animation stopUpAnimation    = new Animation(label, stopUpFiles, super.WALK_DELAY, true);
-        Animation stopDownAnimation  = new Animation(label, stopDownFiles, super.WALK_DELAY, true);
-        Animation stopLeftAnimation  = new Animation(label, stopLeftFiles, super.WALK_DELAY, true);
-        Animation stopRightAnimation = new Animation(label, stopRightFiles, super.WALK_DELAY, true);
+        Animation stopUpAnimation    = new Animation(heroImage, stopUpFiles, super.WALK_DELAY, true);
+        Animation stopDownAnimation  = new Animation(heroImage, stopDownFiles, super.WALK_DELAY, true);
+        Animation stopLeftAnimation  = new Animation(heroImage, stopLeftFiles, super.WALK_DELAY, true);
+        Animation stopRightAnimation = new Animation(heroImage, stopRightFiles, super.WALK_DELAY, true);
 
         LinkedList<Animation> animations = new LinkedList<>();
 

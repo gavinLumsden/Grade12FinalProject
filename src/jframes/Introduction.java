@@ -1,6 +1,8 @@
 package jframes;
 
+import game.CharacterData;
 import game.GameEngine;
+import game.HeroCreator;
 import game.Icons;
 import javax.swing.JLabel;
 
@@ -110,13 +112,14 @@ public class Introduction extends javax.swing.JFrame {
     private void btnNewGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewGameMouseClicked
         label = btnNewGame; 
         isClicked = engine.click(labels, label, isClicked, null, 0); 
-        this.setVisible(false);
-        CharacterSelect characterSelect = new CharacterSelect(engine);
+        engine.newGame(this);
     }//GEN-LAST:event_btnNewGameMouseClicked
 
     private void btnLoadGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadGameMouseClicked
         label = btnLoadGame; 
         isClicked = engine.click(labels, label, isClicked, null, 0); 
+        String[] data = CharacterData.load(); 
+        engine.loadGame(data); 
         System.out.println("no");
     }//GEN-LAST:event_btnLoadGameMouseClicked
 

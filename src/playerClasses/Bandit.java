@@ -55,12 +55,13 @@ public class Bandit extends GameCharacter {
     public int attack3Duration;
     public int attack4Duration;
     
+    
     /**
-     * Creates a "bandit"
+     * Constructor for the bandit player class (when a new hero is created)
      * @param locations
      * @param grid
      * @param heroImage
-     * @param engine
+     * @param engine 
      */
     public Bandit(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine) {
         super(heroImage, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
@@ -69,9 +70,8 @@ public class Bandit extends GameCharacter {
         this.locations = locations; 
         this.grid      = grid; 
 
-        final int[] DEFAULTS = {5, 5, 100, 100, 1000, 1, 0, 0};
-        int stats[] = new int[DEFAULTS.length];
-        stats = CharacterData.check(this, stats, DEFAULTS);
+        int stats[] = new int[super.DEFAULTS.length];
+        stats = CharacterData.check(this, stats, super.DEFAULTS);
         damage      = stats[0];
         dodgeChance = stats[1];
         health      = stats[2];
@@ -80,6 +80,65 @@ public class Bandit extends GameCharacter {
         level       = stats[5];
         exp         = stats[6];
         gold        = stats[7];
+
+        attack1Cooldown = 3000;
+        attack2Cooldown = 3000;
+        attack3Cooldown = 5000;
+        attack4Cooldown = 10000;
+
+        attack1Duration = punchSpeed;
+        attack2Duration = punchSpeed;
+        attack3Duration = punchSpeed;
+        attack4Duration = (punchSpeed * 3);
+
+        super.playerDamage      = damage;
+        super.playerDodgeChance = dodgeChance;
+        super.playerHealth      = health;
+        super.playerMaxHealth   = maxHealth;
+        super.playerPunchSpeed  = punchSpeed;
+
+        super.playerLevel = level;
+        super.exp         = exp;
+        super.gold        = gold;
+
+        super.attack1Cooldown = attack1Cooldown;
+        super.attack2Cooldown = attack2Cooldown;
+        super.attack3Cooldown = attack3Cooldown;
+        super.attack4Cooldown = attack4Cooldown;
+
+        super.attack1Duration = attack1Duration;
+        super.attack2Duration = attack2Duration;
+        super.attack3Duration = attack3Duration;
+        super.attack4Duration = attack4Duration;
+
+        super.playerName = NAME;
+        
+        setAnimations(); 
+    }
+    
+    /**
+     * Constructor for the bandit player class (when loading a hero)
+     * @param locations
+     * @param grid
+     * @param heroImage
+     * @param engine
+     * @param data 
+     */
+    public Bandit(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine, String[] data) {
+        super(heroImage, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
+        
+        this.heroImage = heroImage; 
+        this.locations = locations; 
+        this.grid      = grid; 
+        
+        damage      = Integer.parseInt(data[0]); 
+        dodgeChance = Integer.parseInt(data[1]); 
+        maxHealth   = Integer.parseInt(data[2]);    
+        health      = Integer.parseInt(data[3]);       
+        punchSpeed  = Integer.parseInt(data[4]);   
+        level       = Integer.parseInt(data[5]); 
+        exp         = Integer.parseInt(data[6]); 
+        gold        = Integer.parseInt(data[7]); 
 
         attack1Cooldown = 3000;
         attack2Cooldown = 3000;
