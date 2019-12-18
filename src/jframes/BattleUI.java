@@ -958,7 +958,7 @@ public class BattleUI extends javax.swing.JFrame {
             heroClass.exp, 
             heroClass.gold
         };
-        stats = CharacterData.saveData(heroClass, stats);
+        CharacterData.save(heroClass, stats);
     }
 
     private void pause() {
