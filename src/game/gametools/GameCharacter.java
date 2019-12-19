@@ -71,6 +71,8 @@ public abstract class GameCharacter extends GameObject {
     
     public String playerBattleBack; 
     public String playerBattleFront; 
+    
+    public int startingAmount; 
 
     /**
      * Constructor for the class, sets class property data
@@ -87,10 +89,12 @@ public abstract class GameCharacter extends GameObject {
             int numberOfDirections,
             int delay) {
         super(image, amount, direction, numberOfDirections);
+        startingAmount = amount; 
         input = new UserInput(super.coordinates, numberOfDirections);
         timer = new Timer(delay, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                coordinates.amount++; 
                 action();
             }
         });
@@ -109,6 +113,16 @@ public abstract class GameCharacter extends GameObject {
      */
     public void keyPress(KeyEvent event) {
         input.keypress(event);
+    }
+    
+    /**
+     * The user's keyboard event of pressing a key to respond to
+     *
+     * @param event the keyboard event registered
+     */
+    public void keyRelease(KeyEvent event) {
+        coordinates.amount = startingAmount; 
+        input.keyrelease();
     }
 
     /**

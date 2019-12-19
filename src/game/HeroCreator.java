@@ -90,13 +90,6 @@ public class HeroCreator {
     }
 
     /**
-     *
-     */
-    public void stop() {
-        heroClass.mover.stop();
-    }
-
-    /**
      * when a key is pressed
      *
      * @param evt
@@ -111,7 +104,7 @@ public class HeroCreator {
      * @param evt
      */
     public void keyRelease(KeyEvent evt) {
-        heroClass.mover.stop();
+        heroClass.keyRelease(evt);
     }
 
     /**

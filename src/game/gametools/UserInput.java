@@ -73,5 +73,12 @@ public class UserInput {
             }
         }
     }
+    
+    /**
+     * 
+     */
+    public void keyrelease() {
+        source.direction = Directions.STOP; 
+    }
 
 }
