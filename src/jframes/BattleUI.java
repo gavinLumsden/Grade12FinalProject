@@ -779,7 +779,7 @@ public class BattleUI extends javax.swing.JFrame {
         resetAbilities(); 
         JOptionPane.showMessageDialog(null, "Oh no, you died!");
         JOptionPane.showMessageDialog(null, "GAME OVER");
-        Introduction introduction = new Introduction(); 
+        Introduction introduction = new Introduction(engine); 
     }
 
     /**

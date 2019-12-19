@@ -54,18 +54,20 @@ public class HeroCreator {
      * @param data
      */
     public HeroCreator(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine, String[] data) {
-        if (data[data.length].equals("bandit")) {
+        if (data[data.length-1].equals("bandit")) {
             heroClass = new Bandit(locations, grid, heroImage, engine, data);
-        } else if (data[data.length].equals("gambler")) {
+        } else if (data[data.length-1].equals("gambler")) {
             heroClass = new Gambler(locations, grid, heroImage, engine, data);
-        } else if (data[data.length].equals("hacker")) {
+        } else if (data[data.length-1].equals("hacker")) {
             heroClass = new Hacker(locations, grid, heroImage, engine, data);
-        } else if (data[data.length].equals("juggernaut")) {
+        } else if (data[data.length-1].equals("juggernaut")) {
             heroClass = new Juggernaut(locations, grid, heroImage, engine, data);
-        } else if (data[data.length].equals("mage")) {
+        } else if (data[data.length-1].equals("mage")) {
             heroClass = new Mage(locations, grid, heroImage, engine, data);
-        } else if (data[data.length].equals("vampire")) {
+        } else if (data[data.length-1].equals("vampire")) {
             heroClass = new Vampire(locations, grid, heroImage, engine, data);
+        } else {
+            System.out.println("error creating hero");; 
         }
         heroClass.spawn();
         heroClass.sprite.animate(5);
@@ -166,19 +168,19 @@ public class HeroCreator {
      * @param engine
      * @param data
      */
-    public static void load(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine, String[] data) {
-        if (data[data.length].equals("bandit")) {
-            Bandit bandit = new Bandit(locations, grid, heroImage, engine, data);
-        } else if (data[data.length].equals("gambler")) {
-
-        } else if (data[data.length].equals("hacker")) {
-
-        } else if (data[data.length].equals("juggernaut")) {
-
-        } else if (data[data.length].equals("mage")) {
-
-        } else if (data[data.length].equals("vampire")) {
-
+    public void load(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine, String[] data) {
+        if (data[data.length-1].equals("bandit")) {
+            heroClass = new Bandit(locations, grid, heroImage, engine, data);
+        } else if (data[data.length-1].equals("gambler")) {
+            heroClass = new Gambler(locations, grid, heroImage, engine, data);
+        } else if (data[data.length-1].equals("hacker")) {
+            heroClass = new Hacker(locations, grid, heroImage, engine, data);
+        } else if (data[data.length-1].equals("juggernaut")) {
+            heroClass = new Juggernaut(locations, grid, heroImage, engine, data);
+        } else if (data[data.length-1].equals("mage")) {
+            heroClass = new Mage(locations, grid, heroImage, engine, data);
+        } else if (data[data.length-1].equals("vampire")) {
+            heroClass = new Vampire(locations, grid, heroImage, engine, data);
         }
     }
 

@@ -6,23 +6,28 @@ import game.gametools.GameCharacter;
 /**
  * @author g.lumsden
  */
-public class CharacterData <T> {
+public class CharacterData {
     
     private static final String DATA_FILE = "/filedata/data.txt";
     private static FileHandler fileHandler;
     
     public static void save(GameCharacter character, int[] stats) {
         String[] newSave = new String[stats.length+1];
-        for (int i = 0; i < newSave.length; i++) {
+        for (int i = 0; i < stats.length; i++) {
             newSave[i] = stats[i] + "";
-        }        
-        newSave[newSave.length] = character.playerName; 
+        } 
+        newSave[newSave.length-1] = character.playerName; 
         fileHandler = new FileHandler(DATA_FILE); 
         fileHandler.write(newSave);
     }
     
     public static String[] load() {
-        return fileHandler.read(); 
+        try {
+            return fileHandler.read(); 
+        } catch (NullPointerException error) {
+            System.out.println("null file (there is no save file)");
+            return null; 
+        }
     }
     
     public static int[] check(GameCharacter character, 

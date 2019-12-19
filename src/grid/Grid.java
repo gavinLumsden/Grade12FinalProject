@@ -3,37 +3,48 @@ package grid;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import game.GameEngine;
 import game.HeroCreator; 
 
 
 public class Grid extends JFrame
 {
+    // properties for the class
     
-    public boolean done; 
-    public int frameWidth;
-    public int frameHeight;    
-    public int tileWidth;
-    public int tileHeight;
-    private int rows;
-    private int columns;
+    public  boolean done; 
+    public  int     frameWidth;
+    public  int     frameHeight;    
+    public  int     tileWidth;
+    public  int     tileHeight;
+    private int     rows;
+    private int     columns;
 
-    private GameEngine engine; 
+    private GameEngine   engine; 
     private Location[][] locations;
     private Boundary     boundary; 
     private HeroCreator  heroCreator;
     
+    /**
+     * Constructor for the class
+     * 
+     * @param engine 
+     */
     public Grid(GameEngine engine) {
         this.engine = engine; 
         setDataStructures();
         setFrame();    
         setActions();
         trim();  
-        done            = true; 
-        engine.moveable = true; 
+        engine.grid        = this; 
+        engine.locations   = locations; 
+        engine.moveable    = true; 
+        engine.newHero(); 
+        done               = true; 
     }
 
+    /**
+     * 
+     */
     private void setDataStructures() {
         frameWidth           = 1900;
         frameHeight          = 1000;
@@ -45,6 +56,9 @@ public class Grid extends JFrame
         boundary             = new Boundary(locations);
     }
     
+    /**
+     * 
+     */
     private void setFrame() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -54,6 +68,9 @@ public class Grid extends JFrame
         setSize(frameWidth, frameHeight);
     }
     
+    /**
+     * 
+     */
     private void setTiles() {
         locations = new Location[rows][columns];
         int y = 0; 
@@ -68,6 +85,9 @@ public class Grid extends JFrame
         }
     }
 
+    /**
+     * 
+     */
     private void setActions() {
         this.addKeyListener(new KeyListener() {
             public void keyTyped(KeyEvent e) {  } 
@@ -80,17 +100,14 @@ public class Grid extends JFrame
         });
     }
 
+    /**
+     * 
+     */
     public void trim() {
         frameHeight -= (frameHeight - (locations.length * tileHeight));
         frameWidth -= (frameWidth - (locations[0].length * tileWidth));
         this.setSize(frameWidth, frameHeight);
         this.setLocationRelativeTo(null);
     }
-
-    public void createHero(GameEngine aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
     
 }

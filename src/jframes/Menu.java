@@ -54,7 +54,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblResume.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblResume.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblResume.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         lblResume.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblResumeMouseClicked(evt);
@@ -70,7 +70,7 @@ public class Menu extends javax.swing.JFrame {
         lblResume.setBounds(83, 65, 505, 111);
 
         lblItems.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblItems.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblItems.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         lblItems.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblItemsMouseClicked(evt);
@@ -86,7 +86,7 @@ public class Menu extends javax.swing.JFrame {
         lblItems.setBounds(83, 226, 505, 120);
 
         lblUpgrades.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblUpgrades.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblUpgrades.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         lblUpgrades.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblUpgradesMouseClicked(evt);
@@ -102,7 +102,7 @@ public class Menu extends javax.swing.JFrame {
         lblUpgrades.setBounds(83, 394, 505, 113);
 
         lblQuit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblQuit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblQuit.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         lblQuit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblQuitMouseClicked(evt);
@@ -117,7 +117,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(lblQuit);
         lblQuit.setBounds(83, 555, 505, 113);
         getContentPane().add(background);
-        background.setBounds(0, 0, 670, 0);
+        background.setBounds(0, 0, 670, 730);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -132,7 +132,7 @@ public class Menu extends javax.swing.JFrame {
         label = lblQuit; 
         engine.click(labels, label, isClicked, null, 0); 
         engine.clearJFrame(this);
-        Introduction intro = new Introduction(); 
+        Introduction intro = new Introduction(engine); 
     }//GEN-LAST:event_lblQuitMouseClicked
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed

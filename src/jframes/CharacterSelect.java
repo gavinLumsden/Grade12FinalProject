@@ -23,7 +23,6 @@ public class CharacterSelect extends javax.swing.JFrame {
     private JLabel[]     labels;
     private Animation[]  animations;
     private JLabel       label; 
-    public  String selected;
     private int          spot;
     private boolean      isClicked;
 
@@ -35,16 +34,16 @@ public class CharacterSelect extends javax.swing.JFrame {
     public CharacterSelect(GameEngine engine) {
         initComponents();
         this.engine = engine;
-        setAnimations(); 
 
         JLabel[] labels = {
             lblBandit, lblGambler, lblHacker,
             lblJuggernaut, lblMage, lblVampire
         };
         this.labels = labels;
+        setAnimations(); 
         
         isClicked = false;
-        selected = "";
+        engine.selected = "";
         
         engine.setImage(background, Icons.CHARACTER_SELECT_BACKGROUND);
         engine.createJFrame(FORM_WIDTH, FORM_HEIGHT, this); 
@@ -178,55 +177,55 @@ public class CharacterSelect extends javax.swing.JFrame {
     private void lblVampireMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVampireMouseClicked
         label = lblVampire; 
         spot = 5; 
-        selected = "vampire"; 
+        engine.selected = "vampire"; 
         engine.click(labels, label, isClicked, animations, spot); 
         this.setVisible(false);
-        Information info = new Information(selected, engine, this); 
+        Information info = new Information(engine, this); 
     }//GEN-LAST:event_lblVampireMouseClicked
 
     private void lblJuggernautMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblJuggernautMouseClicked
         label = lblJuggernaut; 
         spot = 3; 
-        selected = "juggernaut"; 
+        engine.selected = "juggernaut"; 
         engine.click(labels, label, isClicked, animations, spot); 
         this.setVisible(false);
-        Information info = new Information(selected, engine, this); 
+        Information info = new Information(engine, this); 
     }//GEN-LAST:event_lblJuggernautMouseClicked
 
     private void lblHackerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHackerMouseClicked
         label = lblHacker; 
         spot = 2; 
-        selected = "hacker"; 
+        engine.selected = "hacker"; 
         engine.click(labels, label, isClicked, animations, spot); 
         this.setVisible(false);
-        Information info = new Information(selected, engine, this); 
+        Information info = new Information(engine, this); 
     }//GEN-LAST:event_lblHackerMouseClicked
 
     private void lblBanditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanditMouseClicked
         label = lblBandit; 
         spot = 0; 
-        selected = "bandit"; 
+        engine.selected = "bandit"; 
         engine.click(labels, label, isClicked, animations, spot); 
         this.setVisible(false);
-        Information info = new Information(selected, engine, this); 
+        Information info = new Information(engine, this); 
     }//GEN-LAST:event_lblBanditMouseClicked
 
     private void lblMageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMageMouseClicked
         label = lblMage; 
         spot = 4; 
-        selected = "mage"; 
+        engine.selected = "mage"; 
         engine.click(labels, label, isClicked, animations, spot); 
         this.setVisible(false);
-        Information info = new Information(selected, engine, this); 
+        Information info = new Information(engine, this); 
     }//GEN-LAST:event_lblMageMouseClicked
 
     private void lblGamblerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGamblerMouseClicked
         label = lblGambler; 
         spot = 1; 
-        selected = "gambler"; 
+        engine.selected = "gambler"; 
         engine.click(labels, label, isClicked, animations, spot); 
         this.setVisible(false);
-        Information info = new Information(selected, engine, this); 
+        Information info = new Information(engine, this); 
     }//GEN-LAST:event_lblGamblerMouseClicked
 
     private void lblVampireMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVampireMouseEntered

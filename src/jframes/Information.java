@@ -16,7 +16,6 @@ public class Information extends javax.swing.JFrame {
     
     // private properties
     private CharacterSelect characterSelect; 
-    private String          selected; 
     private GameEngine      engine; 
     private JLabel[]        labels;
     private JLabel          label; 
@@ -24,15 +23,14 @@ public class Information extends javax.swing.JFrame {
         
     /**
      * Constructor for the class
-     * @param selected
+     * 
      * @param engine
      * @param characterSelect
      */
-    public Information(String selected, GameEngine engine, CharacterSelect characterSelect) {
+    public Information(GameEngine engine, CharacterSelect characterSelect) {
         initComponents();
         this.engine          = engine; 
-        this.characterSelect = characterSelect; 
-        this.selected        = selected; 
+        this.characterSelect = characterSelect;
         JLabel[] labels = {
             lblBack, lblSelect
         };
@@ -96,7 +94,7 @@ public class Information extends javax.swing.JFrame {
         engine.click(labels, label, isClicked, null, 0);
         characterSelect.dispose();
         this.dispose();
-        LoadingScreen loading = new LoadingScreen(selected, engine); 
+        LoadingScreen loading = new LoadingScreen(engine); 
     }//GEN-LAST:event_lblSelectMouseClicked
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
@@ -134,7 +132,7 @@ public class Information extends javax.swing.JFrame {
      * setups the image and information for the hero
      */
     private void setupHero() {
-        String image = HeroCreator.getInformationIcon(selected); 
+        String image = HeroCreator.getInformationIcon(engine.selected); 
         engine.setImage(lblHeroInformation, image);
     }
 

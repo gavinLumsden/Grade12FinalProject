@@ -18,7 +18,7 @@ public class LoadingScreen extends javax.swing.JFrame
     private Grid grid; 
     public Timer timer; 
     
-    public LoadingScreen(String selected, GameEngine engine) {
+    public LoadingScreen(GameEngine engine) {
         initComponents();
         engine.createJFrame(FORM_WIDTH, FORM_HEIGHT, this);
         setupTimers(); 

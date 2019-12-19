@@ -1,8 +1,6 @@
 package game;
 
 import jframes.Menu;
-import collections.LinkedList;
-import objects.NextLevelBlock;
 import game.gametools.Animation;
 import game.gametools.MediaPlayer;
 import java.awt.Color;
@@ -29,12 +27,13 @@ import jframes.Introduction;
  */
 public class GameEngine {
 
+    public String[]      data; 
     public Grid          grid; 
     public Menu          menu;
-    public LoadingScreen loadingScreen; 
     public Location[][]  locations; 
     public HeroCreator   heroCreator;
     public MediaPlayer   mediaPlayer;
+    public String        selected; 
     public boolean       moveable;
     public boolean       paused;
 
@@ -44,12 +43,8 @@ public class GameEngine {
     public GameEngine() {
         mediaPlayer        = new MediaPlayer();
         paused             = false;
+        moveable           = false; 
         Introduction intro = new Introduction(this); 
-    }
-
-    public void setGrid(HeroCreator heroCreator, Grid grid) {
-        this.heroCreator = heroCreator; 
-        this.grid        = grid; 
     }
     
     /**
@@ -59,7 +54,7 @@ public class GameEngine {
      */
     public void keyPress(KeyEvent evt) {
         int key = evt.getKeyCode();
-        if (key == 27) pause();
+        if      (key == 27) pause();
         else if (moveable == true) heroCreator.keyPress(evt);
     }
 
@@ -74,33 +69,51 @@ public class GameEngine {
         }
     }
 
-    public void newGame() {
+    /**
+     * 
+     * @param intro
+     */
+    public void newGame(Introduction intro) {
+        intro.dispose(); 
         CharacterSelect characterSelect = new CharacterSelect(this); 
     }
     
-    public void loadGame() {
-        String[] data = CharacterData.load(); 
-        
+    /**
+     * 
+     * @param intro
+     */
+    public void loadGame(Introduction intro) {
+        data = CharacterData.load(); 
+        if (data != null) {
+            intro.dispose();
+            new LoadingScreen(this); 
+        }
     }
     
+    /**
+     * 
+     */
     public void quit() {
         System.exit(0); 
     }
     
-    public void newHero(Location[][] locations, Grid grid) {
-        this.grid = grid; 
-        this.locations = locations; 
+    /**
+     * 
+     */
+    public void newHero() {
+        if (data != null) loadHero(); 
         JLabel heroImage = new JLabel();
         grid.getContentPane().add(heroImage);
         heroImage.setBounds(10, 10, grid.tileWidth, grid.tileHeight);
         heroImage.setOpaque(true);
         grid.getContentPane().setComponentZOrder(heroImage, 0);
-        heroCreator = new HeroCreator(locations, grid, heroImage, this); 
+        heroCreator = new HeroCreator(locations, grid, heroImage, this, selected); 
     }
     
-    public void loadHero(String[] data, Location[][] locations, Grid grid) {
-        this.grid = grid; 
-        this.locations = locations; 
+    /**
+     * 
+     */
+    public void loadHero() {
         JLabel heroImage = new JLabel();
         grid.getContentPane().add(heroImage);
         heroImage.setBounds(10, 10, grid.tileWidth, grid.tileHeight);
@@ -152,6 +165,12 @@ public class GameEngine {
         return answer;
     }
     
+    /**
+     * 
+     * @param formWidth
+     * @param formHeight
+     * @param frame 
+     */
     public void createJFrame(int formWidth, int formHeight, JFrame frame) {
         frame.setSize(formWidth, formHeight);
         frame.setLocationRelativeTo(null);
@@ -159,6 +178,10 @@ public class GameEngine {
         frame.setVisible(true);
     }
     
+    /**
+     *
+     * @param frame 
+     */
     public void clearJFrame(JFrame frame) {
         frame.dispose();
     }
@@ -278,6 +301,11 @@ public class GameEngine {
         }
     }
 
+    /**
+     * 
+     * @param label
+     * @param imageFile 
+     */
     public void setImage(JLabel label, String imageFile) {
         try {
             Icon icon; 

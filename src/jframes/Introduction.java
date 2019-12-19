@@ -14,7 +14,8 @@ import javax.swing.JLabel;
  */
 public class Introduction extends javax.swing.JFrame {
 
-    // private properties 
+    // properties 
+    
     private GameEngine engine;
     private JLabel[]   labels;
     private JLabel     label; 
@@ -25,7 +26,9 @@ public class Introduction extends javax.swing.JFrame {
     private final int FORM_HEIGHT = 808;
 
     /**
-     * Default constructor for the class
+     * Constructor for the class
+     * 
+     * @param engine
      */
     public Introduction(GameEngine engine) {
         initComponents();
@@ -112,13 +115,13 @@ public class Introduction extends javax.swing.JFrame {
     private void btnNewGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewGameMouseClicked
         label = btnNewGame; 
         isClicked = engine.click(labels, label, isClicked, null, 0); 
-        engine.newGame();
+        engine.newGame(this);
     }//GEN-LAST:event_btnNewGameMouseClicked
 
     private void btnLoadGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadGameMouseClicked
         label = btnLoadGame; 
         isClicked = engine.click(labels, label, isClicked, null, 0); 
-        engine.loadGame(); 
+        engine.loadGame(this); 
     }//GEN-LAST:event_btnLoadGameMouseClicked
 
     private void btnQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuitMouseClicked
