@@ -17,8 +17,8 @@ public class Introduction extends javax.swing.JFrame {
     // private properties 
     private GameEngine engine;
     private JLabel[]   labels;
-    private boolean isClicked;
-    private JLabel  label; 
+    private JLabel     label; 
+    private boolean    isClicked;
 
     // width and height of the form
     private final int FORM_WIDTH  = 686;
@@ -27,9 +27,9 @@ public class Introduction extends javax.swing.JFrame {
     /**
      * Default constructor for the class
      */
-    public Introduction() {
+    public Introduction(GameEngine engine) {
         initComponents();
-        engine = new GameEngine();
+        this.engine = engine; 
         JLabel[] labels = {
             btnNewGame, btnLoadGame, btnQuit
         };
@@ -112,21 +112,19 @@ public class Introduction extends javax.swing.JFrame {
     private void btnNewGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewGameMouseClicked
         label = btnNewGame; 
         isClicked = engine.click(labels, label, isClicked, null, 0); 
-        engine.newGame(this);
+        engine.newGame();
     }//GEN-LAST:event_btnNewGameMouseClicked
 
     private void btnLoadGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadGameMouseClicked
         label = btnLoadGame; 
         isClicked = engine.click(labels, label, isClicked, null, 0); 
-        String[] data = CharacterData.load(); 
-        engine.loadGame(data); 
-        System.out.println("no");
+        engine.loadGame(); 
     }//GEN-LAST:event_btnLoadGameMouseClicked
 
     private void btnQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuitMouseClicked
         label = btnQuit; 
         isClicked = engine.click(labels, label, isClicked, null, 0); 
-        System.exit(0);
+        engine.quit(); 
     }//GEN-LAST:event_btnQuitMouseClicked
 
     private void btnNewGameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewGameMouseEntered

@@ -86,6 +86,10 @@ public class Grid extends JFrame
         this.setSize(frameWidth, frameHeight);
         this.setLocationRelativeTo(null);
     }
+
+    public void createHero(GameEngine aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

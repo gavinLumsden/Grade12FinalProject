@@ -15,8 +15,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import grid.Grid; 
+import grid.LoadingScreen;
 import grid.Location;
 import jframes.CharacterSelect;
+import jframes.Introduction;
 
 /**
  * GameEngine.java - Represents an "engine" that controls many things to do with
@@ -27,24 +29,22 @@ import jframes.CharacterSelect;
  */
 public class GameEngine {
 
-    public Location[][] locations; 
-    public Grid grid; 
-    
-    public HeroCreator heroCreator;
-    public MediaPlayer mediaPlayer;
-    public Menu menu;
-
-    public boolean moveable;
-    private boolean hasBeenCreated;
-    private boolean paused;
+    public Grid          grid; 
+    public Menu          menu;
+    public LoadingScreen loadingScreen; 
+    public Location[][]  locations; 
+    public HeroCreator   heroCreator;
+    public MediaPlayer   mediaPlayer;
+    public boolean       moveable;
+    public boolean       paused;
 
     /**
      * creates a game engine
      */
     public GameEngine() {
-        mediaPlayer = new MediaPlayer();
-        hasBeenCreated = false;
-        paused = false;
+        mediaPlayer        = new MediaPlayer();
+        paused             = false;
+        Introduction intro = new Introduction(this); 
     }
 
     public void setGrid(HeroCreator heroCreator, Grid grid) {
@@ -74,26 +74,17 @@ public class GameEngine {
         }
     }
 
-    /**
-     * creates the hero on the form
-     *
-     * @param heroImage
-     * @param nextLevelBlocks
-     */
-    public void createHero(JLabel heroImage, LinkedList<NextLevelBlock> nextLevelBlocks) {
-        grid.createHero(this);  
-        hasBeenCreated = true;
-        heroCreator.update();
-    }
-
-    public void newGame(JFrame intro) {
-        intro.dispose();
-        CharacterSelect cs = new CharacterSelect(this); 
+    public void newGame() {
+        CharacterSelect characterSelect = new CharacterSelect(this); 
     }
     
-    public void loadGame(String[] data) {
-        Grid grid = new Grid(this);
+    public void loadGame() {
+        String[] data = CharacterData.load(); 
         
+    }
+    
+    public void quit() {
+        System.exit(0); 
     }
     
     public void newHero(Location[][] locations, Grid grid) {

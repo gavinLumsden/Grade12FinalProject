@@ -15,29 +15,28 @@ public class Information extends javax.swing.JFrame {
     private final int FORM_HEIGHT = 808; 
     
     // private properties
+    private CharacterSelect characterSelect; 
     private String          selected; 
     private GameEngine      engine; 
-    private CharacterSelect cs; 
-    private JLabel[]   labels;
-    private JLabel  label; 
-    private boolean isClicked;
+    private JLabel[]        labels;
+    private JLabel          label; 
+    private boolean         isClicked;
         
     /**
      * Constructor for the class
      * @param selected
      * @param engine
-     * @param cs 
+     * @param characterSelect
      */
-    public Information(String selected, GameEngine engine, CharacterSelect cs) {
+    public Information(String selected, GameEngine engine, CharacterSelect characterSelect) {
         initComponents();
-        this.selected = selected; 
-        this.engine   = engine; 
-        this.cs       = cs; 
+        this.engine          = engine; 
+        this.characterSelect = characterSelect; 
+        this.selected        = selected; 
         JLabel[] labels = {
             lblBack, lblSelect
         };
         this.labels = labels;
-        isClicked = false;
         setupHero(); 
         engine.createJFrame(FORM_WIDTH, FORM_HEIGHT, this);
     }
@@ -95,7 +94,7 @@ public class Information extends javax.swing.JFrame {
     private void lblSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSelectMouseClicked
         label = lblSelect; 
         engine.click(labels, label, isClicked, null, 0);
-        cs.dispose();
+        characterSelect.dispose();
         this.dispose();
         LoadingScreen loading = new LoadingScreen(selected, engine); 
     }//GEN-LAST:event_lblSelectMouseClicked
@@ -104,7 +103,7 @@ public class Information extends javax.swing.JFrame {
         label = lblBack; 
         engine.click(labels, label, isClicked, null, 0);
         this.setVisible(false);
-        cs.setVisible(true); 
+        characterSelect.setVisible(true); 
     }//GEN-LAST:event_lblBackMouseClicked
 
     private void lblBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseEntered

@@ -22,7 +22,7 @@ public class LoadingScreen extends javax.swing.JFrame
         initComponents();
         engine.createJFrame(FORM_WIDTH, FORM_HEIGHT, this);
         setupTimers(); 
-        grid = new Grid(selected, engine); 
+        grid = new Grid(engine); 
     }
     
     @SuppressWarnings("unchecked")

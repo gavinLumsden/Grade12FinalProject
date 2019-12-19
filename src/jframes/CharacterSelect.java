@@ -22,10 +22,10 @@ public class CharacterSelect extends javax.swing.JFrame {
     private GameEngine   engine;
     private JLabel[]     labels;
     private Animation[]  animations;
-    private boolean      isClicked;
     private JLabel       label; 
+    public  String selected;
     private int          spot;
-    public static String selected;
+    private boolean      isClicked;
 
     /**
      * Creates new form CharacterSelect
@@ -35,51 +35,7 @@ public class CharacterSelect extends javax.swing.JFrame {
     public CharacterSelect(GameEngine engine) {
         initComponents();
         this.engine = engine;
-
-        LinkedList<LinkedList<String>> imageFiles = new LinkedList<>();
-        
-        LinkedList<String> banditAnimations = new LinkedList<>();
-        banditAnimations.add(Icons.BANDIT_WALK_RIGHT_1);
-        banditAnimations.add(Icons.BANDIT_IDLE_RIGHT); 
-        banditAnimations.add(Icons.BANDIT_WALK_RIGHT_2);
-        banditAnimations.add(Icons.BANDIT_IDLE_RIGHT); 
-
-        LinkedList<String> gamblerAnimations = new LinkedList<>();
-        gamblerAnimations.add(Icons.GAMBLER_WALK_RIGHT_1);
-        gamblerAnimations.add(Icons.GAMBLER_IDLE_RIGHT); 
-        gamblerAnimations.add(Icons.GAMBLER_WALK_RIGHT_2);
-        gamblerAnimations.add(Icons.GAMBLER_IDLE_RIGHT); 
-
-        LinkedList<String> hackerAnimations = new LinkedList<>();
-        hackerAnimations.add(Icons.HACKER_WALK_RIGHT_1);
-        hackerAnimations.add(Icons.HACKER_IDLE_RIGHT); 
-        hackerAnimations.add(Icons.HACKER_WALK_RIGHT_2);
-        hackerAnimations.add(Icons.HACKER_IDLE_RIGHT); 
-
-        LinkedList<String> juggernautAnimations = new LinkedList<>();
-        juggernautAnimations.add(Icons.JUGGERNAUT_WALK_RIGHT_1);
-        juggernautAnimations.add(Icons.JUGGERNAUT_IDLE_RIGHT); 
-        juggernautAnimations.add(Icons.JUGGERNAUT_WALK_RIGHT_2);
-        juggernautAnimations.add(Icons.JUGGERNAUT_IDLE_RIGHT); 
-
-        LinkedList<String> mageAnimations = new LinkedList<>();
-        mageAnimations.add(Icons.MAGE_WALK_RIGHT_1);
-        mageAnimations.add(Icons.MAGE_IDLE_RIGHT_1); 
-        mageAnimations.add(Icons.MAGE_WALK_RIGHT_2);
-        mageAnimations.add(Icons.MAGE_IDLE_RIGHT_1); 
-
-        LinkedList<String> vampireAnimations = new LinkedList<>();
-        vampireAnimations.add(Icons.VAMPIRE_WALK_RIGHT_1);
-        vampireAnimations.add(Icons.VAMPIRE_IDLE_RIGHT); 
-        vampireAnimations.add(Icons.VAMPIRE_WALK_RIGHT_2);
-        vampireAnimations.add(Icons.VAMPIRE_IDLE_RIGHT); 
-
-        imageFiles.add(banditAnimations);
-        imageFiles.add(gamblerAnimations);
-        imageFiles.add(hackerAnimations);
-        imageFiles.add(juggernautAnimations);
-        imageFiles.add(mageAnimations);
-        imageFiles.add(vampireAnimations);
+        setAnimations(); 
 
         JLabel[] labels = {
             lblBandit, lblGambler, lblHacker,
@@ -87,14 +43,10 @@ public class CharacterSelect extends javax.swing.JFrame {
         };
         this.labels = labels;
         
-        animations = new Animation[6];
-        for (int i = 0; i < animations.length; i++) {
-            animations[i] = new Animation(labels[i], imageFiles.get(i), 800, true);
-        }
-        
-        engine.setImage(background, Icons.CHARACTER_SELECT_BACKGROUND);
         isClicked = false;
         selected = "";
+        
+        engine.setImage(background, Icons.CHARACTER_SELECT_BACKGROUND);
         engine.createJFrame(FORM_WIDTH, FORM_HEIGHT, this); 
     }
 
@@ -346,6 +298,58 @@ public class CharacterSelect extends javax.swing.JFrame {
     private javax.swing.JLabel lblMage;
     private javax.swing.JLabel lblVampire;
     // End of variables declaration//GEN-END:variables
+
+    private void setAnimations() {
+        LinkedList<LinkedList<String>> imageFiles = new LinkedList<>();
+        
+        LinkedList<String> banditAnimations = new LinkedList<>();
+        banditAnimations.add(Icons.BANDIT_WALK_RIGHT_1);
+        banditAnimations.add(Icons.BANDIT_IDLE_RIGHT); 
+        banditAnimations.add(Icons.BANDIT_WALK_RIGHT_2);
+        banditAnimations.add(Icons.BANDIT_IDLE_RIGHT); 
+
+        LinkedList<String> gamblerAnimations = new LinkedList<>();
+        gamblerAnimations.add(Icons.GAMBLER_WALK_RIGHT_1);
+        gamblerAnimations.add(Icons.GAMBLER_IDLE_RIGHT); 
+        gamblerAnimations.add(Icons.GAMBLER_WALK_RIGHT_2);
+        gamblerAnimations.add(Icons.GAMBLER_IDLE_RIGHT); 
+
+        LinkedList<String> hackerAnimations = new LinkedList<>();
+        hackerAnimations.add(Icons.HACKER_WALK_RIGHT_1);
+        hackerAnimations.add(Icons.HACKER_IDLE_RIGHT); 
+        hackerAnimations.add(Icons.HACKER_WALK_RIGHT_2);
+        hackerAnimations.add(Icons.HACKER_IDLE_RIGHT); 
+
+        LinkedList<String> juggernautAnimations = new LinkedList<>();
+        juggernautAnimations.add(Icons.JUGGERNAUT_WALK_RIGHT_1);
+        juggernautAnimations.add(Icons.JUGGERNAUT_IDLE_RIGHT); 
+        juggernautAnimations.add(Icons.JUGGERNAUT_WALK_RIGHT_2);
+        juggernautAnimations.add(Icons.JUGGERNAUT_IDLE_RIGHT); 
+
+        LinkedList<String> mageAnimations = new LinkedList<>();
+        mageAnimations.add(Icons.MAGE_WALK_RIGHT_1);
+        mageAnimations.add(Icons.MAGE_IDLE_RIGHT_1); 
+        mageAnimations.add(Icons.MAGE_WALK_RIGHT_2);
+        mageAnimations.add(Icons.MAGE_IDLE_RIGHT_1); 
+
+        LinkedList<String> vampireAnimations = new LinkedList<>();
+        vampireAnimations.add(Icons.VAMPIRE_WALK_RIGHT_1);
+        vampireAnimations.add(Icons.VAMPIRE_IDLE_RIGHT); 
+        vampireAnimations.add(Icons.VAMPIRE_WALK_RIGHT_2);
+        vampireAnimations.add(Icons.VAMPIRE_IDLE_RIGHT); 
+
+        imageFiles.add(banditAnimations);
+        imageFiles.add(gamblerAnimations);
+        imageFiles.add(hackerAnimations);
+        imageFiles.add(juggernautAnimations);
+        imageFiles.add(mageAnimations);
+        imageFiles.add(vampireAnimations);
+        
+        animations = new Animation[6];
+        for (int i = 0; i < animations.length; i++) {
+            animations[i] = new Animation(labels[i], imageFiles.get(i), 800, true);
+        }
+    }
 
 }
 // make an absrtact class with all th pictures url linked to the google drive, make them static and public, use them across all classes!

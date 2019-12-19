@@ -1,6 +1,6 @@
 package gametest;
 
-import jframes.Introduction;
+import game.GameEngine;
 
 /**
  * GameTest.java - Creates the game
@@ -16,7 +16,7 @@ public class GameTest {
      * @param args
      */
     public static void main(String[] args) {
-        Introduction intro = new Introduction();
+        GameEngine engine = new GameEngine(); 
     }
 
 }
