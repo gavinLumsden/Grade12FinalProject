@@ -72,29 +72,31 @@ public abstract class GameCharacter extends GameObject {
     public String playerBattleBack; 
     public String playerBattleFront; 
     
-    public int startingAmount; 
+    public int speed; 
+    public int minSpeed;
+    public int maxSpeed; 
 
     /**
      * Constructor for the class, sets class property data
      *
      * @param image the label associated with the image for the game character
-     * @param amount the amount the game character will move
      * @param direction the direction the game character will move
      * @param delay the delay in milliseconds of the character's timer
      * @param numberOfDirections the number of directions defined
      */
     public GameCharacter(JLabel image,
-            int amount,
+            int speed, 
             int direction,
             int numberOfDirections,
             int delay) {
-        super(image, amount, direction, numberOfDirections);
-        startingAmount = amount; 
+        super(image, speed, direction, numberOfDirections);
+        this.speed = speed; 
+        minSpeed = speed; 
+        maxSpeed = speed*2; 
         input = new UserInput(super.coordinates, numberOfDirections);
         timer = new Timer(delay, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                coordinates.amount++; 
                 action();
             }
         });
@@ -112,6 +114,9 @@ public abstract class GameCharacter extends GameObject {
      * @param event the keyboard event registered
      */
     public void keyPress(KeyEvent event) {
+        System.out.println(speed);
+        if (speed >= maxSpeed) speed = maxSpeed; 
+        else speed++; 
         input.keypress(event);
     }
     
@@ -121,7 +126,7 @@ public abstract class GameCharacter extends GameObject {
      * @param event the keyboard event registered
      */
     public void keyRelease(KeyEvent event) {
-        coordinates.amount = startingAmount; 
+        speed = minSpeed; 
         input.keyrelease();
     }
 
