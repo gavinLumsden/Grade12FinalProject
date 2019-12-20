@@ -90,7 +90,7 @@ public class Detector
      */
     public boolean isAbove(GameObject gameObject) {
         target = gameObject.coordinates;
-        int adjustedBottom = source.top - source.amount;
+        int adjustedBottom = source.top - source.speed;
         if (adjustedBottom < target.top) {
             return true;
         } else {
@@ -106,7 +106,7 @@ public class Detector
      */
     public boolean isBelow(GameObject gameObject) {
         target = gameObject.coordinates;
-        int adjustedTop = source.top + source.amount;
+        int adjustedTop = source.top + source.speed;
         if (adjustedTop > target.bottom) {
             return true;
         } else {
@@ -122,7 +122,7 @@ public class Detector
      */
     public boolean isLeftOf(GameObject gameObject) {
         target = gameObject.coordinates;
-        int adjustedRight = source.right - source.amount;
+        int adjustedRight = source.right - source.speed;
         if (adjustedRight < target.left) {
             return true;
         } else {
@@ -138,7 +138,7 @@ public class Detector
      */
     public boolean isRightOf(GameObject gameObject) {
         target = gameObject.coordinates;
-        int adjustedLeft = source.right + source.amount;
+        int adjustedLeft = source.right + source.speed;
         if (adjustedLeft > target.right) {
             return true;
         } else {
@@ -215,7 +215,7 @@ public class Detector
      */
     public boolean isAbove(JLabel label) {
         setTarget(label); 
-        int adjustedBottom = source.top - source.amount;
+        int adjustedBottom = source.top - source.speed;
         if (adjustedBottom < target.top) {
             return true;
         } else {
@@ -231,7 +231,7 @@ public class Detector
      */
     public boolean isBelow(JLabel label) {
         setTarget(label); 
-        int adjustedTop = source.top + source.amount;
+        int adjustedTop = source.top + source.speed;
         if (adjustedTop > target.bottom) {
             return true;
         } else {
@@ -247,7 +247,7 @@ public class Detector
      */
     public boolean isLeftOf(JLabel label) {
         setTarget(label); 
-        int adjustedRight = source.right - source.amount;
+        int adjustedRight = source.right - source.speed;
         if (adjustedRight < target.left) {
             return true;
         } else {
@@ -263,7 +263,7 @@ public class Detector
      */
     public boolean isRightOf(JLabel label) {
         setTarget(label); 
-        int adjustedLeft = source.right + source.amount;
+        int adjustedLeft = source.right + source.speed;
         if (adjustedLeft > target.right) {
             return true;
         } else {

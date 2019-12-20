@@ -72,7 +72,6 @@ public abstract class GameCharacter extends GameObject {
     public String playerBattleBack; 
     public String playerBattleFront; 
     
-    public int speed; 
     public int minSpeed;
     public int maxSpeed; 
 
@@ -80,6 +79,7 @@ public abstract class GameCharacter extends GameObject {
      * Constructor for the class, sets class property data
      *
      * @param image the label associated with the image for the game character
+     * @param speed
      * @param direction the direction the game character will move
      * @param delay the delay in milliseconds of the character's timer
      * @param numberOfDirections the number of directions defined
@@ -90,9 +90,8 @@ public abstract class GameCharacter extends GameObject {
             int numberOfDirections,
             int delay) {
         super(image, speed, direction, numberOfDirections);
-        this.speed = speed; 
         minSpeed = speed; 
-        maxSpeed = speed*2; 
+        maxSpeed = speed*4; 
         input = new UserInput(super.coordinates, numberOfDirections);
         timer = new Timer(delay, new ActionListener() {
             @Override
@@ -114,9 +113,9 @@ public abstract class GameCharacter extends GameObject {
      * @param event the keyboard event registered
      */
     public void keyPress(KeyEvent event) {
-        System.out.println(speed);
-        if (speed >= maxSpeed) speed = maxSpeed; 
-        else speed++; 
+        System.out.println(coordinates.speed);
+        if (coordinates.speed >= maxSpeed) coordinates.speed = maxSpeed; 
+        else coordinates.speed++; 
         input.keypress(event);
     }
     
@@ -126,7 +125,8 @@ public abstract class GameCharacter extends GameObject {
      * @param event the keyboard event registered
      */
     public void keyRelease(KeyEvent event) {
-        speed = minSpeed; 
+        System.out.println(coordinates.speed);
+        coordinates.speed = minSpeed; 
         input.keyrelease();
     }
 

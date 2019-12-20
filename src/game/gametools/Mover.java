@@ -106,7 +106,7 @@ public class Mover {
      * moves the game object up
      */
     public void moveUp() {
-        source.y = source.y - source.amount;
+        source.y = source.y - source.speed;
         source.recalculate();
         source.direction = Directions.UP;
     }
@@ -115,7 +115,7 @@ public class Mover {
      * moves the game object down
      */
     public void moveDown() {
-        source.y = source.y + source.amount;
+        source.y = source.y + source.speed;
         source.recalculate();
         source.direction = Directions.DOWN;
     }
@@ -124,7 +124,7 @@ public class Mover {
      * moves the game object left
      */
     public void moveLeft() {
-        source.x = source.x - source.amount;
+        source.x = source.x - source.speed;
         source.recalculate();
         source.direction = Directions.LEFT;
     }
@@ -133,7 +133,7 @@ public class Mover {
      * moves the game object right
      */
     public void moveRight() {
-        source.x = source.x + source.amount;
+        source.x = source.x + source.speed;
         source.recalculate();
         source.direction = Directions.RIGHT;
     }

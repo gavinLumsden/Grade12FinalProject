@@ -12,7 +12,7 @@ public class Coordinates {
     public int x, y, width, height,
             left, right, top, bottom,
             centerX, centerY,
-            amount, direction;
+            speed, direction;
 
     /**
      * Constructor for the class, sets class properties
@@ -21,20 +21,20 @@ public class Coordinates {
      * @param y the y value coordinate
      * @param width the width value coordinate
      * @param height the height value coordinate
-     * @param amount the starting amount of movement
+     * @param speed the starting amount of movement
      * @param direction the starting direction of movement
      */
     public Coordinates(int x,
             int y,
             int width,
             int height,
-            int amount,
+            int speed,
             int direction) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.amount = amount;
+        this.speed = speed;
         this.direction = direction;
         recalculate();
     }

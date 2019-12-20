@@ -64,7 +64,7 @@ public class Bandit extends GameCharacter {
      * @param engine 
      */
     public Bandit(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine) {
-        super(heroImage, 100, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
+        super(heroImage, 25, Directions.STOP, Directions.FOUR_DIRECTIONS, 100);
         
         this.heroImage = heroImage; 
         this.locations = locations; 
