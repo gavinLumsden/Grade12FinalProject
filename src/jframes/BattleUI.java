@@ -2,7 +2,7 @@ package jframes;
 
 import collections.LinkedList;
 import game.CharacterData;
-import game.Enemy;
+import enemyClasses.Enemy;
 import game.GameEngine;
 import game.gametools.GameCharacter;
 import java.awt.Color;

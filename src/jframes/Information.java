@@ -2,7 +2,7 @@ package jframes;
 
 import game.GameEngine;
 import game.HeroCreator; 
-import grid.LoadingScreen; 
+import grid.Grid;
 import javax.swing.JLabel;
 
 /**
@@ -94,7 +94,7 @@ public class Information extends javax.swing.JFrame {
         engine.click(labels, label, isClicked, null, 0);
         characterSelect.dispose();
         this.dispose();
-        LoadingScreen loading = new LoadingScreen(engine); 
+        Grid grid = new Grid(engine);  
     }//GEN-LAST:event_lblSelectMouseClicked
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked

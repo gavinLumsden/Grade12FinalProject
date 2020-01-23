@@ -1,4 +1,4 @@
-package game;
+package enemyClasses;
 
 import game.gametools.GameCharacter;
 import javax.swing.JLabel;

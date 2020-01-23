@@ -24,20 +24,19 @@ public class HeroCreator {
      * @param grid
      * @param heroImage
      * @param engine
-     * @param selected
      */
-    public HeroCreator(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine, String selected) {
-        if (selected.equals("bandit")) {
+    public HeroCreator(Location[][] locations, Grid grid, JLabel heroImage, GameEngine engine) {
+        if (engine.selected.equals("bandit")) {
             heroClass = new Bandit(locations, grid, heroImage, engine);
-        } else if (selected.equals("gambler")) {
+        } else if (engine.selected.equals("gambler")) {
             heroClass = new Gambler(locations, grid, heroImage, engine);
-        } else if (selected.equals("hacker")) {
+        } else if (engine.selected.equals("hacker")) {
             heroClass = new Hacker(locations, grid, heroImage, engine);
-        } else if (selected.equals("juggernaut")) {
+        } else if (engine.selected.equals("juggernaut")) {
             heroClass = new Juggernaut(locations, grid, heroImage, engine);
-        } else if (selected.equals("mage")) {
+        } else if (engine.selected.equals("mage")) {
             heroClass = new Mage(locations, grid, heroImage, engine);
-        } else if (selected.equals("vampire")) {
+        } else if (engine.selected.equals("vampire")) {
             heroClass = new Vampire(locations, grid, heroImage, engine);
         }
         heroClass.spawn();

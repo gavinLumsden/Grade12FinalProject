@@ -261,10 +261,6 @@ public class Mage extends GameCharacter {
                         battle();
                         return; 
                     } 
-                    if (locations[r][c].type == Types.HOUSE) {
-                        reactor.stickTo(locations[r][c].tile.tile);
-                        return; 
-                    }
                 }
             }
         }

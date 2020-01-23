@@ -1,5 +1,11 @@
 package jframes;
 
+import characterselectthreads.BanditAnimation;
+import characterselectthreads.GamblerAnimation;
+import characterselectthreads.HackerAnimation;
+import characterselectthreads.JuggernautAnimation;
+import characterselectthreads.MageAnimation;
+import characterselectthreads.VampireAnimation;
 import collections.LinkedList;
 import game.GameEngine;
 import game.Icons;
@@ -32,21 +38,20 @@ public class CharacterSelect extends javax.swing.JFrame {
      * @param engine
      */
     public CharacterSelect(GameEngine engine) {
+        System.out.println("creating character select");
         initComponents();
         this.engine = engine;
-
         JLabel[] labels = {
             lblBandit, lblGambler, lblHacker,
             lblJuggernaut, lblMage, lblVampire
         };
         this.labels = labels;
-        setAnimations(); 
-        
         isClicked = false;
+        setAnimations(); 
         engine.selected = "";
-        
         engine.setImage(background, Icons.CHARACTER_SELECT_BACKGROUND);
         engine.createJFrame(FORM_WIDTH, FORM_HEIGHT, this); 
+        System.out.println("character select created");
     }
 
     @SuppressWarnings("unchecked")
@@ -299,6 +304,7 @@ public class CharacterSelect extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setAnimations() {
+        System.out.println("setting animations");
         LinkedList<LinkedList<String>> imageFiles = new LinkedList<>();
         
         LinkedList<String> banditAnimations = new LinkedList<>();
@@ -306,7 +312,7 @@ public class CharacterSelect extends javax.swing.JFrame {
         banditAnimations.add(Icons.BANDIT_IDLE_RIGHT); 
         banditAnimations.add(Icons.BANDIT_WALK_RIGHT_2);
         banditAnimations.add(Icons.BANDIT_IDLE_RIGHT); 
-
+        
         LinkedList<String> gamblerAnimations = new LinkedList<>();
         gamblerAnimations.add(Icons.GAMBLER_WALK_RIGHT_1);
         gamblerAnimations.add(Icons.GAMBLER_IDLE_RIGHT); 
@@ -336,18 +342,43 @@ public class CharacterSelect extends javax.swing.JFrame {
         vampireAnimations.add(Icons.VAMPIRE_IDLE_RIGHT); 
         vampireAnimations.add(Icons.VAMPIRE_WALK_RIGHT_2);
         vampireAnimations.add(Icons.VAMPIRE_IDLE_RIGHT); 
-
-        imageFiles.add(banditAnimations);
-        imageFiles.add(gamblerAnimations);
-        imageFiles.add(hackerAnimations);
-        imageFiles.add(juggernautAnimations);
-        imageFiles.add(mageAnimations);
-        imageFiles.add(vampireAnimations);
         
         animations = new Animation[6];
-        for (int i = 0; i < animations.length; i++) {
-            animations[i] = new Animation(labels[i], imageFiles.get(i), 800, true);
+        
+        BanditAnimation banditAnimation         = new BanditAnimation(banditAnimations, lblBandit); 
+        GamblerAnimation gamblerAnimation       = new GamblerAnimation(gamblerAnimations, lblGambler); 
+        HackerAnimation hackerAnimation         = new HackerAnimation(hackerAnimations, lblHacker); 
+        JuggernautAnimation juggernautAnimation = new JuggernautAnimation(juggernautAnimations, lblJuggernaut); 
+        MageAnimation mageAnimation             = new MageAnimation(mageAnimations, lblMage); 
+        VampireAnimation vampireAnimation       = new VampireAnimation(vampireAnimations, lblVampire); 
+        
+        banditAnimation.thread.start(); 
+        gamblerAnimation.thread.start(); 
+        hackerAnimation.thread.start(); 
+        juggernautAnimation.thread.start(); 
+        mageAnimation.thread.start(); 
+        vampireAnimation.thread.start(); 
+        
+        boolean done = false; 
+        
+        while(done == false) {
+            if (banditAnimation.thread.isAlive() == false && 
+                    gamblerAnimation.thread.isAlive() == false && 
+                    hackerAnimation.thread.isAlive() == false && 
+                    juggernautAnimation.thread.isAlive() == false && 
+                    mageAnimation.thread.isAlive() == false && 
+                    vampireAnimation.thread.isAlive() == false) {
+                animations[0] = banditAnimation.animation; 
+                animations[1] = gamblerAnimation.animation; 
+                animations[2] = hackerAnimation.animation; 
+                animations[3] = juggernautAnimation.animation; 
+                animations[4] = mageAnimation.animation; 
+                animations[5] = vampireAnimation.animation; 
+                done = true; 
+            }
         }
+        
+        System.out.println("done setting animations");
     }
 
 }

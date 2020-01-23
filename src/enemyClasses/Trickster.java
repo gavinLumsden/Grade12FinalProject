@@ -1,7 +1,6 @@
 package enemyClasses;
 
 import game.Icons; 
-import game.Enemy;
 import game.gametools.Directions;
 import javax.swing.JLabel;
 

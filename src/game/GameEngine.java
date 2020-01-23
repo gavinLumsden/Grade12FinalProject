@@ -13,7 +13,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import grid.Grid; 
-import grid.LoadingScreen;
 import grid.Location;
 import jframes.CharacterSelect;
 import jframes.Introduction;
@@ -86,7 +85,7 @@ public class GameEngine {
         data = CharacterData.load(); 
         if (data != null) {
             intro.dispose();
-            new LoadingScreen(this); 
+            grid = new Grid(this, data);
         }
     }
     
@@ -101,13 +100,12 @@ public class GameEngine {
      * 
      */
     public void newHero() {
-        if (data != null) loadHero(); 
         JLabel heroImage = new JLabel();
         grid.getContentPane().add(heroImage);
-        heroImage.setBounds(10, 10, grid.tileWidth, grid.tileHeight);
+        heroImage.setBounds(100, 100, grid.tileWidth, grid.tileHeight);
         heroImage.setOpaque(true);
         grid.getContentPane().setComponentZOrder(heroImage, 0);
-        heroCreator = new HeroCreator(locations, grid, heroImage, this, selected); 
+        heroCreator = new HeroCreator(locations, grid, heroImage, this); 
     }
     
     /**
@@ -116,7 +114,7 @@ public class GameEngine {
     public void loadHero() {
         JLabel heroImage = new JLabel();
         grid.getContentPane().add(heroImage);
-        heroImage.setBounds(10, 10, grid.tileWidth, grid.tileHeight);
+        heroImage.setBounds(100, 100, grid.tileWidth, grid.tileHeight);
         heroImage.setOpaque(true);
         grid.getContentPane().setComponentZOrder(heroImage, 0);
         heroCreator = new HeroCreator(locations, grid, heroImage, this, data); 
@@ -172,10 +170,12 @@ public class GameEngine {
      * @param frame 
      */
     public void createJFrame(int formWidth, int formHeight, JFrame frame) {
+        System.out.println("setting form");
         frame.setSize(formWidth, formHeight);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
+        System.out.println("form set");
     }
     
     /**
