@@ -97,6 +97,9 @@ public class GameImage {
         } catch (MalformedURLException ex) {
             System.out.println("url error");
         } 
+        System.out.println("URL: " + url);
+        System.out.println("Image File: " + imageFile);
+        System.out.println("Icon: " + icon);
     }
     
 
