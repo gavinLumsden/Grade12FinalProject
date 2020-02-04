@@ -37,7 +37,6 @@ public class Grid extends JFrame
         trim();  
         System.out.println("new grid created");
         this.setVisible(true);
-        System.out.println("awret");
     }
     
     public Grid(GameEngine engine, String[] data) {
@@ -149,8 +148,55 @@ public class Grid extends JFrame
                 System.out.println("tiles set");
             }
         }
+        generatePatterns(); 
     }
 
+    private void generatePatterns() {
+        for (int r = 0; r < locations.length; r++) {
+            for (int c = 0; c < locations[r].length; c++) {
+                if (locations[r][c].isSource == true) generateSource(r, c); 
+            }
+        }
+    }
+    
+    private void generateSource(int r, int c) {
+        Location source = locations[r][c]; 
+        System.out.println("Source is located at: row: " + source.row + " column: " + source.column);
+        System.out.println("Source is a " + source.type);
+        if (source.type == Types.DIRT) {
+            try {
+                locations[r-1][c].type = source.type; 
+                locations[r][c-1].type = source.type; 
+                locations[r][c+1].type = source.type;
+                locations[r+1][c].type = source.type; 
+            } catch (ArrayIndexOutOfBoundsException error) {}
+        } else if (source.type == Types.WATER) {
+            try {
+                locations[r-2][c].type   = source.type; 
+                locations[r-1][c-1].type = source.type; 
+                locations[r-1][c].type   = source.type; 
+                locations[r-1][c+1].type = source.type; 
+                locations[r][c-2].type   = source.type; 
+                locations[r][c-1].type   = source.type; 
+                locations[r][c+1].type   = source.type; 
+                locations[r][c+2].type   = source.type; 
+                locations[r+1][c-1].type = source.type; 
+                locations[r+1][c].type   = source.type;
+                locations[r+1][c+1].type = source.type;
+                locations[r+2][c].type   = source.type;
+            } catch (ArrayIndexOutOfBoundsException error) {}
+        }
+        redraw(); 
+    }
+    
+    public void redraw() {
+        for (int r = 0; r < locations.length; r++) {
+            for (int c = 0; c < locations[r].length; c++) {
+                locations[r][c].draw();
+            }
+        }
+    }
+    
     private void setActions() {
         this.addKeyListener(new KeyListener() {
             public void keyTyped(KeyEvent e) {  } 

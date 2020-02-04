@@ -24,7 +24,7 @@ public class Grass extends GameObject {
         super(image, 0, Directions.STOP, 0);
         super.coordinates.x = x; 
         super.coordinates.y = y; 
-        sprite.setImage(Icons.GRASS);
+        sprite.setImage(Icons.GRASS_IMAGES[0]);
         sprite.debug("");
         sprite.setBackground(0, 145, 0);
         sprite.removeBorder();

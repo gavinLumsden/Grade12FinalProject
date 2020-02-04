@@ -42,7 +42,7 @@ public class GameEngine {
     public GameEngine() {
         mediaPlayer        = new MediaPlayer();
         paused             = false;
-        moveable           = false; 
+        moveable           = true; 
         Introduction intro = new Introduction(this); 
     }
     

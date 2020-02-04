@@ -32,8 +32,7 @@ public class Chunk4 implements Runnable {
             int x = columnSizeLow*tileWidth; 
             for (int c = columnSizeLow; c <= columnSizeHigh; c++) {
                 System.out.println("setting tile: row: " + r + " column: " + c);
-                int type = Map.map[r][c];
-                locations[r][c] = new Location(r, c, x, y, tileWidth, tileHeight, type, grid); 
+                locations[r][c] = new Location(r, c, x, y, tileWidth, tileHeight, grid); 
                 locations[r][c].draw();
                 x += tileWidth; 
             }

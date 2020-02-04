@@ -1,37 +1,50 @@
 package grid; 
 
+import game.Icons;
+
 public class Location
 {
 
+    public boolean isSource; 
     public int row;
     public int column;
     public int type;
     public Tile tile;
     
     public Location(int row, int column, int x, int y, 
-                    int tileWidth, int tileHeight, int type, Grid grid) {
+                    int tileWidth, int tileHeight, Grid grid) {
         this.row    = row;
         this.column = column;   
         this.type   = type;
+        int randomSource = random(1, 20); 
+        int randomType   = random(Types.DIRT, Types.WATER); 
+        if (randomSource == 1) {
+            isSource = true;
+            type     = randomType; 
+        } 
+        else {
+            isSource = false;
+            type     = Types.GRASS; 
+        } 
         this.tile   = new Tile(tileWidth, tileHeight, x, y, grid);
     }
     
     public void draw() {
-        if      (type == Types.BLANK)   tile.setImage(Types.BLANK_IMAGE);
+        if      (type == Types.BLANK)   tile.setImage(Icons.BLANK_IMAGE);
         else if (type == Types.GRASS)   {
-            int random = random(0, Types.GRASS_IMAGES.length-1); 
-            tile.setImage(Types.GRASS_IMAGES[random]);
+            int random = random(0, Icons.GRASS_IMAGES.length-1); 
+            tile.setImage(Icons.GRASS_IMAGES[random]);
         }
         else if (type == Types.DIRT)   {
-            int random = random(0, Types.DIRT_IMAGES.length-1); 
-            tile.setImage(Types.DIRT_IMAGES[random]);
+            int random = random(0, Icons.DIRT_IMAGES.length-1); 
+            tile.setImage(Icons.DIRT_IMAGES[random]);
         }
         else if (type == Types.WATER)   {
-            int random = random(0, Types.WATER_IMAGES.length-1); 
-            tile.setImage(Types.WATER_IMAGES[random]);
+            int random = random(0, Icons.WATER_IMAGES.length-1); 
+            tile.setImage(Icons.WATER_IMAGES[random]);
         }
-        else if (type == Types.ENEMY)   tile.setImage(Types.ENEMY_IMAGE);
-        else if (type == Types.BOUNDRY) tile.setImage(Types.BLANK_IMAGE);
+        else if (type == Types.ENEMY)   tile.setImage(Icons.ENEMY_IMAGE);
+        else if (type == Types.BOUNDRY) tile.setImage(Icons.BLANK_IMAGE);
     }
     
     /**
