@@ -15,17 +15,17 @@ public class Location
                     int tileWidth, int tileHeight, Grid grid) {
         this.row    = row;
         this.column = column;   
-        this.type   = type;
-        int randomSource = random(1, 20); 
-        int randomType   = random(Types.DIRT, Types.WATER); 
-        if (randomSource == 1) {
-            isSource = true;
-            type     = randomType; 
-        } 
-        else {
-            isSource = false;
-            type     = Types.GRASS; 
-        } 
+        this.type   = Map.map[row][column];
+//        int randomSource = random(1, 20); 
+//        int randomType   = random(Types.DIRT, Types.WATER); 
+//        if (randomSource == 1) {
+//            isSource = true;
+//            type     = randomType; 
+//        } 
+//        else {
+//            isSource = false;
+//            type     = Types.GRASS; 
+//        } 
         this.tile   = new Tile(tileWidth, tileHeight, x, y, grid);
     }
     

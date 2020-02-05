@@ -30,10 +30,10 @@ public class Chunk1 implements Runnable {
 
     @Override
     public void run() {
-        int y = ROW_SIZE_LOW*tileWidth; 
-        for (int r = ROW_SIZE_LOW; r <= ROW_SIZE_HIGH; r++) {
+        int y = ROW_SIZE_LOW*tileWidth;  
+        for (int r = ROW_SIZE_LOW; r < ROW_SIZE_HIGH; r++) {
             int x = COLUMN_SIZE_LOW*tileWidth; 
-            for (int c = COLUMN_SIZE_LOW; c <= COLUMN_SIZE_HIGH; c++) {
+            for (int c = COLUMN_SIZE_LOW; c < COLUMN_SIZE_HIGH; c++) {
                 System.out.println("setting tile: row: " + r + " column: " + c);
                 locations[r][c] = new Location(r, c, x, y, tileWidth, tileHeight, grid); 
                 locations[r][c].draw();
