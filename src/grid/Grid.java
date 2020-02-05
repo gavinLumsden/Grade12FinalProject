@@ -109,31 +109,31 @@ public class Grid extends JFrame
         
         while(done == false) {
             if (chunk1.thread.isAlive() == false && chunk2.thread.isAlive() == false && chunk3.thread.isAlive() == false && chunk4.thread.isAlive() == false) {
-                for (int r = chunk1.rowSizeLow; r <= chunk1.rowSizeHigh; r++) {
-                    for (int c = chunk1.columnSizeLow; c <= chunk1.columnSizeHigh; c++) {
+                for (int r = chunk1.ROW_SIZE_LOW; r <= chunk1.ROW_SIZE_HIGH; r++) {
+                    for (int c = chunk1.COLUMN_SIZE_LOW; c <= chunk1.COLUMN_SIZE_HIGH; c++) {
                         Location newLocation = chunk1.getLocation(r, c);
-                        if (newLocation != null) locations[chunk1.rowSizeLow][chunk1.columnSizeLow] = newLocation; 
+                        if (newLocation != null) locations[chunk1.ROW_SIZE_LOW][chunk1.COLUMN_SIZE_LOW] = newLocation; 
                         else System.out.println("Location: row: " + r + " column: " + c + " is a null");
                     }
                 }
-                for (int r = chunk2.rowSizeLow; r <= chunk2.rowSizeHigh; r++) {
-                    for (int c = chunk2.columnSizeLow; c <= chunk2.columnSizeHigh; c++) {
+                for (int r = chunk2.ROW_SIZE_LOW; r <= chunk2.ROW_SIZE_HIGH; r++) {
+                    for (int c = chunk2.COLUMN_SIZE_LOW; c <= chunk2.COLUMN_SIZE_HIGH; c++) {
                         Location newLocation = chunk2.getLocation(r, c);
-                        if (newLocation != null) locations[chunk2.rowSizeLow][chunk2.columnSizeLow] = newLocation; 
+                        if (newLocation != null) locations[chunk2.ROW_SIZE_LOW][chunk2.COLUMN_SIZE_LOW] = newLocation; 
                         else System.out.println("Location: row: " + r + " column: " + c + " is a null");
                     }
                 }
-                for (int r = chunk3.rowSizeLow; r <= chunk3.rowSizeHigh; r++) {
-                    for (int c = chunk3.columnSizeLow; c <= chunk3.columnSizeHigh; c++) {
+                for (int r = chunk3.ROW_SIZE_LOW; r <= chunk3.ROW_SIZE_HIGH; r++) {
+                    for (int c = chunk3.COLUMN_SIZE_LOW; c <= chunk3.COLUMN_SIZE_HIGH; c++) {
                         Location newLocation = chunk3.getLocation(r, c);
-                        if (newLocation != null) locations[chunk3.rowSizeLow][chunk3.columnSizeLow] = newLocation; 
+                        if (newLocation != null) locations[chunk3.ROW_SIZE_LOW][chunk3.COLUMN_SIZE_LOW] = newLocation; 
                         else System.out.println("Location: row: " + r + " column: " + c + " is a null");
                     }
                 }
-                for (int r = chunk4.rowSizeLow; r <= chunk4.rowSizeHigh; r++) {
-                    for (int c = chunk4.columnSizeLow; c <= chunk4.columnSizeHigh; c++) {
+                for (int r = chunk4.ROW_SIZE_LOW; r <= chunk4.ROW_SIZE_HIGH; r++) {
+                    for (int c = chunk4.COLUMN_SIZE_LOW; c <= chunk4.COLUMN_SIZE_HIGH; c++) {
                         Location newLocation = chunk4.getLocation(r, c);
-                        if (newLocation != null) locations[chunk4.rowSizeLow][chunk4.columnSizeLow] = newLocation; 
+                        if (newLocation != null) locations[chunk4.ROW_SIZE_LOW][chunk4.COLUMN_SIZE_LOW] = newLocation; 
                         else System.out.println("Location: row: " + r + " column: " + c + " is a null");
                     }
                 }

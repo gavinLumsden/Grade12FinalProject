@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  * @author g.lumsden
  * @since 12-Jun-2019
  */
-public class Introduction extends javax.swing.JFrame {
+public class MainMenu extends javax.swing.JFrame {
 
     // properties 
     
@@ -30,7 +30,7 @@ public class Introduction extends javax.swing.JFrame {
      * 
      * @param engine
      */
-    public Introduction(GameEngine engine) {
+    public MainMenu(GameEngine engine) {
         initComponents();
         this.engine = engine; 
         JLabel[] labels = {

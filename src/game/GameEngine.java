@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import grid.Grid; 
 import grid.Location;
 import jframes.CharacterSelect;
-import jframes.Introduction;
+import jframes.MainMenu;
 
 /**
  * GameEngine.java - Represents an "engine" that controls many things to do with
@@ -43,7 +43,7 @@ public class GameEngine {
         mediaPlayer        = new MediaPlayer();
         paused             = false;
         moveable           = true; 
-        Introduction intro = new Introduction(this); 
+        MainMenu mainMenu  = new MainMenu(this); 
     }
     
     /**
@@ -72,7 +72,7 @@ public class GameEngine {
      * 
      * @param intro
      */
-    public void newGame(Introduction intro) {
+    public void newGame(MainMenu intro) {
         intro.dispose(); 
         CharacterSelect characterSelect = new CharacterSelect(this); 
     }
@@ -81,7 +81,7 @@ public class GameEngine {
      * 
      * @param intro
      */
-    public void loadGame(Introduction intro) {
+    public void loadGame(MainMenu intro) {
         data = CharacterData.load(); 
         if (data != null) {
             intro.dispose();

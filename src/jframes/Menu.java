@@ -132,7 +132,7 @@ public class Menu extends javax.swing.JFrame {
         label = lblQuit; 
         engine.click(labels, label, isClicked, null, 0); 
         engine.clearJFrame(this);
-        Introduction intro = new Introduction(engine); 
+        MainMenu intro = new MainMenu(engine); 
     }//GEN-LAST:event_lblQuitMouseClicked
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
