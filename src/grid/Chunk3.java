@@ -17,10 +17,10 @@ public class Chunk3 implements Runnable {
     public final int MAP_COLUMN_LENGTH = Map.map[0].length; 
     
     public final int ROW_SIZE_LOW  = (MAP_ROW_LENGTH / 2);
-    public final int ROW_SIZE_HIGH = (3 * (MAP_ROW_LENGTH / 4)); 
+    public final int ROW_SIZE_HIGH = MAP_ROW_LENGTH; 
     
-    public final int COLUMN_SIZE_LOW  = (MAP_COLUMN_LENGTH / 2);
-    public final int COLUMN_SIZE_HIGH = (3 * (MAP_COLUMN_LENGTH / 4));
+    public final int COLUMN_SIZE_LOW  = MAP_COLUMN_LENGTH - MAP_COLUMN_LENGTH;
+    public final int COLUMN_SIZE_HIGH = (MAP_COLUMN_LENGTH / 2);
     
     public Chunk3(Location[][] locations, Grid grid) {
         this.locations = locations; 
@@ -31,9 +31,9 @@ public class Chunk3 implements Runnable {
     @Override
     public void run() {
         int y = ROW_SIZE_LOW*tileWidth; 
-        for (int r = ROW_SIZE_LOW+1; r < ROW_SIZE_HIGH; r++) {
+        for (int r = ROW_SIZE_LOW; r < ROW_SIZE_HIGH; r++) {
             int x = COLUMN_SIZE_LOW*tileWidth; 
-            for (int c = COLUMN_SIZE_LOW+1; c < COLUMN_SIZE_HIGH; c++) {
+            for (int c = COLUMN_SIZE_LOW; c < COLUMN_SIZE_HIGH; c++) {
                 System.out.println("setting tile: row: " + r + " column: " + c);
                 locations[r][c] = new Location(r, c, x, y, tileWidth, tileHeight, grid); 
                 locations[r][c].draw();

@@ -162,15 +162,7 @@ public class Grid extends JFrame
     private void generateSource(int r, int c) {
         Location source = locations[r][c]; 
         System.out.println("Source is located at: row: " + source.row + " column: " + source.column);
-        System.out.println("Source is a " + source.type);
         if (source.type == Types.DIRT) {
-            try {
-                locations[r-1][c].type = source.type; 
-                locations[r][c-1].type = source.type; 
-                locations[r][c+1].type = source.type;
-                locations[r+1][c].type = source.type; 
-            } catch (ArrayIndexOutOfBoundsException error) {}
-        } else if (source.type == Types.WATER) {
             try {
                 locations[r-2][c].type   = source.type; 
                 locations[r-1][c-1].type = source.type; 
@@ -185,8 +177,20 @@ public class Grid extends JFrame
                 locations[r+1][c+1].type = source.type;
                 locations[r+2][c].type   = source.type;
             } catch (ArrayIndexOutOfBoundsException error) {}
-        }
+        } 
+        setTransitions(); 
         redraw(); 
+    }
+    
+    public void setTransitions() {
+        for (int r = 0; r < locations.length; r++) {
+            for (int c = 0; c < locations[r].length; c++) {
+                Location center = locations[r][c]; 
+                if (locations[r-1][c].type != center.type) {
+                    locations[r-1][c].type = Types.
+                }
+            }
+        }
     }
     
     public void redraw() {

@@ -17,10 +17,10 @@ public class Chunk1 implements Runnable {
     public final int MAP_COLUMN_LENGTH = Map.map[0].length; 
     
     public final int ROW_SIZE_LOW  = MAP_ROW_LENGTH - MAP_ROW_LENGTH;
-    public final int ROW_SIZE_HIGH = (MAP_ROW_LENGTH / 4);
+    public final int ROW_SIZE_HIGH = (MAP_ROW_LENGTH / 2);
     
     public final int COLUMN_SIZE_LOW  = MAP_COLUMN_LENGTH - MAP_COLUMN_LENGTH;
-    public final int COLUMN_SIZE_HIGH = (MAP_COLUMN_LENGTH / 4);
+    public final int COLUMN_SIZE_HIGH = (MAP_COLUMN_LENGTH / 2);
     
     public Chunk1(Location[][] locations, Grid grid) {
         this.locations = locations; 

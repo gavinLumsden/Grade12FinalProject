@@ -16,16 +16,13 @@ public class Location
         this.row    = row;
         this.column = column;   
         this.type   = Map.map[row][column];
-//        int randomSource = random(1, 20); 
-//        int randomType   = random(Types.DIRT, Types.WATER); 
-//        if (randomSource == 1) {
-//            isSource = true;
-//            type     = randomType; 
-//        } 
-//        else {
-//            isSource = false;
-//            type     = Types.GRASS; 
-//        } 
+        if (type == Types.GRASS) {
+            int randomSource = random(1, 20); 
+            if (randomSource == 1) {
+                isSource = true;
+                type     = Types.DIRT; 
+            }  
+        }
         this.tile   = new Tile(tileWidth, tileHeight, x, y, grid);
     }
     
@@ -63,6 +60,4 @@ public class Location
         return answer;
     }
 
-    
-    
 }
