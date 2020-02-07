@@ -263,68 +263,90 @@ public interface Icons {
         PATH + "1hsHMe3DqD9yEmUFcWcyYYTbj0BNf82rt"}; 
     
     public static String[] DIRT_ABOVE_GRASS_IMAGES = {
-        PATH + "https://drive.google.com/open?id=1p4w97s1_ovP_0Httfk8xNuu1gWL2lCLx",
-        PATH + "https://drive.google.com/open?id=1E2IRpiC6tYc8yECusjFJdWf4pYEQR-G8", 
-        PATH + "https://drive.google.com/open?id=1x2uKu1uiPlW_A7BphhrxTH34grKFbTnv", 
-        PATH + "", 
-        PATH + "", 
-        PATH + "", 
-        PATH + "", 
-        PATH + "", 
-        PATH + "", 
-        PATH + "", 
-        PATH + "", 
+        PATH + "1p4w97s1_ovP_0Httfk8xNuu1gWL2lCLx",
+        PATH + "1E2IRpiC6tYc8yECusjFJdWf4pYEQR-G8", 
+        PATH + "1x2uKu1uiPlW_A7BphhrxTH34grKFbTnv", 
     }; 
     public static String[] DIRT_BELOW_GRASS_IMAGES = {
-        
+        PATH + "1aPGmb6L8IOIp1TZArRmZ6gCSY6iz9hfc", 
+        PATH + "1o-uzXlpqnlEqQ3PDyb7nuQN1o2G0e7ku", 
+        PATH + "1imPtPw41yUBqM0dPPYid1_1S1ljOPorJ", 
     }; 
     public static String[] DIRT_LEFTOF_GRASS_IMAGES = {
-        
+        PATH + "1kRkt9eFuJkDUBZ3yTvmcO0EiFuzVFTd4", 
+        PATH + "1X22c_i51zU17EuMfZgAId11yArANO3I7", 
+        PATH + "1iOWvBj6jYFrPbi6AoZITrhbek85JT7VZ", 
     }; 
     public static String[] DIRT_RIGHTOF_GRASS_IMAGES = {
-        
+        PATH + "1EH1JLSImiKKiCjc6lafh0AhOHpTSnPBn", 
+        PATH + "1pDNuA8bjJSCAnbkv4If0gtRzHj6oi37e", 
+        PATH + "1__QkPoFVrjtJe4UoX_-8YiuVAA8hF8sK", 
     }; 
     
-    public static String[] DIRT_DIAGONAL_ABOVE_LEFTOF_GRASS = {
-        
+    public static String[] DIRT_DIAGONAL_ABOVE_LEFTOF_GRASS_IMAGES = {
+        PATH + "18yIzXPE30WGA1INv0ab_cDLNxS0XCw7g", 
+        PATH + "1BCtJ1XtbxY8u3KK9206fZtfntO_PMm_s", 
+        PATH + "1_mbX4Uco9zQApCNK8BSfdrru-7zScGuV", 
     }; 
-    public static String[] DIRT_DIAGONAL_BELOW_LEFTOF_GRASS = {
-        
+    public static String[] DIRT_DIAGONAL_BELOW_LEFTOF_GRASS_IMAGES = {
+        PATH + "1zeXh8Lc7_o5m0iXalyY1eMPRv5Vr4y6v", 
+        PATH + "1WgHa01zht0cOZPby_uh2zS1TQVQU_iqU", 
+        PATH + "18Ro-DSZpHg7CHyoI8xqqkfuElZ65vN7g", 
     }; 
-    public static String[] DIRT_DIAGONAL_ABOVE_RIGHTOF_GRASS = {
-        
+    public static String[] DIRT_DIAGONAL_ABOVE_RIGHTOF_GRASS_IMAGES = {
+        PATH + "15FTbxDeVt-P9DDAuW3-QiHSxTzrj82vz", 
+        PATH + "1-iBRZYdVXuI4Lqv4bJX9W19corgnK1Sf", 
+        PATH + "1XPMWOk53JQ7-Zylqb47bKlLt8fpBcDh7", 
     }; 
-    public static String[] DIRT_DIAGONAL_BELOW_RIGHTOF_GRASS = {
-        
+    public static String[] DIRT_DIAGONAL_BELOW_RIGHTOF_GRASS_IMAGES = {
+        PATH + "1vK3NvrEG9g5dllhctFVCi9fbTq7hdBXU", 
+        PATH + "1AM5Gr69mgkvhpxxe66M4TTZHn7EL2YMW", 
+        PATH + "1e3M9bImjVAumVhwK_YeSjmhJ5LzBTELM", 
     }; 
     
     public static String[] GRASS_ABOVE_DIRT_IMAGES = {
-        
+        PATH + "1aPGmb6L8IOIp1TZArRmZ6gCSY6iz9hfc", 
+        PATH + "1o-uzXlpqnlEqQ3PDyb7nuQN1o2G0e7ku", 
+        PATH + "1imPtPw41yUBqM0dPPYid1_1S1ljOPorJ", 
     }; 
     public static String[] GRASS_BELOW_DIRT_IMAGES = {
-        
+        PATH + "1p4w97s1_ovP_0Httfk8xNuu1gWL2lCLx", 
+        PATH + "1E2IRpiC6tYc8yECusjFJdWf4pYEQR-G8", 
+        PATH + "1x2uKu1uiPlW_A7BphhrxTH34grKFbTnv", 
     }; 
     public static String[] GRASS_LEFTOF_DIRT_IMAGES = {
-        
+        PATH + "1EH1JLSImiKKiCjc6lafh0AhOHpTSnPBn", 
+        PATH + "1pDNuA8bjJSCAnbkv4If0gtRzHj6oi37e", 
+        PATH + "1__QkPoFVrjtJe4UoX_-8YiuVAA8hF8sK", 
     }; 
     public static String[] GRASS_RIGHTOF_DIRT_IMAGES = {
-        
+        PATH + "1kRkt9eFuJkDUBZ3yTvmcO0EiFuzVFTd4", 
+        PATH + "1X22c_i51zU17EuMfZgAId11yArANO3I7", 
+        PATH + "1iOWvBj6jYFrPbi6AoZITrhbek85JT7VZ", 
     }; 
     
-    public static String[] GRASS_DIAGONAL_ABOVE_LEFTOF_DIRT = {
-        
+    public static String[] GRASS_DIAGONAL_ABOVE_LEFTOF_DIRT_IMAGES = {
+        PATH + "1vK3NvrEG9g5dllhctFVCi9fbTq7hdBXU", 
+        PATH + "1AM5Gr69mgkvhpxxe66M4TTZHn7EL2YMW", 
+        PATH + "1e3M9bImjVAumVhwK_YeSjmhJ5LzBTELM", 
     }; 
-    public static String[] GRASS_DIAGONAL_BELOW_LEFTOF_DIRT = {
-        
+    public static String[] GRASS_DIAGONAL_BELOW_LEFTOF_DIRT_IMAGES = {
+        PATH + "15FTbxDeVt-P9DDAuW3-QiHSxTzrj82vz", 
+        PATH + "1-iBRZYdVXuI4Lqv4bJX9W19corgnK1Sf", 
+        PATH + "1XPMWOk53JQ7-Zylqb47bKlLt8fpBcDh7", 
     }; 
-    public static String[] GRASS_DIAGONAL_ABOVE_RIGHTOF_DIRT = {
-        
+    public static String[] GRASS_DIAGONAL_ABOVE_RIGHTOF_DIRT_IMAGES = {
+        PATH + "1zeXh8Lc7_o5m0iXalyY1eMPRv5Vr4y6v", 
+        PATH + "1WgHa01zht0cOZPby_uh2zS1TQVQU_iqU", 
+        PATH + "18Ro-DSZpHg7CHyoI8xqqkfuElZ65vN7g", 
     }; 
-    public static String[] GRASS_DIAGONAL_BELOW_RIGHTOF_DIRT = {
-        
+    public static String[] GRASS_DIAGONAL_BELOW_RIGHTOF_DIRT_IMAGES = {
+        PATH + "18yIzXPE30WGA1INv0ab_cDLNxS0XCw7g", 
+        PATH + "1BCtJ1XtbxY8u3KK9206fZtfntO_PMm_s", 
+        PATH + "1_mbX4Uco9zQApCNK8BSfdrru-7zScGuV", 
     };     
     
-    public static String BLANK_IMAGE    = PATH + "1hsHMe3DqD9yEmUFcWcyYYTbj0BNf82rt"; 
+    public static String BLANK_IMAGE   = PATH + "1hsHMe3DqD9yEmUFcWcyYYTbj0BNf82rt"; 
     public static String BOUNDRY_IMAGE = PATH + "1TIOnvURt7b61y254cBnxgNXNrVUxdZ33"; 
     public static String ENEMY_IMAGE   = PATH + "10G3VmBGb9jCawlQeHUfbdQZLN5ARGGw9"; 
     public static String HERO_IMAGE    = PATH + "1oAxS9-vUv4bVUqD1FvMSogPKluDrAzLt"; 

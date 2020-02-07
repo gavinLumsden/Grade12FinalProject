@@ -17,31 +17,115 @@ public class Location
         this.column = column;   
         this.type   = Map.map[row][column];
         if (type == Types.GRASS) {
-            int randomSource = random(1, 20); 
-            if (randomSource == 1) {
-                isSource = true;
-                type     = Types.DIRT; 
-            }  
+            boolean canBeASource = false; 
+            canBeASource = checkAvailabitity(grid); 
+            if (canBeASource == true) {
+                int randomSource = random(1, 30); 
+                if (randomSource == 1) {
+                    isSource = true;
+                    type     = Types.DIRT; 
+                }  
+            }
         }
         this.tile   = new Tile(tileWidth, tileHeight, x, y, grid);
     }
     
+    private boolean checkAvailabitity(Grid grid) {
+        if (grid.locations[row-1][column-1] != null && grid.locations[row-1][column-1].type == Types.DIRT) return false; 
+        if (grid.locations[row-1][column]   != null && grid.locations[row-1][column].type   == Types.DIRT) return false; 
+        if (grid.locations[row-1][column+1] != null && grid.locations[row-1][column+1].type == Types.DIRT) return false; 
+        if (grid.locations[row][column-1]   != null && grid.locations[row][column-1].type   == Types.DIRT) return false; 
+        if (grid.locations[row][column+1]   != null && grid.locations[row][column+1].type   == Types.DIRT) return false; 
+        if (grid.locations[row+1][column-1] != null && grid.locations[row+1][column-1].type == Types.DIRT) return false; 
+        if (grid.locations[row+1][column]   != null && grid.locations[row+1][column].type   == Types.DIRT) return false; 
+        if (grid.locations[row+1][column+1] != null && grid.locations[row+1][column+1].type == Types.DIRT) return false; 
+        return true; 
+    }
+    
     public void draw() {
         if      (type == Types.BLANK)   tile.setImage(Icons.BLANK_IMAGE);
+        
         else if (type == Types.GRASS)   {
             int random = random(0, Icons.GRASS_IMAGES.length-1); 
             tile.setImage(Icons.GRASS_IMAGES[random]);
         }
+        else if (type == Types.GRASS_ABOVE_DIRT) {
+            int random = random(0, Icons.GRASS_ABOVE_DIRT_IMAGES.length-1); 
+            tile.setImage(Icons.GRASS_ABOVE_DIRT_IMAGES[random]);
+        }
+        else if (type == Types.GRASS_BELOW_DIRT) {
+            int random = random(0, Icons.GRASS_BELOW_DIRT_IMAGES.length-1); 
+            tile.setImage(Icons.GRASS_BELOW_DIRT_IMAGES[random]);
+        }
+        else if (type == Types.GRASS_LEFTOF_DIRT) {
+            int random = random(0, Icons.GRASS_LEFTOF_DIRT_IMAGES.length-1); 
+            tile.setImage(Icons.GRASS_LEFTOF_DIRT_IMAGES[random]);
+        }
+        else if (type == Types.GRASS_RIGHTOF_DIRT) {
+            int random = random(0, Icons.GRASS_RIGHTOF_DIRT_IMAGES.length-1); 
+            tile.setImage(Icons.GRASS_RIGHTOF_DIRT_IMAGES[random]);
+        }
+        else if (type == Types.GRASS_DIAGONAL_ABOVE_LEFTOF_DIRT) {
+            int random = random(0, Icons.GRASS_DIAGONAL_ABOVE_LEFTOF_DIRT_IMAGES.length-1); 
+            tile.setImage(Icons.GRASS_DIAGONAL_ABOVE_LEFTOF_DIRT_IMAGES[random]);
+        }
+        else if (type == Types.GRASS_DIAGONAL_ABOVE_RIGHTOF_DIRT) {
+            int random = random(0, Icons.GRASS_DIAGONAL_ABOVE_RIGHTOF_DIRT_IMAGES.length-1); 
+            tile.setImage(Icons.GRASS_DIAGONAL_ABOVE_RIGHTOF_DIRT_IMAGES[random]);
+        }
+        else if (type == Types.GRASS_DIAGONAL_BELOW_LEFTOF_DIRT) {
+            int random = random(0, Icons.GRASS_DIAGONAL_BELOW_LEFTOF_DIRT_IMAGES.length-1); 
+            tile.setImage(Icons.GRASS_DIAGONAL_BELOW_LEFTOF_DIRT_IMAGES[random]);
+        }
+        else if (type == Types.GRASS_DIAGONAL_BELOW_RIGHTOF_DIRT) {
+            int random = random(0, Icons.GRASS_DIAGONAL_BELOW_RIGHTOF_DIRT_IMAGES.length-1); 
+            tile.setImage(Icons.GRASS_DIAGONAL_BELOW_RIGHTOF_DIRT_IMAGES[random]);
+        }
+        
         else if (type == Types.DIRT)   {
             int random = random(0, Icons.DIRT_IMAGES.length-1); 
             tile.setImage(Icons.DIRT_IMAGES[random]);
         }
+        else if (type == Types.DIRT_ABOVE_GRASS) {
+            int random = random(0, Icons.DIRT_ABOVE_GRASS_IMAGES.length-1); 
+            tile.setImage(Icons.DIRT_ABOVE_GRASS_IMAGES[random]);
+        }
+        else if (type == Types.DIRT_BELOW_GRASS) {
+            int random = random(0, Icons.DIRT_BELOW_GRASS_IMAGES.length-1); 
+            tile.setImage(Icons.DIRT_BELOW_GRASS_IMAGES[random]);
+        }
+        else if (type == Types.DIRT_LEFTOF_GRASS) {
+            int random = random(0, Icons.DIRT_LEFTOF_GRASS_IMAGES.length-1); 
+            tile.setImage(Icons.DIRT_LEFTOF_GRASS_IMAGES[random]);
+        }
+        else if (type == Types.DIRT_RIGHTOF_GRASS) {
+            int random = random(0, Icons.DIRT_RIGHTOF_GRASS_IMAGES.length-1); 
+            tile.setImage(Icons.DIRT_RIGHTOF_GRASS_IMAGES[random]);
+        }
+        else if (type == Types.DIRT_DIAGONAL_ABOVE_LEFTOF_GRASS) {
+            int random = random(0, Icons.DIRT_DIAGONAL_ABOVE_LEFTOF_GRASS_IMAGES.length-1); 
+            tile.setImage(Icons.DIRT_DIAGONAL_ABOVE_LEFTOF_GRASS_IMAGES[random]);
+        }
+        else if (type == Types.DIRT_DIAGONAL_ABOVE_RIGHTOF_GRASS) {
+            int random = random(0, Icons.DIRT_DIAGONAL_ABOVE_RIGHTOF_GRASS_IMAGES.length-1); 
+            tile.setImage(Icons.DIRT_DIAGONAL_ABOVE_RIGHTOF_GRASS_IMAGES[random]);
+        }
+        else if (type == Types.DIRT_DIAGONAL_BELOW_LEFTOF_GRASS) {
+            int random = random(0, Icons.DIRT_DIAGONAL_BELOW_LEFTOF_GRASS_IMAGES.length-1); 
+            tile.setImage(Icons.DIRT_DIAGONAL_BELOW_LEFTOF_GRASS_IMAGES[random]);
+        }
+        else if (type == Types.DIRT_DIAGONAL_BELOW_RIGHTOF_GRASS) {
+            int random = random(0, Icons.DIRT_DIAGONAL_BELOW_RIGHTOF_GRASS_IMAGES.length-1); 
+            tile.setImage(Icons.DIRT_DIAGONAL_BELOW_RIGHTOF_GRASS_IMAGES[random]);
+        }
+        
         else if (type == Types.WATER)   {
             int random = random(0, Icons.WATER_IMAGES.length-1); 
             tile.setImage(Icons.WATER_IMAGES[random]);
         }
         else if (type == Types.ENEMY)   tile.setImage(Icons.ENEMY_IMAGE);
         else if (type == Types.BOUNDRY) tile.setImage(Icons.BLANK_IMAGE);
+        tile.tile.setText("Type: " + type); 
     }
     
     /**

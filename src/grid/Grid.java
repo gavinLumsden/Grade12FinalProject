@@ -20,8 +20,8 @@ public class Grid extends JFrame
     private int rows;
     private int columns;
 
-    private Location[][] locations;
-    private Boundary     boundary; 
+    public Location[][] locations;
+    public Boundary     boundary; 
     private HeroCreator  heroCreator;
     
     public Grid(GameEngine engine) {
@@ -164,18 +164,14 @@ public class Grid extends JFrame
         System.out.println("Source is located at: row: " + source.row + " column: " + source.column);
         if (source.type == Types.DIRT) {
             try {
-                locations[r-2][c].type   = source.type; 
                 locations[r-1][c-1].type = source.type; 
                 locations[r-1][c].type   = source.type; 
                 locations[r-1][c+1].type = source.type; 
-                locations[r][c-2].type   = source.type; 
                 locations[r][c-1].type   = source.type; 
                 locations[r][c+1].type   = source.type; 
-                locations[r][c+2].type   = source.type; 
                 locations[r+1][c-1].type = source.type; 
                 locations[r+1][c].type   = source.type;
                 locations[r+1][c+1].type = source.type;
-                locations[r+2][c].type   = source.type;
             } catch (ArrayIndexOutOfBoundsException error) {}
         } 
         setTransitions(); 
@@ -186,8 +182,15 @@ public class Grid extends JFrame
         for (int r = 0; r < locations.length; r++) {
             for (int c = 0; c < locations[r].length; c++) {
                 Location center = locations[r][c]; 
-                if (locations[r-1][c].type != center.type) {
-                    locations[r-1][c].type = Types.
+                if (center.type == Types.DIRT) {
+                    if (locations[r-1][c].type   == Types.GRASS) locations[r-1][c].type   = Types.DIRT_BELOW_GRASS; 
+                    if (locations[r][c-1].type   == Types.GRASS) locations[r][c-1].type   = Types.DIRT_RIGHTOF_GRASS; 
+                    if (locations[r][c+1].type   == Types.GRASS) locations[r][c+1].type   = Types.DIRT_LEFTOF_GRASS; 
+                    if (locations[r+1][c].type   == Types.GRASS) locations[r+1][c].type   = Types.DIRT_ABOVE_GRASS; 
+                    if (locations[r-1][c-1].type == Types.GRASS) locations[r-1][c-1].type = Types.DIRT_DIAGONAL_BELOW_RIGHTOF_GRASS; 
+                    if (locations[r-1][c+1].type == Types.GRASS) locations[r-1][c+1].type = Types.DIRT_DIAGONAL_BELOW_LEFTOF_GRASS; 
+                    if (locations[r+1][c-1].type == Types.GRASS) locations[r+1][c-1].type = Types.DIRT_DIAGONAL_ABOVE_RIGHTOF_GRASS; 
+                    if (locations[r+1][c-1].type == Types.GRASS) locations[r+1][c+1].type = Types.DIRT_DIAGONAL_ABOVE_LEFTOF_GRASS; 
                 }
             }
         }
