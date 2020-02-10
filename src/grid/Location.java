@@ -44,7 +44,6 @@ public class Location
     
     public void draw() {
         if      (type == Types.BLANK)   tile.setImage(Icons.BLANK_IMAGE);
-        
         else if (type == Types.GRASS)   {
             int random = random(0, Icons.GRASS_IMAGES.length-1); 
             tile.setImage(Icons.GRASS_IMAGES[random]);
@@ -125,7 +124,7 @@ public class Location
         }
         else if (type == Types.ENEMY)   tile.setImage(Icons.ENEMY_IMAGE);
         else if (type == Types.BOUNDRY) tile.setImage(Icons.BLANK_IMAGE);
-        tile.tile.setText("Type: " + type); 
+        tile.tile.setText("" + type); 
     }
     
     /**

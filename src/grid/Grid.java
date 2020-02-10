@@ -183,14 +183,14 @@ public class Grid extends JFrame
             for (int c = 0; c < locations[r].length; c++) {
                 Location center = locations[r][c]; 
                 if (center.type == Types.DIRT) {
+                    if (locations[r-1][c-1].type == Types.GRASS && locations[r-1][c].type == Types.GRASS && locations[r][c-1].type == Types.GRASS) locations[r-1][c-1].type = Types.DIRT_DIAGONAL_BELOW_RIGHTOF_GRASS; 
+                    if (locations[r-1][c+1].type == Types.GRASS && locations[r-1][c].type == Types.GRASS && locations[r][c+1].type == Types.GRASS) locations[r-1][c+1].type = Types.DIRT_DIAGONAL_BELOW_LEFTOF_GRASS; 
+                    if (locations[r+1][c-1].type == Types.GRASS && locations[r+1][c].type == Types.GRASS && locations[r][c-1].type == Types.GRASS) locations[r+1][c-1].type = Types.DIRT_DIAGONAL_ABOVE_RIGHTOF_GRASS; 
+                    if (locations[r+1][c+1].type == Types.GRASS && locations[r+1][c].type == Types.GRASS && locations[r][c+1].type == Types.GRASS) locations[r+1][c+1].type = Types.DIRT_DIAGONAL_ABOVE_LEFTOF_GRASS; 
                     if (locations[r-1][c].type   == Types.GRASS) locations[r-1][c].type   = Types.DIRT_BELOW_GRASS; 
                     if (locations[r][c-1].type   == Types.GRASS) locations[r][c-1].type   = Types.DIRT_RIGHTOF_GRASS; 
                     if (locations[r][c+1].type   == Types.GRASS) locations[r][c+1].type   = Types.DIRT_LEFTOF_GRASS; 
                     if (locations[r+1][c].type   == Types.GRASS) locations[r+1][c].type   = Types.DIRT_ABOVE_GRASS; 
-                    if (locations[r-1][c-1].type == Types.GRASS) locations[r-1][c-1].type = Types.DIRT_DIAGONAL_BELOW_RIGHTOF_GRASS; 
-                    if (locations[r-1][c+1].type == Types.GRASS) locations[r-1][c+1].type = Types.DIRT_DIAGONAL_BELOW_LEFTOF_GRASS; 
-                    if (locations[r+1][c-1].type == Types.GRASS) locations[r+1][c-1].type = Types.DIRT_DIAGONAL_ABOVE_RIGHTOF_GRASS; 
-                    if (locations[r+1][c-1].type == Types.GRASS) locations[r+1][c+1].type = Types.DIRT_DIAGONAL_ABOVE_LEFTOF_GRASS; 
                 }
             }
         }
