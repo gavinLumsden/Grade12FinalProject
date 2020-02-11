@@ -179,6 +179,7 @@ public class Grid extends JFrame
     }
     
     public void setTransitions() {
+        System.out.println("settings transitions");
         for (int r = 0; r < locations.length; r++) {
             for (int c = 0; c < locations[r].length; c++) {
                 Location center = locations[r][c]; 
@@ -194,14 +195,17 @@ public class Grid extends JFrame
                 }
             }
         }
+        System.out.println("transitions set");
     }
     
     public void redraw() {
+        System.out.println("redrawing grid");
         for (int r = 0; r < locations.length; r++) {
             for (int c = 0; c < locations[r].length; c++) {
                 locations[r][c].draw();
             }
         }
+        System.out.println("grid drawn");
     }
     
     private void setActions() {
