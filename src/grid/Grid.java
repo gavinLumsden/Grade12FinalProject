@@ -5,7 +5,6 @@ import game.HeroCreator;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 
 public class Grid extends JFrame

@@ -32,55 +32,20 @@ public class Location
     
     private boolean checkAvailabitity(Grid grid) {
         System.out.println("checking availabitity at row: " + row + " column: " + column);
-        if (grid.locations[row-3][column-3] != null && grid.locations[row-3][column-3].type  == Types.DIRT) return false; 
-        if (grid.locations[row-3][column-2] != null && grid.locations[row-3][column-2].type  == Types.DIRT) return false; 
-        if (grid.locations[row-3][column-1] != null && grid.locations[row-3][column-1].type  == Types.DIRT) return false; 
-        if (grid.locations[row-3][column]   != null && grid.locations[row-3][column].type    == Types.DIRT) return false; 
-        if (grid.locations[row-3][column+1] != null && grid.locations[row-3][column+1].type  == Types.DIRT) return false; 
-        if (grid.locations[row-3][column+2] != null && grid.locations[row-3][column+2].type  == Types.DIRT) return false;
-        if (grid.locations[row-3][column+3] != null && grid.locations[row-3][column+3].type  == Types.DIRT) return false;
-        if (grid.locations[row-2][column-3] != null && grid.locations[row-2][column-3].type  == Types.DIRT) return false; 
-        if (grid.locations[row-2][column-2] != null && (grid.locations[row-2][column-2].type == Types.DIRT || grid.locations[row-2][column-2].type == Types.WATER)) return false; 
-        if (grid.locations[row-2][column-1] != null && (grid.locations[row-2][column-1].type == Types.DIRT || grid.locations[row-2][column-1].type == Types.WATER)) return false; 
-        if (grid.locations[row-2][column]   != null && (grid.locations[row-2][column].type   == Types.DIRT || grid.locations[row-2][column].type   == Types.WATER)) return false; 
-        if (grid.locations[row-2][column+1] != null && (grid.locations[row-2][column+1].type == Types.DIRT || grid.locations[row-2][column+1].type == Types.WATER)) return false; 
-        if (grid.locations[row-2][column+2] != null && (grid.locations[row-2][column+2].type == Types.DIRT || grid.locations[row-2][column+2].type == Types.WATER)) return false;
-        if (grid.locations[row-2][column+3] != null && grid.locations[row-2][column+3].type  == Types.DIRT) return false;
-        if (grid.locations[row-1][column-3] != null && grid.locations[row-1][column-3].type  == Types.DIRT) return false; 
-        if (grid.locations[row-1][column-2] != null && (grid.locations[row-1][column-2].type == Types.DIRT || grid.locations[row-1][column-2].type == Types.WATER)) return false; 
-        if (grid.locations[row-1][column-1] != null && (grid.locations[row-1][column-1].type == Types.DIRT || grid.locations[row-1][column-1].type == Types.WATER)) return false; 
-        if (grid.locations[row-1][column]   != null && (grid.locations[row-1][column].type   == Types.DIRT || grid.locations[row-1][column].type   == Types.WATER)) return false; 
-        if (grid.locations[row-1][column+1] != null && (grid.locations[row-1][column+1].type == Types.DIRT || grid.locations[row-1][column+1].type == Types.WATER)) return false; 
-        if (grid.locations[row-1][column+2] != null && (grid.locations[row-1][column+2].type == Types.DIRT || grid.locations[row-1][column+2].type == Types.WATER)) return false;
-        if (grid.locations[row-1][column+3] != null && grid.locations[row-1][column+3].type  == Types.DIRT) return false;
-        if (grid.locations[row][column-3]   != null && grid.locations[row][column-3].type    == Types.DIRT) return false; 
-        if (grid.locations[row][column-2]   != null && (grid.locations[row][column-2].type   == Types.DIRT || grid.locations[row][column-2].type   == Types.WATER)) return false; 
-        if (grid.locations[row][column-1]   != null && (grid.locations[row][column-1].type   == Types.DIRT || grid.locations[row][column-1].type   == Types.WATER)) return false; 
-        if (grid.locations[row][column+1]   != null && (grid.locations[row][column+1].type   == Types.DIRT || grid.locations[row][column+1].type   == Types.WATER)) return false; 
-        if (grid.locations[row][column+2]   != null && (grid.locations[row][column+2].type   == Types.DIRT || grid.locations[row][column+2].type   == Types.WATER)) return false;
-        if (grid.locations[row][column+3]   != null && grid.locations[row][column+3].type    == Types.DIRT) return false;
-        if (grid.locations[row+1][column-3] != null && grid.locations[row+1][column-3].type  == Types.DIRT) return false; 
-        if (grid.locations[row+1][column-2] != null && (grid.locations[row+1][column-2].type == Types.DIRT || grid.locations[row+1][column-2].type == Types.WATER)) return false; 
-        if (grid.locations[row+1][column-1] != null && (grid.locations[row+1][column-1].type == Types.DIRT || grid.locations[row+1][column-1].type == Types.WATER)) return false; 
-        if (grid.locations[row+1][column]   != null && (grid.locations[row+1][column].type   == Types.DIRT || grid.locations[row+1][column].type   == Types.WATER)) return false; 
-        if (grid.locations[row+1][column+1] != null && (grid.locations[row+1][column+1].type == Types.DIRT || grid.locations[row+1][column+1].type == Types.WATER)) return false; 
-        if (grid.locations[row+1][column+2] != null && (grid.locations[row+1][column+2].type == Types.DIRT || grid.locations[row+1][column+2].type == Types.WATER)) return false;
-        if (grid.locations[row+1][column+3] != null && grid.locations[row+1][column+3].type  == Types.DIRT) return false;
-        if (grid.locations[row+2][column-3] != null && grid.locations[row+2][column-3].type  == Types.DIRT) return false; 
-        if (grid.locations[row+2][column-2] != null && (grid.locations[row+2][column-2].type == Types.DIRT || grid.locations[row+2][column-2].type == Types.WATER)) return false; 
-        if (grid.locations[row+2][column-1] != null && (grid.locations[row+2][column-1].type == Types.DIRT || grid.locations[row+2][column-1].type == Types.WATER)) return false; 
-        if (grid.locations[row+2][column]   != null && (grid.locations[row+2][column].type   == Types.DIRT || grid.locations[row+2][column].type   == Types.WATER)) return false; 
-        if (grid.locations[row+2][column+1] != null && (grid.locations[row+2][column+1].type == Types.DIRT || grid.locations[row+2][column+1].type == Types.WATER)) return false; 
-        if (grid.locations[row+2][column+2] != null && (grid.locations[row+2][column+2].type == Types.DIRT || grid.locations[row+2][column+2].type == Types.WATER)) return false;
-        if (grid.locations[row+2][column+3] != null && grid.locations[row+2][column+3].type  == Types.DIRT) return false;
-        if (grid.locations[row+3][column-3] != null && grid.locations[row+3][column-3].type  == Types.DIRT) return false; 
-        if (grid.locations[row+3][column-2] != null && grid.locations[row+3][column-2].type  == Types.DIRT) return false; 
-        if (grid.locations[row+3][column-1] != null && grid.locations[row+3][column-1].type  == Types.DIRT) return false; 
-        if (grid.locations[row+3][column]   != null && grid.locations[row+3][column].type    == Types.DIRT) return false; 
-        if (grid.locations[row+3][column+1] != null && grid.locations[row+3][column+1].type  == Types.DIRT) return false; 
-        if (grid.locations[row+3][column+2] != null && grid.locations[row+3][column+2].type  == Types.DIRT) return false;
-        if (grid.locations[row+3][column+3] != null && grid.locations[row+3][column+3].type  == Types.DIRT) return false;
+        boolean answer = true; 
+        for (int i = -3; i <= 3; i++) {
+            for (int j = -3; j <= 3; j++) {
+                if (answer == false) return false; 
+                else answer = check(row+i, column+j, grid); 
+            }          
+        }
         return true;
+    }
+    
+    private boolean check(int row, int column, Grid grid) {
+        if      (grid.locations[row][column] != null && grid.locations[row][column].type == Types.DIRT)  return false; 
+        else if (grid.locations[row][column] != null && grid.locations[row][column].type == Types.WATER) return false; 
+        else return true;
     }
     
     public void draw() {

@@ -11,7 +11,7 @@ public class Menu extends javax.swing.JFrame {
 
     // width and height of the form
     private final int FORM_WIDTH = 686; 
-    private final int FORM_HEIGHT = 771; 
+    private final int FORM_HEIGHT = 769; 
     
     // properties of the class
     private GameEngine engine; 
@@ -130,9 +130,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void lblQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuitMouseClicked
         label = lblQuit; 
-        engine.click(labels, label, isClicked, null, 0); 
-        engine.clearJFrame(this);
-        MainMenu intro = new MainMenu(engine); 
+        engine.click(labels, label, isClicked, null, 0);
+        this.setVisible(false);
+        SaveFrame save = new SaveFrame(engine, this); 
     }//GEN-LAST:event_lblQuitMouseClicked
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
