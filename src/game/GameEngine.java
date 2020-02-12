@@ -35,14 +35,14 @@ public class GameEngine {
     public String        selected; 
     public boolean       moveable;
     public boolean       paused;
+    
+    private final int SPAWN_X = 500; 
+    private final int SPAWN_Y = 500; 
 
     /**
      * creates a game engine
      */
     public GameEngine() {
-        mediaPlayer        = new MediaPlayer();
-        paused             = false;
-        moveable           = true; 
         MainMenu mainMenu  = new MainMenu(this); 
     }
     
@@ -70,11 +70,15 @@ public class GameEngine {
 
     /**
      * 
-     * @param intro
+     * @param menu
      */
-    public void newGame(MainMenu intro) {
-        intro.dispose(); 
-        CharacterSelect characterSelect = new CharacterSelect(this); 
+    public void newGame(MainMenu menu) {
+        mediaPlayer        = new MediaPlayer();
+        runMusic("introSoundtrack.wav"); 
+        paused             = false;
+        moveable           = true; 
+        menu.dispose(); 
+        CharacterSelect cs = new CharacterSelect(this); 
     }
     
     /**
@@ -96,13 +100,17 @@ public class GameEngine {
         System.exit(0); 
     }
     
+    public void runMusic(String filename) {
+        mediaPlayer.playWAV(filename); 
+    }
+    
     /**
      * 
      */
     public void newHero() {
         JLabel heroImage = new JLabel();
         grid.getContentPane().add(heroImage);
-        heroImage.setBounds(100, 100, grid.tileWidth, grid.tileHeight);
+        heroImage.setBounds(SPAWN_X, SPAWN_Y, grid.tileWidth, grid.tileHeight);
         heroImage.setOpaque(true);
         grid.getContentPane().setComponentZOrder(heroImage, 0);
         heroCreator = new HeroCreator(locations, grid, heroImage, this); 

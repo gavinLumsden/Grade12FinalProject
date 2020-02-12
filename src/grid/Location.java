@@ -16,36 +16,7 @@ public class Location
         this.row    = row;
         this.column = column;   
         this.type   = Map.map[row][column];
-        if (type == Types.GRASS) {
-            boolean canBeASource = false; 
-            canBeASource = checkAvailabitity(grid); 
-            if (canBeASource == true) {
-                int randomSource = random(1, 30); 
-                if (randomSource == 1) {
-                    isSource = true;
-                    type     = Types.DIRT; 
-                }  
-            }
-        }
         this.tile   = new Tile(tileWidth, tileHeight, x, y, grid);
-    }
-    
-    private boolean checkAvailabitity(Grid grid) {
-        System.out.println("checking availabitity at row: " + row + " column: " + column);
-        boolean answer = true; 
-        for (int i = -3; i <= 3; i++) {
-            for (int j = -3; j <= 3; j++) {
-                if (answer == false) return false; 
-                else answer = check(row+i, column+j, grid); 
-            }          
-        }
-        return true;
-    }
-    
-    private boolean check(int row, int column, Grid grid) {
-        if      (grid.locations[row][column] != null && grid.locations[row][column].type == Types.DIRT)  return false; 
-        else if (grid.locations[row][column] != null && grid.locations[row][column].type == Types.WATER) return false; 
-        else return true;
     }
     
     public void draw() {

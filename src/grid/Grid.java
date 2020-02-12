@@ -49,6 +49,7 @@ public class Grid extends JFrame
         loadHero(data); 
         setActions();
         trim();  
+        engine.runMusic("walkingSoundTrack.wav"); 
         System.out.println("grid loaded");
         this.setVisible(true);
         System.out.println("awret");
@@ -72,8 +73,8 @@ public class Grid extends JFrame
         System.out.println("settings data structures");
         frameWidth           = Map.map.length;
         frameHeight          = Map.map[0].length;
-        tileWidth            = 80;
-        tileHeight           = 80;
+        tileWidth            = 100;
+        tileHeight           = 100;
         rows                 = Map.map.length;
         columns              = Map.map[0].length;
         System.out.println("data structures set");
@@ -147,9 +148,54 @@ public class Grid extends JFrame
                 System.out.println("tiles set");
             }
         }
+        setSources(); 
         generatePatterns(); 
     }
 
+    private void setSources() {
+        for (int r = 0; r < locations.length; r++) {
+            for (int c = 0; c < locations[r].length; c++) {
+                if (locations[r][c].type == Types.GRASS) {
+                    boolean canBeASource = false; 
+                    canBeASource = checkAvailabitity(r,c); 
+                    if (canBeASource == true) {
+                        int randomSource = random(1, 30); 
+                        if (randomSource == 1) {
+                            locations[r][c].isSource = true;
+                            locations[r][c].type     = Types.DIRT; 
+                        }  
+                    }
+                }
+            }
+        }
+    }
+    
+    private boolean checkAvailabitity(int row, int column) {
+        System.out.println("checking availabitity at row: " + row + " column: " + column);
+        boolean answer = true; 
+        for (int i = -3; i <= 3; i++) {
+            for (int j = -3; j <= 3; j++) {
+                if (answer == false) return false; 
+                else answer = check(row+i, column+j); 
+            }          
+        }
+        return true;
+    }
+    
+    private boolean check(int row, int column) {
+        try {
+            if      (locations[row][column].type == Types.DIRT)  return false; 
+            else if (locations[row][column].type == Types.WATER) return false; 
+            else return true;
+        } catch (ArrayIndexOutOfBoundsException error) {
+            System.out.println("Array out of bounds for setting source");
+            return false; 
+        } catch (NullPointerException error) {
+            System.out.println("null found while setting sources");
+            return false; 
+        }
+    }
+    
     private void generatePatterns() {
         for (int r = 0; r < locations.length; r++) {
             for (int c = 0; c < locations[r].length; c++) {
